@@ -7,10 +7,9 @@
     z-index: 1;
     top: 40px;
     left: 0;
-    background-color:pink;
     overflow-x: hidden;
     padding-top: 20px;
-    border-right:solid green 2px;
+    border-right:solid gray 2px;
 	}
 
 	.sidenav a {
@@ -37,7 +36,7 @@
 	    z-index: 1;
 	    top: 40px;
 	    right: 0;
-	    background-color:pink;
+	    background-color:gray;
 	    overflow-x: hidden;
 	    padding-top: 20px;
 	    border-left:solid green 2px;
@@ -58,7 +57,10 @@
 		text-decoration:none;
 		list-style-type: none;
 	}
-	
+	a:hover{
+		text-decoration:none;
+		color:green;
+	}
 	img{
 		width: 249px;
 		height: 200px;
@@ -98,9 +100,9 @@
 				    <div class="card-footer">
 				    	<div class="container">
 				    		<div class="row">
-				    			<div class="col-md-4"><i class="mdi mdi-thumb-up"></i>&nbsp; Interest</div>
-						    	<div class="col-md-4"><i class="mdi mdi-rice"></i>&nbsp; Order</div>
-						    	<div class="col-md-4"><i class="mdi mdi-comment"></i>&nbsp; Recomment</div>
+				    			<div class="col-md-4"><a href="#" class="text-secondary"><i class="mdi mdi-thumb-up"></i>&nbsp; Interest</a></div>
+						    	<div class="col-md-4"><a href="#" class="text-secondary"><i class="mdi mdi-rice"></i>&nbsp; Order</a></div>
+						    	<div class="col-md-4"><a href="#" class="text-secondary"><i class="mdi mdi-comment"></i>&nbsp; Recomment</a></div>
 				    		</div>
 				    	</div>
 				    	
