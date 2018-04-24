@@ -4,7 +4,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
-  <a class="navbar-brand" href="<?php echo base_url();?>">Skeleton</a>
+  <a class="navbar-brand" href="<?php echo base_url();?>">PNC-CANTEEN</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -18,7 +18,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
         <a class="nav-link" href="<?php echo base_url();?>examples/views/index">Examples</a>
       </li>
       <li class="nav-item <?php echo ($activeLink=='users'?'active':'');?>">
-        <a class="nav-link" href="<?php echo base_url();?>users"><i class="mdi mdi-lock"></i>Users</a>
+        <a class="nav-link" href="<?php echo base_url();?>users"><i class="mdi mdi-lock"></i>&nbsp;Login</a>
       </li>
     </ul>
   </div>
