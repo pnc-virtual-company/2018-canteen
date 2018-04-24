@@ -8,7 +8,7 @@
  */
 ?>
 <?php if($this->session->flashdata('msg')){ ?>
-<div id="flashbox" class="alert alert-primary" role="alert">
+<div id="flashbox" class="alert alert-danger" role="alert">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <?php echo $this->session->flashdata('msg'); ?>
 </div>
