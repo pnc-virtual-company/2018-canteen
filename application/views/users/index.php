@@ -19,33 +19,41 @@
 <table id="users" cellpadding="0" cellspacing="0" class="table table-striped table-bordered" width="100%">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Login</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th>Dish ID</th>
+            <th>Dish name</th>
+            <th>Dish image</th>
+            <th>Dish Description</th>
+            <th>Dish StartDate</th>
+            <th>Dish EndDate</th>
+             <th>Dish Action</th>
         </tr>
     </thead>
     <tbody>
 <?php foreach ($users as $user):?>
     <tr>
         <td data-order="<?php echo $user['id']; ?>" data-id="<?php echo $user['id'];?>">
-            <?php echo $user['id'] ?>&nbsp;
+             <?php echo $user['id'] ?>&nbsp;
+          
+        </td>
+        <td><?php echo $user['firstname']; ?></td>
+        <td><?php echo $user['lastname']; ?></td>
+        <td><?php echo $user['login']; ?></td>
+        <td><a href="mailto:<?php echo $user['email']; ?>"><?php echo $user['email']; ?></a></td>
+        <td>
+           
+         
+        </td>
+          <td>
+           
             <?php if (boolval($user['active'])) { ?>
             <a href="<?php echo base_url();?>users/disable/<?php echo $user['id'] ?>" title="Disable user"><i class="mdi mdi-account"></i></a>
             <?php } else { ?>
             <a href="<?php echo base_url();?>users/enable/<?php echo $user['id'] ?>" title="Enable user"><i class="mdi mdi-account-off"></i></a>
             <?php } ?>
             <a href="<?php echo base_url();?>users/edit/<?php echo $user['id'] ?>" title="Edit user"><i class="mdi mdi-pencil"></i></a>
-            <a href="#" class="confirm-delete" title="Delete user"><i class="mdi mdi-delete"></i></a>
+              <a href="#" class="confirm-delete" title="Delete user"><i class="mdi mdi-delete"></i></a>
             <a href="#" class="reset-password" title="Reset user's password"><i class="mdi mdi-lock"></i></a>
         </td>
-        <td><?php echo $user['firstname']; ?></td>
-        <td><?php echo $user['lastname']; ?></td>
-        <td><?php echo $user['login']; ?></td>
-        <td><a href="mailto:<?php echo $user['email']; ?>"><?php echo $user['email']; ?></a></td>
-        <td><?php echo $user['roles_list']; ?></td>
     </tr>
 <?php endforeach ?>
             </tbody>

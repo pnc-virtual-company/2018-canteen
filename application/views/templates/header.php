@@ -24,6 +24,9 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
   body {
       padding-top: 60px;
   }
+  #menu-background{
+  background-color: #009688 ;
+}
 	</style>
 </head>
 <body>
