@@ -71,6 +71,7 @@
 	}
 	.item{
 		border-right: solid gray 1px;
+		border-left: solid gray 1px;
 	}
 .material-icons{
     display: inline-flex;
@@ -85,9 +86,9 @@
 		<div class="row">
 			<div class=" col-lg-2 col-md-3col-sm-6 col-xs-12 nav fixed">
 				<div class="sidenav">
-				  <a href="#about"><i class="mdi mdi-rice"></i>&nbsp; Try foot</a>
-				  <a href="#about"><i class="mdi mdi-rice"></i>&nbsp; Water food</a>
-				  <a href="#about"><i class="mdi mdi-rice"></i>&nbsp;  Other</a>
+				  <a href="#about"><i class="mdi mdi-rice"></i>&nbsp; Dry Food</a>
+				  <a href="#about"><i class="mdi mdi-rice"></i>&nbsp; Water Food</a>
+				  <a href="#about"><i class="mdi mdi-rice"></i>&nbsp; Menu</a>
 				</div>
 			</div>
 		
@@ -111,15 +112,17 @@
 				    <div class="card-footer">
 				    	<div class="container">
 				    		<div class="row">
-				    			<div class="col-md-4 item">
-				    				<a href="#" class="text-secondary"><i class="mdi mdi-thumb-up"></i>&nbsp; Interest</a>
+				    			<div class="col-md-4">
+				    				<a href="#" class="text-secondary">45&nbsp; <i class="mdi mdi-thumb-up text-info"></i>&nbsp; Interest</a>
 				    			</div>
+				    			 <?php if($this->session->loggedIn === TRUE) { ?>
 						    	<div class="col-md-4 item">
-						    		<a href="#" class="text-secondary"><i class="mdi mdi-rice"></i>&nbsp; Order</a>
+						    		<a href="#" class="text-secondary"><i class="mdi mdi-rice text-info"></i>&nbsp; Order</a>
 						    	</div>
 						    	<div class="col-md-4 ">
-						    		<a href="#" class="text-secondary"><i class="mdi mdi-comment"></i>&nbsp; Recomment</a>
+						    		<a href="#" class="text-secondary"><i class="mdi mdi-comment text-info"></i>&nbsp; Recomment</a>
 						    	</div>
+						    	<?php } ?>
 				    		</div>
 				    	</div>
 				    	
@@ -137,12 +140,12 @@
 				 	
 				    </div>
 			</div>
-
+ <?php if($this->session->loggedIn === TRUE) { ?>
 			<div class="col-md-2 col-lg-3 col-sm-6 col-xs-12">
 				<div class="sidenav2">
 					<ul>
 						<li>
-							<i style="margin-left:-30px;" class="mdi mdi-account-multiple"></i> <span>&nbsp; User login now</span>
+							<i style="margin-left:-30px;" class="mdi mdi-account-multiple text-info"></i> <span class="text-info">&nbsp; Users Active</span>
 							
 						</li>
 						<li>
@@ -160,6 +163,7 @@
 					</ul>
 				</div>
 			</div>
+			<?php } ?>
 		</div>
 	</div>
 
