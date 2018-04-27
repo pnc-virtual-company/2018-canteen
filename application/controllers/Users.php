@@ -17,7 +17,7 @@ class Users extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author khai hok <khai.hok.passerellesnumeriques.org>
      */
     public function __construct() {
         parent::__construct();
@@ -37,20 +37,54 @@ class Users extends CI_Controller {
     }
 
     /**
-     * Display the list of all users
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * Display the list of all food
+     * @author Khai hok <khai.hok.passerellesnumeriques.org>
      */
     public function index() {
         $this->load->helper('form');
-        $data['users'] = $this->users_model->getUsersAndRoles();
+        // $data['users'] = $this->users_model->getUsersAndRoles();
         $data['title'] = 'List of users';
         $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
-        $this->load->view('menu/index', $data);
+        $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('users/index', $data);
         $this->load->view('templates/footer', $data);
     }
+
+    /**
+     * Display the list of all dry food
+     * @author Khai hok <khai.hok.passerellesnumeriques.org>
+     */
+    public function dry_food() {
+        $this->load->helper('form');
+        // $data['users'] = $this->users_model->getUsersAndRoles();
+        $data['title'] = 'List of users';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('users/dry_food', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+     /**
+     * Display the list of all water food
+     * @author Khai hok <khai.hok.passerellesnumeriques.org>
+     */
+    public function water_food() {
+        $this->load->helper('form');
+        // $data['users'] = $this->users_model->getUsersAndRoles();
+        $data['title'] = 'List of users';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('users/water_food', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+
 
     /**
      * Set a user as active (TRUE) or inactive (FALSE)

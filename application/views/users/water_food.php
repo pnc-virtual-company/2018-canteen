@@ -2,7 +2,7 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1>List all foods</h1>
+      <h1>List all water foods</h1>
       <p>A free posting food here!</p>
     </div>
   </div>
@@ -13,8 +13,8 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>FirsName</th>
-              <th>LastName</th>
+              <th>Food Name</th>
+              <th>Quility</th>
               <th>Phone</th>
               <th>Email</th>
             </tr>
@@ -22,64 +22,43 @@
           <tbody>
             <tr>
               <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
+              <td>Korko sup</td>
+              <td>Very Best food</td>
               <td>086338658</td>
               <td>khai.hok@gmail.com</td>
             </tr>
             <tr>
               <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
+              <td>Korko sup</td>
+              <td>Very Best food</td>
               <td>086338658</td>
               <td>khai.hok@gmail.com</td>
             </tr>
             <tr>
               <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
+              <td>Korko sup</td>
+              <td>Very Best food</td>
+              <td>086338658</td>
+              <td>khai.hok@gmail.com</td>
+            </tr>
+           <tr>
+              <td>01</td>
+              <td>Korko sup</td>
+              <td>Very Best food</td>
               <td>086338658</td>
               <td>khai.hok@gmail.com</td>
             </tr>
             <tr>
               <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
+              <td>Korko sup</td>
+              <td>Very Best food</td>
               <td>086338658</td>
               <td>khai.hok@gmail.com</td>
             </tr>
             <tr>
               <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
-              <td>086338658</td>
-              <td>khai.hok@gmail.com</td>
-            </tr>
-            <tr>
-              <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
-              <td>086338658</td>
-              <td>khai.hok@gmail.com</td>
-            </tr>
-            <tr>
-              <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
-              <td>086338658</td>
-              <td>khai.hok@gmail.com</td>
-            </tr>
-            <tr>
-              <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
-              <td>086338658</td>
-              <td>khai.hok@gmail.com</td>
-            </tr>
-            <tr>
-              <td>01</td>
-              <td>Khai</td>
-              <td>Hok</td>
+              <td>Korko sup</td>
+              <td>Very Best food</td>
               <td>086338658</td>
               <td>khai.hok@gmail.com</td>
             </tr>

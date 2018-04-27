@@ -14,16 +14,21 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
 
   <!-- Custom style //-->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/skeleton-1.0.0.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/dashboard.css">
 
   <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
   <script src="<?php echo base_url();?>assets/tether-1.4.3/js/tether.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/popper-1.12.9..min.js"></script>
   <script src="<?php echo base_url();?>assets/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+ 
 
 	<style type="text/css">
   body {
       padding-top: 60px;
   }
+
+
+
 	</style>
 </head>
-<body>
+<body class="app sidebar-mini rtl">

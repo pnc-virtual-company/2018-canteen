@@ -28,7 +28,7 @@
                <input type="password" name="password" class="form-control" placeholder="Password" required>
               </div>
                <button class="btn btn-outline-info float-right " type="submit" id="login">Sign in</button>
-               <a href="<?php echo base_url() ?>" class="btn btn-outline-danger ">Cancle</a>
+               <a href="<?php echo base_url() ?>" class="btn btn-outline-danger ">Cancel</a>
                 <?php echo validation_errors() ?>
             </form>
           </div>
