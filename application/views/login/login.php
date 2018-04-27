@@ -16,7 +16,7 @@
   <?php
   $attributes = array('id' => 'formLogin', 'class' => 'form-signin');
   echo form_open('connection/login', $attributes); ?>
-    <img src="<?php echo base_url();?>assets/images/canteen-logo.png" alt="canteen-logo" id="canteen-logo" class="text-center">
+    <img src="<?php echo base_url();?>assets/images/pnc-canteen.png" alt="canteen-logo" id="canteen-logo" class="text-center">
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-6 jumbotron">

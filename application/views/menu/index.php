@@ -5,7 +5,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top" id ="menu-background">
 
   <a class="navbar-brand" href="<?php echo base_url();?>">
-  <img src="<?php echo base_url();?>assets/images/canteen-logo.png" alt="" style="width:65px">PNC CANTEEN</a>
+  <img src="<?php echo base_url();?>assets/images/pnc-canteen.png" alt="" style="width:65px">PNC CANTEEN</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=" #navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
