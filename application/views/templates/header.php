@@ -12,7 +12,7 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
   <link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-4.0.0/css/bootstrap.min.css">
   <link href="<?php echo base_url();?>assets/MDI-2.1.19/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
 
-  <!-- Custom style //-->
+  
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/skeleton-1.0.0.css">
 
   <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
