@@ -1,20 +1,20 @@
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
 		<div class="row">
-			<div class="col-md-3"></div>
+			<div class="col-md-2"></div>
 			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
 				  <br>
-				  <i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i><span>&nbsp; Canteen Manage</span>
-				  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi impedit non reprehenderit temporibus nostrum laborum deleniti, consectetur. Magnam earum asperiores harum eveniet rerum cupiditate, suscipit quibusdam iusto accusamus alias tenetur.</p>
+				  <i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i><span>&nbsp; Canteen Manager</span>
+				  <p>Dear all, I have release new kind of food, it would be cooked if everyone commented and click interest as rating the food, I will see that if the following food get more interest will be noted into daily menu.</p>
 				
 				 <div class="card">
 				    <!-- <div class="card-header">Header</div> -->
 				    <div class="card-body">
 				    	<div class="row">
 					    	<div class="col-md-6 text-center">
-					    		<img src="<?php echo base_url();?>assets/images/food/food1.jpg" alt="">
+					    		<img src="<?php echo base_url();?>assets/images/food1.jpg" alt="">
 					    	</div>
 					    	<div class="col-md-6">
-							<img src="<?php echo base_url();?>assets/images/food/food2.jpg" alt="">
+							<img src="<?php echo base_url();?>assets/images/food2.jpg" alt="">
 						</div>
 					</div>
 				    </div> 
@@ -40,15 +40,159 @@
 				 </div>
 				 <br>
 				   <div class="user-comment" style="margin-left: 80px;">
-				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">User</i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat repudiandae laudantium pariatur consequatur officia incidunt, dolore architecto eaque, </p>
+				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Khai Hok</i><p>I think this food look interest and I want to order this kind of food to be cook for the following day, I want to see this food to be cooked. </p>
 				    	 
-				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">User</i><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat repudiandae laudantium pariatur consequatur officia incidunt, dolore architecto eaque, </p>
+				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Canteen Manager</i><p>Yes thank you , I will drop this food to daily menu to be cook.</p>
 
 				    </div>
-				    <div class="manage-comment">
-				    	<i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i><span>&nbsp; Canteen Manage</span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis nihil, illo error eos suscipit placeat sed consequuntur aliquam,</p>
-				 	
+				   
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
+				  <br>
+				  <i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i><span>&nbsp; Canteen Manager</span>
+				  <p>Dear all, I have release new kind of food, it would be cooked if everyone commented and click interest as rating the food, I will see that if the following food get more interest will be noted into daily menu.</p>
+				
+				 <div class="card">
+				    <!-- <div class="card-header">Header</div> -->
+				    <div class="card-body">
+				    	<div class="row">
+					    	<div class="col-md-6 text-center">
+					    		<img src="<?php echo base_url();?>assets/images/o.jpg" alt="">
+					    	</div>
+					    	<div class="col-md-6">
+							<img src="<?php echo base_url();?>assets/images/water food.jpg" alt="">
+						</div>
+					</div>
+				    </div> 
+				    <div class="card-footer">
+				    	<div class="container">
+				    		<div class="row">
+				    			 <?php if($this->session->loggedIn === TRUE) { ?>
+				    			<div class="col-md-4">
+				    				<a href="#" class="text-secondary">45&nbsp; <i class="mdi mdi-thumb-up text-info"></i>&nbsp; Interest</a>
+				    			</div>
+						    	<div class="col-md-4 item">
+						    		<a data-toggle="modal" data-target="#exampleModal" 
+						    		data-whatever="@getbootstrap"><i class="mdi mdi-rice text-info"></i>&nbsp;Order</a>
+						    	</div>
+						    	<div class="col-md-4">
+						    		<a href="#" class="text-secondary" id="recomment"><i class="mdi mdi-comment text-info"></i>&nbsp; Recomment</a>
+						    	</div>
+						    	<?php } ?>
+				    		</div>
+				    	</div>
+				    	
 				    </div>
+				 </div>
+				 <br>
+				   <div class="user-comment" style="margin-left: 80px;">
+				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Khai Hok</i><p>I think this food look interest and I want to order this kind of food to be cook for the following day, I want to see this food to be cooked. </p>
+				    	 
+				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Canteen Manager</i><p>Yes thank you , I will drop this food to daily menu to be cook.</p>
+
+				    </div>
+				   
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
+				  <br>
+				  <i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i><span>&nbsp; Canteen Manager</span>
+				  <p>Dear all, I have release new kind of food, it would be cooked if everyone commented and click interest as rating the food, I will see that if the following food get more interest will be noted into daily menu.</p>
+				
+				 <div class="card">
+				    <!-- <div class="card-header">Header</div> -->
+				    <div class="card-body">
+				    	<div class="row">
+					    	<div class="col-md-6 text-center">
+					    		<img src="<?php echo base_url();?>assets/images/Kampot_pepper_crab.jpg" alt="">
+					    	</div>
+					    	<div class="col-md-6">
+							<img src="<?php echo base_url();?>assets/images/fry.jpg" alt="">
+						</div>
+					</div>
+				    </div> 
+				    <div class="card-footer">
+				    	<div class="container">
+				    		<div class="row">
+				    			 <?php if($this->session->loggedIn === TRUE) { ?>
+				    			<div class="col-md-4">
+				    				<a href="#" class="text-secondary">45&nbsp; <i class="mdi mdi-thumb-up text-info"></i>&nbsp; Interest</a>
+				    			</div>
+						    	<div class="col-md-4 item">
+						    		<a data-toggle="modal" data-target="#exampleModal" 
+						    		data-whatever="@getbootstrap"><i class="mdi mdi-rice text-info"></i>&nbsp;Order</a>
+						    	</div>
+						    	<div class="col-md-4">
+						    		<a href="#" class="text-secondary" id="recomment"><i class="mdi mdi-comment text-info"></i>&nbsp; Recomment</a>
+						    	</div>
+						    	<?php } ?>
+				    		</div>
+				    	</div>
+				    	
+				    </div>
+				 </div>
+				 <br>
+				   <div class="user-comment" style="margin-left: 80px;">
+				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Khai Hok</i><p>I think this food look interest and I want to order this kind of food to be cook for the following day, I want to see this food to be cooked. </p>
+				    	 
+				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Canteen Manager</i><p>Yes thank you , I will drop this food to daily menu to be cook.</p>
+
+				    </div>
+				   
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
+				  <br>
+				  <i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i><span>&nbsp; Canteen Manager</span>
+				  <p>Dear all, I have release new kind of food, it would be cooked if everyone commented and click interest as rating the food, I will see that if the following food get more interest will be noted into daily menu.</p>
+				
+				 <div class="card">
+				    <!-- <div class="card-header">Header</div> -->
+				    <div class="card-body">
+				    	<div class="row">
+					    	<div class="col-md-6 text-center">
+					    		<img src="<?php echo base_url();?>assets/images/fry.jpg" alt="">
+					    	</div>
+					    	<div class="col-md-6">
+							<img src="<?php echo base_url();?>assets/images/1200px-Sen_yai_phat_khi_mao.jpg" alt="">
+						</div>
+					</div>
+				    </div> 
+				    <div class="card-footer">
+				    	<div class="container">
+				    		<div class="row">
+				    			 <?php if($this->session->loggedIn === TRUE) { ?>
+				    			<div class="col-md-4">
+				    				<a href="#" class="text-secondary">45&nbsp; <i class="mdi mdi-thumb-up text-info"></i>&nbsp; Interest</a>
+				    			</div>
+						    	<div class="col-md-4 item">
+						    		<a data-toggle="modal" data-target="#exampleModal" 
+						    		data-whatever="@getbootstrap"><i class="mdi mdi-rice text-info"></i>&nbsp;Order</a>
+						    	</div>
+						    	<div class="col-md-4">
+						    		<a href="#" class="text-secondary" id="recomment"><i class="mdi mdi-comment text-info"></i>&nbsp; Recomment</a>
+						    	</div>
+						    	<?php } ?>
+				    		</div>
+				    	</div>
+				    	
+				    </div>
+				 </div>
+				 <br>
+				   <div class="user-comment" style="margin-left: 80px;">
+				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Khai Hok</i><p>I think this food look interest and I want to order this kind of food to be cook for the following day, I want to see this food to be cooked. </p>
+				    	 
+				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Canteen Manager</i><p>Yes thank you , I will drop this food to daily menu to be cook.</p>
+
+				    </div>
+				   
 			</div>
 		</div>
 
