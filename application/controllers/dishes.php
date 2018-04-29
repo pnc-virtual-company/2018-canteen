@@ -6,14 +6,23 @@ class dishes extends CI_Controller {
 	// public function menu(){
 	// 	$this->load->view('dishes/menu');
 	// }
-
-		public function menu()
+	public function dryFood()
 	{
-		$data['activeLink'] = 'home';
-		$this->load->view('templates/header', $data);
-		$this->load->view('menu/index', $data);
-		$this->load->view('dishes/food_menu', $data);
-		$this->load->view('templates/footer', $data);
+		 $data['title'] = 'dry food';
+		$data['page'] = 'dishes/dry_food'; //load content
+		$this->load->view('layout', $data);
+	}
+	public function waterFood()
+	{	
+		$data['title'] = 'water food';
+		$data['page'] = 'dishes/water_food';
+		$this->load->view('layout', $data);
+	}
+		public function menu()
+	{	
+		$data['title'] = 'menu';
+		$data['page'] = 'dishes/food_menu';
+		$this->load->view('layout', $data);
 	}
 }
 // }
