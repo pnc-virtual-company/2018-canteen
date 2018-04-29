@@ -10,6 +10,7 @@
 				  <a href="<?php echo base_url() ?>dishes/menu"><i class="mdi mdi-rice"></i>&nbsp; Menu</a>
 				  <a href="<?php echo base_url() ?>calender/getCalender"><i class="mdi mdi-calender"></i>&nbsp; calender</a>  
 				  <a href="<?php echo base_url() ?>calender/favouriteFood "><i class="mdi mdi-calender"></i>&nbsp; Favourite Food</a>
+				  <a href="<?php echo base_url() ?>even/getRegisterList "><i class="mdi mdi-calender"></i>&nbsp; staff register list</a>
 				</div>
 			</div>
 		</div>
