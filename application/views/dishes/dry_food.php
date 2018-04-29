@@ -1,38 +1,5 @@
-<style>
-	
-	.thumbnail {
-	  position: relative;
-	  width: 100%;
-	}
-
-	.overlay {
-	  position: absolute;
-	  bottom: 100%;
-	  left: 0;
-	  right: 0;
-	  background-color: rgba(34, 40, 44, 0.56);
-	  overflow: hidden;
-	  width: 100%;
-	  height:0;
-	  transition: .5s ease;
-	}
-
-	.thumbnail:hover .overlay {
-	  bottom: 0;
-	  height: 100%;
-	}
-
-	.text {
-	  color: white;
-	  font-size: 20px;
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
-	  -ms-transform: translate(-50%, -50%);
-	  text-align: center;
-	}
-</style>
+<!-- Stylel css for dry_food -->
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/food_type.css">
 <div class="container">
 	<hr>
 		<div class="header text-center">
