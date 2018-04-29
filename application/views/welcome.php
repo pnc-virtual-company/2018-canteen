@@ -109,7 +109,7 @@
 				    <div class="card-body">
 				    	<div class="row">
 					    	<div class="col-md-6 text-center">
-					    		<img src="<?php echo base_url();?>assets/images/Kampot_pepper_crab.jpg.jpg" alt="">
+					    		<img src="<?php echo base_url();?>assets/images/Kampot_pepper_crab.jpg" alt="">
 					    	</div>
 					    	<div class="col-md-6">
 							<img src="<?php echo base_url();?>assets/images/fry.jpg" alt="">
