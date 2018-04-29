@@ -10,9 +10,6 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
-
-
   <div class="navbar-collapse collapse navbar-right">
       <ul class="navbar-nav ml-auto">
         <?php if($this->session->loggedIn === TRUE) { ?>
