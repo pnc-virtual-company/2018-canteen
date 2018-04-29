@@ -6,13 +6,13 @@ class dishes extends CI_Controller {
 	// public function menu(){
 	// 	$this->load->view('dishes/menu');
 	// }
-	public function dry_food()
+	public function dryFood()
 	{
-		  $data['title'] = 'dry food';
-		$data['page'] = 'dishes/dry_food';
+		 $data['title'] = 'dry food';
+		$data['page'] = 'dishes/dry_food'; //load content
 		$this->load->view('layout', $data);
 	}
-	public function water_food()
+	public function waterFood()
 	{	
 		$data['title'] = 'water food';
 		$data['page'] = 'dishes/water_food';
