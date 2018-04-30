@@ -1,7 +1,7 @@
 <?php
 /**
  * This controller serves the user management pages and tools.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2017-2018 Khai HOK
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/skeleton
  * @since      0.1.0
@@ -17,7 +17,7 @@ class Users extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Khai HOK <khai.hok@student.passerellesnumeriques.org>
      */
     public function __construct() {
         parent::__construct();
@@ -38,7 +38,7 @@ class Users extends CI_Controller {
 
     /**
      * Display the list of all users
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Khai HOK <khai.hok@student.passerellesnumeriques.org>
      */
     public function index() {
         $this->load->helper('form');
@@ -47,7 +47,7 @@ class Users extends CI_Controller {
         $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
-        $this->load->view('menu/index', $data);
+        $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('users/index', $data);
         $this->load->view('templates/footer', $data);
     }
