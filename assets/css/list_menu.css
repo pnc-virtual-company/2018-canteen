@@ -1,0 +1,45 @@
+ .container{
+      margin-right:50px;
+    }
+    .text {
+      text-align: justify;
+    }
+    .food {
+      position: relative;  
+      margin-left: -26px;  
+      cursor: pointer;
+      }
+
+    .overlay { 
+      position: absolute;  
+      bottom:100%;  
+      background-color:rgba(0, 0, 0, 0.7);  
+      overflow: hidden;  
+      width: 100%;  
+      height:0;  
+      transition: .6s ease;  
+      color: gray;
+      }
+    .food:hover .overlay { 
+      bottom:0%;  
+      height: 100%;
+    }
+    .text {  
+      width: 100%;  
+      color: white;  
+      position: absolute;  
+      top: 50%;  left: 50%;  
+      transform: translate(-50%, -50%);  -ms-transform: translate(-50%, -50%);
+      }
+      .main{
+        margin-right:-110px;
+      }
+      .btn{
+        margin-left: 50px;
+      }
+      h3{
+        margin-left:30px;
+        border-bottom:solid #7CB9E8 1px;
+        width: 100%;
+      }
+      
