@@ -46,4 +46,14 @@ class food extends CI_Controller {
         $this->load->view('admin/food/waterFood', $data);
         $this->load->view('templates/footer', $data);
     }
+
+    public function favouriteFood(){
+        $data['title'] = 'List Favourite Food';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('dishes/favouriteFoods', $data);
+        $this->load->view('templates/footer', $data);
+    }
 }

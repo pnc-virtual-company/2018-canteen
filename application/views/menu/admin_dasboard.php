@@ -37,7 +37,7 @@
 
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>calender/getCalender"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Create Menu</span></a></li>
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favorit Food</span></a></li>
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favorit Food</span></a></li>
 
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Staff Event</span></a></li> 
 
