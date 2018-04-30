@@ -24,6 +24,12 @@ class dishes extends CI_Controller {
 		$data['page'] = 'dishes/food_menu';
 		$this->load->view('layout', $data);
 	}
+
+	public function favouriteFood(){
+		$data['title'] = 'menu';
+		$data['page'] = 'dishes/favouriteFoods';
+		$this->load->view('layout', $data);
+	}
 }
 // }
 ?>
