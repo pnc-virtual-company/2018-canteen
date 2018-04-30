@@ -6,10 +6,8 @@
     <div class="col-md-3"></div>
     <div class="col-md-8">
 
-<h1>FullCalendar widget</h1>
-<p>FullCalendar is a widget allowing to display calendar and agenda views. Please visit their website for more information:
-  <a target="_blank" href="https://fullcalendar.io/">https://fullcalendar.io/</a></p>
-
+<h1 class="text-center text-success">Create Staff Lunch Event </h1>
+<br>
 <div id='calendar'></div>
 
 <!-- Live example of usage //-->
