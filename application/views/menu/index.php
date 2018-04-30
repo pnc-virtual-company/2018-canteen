@@ -21,7 +21,17 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
           <?php }else { ?>
 
               <li class="nav-item <?php echo ($activeLink=='users'?'active':'');?>">
-              <a class="nav-link " href="<?php echo base_url();?>users"><i class="mdi mdi-lock "></i>&nbsp;Login</a>
+                <div class="row">
+                  <div class="col-md-5">
+                     <a class="nav-link " href="<?php echo base_url();?>users"><i class="mdi mdi-lock "></i>&nbsp;Login</a>
+                  </div>
+                  <div class="col-md-2">
+                    <a class="nav-link">OR</a>
+                  </div>
+                  <div class="col-md-5">
+                     <a class="nav-link " href="<?php echo base_url();?>connection/register"><i class="mdi mdi-lock "></i>&nbsp;Register</a>
+                  </div>
+                </div>
               </li>
           <?php }?>
       </ul>
