@@ -1,6 +1,6 @@
 <?php
 /**
- * This model contains the business logic and manages the persistence of users and roles
+ * This model contains the business logic and manages the persistence of tbl_users and tbl_roles
  * @copyright  Copyright (c) 2018 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/skeleton
@@ -10,7 +10,7 @@
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
 
 /**
- * This model contains the business logic and manages the persistence of users and roles
+ * This model contains the business logic and manages the persistence of tbl_users and tbl_roles
  * It is also used by the session controller for the authentication.
  */
 class Users_model extends CI_Model {
@@ -23,37 +23,37 @@ class Users_model extends CI_Model {
     }
 
     /**
-     * Get the list of users or one user
+     * Get the list of tbl_users or one user
      * @param int $id optional id of one user
-     * @return array record of users
+     * @return array record of tbl_users
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getUsers($id = 0) {
-        $this->db->select('users.*');
+        $this->db->select('tbl_users.*');
         if ($id === 0) {
-            $query = $this->db->get('users');
+            $query = $this->db->get('tbl_users');
             return $query->result_array();
         }
-        $query = $this->db->get_where('users', array('users.id' => $id));
+        $query = $this->db->get_where('tbl_users', array('tbl_users.id' => $id));
         return $query->row_array();
     }
 
     /**
-     * Get the list of users and their roles
-     * @return array record of users
+     * Get the list of tbl_users and their tbl_roles
+     * @return array record of tbl_users
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getUsersAndRoles() {
-        $this->db->select('users.id, active, firstname, lastname, login, email');
-        $this->db->select("GROUP_CONCAT(" . $this->db->dbprefix('roles') . ".name SEPARATOR ',') as roles_list", FALSE);
-        $this->db->join('roles', 'roles.id = (' . $this->db->dbprefix('users') . '.role & ' . $this->db->dbprefix('roles') . '.id)');
-        $this->db->group_by($this->db->dbprefix('users') . '.id, active, firstname, lastname, login, email');
-        $query = $this->db->get('users');
+        $this->db->select('tbl_users.id, active, firstname, lastname, login, email');
+        $this->db->select("GROUP_CONCAT(" . $this->db->dbprefix('tbl_roles') . ".name SEPARATOR ',') as tbl_roles_list", FALSE);
+        $this->db->join('tbl_roles', 'tbl_roles.id = (' . $this->db->dbprefix('tbl_users') . '.role & ' . $this->db->dbprefix('tbl_roles') . '.id)');
+        $this->db->group_by($this->db->dbprefix('tbl_users') . '.id, active, firstname, lastname, login, email');
+        $query = $this->db->get('tbl_users');
         return $query->result_array();
     }
 
   /**
-   * Get the list of roles or one role
+   * Get the list of tbl_roles or one role
    * 00000001 1  Admin
    * 00000010 2	User
    * 00000100 8	HR Officier / Local HR Manager
@@ -61,15 +61,15 @@ class Users_model extends CI_Model {
    * 00010000 32	General Manager
    * 00100000 34	Global Manager
    * @param int $id optional id of one role
-   * @return array record of roles
+   * @return array record of tbl_roles
    * @author Benjamin BALET <benjamin.balet@gmail.com>
    */
   public function getRoles($id = 0) {
       if ($id === 0) {
-          $query = $this->db->get('roles');
+          $query = $this->db->get('tbl_roles');
           return $query->result_array();
       }
-      $query = $this->db->get_where('roles', array('id' => $id));
+      $query = $this->db->get_where('tbl_roles', array('id' => $id));
       return $query->row_array();
   }
 
@@ -93,7 +93,7 @@ class Users_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function isLoginAvailable($login) {
-        $this->db->from('users');
+        $this->db->from('tbl_users');
         $this->db->where('login', $login);
         $query = $this->db->get();
 
@@ -110,7 +110,7 @@ class Users_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteUser($id) {
-        $this->db->delete('users', array('id' => $id));
+        $this->db->delete('tbl_users', array('id' => $id));
     }
 
     /**
@@ -138,7 +138,7 @@ class Users_model extends CI_Model {
             'password' => $hash,
             'role' => $role
         );
-        $this->db->insert('users', $data);
+        $this->db->insert('tbl_users', $data);
         return $password;
     }
 
@@ -161,7 +161,7 @@ class Users_model extends CI_Model {
             'role' => $role
         );
         $this->db->where('id', $this->input->post('id'));
-        $result = $this->db->update('users', $data);
+        $result = $this->db->update('tbl_users', $data);
         return $result;
     }
 
@@ -180,7 +180,7 @@ class Users_model extends CI_Model {
             'password' => $hash
         );
         $this->db->where('id', $id);
-        return $this->db->update('users', $data);
+        return $this->db->update('tbl_users', $data);
     }
 
     /**
@@ -236,7 +236,7 @@ class Users_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function checkCredentials($login, $password) {
-        $this->db->from('users');
+        $this->db->from('tbl_users');
         $this->db->where('login', $login);
         $this->db->where('active = TRUE');
         $query = $this->db->get();
@@ -268,7 +268,7 @@ class Users_model extends CI_Model {
     public function setActive($id, $active) {
         $this->db->set('active', $active);
         $this->db->where('id', $id);
-        return $this->db->update('users');
+        return $this->db->update('tbl_users');
     }
 
     /**
@@ -278,7 +278,7 @@ class Users_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function isActive($login) {
-        $this->db->from('users');
+        $this->db->from('tbl_users');
         $this->db->where('login', $login);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -296,7 +296,7 @@ class Users_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getUserByLogin($login) {
-        $this->db->from('users');
+        $this->db->from('tbl_users');
         $this->db->where('login', $login);
         $query = $this->db->get();
         if ($query->num_rows() == 0) {

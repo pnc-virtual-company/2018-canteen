@@ -1,7 +1,7 @@
 --
 -- Structure of table `users`
 --
-CREATE TABLE IF NOT EXISTS `skeleton_users` (
+CREATE TABLE IF NOT EXISTS `tbl_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Internal unique identifier',
   `firstname` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT 'User Firstname',
   `lastname` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT 'User Lastname',
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `skeleton_users` (
 -- Dumping data for table `skeleton_users`
 --
 
-INSERT INTO `skeleton_users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `active`) VALUES
+INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `active`) VALUES
 (1, 'Benjamin', 'BALET', 'bbalet', 'benjamin.balet@gmail.com', '$2a$08$LeUbaGFqJjLSAN7to9URsuHB41zcmsMBgBhpZuFp2y2OTxtVcMQ.C', 1, 1),
 (2, 'john', 'DOE', 'jdoe', 'jdoe@test.org', '$2a$08$Gk9WE1duEcKhEhxUKFmZteUU0sCZTgZIKkiPxhCe7yi0Jw0pBbDNW', 2, 1),
 (3, 'Bob', 'DENARD', 'bdenard', 'bdenard@test.org', '$2a$08$14jdHTPUZe5.zXxQ1NqhhO83xUt2Zkr.csGw10BH75B3VrJiNU8Bq', 2, 1),
@@ -26,7 +26,7 @@ INSERT INTO `skeleton_users` (`id`, `firstname`, `lastname`, `login`, `email`, `
 --
 -- Structure of table `roles`
 --
-CREATE TABLE IF NOT EXISTS `skeleton_roles` (
+CREATE TABLE IF NOT EXISTS `tbl_roles` (
   `id` int(11) NOT NULL,
   `name` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `skeleton_roles` (
 --
 -- Content of table `roles`
 --
-INSERT INTO `skeleton_roles` (`id`, `name`) VALUES
+INSERT INTO `tbl_roles` (`id`, `name`) VALUES
 (1, 'admin'),
 (2, 'user'),
 (8, 'Super admin');

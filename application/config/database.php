@@ -74,13 +74,13 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost; dbname=skeleton; charset=utf8;',
+	'dsn'	=> 'mysql:host=localhost; dbname=2018-canteen; charset=utf8;',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'skeleton',
+	'database' => '2018-canteen',
 	'dbdriver' => 'pdo',
-	'dbprefix' => 'skeleton_',
+	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
