@@ -65,4 +65,8 @@ class Connection extends CI_Controller {
 		$this->load->view('users/register');
 		$this->load->view('templates/footer');
 	}
+
+	public function create(){
+		echo "hello";
+	}
 }
