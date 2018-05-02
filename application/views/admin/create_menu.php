@@ -23,8 +23,8 @@
   <div class="col-md-1">
      <label ><strong>Date:</strong></label>
   </div>
-  <div class="col-md-5"><input id="datepicker" width="276" /></div>
-  <div class="col-md-1"></div>
+  <div class="col-md-3"><input id="datepicker"/></div>
+  <div class="col-md-3"></div>
   <div class="col-md-1">
      <label for="exampleSelect1"><strong>Meal:</strong></label>
   </div>
@@ -38,14 +38,20 @@
       </div>
   </div>
   <div class="col-md-1"></div>
-</div><br>
+</div>
+<br>
 <div class="row">
   <div class="col-md-12">
     <h2><u>List all dishes</u></h2>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-3">
+      
+  </div>
+</div>
 </main>
-
+  
  <script>
   $('#datepicker').datepicker({
     uiLibrary: 'bootstrap4'

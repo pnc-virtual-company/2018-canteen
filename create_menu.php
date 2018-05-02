@@ -14,7 +14,6 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * The difference with HR Controller is that operations are technical (CRUD, etc.).
  */
 class create_menu extends CI_Controller {
-
     /**
      * Display the list of all list of food to create menu
      * @author khai hok <khai.hok.passerellesnumeriques.org>
@@ -22,8 +21,8 @@ class create_menu extends CI_Controller {
     public function index() {
         $this->load->helper('form');
         // $data['users'] = $this->users_model->getUsersAndRoles();
-        // $this->load->model('create_menu');
-        // $data['data_image']= $this->create_menu->getImage();
+        $this->load->model('create_menu');
+        $data['data_image']= $this->create_menu->getImage();
 
         $data['title'] = 'List of users';
         $data['activeLink'] = 'users';
