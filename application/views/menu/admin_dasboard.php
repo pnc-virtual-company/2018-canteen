@@ -2,7 +2,7 @@
 <header class="app-header">
   <a class="app-header__logo" href="index.html">Canteen MS</a>
   <!-- Sidebar toggle button-->
-  &nbsp;&nbsp;<a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
+  &nbsp;&nbsp;<a class="" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
     <span class="mdi mdi-format-list-bulleted" style="color: white; font-size: 28px;"></span>
   </a>
   <!-- Navbar Right Menu-->
@@ -32,7 +32,7 @@
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/dryFood"><span class="mdi mdi-bowl" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Dry Food</span></a></li>
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/waterFood"><span class="mdi mdi-bowl" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Water Food</span></a></li>
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calender/getCalender"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Create Menu</span></a></li>
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/create_menu"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Create Menu</span></a></li>
 
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favorit Food</span></a></li>
 
