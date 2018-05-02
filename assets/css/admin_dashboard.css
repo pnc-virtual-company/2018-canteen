@@ -13182,7 +13182,7 @@ be a descendant of the grid when it is being dragged.
 
 .app-sidebar__toggle {
   padding: 0 15px;
-  font-family: fontAwesome;
+  font-family: material-icons;
   color: #fff;
   line-height: 2.4;
   -webkit-transition: background-color 0.3s ease;
