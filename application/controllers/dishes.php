@@ -30,6 +30,8 @@ class dishes extends CI_Controller {
 		$data['page'] = 'dishes/favouriteFoods';
 		$this->load->view('layout', $data);
 	}
+	
+	
 }
 // }
 ?>
