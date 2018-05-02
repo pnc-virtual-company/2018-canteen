@@ -65,8 +65,8 @@
                 <input type="radio" name="gender" value="Male" checked> Male
                 <input type="radio" name="gender" value="Female"> Female
               </div>
-              <button class="btn btn-danger" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
-              <button class=" btn btn-info float-right" type="submit"><i class="mdi mdi-account-plus"></i> Register</button>
+              <button class=" btn btn-danger" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
+              <button class=" btn btn-info float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Register</button>
             </form>
             </form>
           </div>
@@ -85,8 +85,8 @@
           }
       });
     });
-
   function goBack() {
     window.history.back();
 }
+
 </script>
