@@ -19,7 +19,7 @@
         <h2 class="text-center text-success">Register Form</h2>
         <div class="card bg-default ">
           <div class="card-body">
-           <form action="<?php echo base_url() ?>users/create" method="post">
+           <form action="<?php echo base_url() ?>Connection/create" method="post">
               <div class="row">
                 <div class="form-group col">
                   <label for="firstname"><strong>First Name</strong></label>
@@ -46,8 +46,8 @@
                   <input type="text" name="class" class="form-control" placeholder="WEP-2018" required>
                 </div>
                 <div class="form-group col">
-                  <label for="idnumber"><strong>Student ID</strong></label>
-                  <input type="text" class="form-control" placeholder="PNC2018-009" required name="idnumber">
+                  <label for="classId"><strong>Card ID</strong></label>
+                  <input type="text" class="form-control" placeholder="PNC2018-009" required name="classId">
                 </div>
               </div>
               <div class="row">
