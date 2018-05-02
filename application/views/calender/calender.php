@@ -1,91 +1,135 @@
 <!--Note that FullCalendar needs MomentJS to work //-->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/fullcalendar-3.8.2/fullcalendar.min.css">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css">
 <script src="<?php echo base_url();?>assets/js/moment-with-locales-2.19.3.min.js"></script>
 <script src="<?php echo base_url();?>assets/fullcalendar-3.8.2/fullcalendar.min.js"></script>
+<!--Datepicker widget needs its CSS and JS files to work //-->
+<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
+<hr>
 <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-8">
-
-<h1>FullCalendar widget</h1>
-<p>FullCalendar is a widget allowing to display calendar and agenda views. Please visit their website for more information:
-  <a target="_blank" href="https://fullcalendar.io/">https://fullcalendar.io/</a></p>
-
-<div id='calendar'></div>
-
-<!-- Live example of usage //-->
+<div class="col-md-1"></div>
+<div class="col-md-10">
+        <div id='calendar' class="col-centered"></div>
+        <div id='datepicker' class="col-centered"></div>
+</div>
+<div class="col-md-1"></div>
+</div>
+<!-- create modal of order item -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Please Leave your event information</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Event Title:</label>
+                      <input type="text" class="form-control" id="recipient-name" placeholder="Event title..." >
+                    </div>
+                    
+                  </div>
+                  <div class="col-6">
+                     <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Location:</label>
+                      <input type="text" class="form-control" id="recipient-name" placeholder="Location...">
+                    </div> 
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Start Date:</label>
+                      <input type="text" class="form-control datepicker" id="recipient-name"  placeholder="Start date...">
+                    </div>
+                    
+                  </div>
+                  <div class="col-6">
+                     <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">End date:</label>
+                      <input type="text" class="form-control datepicker" id="recipient-name" placeholder="End date..." >
+                    </div> 
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal">Save Change</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End of modal creation -->
 <script type="text/javascript">
 $(document).ready(function() {
-
-  $('#calendar').fullCalendar({
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,basicWeek,basicDay'
-    },
-    /*themeSystem: 'bootstrap3',*/
-    defaultDate: '2017-11-12',
-    navLinks: true, // can click day/week names to navigate views
-    editable: true,
-    eventLimit: true, // allow "more" link when too many events
-    events: [
-      {
-        title: 'All Day Event',
-        start: '2017-11-01'
-      },
-      {
-        title: 'Long Event',
-        start: '2017-11-07',
-        end: '2017-11-10'
-      },
-      {
-        id: 999,
-        title: 'Repeating Event',
-        start: '2017-11-09T16:00:00'
-      },
-      {
-        id: 999,
-        title: 'Repeating Event',
-        start: '2017-11-16T16:00:00'
-      },
-      {
-        title: 'Conference',
-        start: '2017-11-11',
-        end: '2017-11-13'
-      },
-      {
-        title: 'Meeting',
-        start: '2017-11-12T10:30:00',
-        end: '2017-11-12T12:30:00'
-      },
-      {
-        title: 'Lunch',
-        start: '2017-11-12T12:00:00'
-      },
-      {
-        title: 'Meeting',
-        start: '2017-11-12T14:30:00'
-      },
-      {
-        title: 'Happy Hour',
-        start: '2017-11-12T17:30:00'
-      },
-      {
-        title: 'Dinner',
-        start: '2017-11-12T20:00:00'
-      },
-      {
-        title: 'Birthday Party',
-        start: '2017-11-13T07:00:00'
-      },
-      {
-        title: 'Click for Google',
-        url: 'http://google.com/',
-        start: '2017-11-28'
-      }
-    ]
+  $('.datepicker').datepicker({
+    orientation:"bottom",
+    todayBtn: true,
+    todayHighlight: true,
+    autoclose:true,
   });
-
 });
 </script>
-</div>
-</div>
+<script>
+  $(document).ready(function() {
+
+         $('#calendar').fullCalendar({
+             header: {
+                 left: 'prev,next today',
+                 center: 'title',
+                 right: 'month,agendaWeek,agendaDay'
+             },
+             defaultDate: '2016-09-12',
+             navLinks: true, // can click day/week names to navigate views
+             selectable: true,
+             selectHelper: true,
+             select: function(start, end) {
+                 // Display the modal.
+                 // You could fill in the start and end fields based on the parameters
+                 $('.modal').modal('show');
+
+             },
+             eventClick: function(event, element) {
+                 // Display the modal and set the values to the event values.
+                 $('.modal').modal('show');
+                 $('.modal').find('#title').val(event.title);
+                 $('.modal').find('#starts-at').val(event.start);
+                 $('.modal').find('#ends-at').val(event.end);
+
+             },
+             editable: true,
+             eventLimit: true // allow "more" link when too many events
+
+         });
+
+         // Bind the dates to datetimepicker.
+         // You should pass the options you need
+         $("#starts-at, #ends-at").datetimepicker();
+
+         // Whenever the user clicks on the "save" button om the dialog
+         $('#save-event').on('click', function() {
+             var title = $('#title').val();
+             if (title) {
+                 var eventData = {
+                     title: title,
+                     start: $('#starts-at').val(),
+                     end: $('#ends-at').val()
+                 };
+                 $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+             }
+             $('#calendar').fullCalendar('unselect');
+
+             // Clear modal inputs
+             $('.modal').find('input').val('');
+
+             // hide modal
+             $('.modal').modal('hide');
+         });
+     });
+</script>
