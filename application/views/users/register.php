@@ -84,7 +84,7 @@
               $('#formLogin').submit();
           }
       });
-    });
+    });s
   function goBack() {
     window.history.back();
 }

@@ -19,15 +19,16 @@ class food extends CI_Controller {
      * Display the list of all dry food
      * @author khai hok <khai.hok.passerellesnumeriques.org>
      */
-    public function dryFood() {
+    public function listDish() {
         $this->load->helper('form');
-        // $data['users'] = $this->users_model->getUsersAndRoles();
-        $data['title'] = 'List of users';
+        $this->load->model('Dishes_model');
+        $data['dishes'] = $this->Dishes_model->getDishes();
+        $data['title'] = 'List of Dishes';
         $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('admin/food/dryFood', $data);
+        $this->load->view('admin/food/listDish', $data);
         $this->load->view('templates/footer', $data);
     }
 
@@ -56,4 +57,37 @@ class food extends CI_Controller {
         $this->load->view('dishes/favouriteFoods', $data);
         $this->load->view('templates/footer', $data);
     }
+
+    public function viewDishDetail($id){
+       $data['title'] = 'List Favourite Food';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('dishes/viewDishDetail', $data);
+        $this->load->view('templates/footer', $data);
+    }
+    public function updateDish($id){
+        $data['title'] = 'List Favourite Food';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('dishes/updateDish', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function deleteDish(){
+        $this->load->helper('form');
+        $this->load->model('Dishes_model');
+        $data['dishes'] = $this->Dishes_model->getDishes();
+        $data['title'] = 'List of Dishes';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('admin/food/listDish', $data);
+        $this->load->view('templates/footer', $data);
+    }
+    
 }
