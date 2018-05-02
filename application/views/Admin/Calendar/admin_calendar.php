@@ -7,8 +7,8 @@
 <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
 <hr>
 <div class="row">
-<div class="col-md-1"></div>
-<div class="col-md-10">
+<div class="col-md-3"></div>
+<div class="col-md-8">
         <div id='calendar' class="col-centered"></div>
         <div id='datepicker' class="col-centered"></div>
 </div>
@@ -27,32 +27,19 @@
             <div class="modal-body">
               <form>
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-12">
                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Event Title:</label>
-                      <input type="text" class="form-control" id="recipient-name" placeholder="Event title..." >
+                      <label class="col-form-label text-bold">Event Title:</label>
+                      <input type="text" class="form-control" id="event-name" placeholder="Event title..." >
                     </div>
+                  </div>
                     
                   </div>
-                  <div class="col-6">
+                  <div class="row">
+                  <div class="col-12">
                      <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Location:</label>
-                      <input type="text" class="form-control" id="recipient-name" placeholder="Location...">
-                    </div> 
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Start Date:</label>
-                      <input type="text" class="form-control datepicker" id="recipient-name"  placeholder="Start date...">
-                    </div>
-                    
-                  </div>
-                  <div class="col-6">
-                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">End date:</label>
-                      <input type="text" class="form-control datepicker" id="recipient-name" placeholder="End date..." >
+                      <label class="col-form-label">Email Content:</label>
+                      <textarea type="text" class="form-control" id="content-name" rows="4" cols="50" placeholder="Email Content..."></textarea> 
                     </div> 
                   </div>
                 </div>
@@ -60,7 +47,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-success" data-dismiss="modal">Save Change</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Add Now</button>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@
 				  <a href="<?php echo base_url() ?>dishes/waterFood"><i class="mdi mdi-rice"></i>&nbsp; Water Food</a>
 				  <a href="<?php echo base_url() ?>dishes/menu"><i class="mdi mdi-rice"></i>&nbsp; Menu</a>
 				  <a href="<?php echo base_url() ?>dishes/favouriteFood "><i class="mdi mdi-heart"></i>&nbsp; Favourite Food</a>
-				  <a href="<?php echo base_url() ?>calendar/getCalendar"><i class="mdi mdi-calendar"></i>&nbsp; Calendar</a>  
+				  <a href="<?php echo base_url() ?>calendar/getStuffCalendar"><i class="mdi mdi-calendar"></i>&nbsp; Calendar</a>  
 				</div>
 			</div>
 		</div>
