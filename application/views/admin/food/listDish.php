@@ -42,7 +42,7 @@
                     <a href="<?php echo base_url() ?>admin/food/viewDishDetail/<?php echo $dish->dish_id ?>" title="View food">
                       <span class="mdi mdi-eye-outline text-success" style="font-size: 20px;"></span>
                     </a>&nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>admin/food/updateDish/<?php echo $dish->dish_id ?>" title="Edit user">
+                    <a href="<?php echo base_url() ?>admin/food/selectDish/<?php echo $dish->dish_id ?>" title="Edit Dish">
                       <i class="mdi mdi-pencil" style="font-size: 20px;"></i>
                     </a>&nbsp;&nbsp;
                     <a href="<?php echo base_url() ?>admin/food/deleteDish/<?php echo $dish->dish_id ?>" class="confirm-delete text-danger" title="Delete Dish" style="font-size: 20px;">
