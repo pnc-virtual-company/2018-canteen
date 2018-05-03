@@ -43,7 +43,7 @@
 			      	</div>
       		</div>
       		<div class="col-md-4">
-			      	<div class="card card-info">
+			      	<div class="card card-info">	
 			      		<div class="card-body  bg-success text-center">
 			      				<i class="mdi mdi-food mdi-48px text-danger"></i>
 			      		</div>
