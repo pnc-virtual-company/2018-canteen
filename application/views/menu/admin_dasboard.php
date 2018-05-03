@@ -1,6 +1,6 @@
 
 <header class="app-header">
-  <a class="app-header__logo" href="index.html">Canteen MS</a>
+  <a class="app-header__logo" href="#">Canteen MS</a>
   <!-- Sidebar toggle button-->
   &nbsp;&nbsp;<a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
     <span class="mdi mdi-format-list-bulleted" style="color: white; font-size: 28px;"></span>
@@ -26,7 +26,7 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
   <div class="app-sidebar__user app-menu__label">
-    <a href="#"><img class="" style="width: 40%; margin-left: 22%; margin-bottom: -10%;" src="<?php echo base_url();?>assets/images/pnc-canteenEnd.png" alt="User Image"></a>
+    <a href="<?php echo base_url() ?>Users"><img class="" style="width: 40%; margin-left: 22%; margin-bottom: -10%;" src="<?php echo base_url();?>assets/images/pnc-canteenEnd.png" alt="User Image"></a>
   </div>
   <ul class="app-menu" id="nav">
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/listDish"><span class="mdi mdi-bowl" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">List All Dishes</span></a></li>
