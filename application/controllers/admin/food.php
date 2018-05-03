@@ -67,6 +67,7 @@ class food extends CI_Controller {
     }
     public function updateDish($id){
         $data['title'] = 'List Favourite Food';
+        
         $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
