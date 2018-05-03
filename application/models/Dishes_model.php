@@ -39,7 +39,7 @@ class Dishes_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteDishes($id) {
-        $this->db->delete('tbl_dishes', array('id' => $id));
+        $this->db->delete('tbl_dishes', array('dish_id' => $id));
     }
 
     /**
