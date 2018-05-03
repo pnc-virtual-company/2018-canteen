@@ -40,7 +40,10 @@
 
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getRegister"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Staff Register</span></a></li> 
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getMonthlyEvent"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Week and Month dinnner</span></a></li>      
+    <li>
+      <a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getMonthlyEvent"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Week and Month dinnner</span></a>
+    </li>      
+
   </ul> 
 </aside>
 
