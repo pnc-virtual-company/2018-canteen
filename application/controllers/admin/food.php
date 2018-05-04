@@ -83,7 +83,10 @@ class food extends CI_Controller {
         $this->load->view('dishes/updateDish', $data);
         $this->load->view('templates/footer', $data);
     }
-
+/**
+* delete dish from database
+* @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+*/
     public function deleteDish(){
         $id = $this->uri->segment(4);
         $this->Dishes_model->deleteDishes($id);
@@ -121,10 +124,10 @@ class food extends CI_Controller {
                 }
                 else
                 {
-                        $data['dishes'] = $this->Dishes_model->insert_dish(); //load model
+                    $data['dishes'] = $this->Dishes_model->insert_dish(); //load model
                     if($data){
-                            redirect('admin/food/listDish');
-                        }
+                        redirect('admin/food/listDish');
+                    }
                 
                 }
         }
