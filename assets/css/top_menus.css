@@ -1,0 +1,29 @@
+
+
+/* Style the buttons */
+/*.btn {
+    border: none;
+    outline: none;
+    padding: 9px 20px;
+    background-color: #003A6C;
+    cursor: pointer;
+    font-size: 14px;
+}*/
+
+/* Style the active class, and buttons on mouse-over */
+/*.active, .btn:hover {
+    background-color: #009688 ;
+    color: #8FBC8F;
+}*/
+/*a.btn1:hover, a.btn1:active {color: red;}
+a.btn2:hover, a.btn2:active {font-size: 150%;}
+a.btn3:hover, a.btn3:active {background: red;}*/
+body{
+  font-sze:14px;
+}
+
+/*.active{
+  background-color:#72A0C1;
+  color:#72A0C1;
+
+}*/
