@@ -29,10 +29,15 @@
 			    </div>
 			    
 			    <br>
-			    <button type="submit" class="btn btn-danger float-left">Cancel</button>
+			    <button type="button" class="btn btn-danger float-left" onclick="goBack()">Cancel</button>
 			    <button type="submit" class="btn btn-success float-right" value="upload">Add Dish</button>
 			</form>
 		</div>
 		</div>
 		<div class="col-md-1"></div>
 	 
+<script>
+	function goBack() {
+  	window.history.back();
+	}
+</script>

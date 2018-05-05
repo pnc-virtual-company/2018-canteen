@@ -29,7 +29,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
                     <a class="nav-link">OR</a>
                   </div>
                   <div class="col-md-5">
-                     <a class="nav-link " href="<?php echo base_url();?>connection/register"><i class="mdi mdi-lock "></i>&nbsp;Register</a>
+                     <a class="nav-link " href="<?php echo base_url();?>c_users/addUsers"><i class="mdi mdi-lock "></i>&nbsp;Register</a>
                   </div>
                 </div>
               </li>
