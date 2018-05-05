@@ -63,6 +63,7 @@ $route['users/edit/(:num)'] = 'users/edit/$1';
 $route['users/delete/(:num)'] = 'users/delete/$1';
 $route['users/check/login'] = 'users/checkLoginByAjax';
 $route['users'] = 'users';
+$route['users/register'] = 'users/register';
 
 //Examples
 $route['examples/index'] = 'examples/index';

@@ -84,7 +84,10 @@ class food extends CI_Controller {
         $this->load->view('dishes/updateDish', $data);
         $this->load->view('templates/footer', $data);
     }
-
+/**
+* delete dish from database
+* @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+*/
     public function deleteDish(){
         $id = $this->uri->segment(4);
         $this->Dishes_model->deleteDishes($id);
@@ -97,17 +100,17 @@ class food extends CI_Controller {
      */
     public function add_dish()
         {
-        $this->load->helper('form');
-        $data['dishes'] = $this->Dishes_model->getDishes();
-        $data['title'] = 'List of Dishes';
-        $data['activeLink'] = 'users';
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('admin/food/view_add_dish', $data);
-        $this->load->view('templates/footer', $data);
+            $this->load->helper('form');
+            $data['dishes'] = $this->Dishes_model->getDishes();
+            $data['title'] = 'List of Dishes';
+            $data['activeLink'] = 'users';
+            $this->load->view('templates/header', $data);
+            $this->load->view('menu/admin_dasboard', $data);
+            $this->load->view('admin/food/view_add_dish', $data);
+            $this->load->view('templates/footer', $data);
 
         // upload image config
-                $config['upload_path']          = './assets/dish_uploads/';
+                $config['upload_path']          = './assets/images/dish_uploads/';
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['max_size']             = 10000;
                 $config['max_width']            = 1024;
@@ -122,12 +125,13 @@ class food extends CI_Controller {
                 }
                 else
                 {
-                        $data['dishes'] = $this->Dishes_model->insert_dish(); //load model
+                    $data['dishes'] = $this->Dishes_model->insert_dish(); //load model
                     if($data){
                             redirect('admin/food/listDish');
                         }
                 
                 }
         }
+    
     
 }

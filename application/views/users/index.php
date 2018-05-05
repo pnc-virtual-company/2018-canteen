@@ -12,12 +12,15 @@
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
 </style>
-<div class="container">
-	<br>
-		<br>
+<div class="app-content">
+	  <div class="app-title">
+        <div>
+          <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
+          <p>This application is used to manage the dish and the events.</p>
+        </div>
+  </div>
     <div class="row">
-    	<div class="col-md-2"></div>
-      <div class="col-md-10">
+      <div class="col-md-12">
 				<h1 class="text-center text-secondary">Welcome To Canteen Management System</h1>
 				<br>
 				<br>
@@ -43,7 +46,7 @@
 			      	</div>
       		</div>
       		<div class="col-md-4">
-			      	<div class="card card-info">
+			      	<div class="card card-info">	
 			      		<div class="card-body  bg-success text-center">
 			      				<i class="mdi mdi-food mdi-48px text-danger"></i>
 			      		</div>
