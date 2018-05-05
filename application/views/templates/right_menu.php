@@ -1,3 +1,4 @@
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/left_menu.css">
  <?php if($this->session->loggedIn === TRUE) { ?>
 			<div class="col-md-2 col-lg-3 col-sm-6 col-xs-12">
 				<div class="sidenav2">

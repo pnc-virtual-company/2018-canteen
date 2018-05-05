@@ -16,7 +16,7 @@ class Welcome extends CI_Controller {
         $data['user'] = $this->getUserActive->getActive();
 
 		$data['page'] = 'welcome';
-		$this->load->view('templates/right_menu', $data);
+		// $this->load->view('templates/right_menu', $data);
 		$this->load->view('layout', $data);
 
 	}
