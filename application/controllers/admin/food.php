@@ -60,11 +60,12 @@ class food extends CI_Controller {
      * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
      */
     public function viewDishDetail(){
+
         $dishId = $this->uri->segment('4');
         $this->load->helper('form');
         $this->load->model('Dishes_model');
         $data['dishes'] = $this->Dishes_model->viewDetail($dishId);
-       $data['title'] = 'List Favourite Food';
+        $data['title'] = 'List Favourite Food';
         $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);

@@ -7,12 +7,12 @@
 <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
 <hr>
 <div class="row">
-<div class="col-md-1"></div>
-<div class="col-md-10">
+<div class="col-md-2"></div>
+<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12"> 
         <div id='calendar' class="col-centered"></div>
         <div id='datepicker' class="col-centered"></div>
 </div>
-<div class="col-md-1"></div>
+<div class="col-md-2"></div>
 </div>
 <!-- create modal of order item -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
