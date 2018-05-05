@@ -363,4 +363,10 @@ class Users_model extends CI_Model {
         $this->db->insert("tbl_users", $dataUser);
         return true;
     }
+
+    public function getListUsers(){
+        $query = $this->db->get('tbl_users'); 
+        return $query->result();
+    }
+    
 }
