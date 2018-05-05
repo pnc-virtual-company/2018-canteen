@@ -19,7 +19,7 @@
         <h2 class="text-center text-success">Register Form</h2>
         <div class="card bg-default ">
           <div class="card-body">
-           <form action="<?php echo base_url() ?>register/createUser" enctype="multipart/form-data" method="POST">
+           <form action="<?php echo base_url() ?>c_users/addUsers" enctype="multipart/form-data" method="POST">
               <div class="row">
                 <div class="form-group col">
                   <label for="firstname"><strong>First Name</strong></label>
@@ -56,8 +56,8 @@
                   <input type="password" placeholder="password" name="password" class="form-control" require>
                 </div>
                 <div class="form-group col">
-                  <label for="picture"><strong>Student Picture</strong></label>
-                  <input type="file" class="form-control" required name="picture">
+                  <label for="image"><strong>Student Picture</strong></label>
+                  <input type="file" class="form-control" required name="image">
                 </div>
               </div>
               <div class="form-group">

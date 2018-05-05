@@ -338,14 +338,14 @@ class Users_model extends CI_Model {
         return $rnd;
     }
 
-    public function addUser(){
+    public function addUsers(){
         //Hash the clear password using bcrypt (8 iterations)
         $password = $this->input->post('password');
-        $data = array('upload_data' => $this->upload->data('picture'));
-        $picture = $this->upload->data()['file_name'];
+        $data = array('upload_data' => $this->upload->data());
+        $this->upload->data()['file_name'];
         $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
         $hash = crypt($password, $salt);
-        $data =  array(
+        $dataUser =  array(
             'firstname'  => $this->input->post('firstname'),
             'lastname'   => $this->input->post('lastname'),
             'login'      => $this->input->post('username'),
@@ -353,13 +353,14 @@ class Users_model extends CI_Model {
             'class_name' => $this->input->post('class'),
             'card_id'    => $this->input->post('cardId'),
             'gender'     => $this->input->post('gender'),
-            'image'      => $picture,
+            'image'      => $this->upload->data()['file_name'],
             'password'   => $hash,
             'role'       => '2',
             'active'     => '1'
         );
-        echo $picture;die();
+        // var_dump($dataUser);die();
         // insert array value to database
-        $this->db->insert("tbl_users", $data);
+        $this->db->insert("tbl_users", $dataUser);
+        return true;
     }
 }
