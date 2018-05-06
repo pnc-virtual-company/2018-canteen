@@ -17,15 +17,15 @@
     }
 
   table{
-    box-shadow: 2px 2px 2px gray;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
 </style>
 <main class="app-content">
   <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Manage All Dishes</h1>
-          <p>All best food in Passerelles Numeriques Cambodai canteen</p>
+          <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
+          <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new dish</a></li>
@@ -57,7 +57,7 @@
 
                       <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" 
                       food_name="<?php echo $dish->dish_name ?>" 
-                      food_img="<?php echo base_url().'assets/dish_uploads/'.$dish->dish_image ?>" 
+                      food_img="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image ?>" 
                       food_desc="<?php echo $dish->description ?>" 
                       food_date="<?php echo $dish->dish_date ?>" 
                       class="show_food_detail" 

@@ -145,24 +145,34 @@ class Users_model extends CI_Model {
     /**
      * Update a given user in the database. Update data are coming from an HTML form
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
+    public function getUsersUpdate($id)
+      {
+        $query = $this->db->get_where('tbl_users', array('id' => $id));
+      return $query->result();
+      }
     public function updateUsers() {
-        //Role field is a binary mask
-        $role = 0;
-        foreach($this->input->post("role") as $role_bit){
-            $role = $role | $role_bit;
-        }
+        $password = $this->input->post('password');
+        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
+        $hash = crypt($password, $salt);
+        $this->upload->data()['file_name'];
+        $data_image = array('upload_data' => $this->upload->data());
         $data = array(
-            'firstname' => $this->input->post('firstname'),
-            'lastname' => $this->input->post('lastname'),
-            'login' => $this->input->post('login'),
-            'email' => $this->input->post('email'),
-            'role' => $role
+            'firstname'  => $this->input->post('firstname'),
+            'lastname'   => $this->input->post('lastname'),
+            'login'      => $this->input->post('username'),
+            'email'      => $this->input->post('email'),
+            'card_id'    => $this->input->post('cardId'),
+            'class_name' => $this->input->post('class'),
+            'gender'     => $this->input->post('gender'),
+            'image'      => $this->upload->data()['file_name'],
+            'password'   => $hash,
         );
-        $this->db->where('id', $this->input->post('id'));
-        $result = $this->db->update('tbl_users', $data);
-        return $result;
+        // var_dump($data);die();
+        $this->db->where('id', $this->uri->segment(4));
+        $this->db->update('tbl_users', $data);
+        return true;
     }
 
     /**
@@ -368,11 +378,13 @@ class Users_model extends CI_Model {
     public function getListUsers(){
         $query = $this->db->get('tbl_users'); 
         return $query->result();
-    }
+    }    
+
     public function deleteUsers($id) {
         $this->db->delete('tbl_users', array('id' => $id));
     }
-    function insertUser(){
+
+    public function insertUser(){
 
         // get value from input name
         $password = $this->input->post('password');
