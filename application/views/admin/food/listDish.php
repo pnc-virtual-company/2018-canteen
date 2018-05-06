@@ -17,7 +17,7 @@
     }
 
   table{
-    box-shadow: 2px 2px 2px gray;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
 </style>
@@ -26,6 +26,8 @@
         <div>
             <h1><i class="fa fa-dashboard"></i>Manage All Dishes</h1>
             <p>All best food in Passerelles Numeriques Cambodai canteen</p>
+          <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
+          <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new dish</a></li>
@@ -84,7 +86,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title text-center text-info" id="exampleModalLabel ">Dish Information</h4>
+                <h4 class="modal-title text-center text-info pop_food_name" id="exampleModalLabel "></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -102,21 +104,16 @@
                    <div class="row">
                             <div class="col-md-4"></div>
                              <div class="col-md-4">
-                               <h4 class="text-center text-success pop_food_name"></h4>
+                               <p class="text-center text-success pop_food_date"></p>
                              </div>
                            <div class="col-md-4"></div>
                    </div>
-                  <div class="row text-center dish-info">
-                           <h4 class="text-center text-secondary ">Description: <small class=" text-center pop_food_desc"></small></h4><br>
+                  <div class="row dish-info">
+                           <h4 class=" text-secondary "><small class=" text-center pop_food_desc"></small></h4><br>
                   </div>
-                   <div class="row dish-info">
-                            <h5 class="text-center text-secondary ">Date: <small class=" text-center pop_food_date"></small></h5>
-                  </div>
-       
-                 
               </div>
               <div class="modal-footer">
-               
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
