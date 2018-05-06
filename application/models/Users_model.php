@@ -368,5 +368,33 @@ class Users_model extends CI_Model {
         $query = $this->db->get('tbl_users'); 
         return $query->result();
     }
+    public function deleteUsers($id) {
+        $this->db->delete('tbl_users', array('id' => $id));
+    }
+    function insertUser(){
+
+        // get value from input name
+        $password = $this->input->post('password');
+        $data = array('upload_data' => $this->upload->data());
+        $this->upload->data()['file_name'];
+        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
+        $hash = crypt($password, $salt);
+
+        $data =  array(
+            'firstname'  => $this->input->post('firstname'),
+            'lastname'   => $this->input->post('lastname'),
+            'login'      => $this->input->post('loginname'),
+            'email'      => $this->input->post('useremail'),
+            'class_name' => $this->input->post('classname'),
+            'card_id'    => $this->input->post('cardid'),
+            'gender'     => $this->input->post('gender'),
+            'image'      => $this->upload->data()['file_name'],
+            'password'   => $hash,
+            'role'       => '3',
+            'active'     => '1'
+        );
+        // insert array value to database
+        $this->db->insert("tbl_users", $data);
+    }
     
 }
