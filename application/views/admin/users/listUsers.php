@@ -9,14 +9,14 @@
 ?>
 <style>
   table{
-    box-shadow: 2px 2px 2px gray;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 </style>
 <main class="app-content">
   <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Manage All Users</h1>
-          <p>List all the people who use this application</p>
+          <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
+          <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/createUser"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new user</a></li>
@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col-md-12">
         <table id="food" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
-          <thead class="bg-success text-white">
+          <thead class="bg-secondary text-white">
               <tr>
                   <th>User ID</th>
                   <th>User Name</th>
@@ -53,7 +53,7 @@
                     <a href="<?php echo base_url() ?>admin/User/viewUserDetail/<?php echo $user->id ?>" title="View food">
                       <span class="mdi mdi-eye-outline text-success" style="font-size: 20px;"></span>
                     </a>&nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>admin/food/updateUser/<?php echo $user->id ?>" title="Edit user">
+                    <a href="<?php echo base_url() ?>admin/User/updateUser/<?php echo $user->id ?>" title="Edit user">
                       <i class="mdi mdi-pencil" style="font-size: 20px;"></i>
                     </a>&nbsp;&nbsp;
                     <a href="<?php echo base_url() ?>admin/User/deleteUser/<?php echo $user->id ?>" class="confirm-delete text-danger" title="Delete user" style="font-size: 20px;">
