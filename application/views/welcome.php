@@ -55,7 +55,7 @@
 		</div>
 	</div>
 	<!-- create modal of order item -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -68,26 +68,7 @@
 				        <form>
 				        	<div class="row">
 				        		<div class="col-6">
-				        			<div class="form-group">
-						          	<label for="recipient-name" class="col-form-label">choose food</label>
-						           <img src="" alt="">
-						          </div>		        			
-				        		</div>
-				        		<div class="col-6">
-				        			<div class="form-group">
-						          	<label for="recipient-name" class="col-form-label">Quantity</label>
-						           	<select name="plate" class="form-control" id="recipient-name" >
-						           			<?php 
-						           				$price  = array(0,1000, 1500, 2000);
-						           			foreach ($price as  $value) {
-						           				echo "<option>".$value."</option>";
-						           				}
-						           			?>
-						           </select>	
-						          </div>
-				        		</div>
-				        	</div>
-				        	<div class="row">
+	        	<div class="row">
 				        		<div class="col-6">
 				        			<div class="form-group">
 						          	<label for="recipient-name" class="col-form-label">choose food</label>
@@ -105,26 +86,31 @@
 						           				}
 						           			?>
 						           </select>	
+
 						          </div>
+				        			
+				        		</div>
+				        		<div class="col-6">
+				        			<div class="form-group">
+						          	<label for="recipient-name" class="col-form-label">choose food</label>
+						           <img src="" alt="">
+						          </div>		        			
+				        		</div>
+				        		<div class="col-6">
+				        			 <div class="form-group">
+				        			  <label for="recipient-name" class="col-form-label">Quantity</label>
+				        			 <select name="plate" class="form-control" id="recipient-name" >
+				        			 	<?php 
+				        			 		$plates  = array(0 ,1, 2, 3 , 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 ,25);
+				        			 	foreach ($plates as  $value) {
+				        			 		echo "<option>".$value."</option>";
+				        			 		}
+				        			 	?>
+				        			 </select>	
+				        			</div>
 				        		</div>
 				        	</div>
-				        	<div class="row">
-				        		<div class="col-12">
-						           <div class="form-group">
-						            <label for="recipient-name" class="col-form-label">Choose Meal Time</label>
-						           <select name="foodTime" class="form-control" id="recipient-name" >
-						           	<?php 
-						           		$foodTimes  = array('---Select One---','Breakfast', 'Lunch ', 'Dinner');
-						           	foreach ($foodTimes as  $value) {
-						           		echo "<option>".$value."</option>";
-						           		}
-						           	?>
-						           </select>	
-						          </div>
-				        		</div>
-				        	</div>
-				        </form>
-				      </div>
+				        	
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 				        <button type="button" class="btn btn-success" data-dismiss="modal">Order Now</button>
@@ -132,6 +118,7 @@
 				    </div>
 				  </div>
 				</div>
+			
 	<!-- End of modal creation -->
 <script>
 	$(function() {
@@ -158,13 +145,13 @@
 	   	    }
 	   	});
 	  });
-	   $('.datepicker').datepicker({
-	     orientation:"bottom",
-	     todayBtn: true,
-	     todayHighlight: true,
-	     autoclose:true,
-	   });
-	});
+	//    $('.datepicker').datepicker({
+	//      orientation:"bottom",
+	//      todayBtn: true,
+	//      todayHighlight: true,
+	//      autoclose:true,
+	//    });
+	// });
 </script>
 
      

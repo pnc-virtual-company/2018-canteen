@@ -6,6 +6,6 @@
   $this->load->view('menu/index', $data);
   $this->load->view('templates/left_menu', $data);
   $this->load->view($page);
-  $this->load->view('templates/right_menu', $data);
+  // $this->load->view('templates/right_menu', $data);
   $this->load->view('templates/footer', $data);
  ?>

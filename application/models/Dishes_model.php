@@ -93,5 +93,30 @@ class Dishes_model extends CI_Model {
         $result = $this->db->update('tbl_dishes', $data);
         return $result;
     }
-
+    
+    public function viewDetail($dishId){
+        $result = $this->db->get_where('tbl_dishes', array('dish_id'=>$dishId));
+        return  $result->result();
+    }
+/**
+     * insert_dish in to database with image
+     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
+     */
+    public function insert_dish(){
+        // get value from input name
+        $dishName = $this->input->post('dishName');
+        $dishDescription = $this->input->post('dishDescription');
+        $dishDate = $this->input->post('dishDate');
+        $data = array('upload_data' => $this->upload->data());
+        $dishImage = $this->upload->data()['file_name']; // Get image name
+        // matching insert value from input and database fields
+        $data =  array('
+            dish_name' => $dishName, 
+            'dish_image' => $dishImage,
+            'dish_date' => $dishDate,
+            'description' => $dishDescription
+        );
+        // insert array value to database
+        $this->db->insert("tbl_dishes", $data);
+    }
 }
