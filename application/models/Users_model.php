@@ -338,6 +338,7 @@ class Users_model extends CI_Model {
         return $rnd;
     }
 
+
     public function addUsers(){
         //Hash the clear password using bcrypt (8 iterations)
         $password = $this->input->post('password');
@@ -397,4 +398,5 @@ class Users_model extends CI_Model {
         $this->db->insert("tbl_users", $data);
     }
     
+
 }
