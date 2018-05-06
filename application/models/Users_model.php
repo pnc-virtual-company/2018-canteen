@@ -366,7 +366,7 @@ class Users_model extends CI_Model {
     }
 
     public function getListUsers(){
-        $query = $this->db->get('tbl_users'); 
+        $query = $this->db->query("select  user.*, role.id as role, role.name as rolename from tbl_users as user inner join tbl_roles as role where user.role = role.id");
         return $query->result();
     }
     public function deleteUsers($id) {

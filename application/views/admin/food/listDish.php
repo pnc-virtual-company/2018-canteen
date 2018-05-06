@@ -24,8 +24,8 @@
 <main class="app-content">
   <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Manage All Dishes</h1>
-          <p>All best food in Passerelles Numeriques Cambodai canteen</p>
+            <h1><i class="fa fa-dashboard"></i>Manage All Dishes</h1>
+            <p>All best food in Passerelles Numeriques Cambodai canteen</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new dish</a></li>
@@ -57,7 +57,7 @@
 
                       <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" 
                       food_name="<?php echo $dish->dish_name ?>" 
-                      food_img="<?php echo base_url().'assets/dish_uploads/'.$dish->dish_image ?>" 
+                      food_img="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image ?>" 
                       food_desc="<?php echo $dish->description ?>" 
                       food_date="<?php echo $dish->dish_date ?>" 
                       class="show_food_detail" 
@@ -79,7 +79,7 @@
       </div>
     </div>
 </main>
-<!-- create modal of order item -->
+<!-- create modal of dish detail item -->
       <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
