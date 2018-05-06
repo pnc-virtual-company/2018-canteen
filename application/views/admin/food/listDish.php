@@ -24,6 +24,8 @@
 <main class="app-content">
   <div class="app-title">
         <div>
+            <h1><i class="fa fa-dashboard"></i>Manage All Dishes</h1>
+            <p>All best food in Passerelles Numeriques Cambodai canteen</p>
           <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
@@ -79,7 +81,7 @@
       </div>
     </div>
 </main>
-<!-- create modal of order item -->
+<!-- create modal of dish detail item -->
       <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
