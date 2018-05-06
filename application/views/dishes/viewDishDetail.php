@@ -15,7 +15,9 @@
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-5">
+
 			<?php foreach ($dishes as $dish):?>
+
 			<div class=" card bg-white">
 				 <img src="<?php echo base_url().'assets/dish_uploads/'.$dish->dish_image ?>" alt="image" class="img-thumbnail mx-auto d-block " style="width: 300px;">
 				<div class="description">
