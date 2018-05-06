@@ -28,8 +28,11 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
     </div>
       <ul class="navbar-nav ml-auto">
         <?php if($this->session->loggedIn === TRUE) { ?>
+      <li>
+         <a href="<?php echo base_url() ?>users" class="text-white" style="font-size: 25px;" title="Go to dashboard" data-toggle="tooltip" data-placement="left"><span class="mdi mdi-arrow-right-bold-circle-outline text-white"></span>&nbsp;&nbsp;</a>
+      </li>
           <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url();?>connection/logout">
+              <a class="nav-link text-white" href="<?php echo base_url();?>connection/logout">
                 <?php echo $this->session->fullname;?> <i class="mdi mdi-power"></i>
               </a>
           </li>
@@ -52,3 +55,8 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
       </ul>
   </div>
 </nav>
+<script>
+  $(document).ready(function(){
+     $('[data-toggle="tooltip"]').tooltip();  
+  })
+</script>

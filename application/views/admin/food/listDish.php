@@ -25,9 +25,7 @@
   <div class="app-title">
         <div>
             <h1><i class="fa fa-dashboard"></i>Manage All Dishes</h1>
-            <p>All best food in Passerelles Numeriques Cambodai canteen</p>
-          <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
-          <p>This application is very useful for admin and finance to manage their needs.</p>
+            <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new dish</a></li>
