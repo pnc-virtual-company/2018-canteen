@@ -1,10 +1,19 @@
+<style>
+  .app-sidebar__toggle:before {
+    content: "";
+  }
+  li>a:hover {
+    text-decoration: none;
+    color:#17a2b8;
+  }
+</style>
 
 <header class="app-header">
   <a class="app-header__logo" href="#">Canteen MS</a>
   <!-- Sidebar toggle button-->
-  &nbsp;&nbsp;<a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
-    <span class="mdi mdi-format-list-bulleted" style="color: white; font-size: 28px;"></span>
+  &nbsp;&nbsp;<a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"><span class="mdi mdi-format-list-bulleted" style="color: white; font-size: 28px;"></span>
   </a>
+  <a href="<?php echo base_url() ?>" class="text-white app-sidebar__toggle" style="font-size: 25px;" title="Go to public user interface" data-toggle="tooltip" data-placement="right"><span class="mdi mdi-arrow-left-bold-circle-outline text-white"></span>&nbsp;&nbsp;</a>
   <!-- Navbar Right Menu-->
   &nbsp;&nbsp;<ul class="app-nav">
     <!--Notification Menu-->
@@ -78,9 +87,6 @@
 
        })();
 
-</script>
-
-<script>
     for (var i = 0; i < document.links.length; i++) {
         if (document.links[i].href == document.URL) {
             document.links[i].className = 'active';

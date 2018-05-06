@@ -1,7 +1,16 @@
 
-<div class="container">
+<div class="app-content">
+	  <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i>Form to create new dish</h1>
+            <p>This application is very useful for admin and finance to manage their needs.</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/listDish"><span class="mdi mdi-arrow-left-bold-circle-outline" style="font-size: 20px;"></span>&nbsp;&nbsp;List of dishes</a></li>
+        </ul>
+  </div>
 	<div class="row">
-		<div class="col-md-3"></div>
+		<div class="col-md-2"></div>
 		<div class="col-md-8" >
 			<div class="jumbotron bg-info text-white">
 			<h2 class="text-center text-white">Add New Dish</h2>
@@ -31,7 +40,7 @@
 			</form>
 		</div>
 		</div>
-		<div class="col-md-1"></div>
+		<div class="col-md-2"></div>
 	 
 <script>
 	function goBack() {

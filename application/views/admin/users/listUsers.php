@@ -29,7 +29,7 @@
 <main class="app-content">
   <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
+          <h1><i class="fa fa-dashboard"></i>Manage All Users</h1>
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
