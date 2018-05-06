@@ -4,9 +4,9 @@
 <h1 class="text-info text-center">List All Favourite Food</h1>
 <div class="row">
   <div class="col-md-2"></div>
-  <div class="col-md-8">
+      <div class="col-lg-8 col-md-6  col-sm-6 col-xs-12"> 
       <canvas id="pie-chart" width="800" height="450"></canvas>
-  </div>
+      </div>
   <div class="col-md-2"></div>
 </div>
 <script type="text/javascript">

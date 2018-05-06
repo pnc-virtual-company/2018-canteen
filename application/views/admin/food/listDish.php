@@ -8,12 +8,18 @@
  */
 ?>
 <style>
+
     .dish-info{
       padding-left: 16px;
     }
     .modal-title{
     margin-left: 150px;
     }
+
+  table{
+    box-shadow: 2px 2px 2px gray;
+  }
+
 </style>
 <main class="app-content">
   <div class="app-title">
@@ -34,7 +40,6 @@
                   <th>Dish Name</th>
                   <th>Description</th>
                   <th>Date</th>
-                  <!-- <th>image</th>  -->
                   <th>Action</th>
               </tr>
           </thead>

@@ -1,8 +1,8 @@
 		<!--Datepicker widget needs its CSS and JS files to work //-->
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css">
 		<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
-		<div class="row">
+        <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
+		<dsiv class="row">
 			<div class="col-md-2"></div>
 			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
 				  <br>
