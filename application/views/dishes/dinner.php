@@ -12,12 +12,15 @@
 
 <!-- Stylel css for water_food -->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/food_type.css">
-<div class="container">
+<br>
+	<div class="header text-center">
+		<h1 class="text-info">Dinner</h1>
+	</div>
 	<hr>
-		<div class="header text-center">
-			<h1>Dinner</h1>
-		</div>
+<div class="container">
+<br>
 		
+	
 		<div class="row">
 			<div class="col-md-6 col-lg-2"></div>
 			<?php foreach ($dishes as $breakfast) {

@@ -9,20 +9,20 @@
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
 </style>
-
 <!-- Stylel css for water_food -->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/food_type.css">
-<div class="container">
-	<hr>
+	<br>
 		<div class="header text-center">
-			<h1>Lunch</h1>
+			<h1 class="text-info">Lunch</h1>
 		</div>
-		
+		<hr>
+<div class="container">
+
 		<div class="row">
 			<div class="col-md-6 col-lg-2"></div>
-			<?php foreach ($dishes as $breakfast) {
-		?>
-			
+			<?php 
+			foreach ($dishes as $breakfast) {  //start foreach to looop each dishes
+			?> 
 			<div class=" col-lg-4 col-md-4 col-sm-12 col-xs-12">
 				<div class="card">
 					<div class="card-body">
@@ -38,7 +38,7 @@
 					</div>
 				</div><br>
 			</div>
-			<?php } ?>
+			<?php } // end foreach ?>
 		</div>	
 	</div>
 
