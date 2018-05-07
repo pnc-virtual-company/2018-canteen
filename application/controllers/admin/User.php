@@ -16,6 +16,7 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
 class User extends CI_Controller {
 
 	public function listUsers(){
+    $this->load->model('Users_model');
     $data['users'] = $this->Users_model->getListUsers();
     $data['title'] = 'List of Users';
     $this->load->view('templates/header', $data);
