@@ -87,11 +87,10 @@ class Dishes_model extends CI_Model {
     {         
         $this->upload->data()['file_name'];        
         $data_image = array('upload_data' => $this->upload->data()); 
-
+      
         $data = array(
             'dish_name' => $this->input->post('dishName'),            
-            'dish_image'      => $this->upload->data()['file_name'], 
-            'dish_date' => $this->input->post('dishDate'),            
+            'dish_image'      => $this->upload->data()['file_name'],         
             'description' => $this->input->post('description')        
         );        
         $this->db->where('dish_id', $this->uri->segment(4));                
@@ -118,7 +117,6 @@ class Dishes_model extends CI_Model {
         $data =  array('
             dish_name' => $dishName, 
             'dish_image' => $dishImage,
-            'dish_date' => $dishDate,
             'description' => $dishDescription
         );
         // insert array value to database
