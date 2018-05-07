@@ -29,7 +29,7 @@
 				    				<a href="#" class="text-secondary">45&nbsp; <i class="mdi mdi-thumb-up text-info"></i>&nbsp; Interest</a>
 				    			</div>
 						    	<div class="col-md-4 item">
-						    		<a data-toggle="modal" data-target="#exampleModal" 
+						    		<a href="#" data-toggle="modal" data-target="#exampleModal" 
 						    		data-whatever="@getbootstrap"><i class="mdi mdi-rice text-info"></i>&nbsp;Order</a>
 						    	</div>
 						    	<div class="col-md-4">

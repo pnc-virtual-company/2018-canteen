@@ -1,6 +1,7 @@
 <style>
   .card{
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color:#009688;
   }
   input[type="radio"]{
     margin-left: 40px;
@@ -9,7 +10,7 @@
 <div class="app-content">
     <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
+          <h1><i class="fa fa-dashboard"></i>Form update User Profile</h1>
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -19,13 +20,12 @@
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
-        <h2 class="text-center text-info">Form Update Users</h2><br>
-        <div class="card bg-secondary text-warning">
+        <div class="card text-white">
           <div class="card-body">
             <?php 
-                  foreach ($getUsersUpdate as $user) {
-               
+               foreach ($getUsersUpdate as $user) {
              ?>
+            <h1 class="text-center">Form Update Users</h1>
            <form action="<?php echo base_url() ?>admin/User/updateUser/<?php echo $user->id ?>" enctype="multipart/form-data"   method="POST">
               <div class="row">
                 <div class="form-group col">
@@ -89,7 +89,7 @@
               <?php      
                   } ?>
               <button class=" btn btn-danger" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
-              <button class=" btn btn-info float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Update</button>
+              <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Update</button>
             </form>
           </div>
         </div>
