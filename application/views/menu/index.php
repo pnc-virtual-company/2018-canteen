@@ -15,14 +15,14 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
   <div class="collapse navbar-collapse" id="navbarNav">
     <div id="focuse_menu">
     <ul class="navbar-nav">
-       <li class=" nav-item ">
-        <a class=" btn text-white active" href="<?php echo base_url() ?>">Home</a>
+       <li class=" nav-item">
+        <a class=" btn text-white active" href="<?php echo base_url() ?>"><i class="mdi mdi-home-circle"></i>&nbsp;&nbsp;Home</a>
        </li>
-      <li class="nav-item ">
-        <a class=" btn  text-white" href="<?php echo base_url() ?>dishes/favouriteFood">Favrite Food</a>
+      <li class="nav-item">
+        <a class="btn text-white" href="<?php echo base_url() ?>dishes/favouriteFood"><i class="mdi mdi-heart"></i>&nbsp;&nbsp;Favrite Food</a>
       </li>
-      <li class="nav-item ">
-        <a class=" btn nav-link text-white" href="<?php echo base_url() ?>calendar/getStuffCalendar">Calendar</a>
+      <li class="nav-item">
+        <a class=" btn text-white" href="<?php echo base_url() ?>calendar/getStuffCalendar"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
       </li>
     </ul>
     </div>
@@ -31,7 +31,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
       <li>
          <a href="<?php echo base_url() ?>users" class="text-white" style="font-size: 25px;" title="Go to dashboard" data-toggle="tooltip" data-placement="left"><span class="mdi mdi-arrow-right-bold-circle-outline text-white"></span>&nbsp;&nbsp;</a>
       </li>
-          <li class="nav-item">
+          <li class="nav-item ">
               <a class="nav-link text-white" href="<?php echo base_url();?>connection/logout">
                 <?php echo $this->session->fullname;?> <i class="mdi mdi-power"></i>
               </a>
@@ -40,15 +40,9 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
 
               <li class="nav-item <?php echo ($activeLink=='users'?'actives':'');?>">
                 <div class="row">
-                  <div class="col-md-5">
-                     <a class="nav-link " href="<?php echo base_url();?>users"><i class="mdi mdi-lock "></i>&nbsp;Login</a>
-                  </div>
-                  <div class="col-md-2">
-                    <a class="nav-link">OR</a>
-                  </div>
-                  <div class="col-md-5">
-                     <a class="nav-link " href="<?php echo base_url();?>c_users/addUsers"><i class="mdi mdi-lock "></i>&nbsp;Register</a>
-                  </div>
+                  <a class="mdi mdi-lock text-white" href="<?php echo base_url();?>users">&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a class=" text-white">OR&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a class=" text-white mdi mdi-account-plus" href="<?php echo base_url();?>c_users/addUsers">&nbsp;&nbsp;Register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </div>
               </li>
           <?php }?>

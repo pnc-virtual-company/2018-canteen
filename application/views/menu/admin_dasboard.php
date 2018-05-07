@@ -17,13 +17,14 @@
   <!-- Navbar Right Menu-->
   &nbsp;&nbsp;<ul class="app-nav">
     <!--Notification Menu-->
-    <li class="dropdown"><a style="color: white" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><span class="mdi mdi-account-plus lg" style="font-size: 20px;"></span>&nbsp;&nbsp;<?php echo $this->session->login;?> </a>
+    <li class="dropdown"><a style="color: white" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><span class="mdi mdi-settings" style="font-size: 20px;"></span>&nbsp;&nbsp;<?php echo  strtoupper($this->session->login);?> </a>
+      
       <ul class="dropdown-menu settings-menu dropdown-menu-right">
-        <li><a class="dropdown-item" href="page-user.html"><span class="mdi mdi-account-circle"></span>Profile</a></li>
+        <li><a class="dropdown-item text-info" href="#"><span class="mdi mdi-account-edit"></span>&nbsp;&nbsp;Profile</a></li>
         <?php if($this->session->loggedIn === TRUE) { ?>      
         <li>
-          <a class="dropdown-item" href="<?php echo base_url();?>connection/logout">
-            <i class="mdi mdi-power md-80">Logout</i>
+          <a class="dropdown-item text-danger" href="<?php echo base_url();?>connection/logout">
+            <i class="mdi mdi-power md-80 ">&nbsp;&nbsp;&nbsp;&nbsp;</i>Logout
           </a>
         </li>
         <?php } ?>
