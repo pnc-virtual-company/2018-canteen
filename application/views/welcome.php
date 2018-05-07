@@ -139,9 +139,7 @@
 	   	        }
 	   	    },
 	   	    callback: function (result) {
-	   	       comment = result;
 	   	       return result;
-	   	       alert(comment);
 	   	    }
 	   	});
 	  });

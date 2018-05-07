@@ -11,7 +11,7 @@
 
 						<li>
 							
-		                    <img src="<?php echo base_url().'assets/uploads/'.$value->image ?>" alt="image" class="rounded-circle " style="width:40px; height: 40px;"><span>&nbsp; <?php echo $value->firstname." ".$value->lastname; ?></span>
+		            <img src="<?php echo base_url().'assets/images/user_uploads/'.$value->image ?>" alt="image" class="rounded-circle " style="width:40px; height: 40px;"><span>&nbsp; <?php echo $value->firstname." ".$value->lastname; ?></span>
 		                   
 						</li>
 						<?php } ?>
