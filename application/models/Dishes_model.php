@@ -76,22 +76,27 @@ class Dishes_model extends CI_Model {
      * @return int number of affected rows
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
-    public function updateDishes() {
-        //Role field is a binary mask
-        $role = 0;
-        foreach($this->input->post("role") as $role_bit){
-            $role = $role | $role_bit;
-        }
+
+    public function selectDish($id){
+         $query = $this->db->get_where('tbl_dishes', array('dish_id' => $id));
+         return $query->result();
+         // var_dump($query);
+    }
+    
+    public function updateDishes($id) 
+    {         
+        $this->upload->data()['file_name'];        
+        $data_image = array('upload_data' => $this->upload->data()); 
+
         $data = array(
-            'firstname' => $this->input->post('firstname'),
-            'lastname' => $this->input->post('lastname'),
-            'login' => $this->input->post('login'),
-            'email' => $this->input->post('email'),
-            'role' => $role
-        );
-        $this->db->where('id', $this->input->post('id'));
-        $result = $this->db->update('tbl_dishes', $data);
-        return $result;
+            'dish_name' => $this->input->post('dishName'),            
+            'dish_image'      => $this->upload->data()['file_name'], 
+            'dish_date' => $this->input->post('dishDate'),            
+            'description' => $this->input->post('description')        
+        );        
+        $this->db->where('dish_id', $this->uri->segment(4));                
+        $this->db->update('tbl_dishes', $data);                
+        return true;    
     }
     
     public function viewDetail($dishId){

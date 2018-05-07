@@ -42,15 +42,35 @@ class food extends CI_Controller {
         $this->load->view('templates/footer', $data);
     }
 
-    public function updateDish($id){
-        $data['title'] = 'List Favourite Food';
-        $data['activeLink'] = 'users';
-        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('dishes/updateDish', $data);
-        $this->load->view('templates/footer', $data);
+   // // Start update dishes
+   public function updateDishes(){        
+   $id = $this->uri->segment(4);        
+   $data['select_dishes'] = $this->Dishes_model->selectDish($id);       
+    $data['title'] = 'Update Dishes';           
+    $this->load->view('templates/header');            
+    $this->load->view('menu/admin_dasboard');            
+    $this->load->view('dishes/updateDish', $data);            
+    $this->load->view('templates/footer');         
+     // upload User image configuaration                
+     $config['upload_path'] = './assets/dish_uploads/';
+    $config['allowed_types']= 'gif|jpg|png';
+    $config['max_size'] = 10000;
+    $config['max_width']  = 1024;
+    $config['max_height']= 768;               
+    $this->load->library('upload', $config);                
+    //Condition to know the if image insert or not                
+    if ( ! $this->upload->do_upload('dishImage')) 
+    {
+        echo $this->upload->display_errors();  // show error message                
     }
+    else                
+    {                  
+        $data['dishes'] = $this->Dishes_model->updateDishes($id); //load model                  
+        if($data){ 
+            redirect('admin/food/listDish');                  
+        }                
+    } 
+}
 /**
 * delete dish from database
 * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
