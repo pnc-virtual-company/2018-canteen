@@ -119,6 +119,40 @@ class food extends CI_Controller {
                 
                 }
     }
-    
+/**
+     * show breakfast lunch and dinner in admin dashboard
+     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
+     */
+    function showBreakfast() {
+            $this->load->helper('form');
+            $data['dishes'] = $this->dishTypeModel->getBreakfast();
+            $data['title'] = 'List of Dishes';
+            $data['activeLink'] = 'users';
+            $this->load->view('templates/header', $data);
+            $this->load->view('menu/admin_dasboard', $data);
+            $this->load->view('dishes/breakfast', $data);
+            $this->load->view('templates/footer', $data);
+    }
+        function showLunch() {
+            $this->load->helper('form');
+            $data['dishes'] = $this->dishTypeModel->getLunch();
+            $data['title'] = 'List of Dishes';
+            $data['activeLink'] = 'users';
+            $this->load->view('templates/header', $data);
+            $this->load->view('menu/admin_dasboard', $data);
+            $this->load->view('dishes/lunch', $data);
+            $this->load->view('templates/footer', $data);
+    }
+
+    function showDinner() {
+            $this->load->helper('form');
+            $data['dishes'] = $this->dishTypeModel->getDinner();
+            $data['title'] = 'List of Dishes';
+            $data['activeLink'] = 'users';
+            $this->load->view('templates/header', $data);
+            $this->load->view('menu/admin_dasboard', $data);
+            $this->load->view('dishes/dinner', $data);
+            $this->load->view('templates/footer', $data);
+    }
     
 }

@@ -76,7 +76,6 @@ class Dishes_model extends CI_Model {
      * @return int number of affected rows
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
-
     public function selectDish($id){
          $query = $this->db->get_where('tbl_dishes', array('dish_id' => $id));
          return $query->result();
