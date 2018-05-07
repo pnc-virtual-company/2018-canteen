@@ -1,13 +1,25 @@
-
-
-
-<div class="container">
+<style>
+   .card{
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color:#009688;
+  }
+</style>
+<div class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-dashboard"></i>Add new user</h1>
+          <p>This application is very useful for admin and finance to manage their needs.</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/listUsers"><span class="mdi mdi-arrow-left-bold-circle-outline" style="font-size: 20px;"></span>&nbsp;&nbsp;Go Back</a></li>
+        </ul>
+  </div>
     <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-sm-8 jumbotron">
-        <h2 class="text-center text-success">Add New User</h2>
+      <div class="col-md-1"></div>
+      <div class="col-sm-10">
         <div class="card bg-default ">
-          <div class="card-body">
+          <div class="card-body text-white">
+          <h1 class="text-center">Add New User</h1>
            <form action="<?php echo base_url(); ?>admin/user/createUser" enctype="multipart/form-data" method="POST">
               <div class="row">
                 <div class="form-group col">
@@ -55,7 +67,7 @@
                 <input type="radio" name="gender" value="Female"> Female
               </div>
               <button class=" btn btn-danger" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
-              <button class=" btn btn-info float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add Staff</button>
+              <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add Staff</button>
             </form>
             </form>
           </div>

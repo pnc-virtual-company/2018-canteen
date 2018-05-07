@@ -1,6 +1,7 @@
 <style>
 	.jumbotron{
-		background-color:#009688 
+		box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color:#009688;
 	}
 </style>
 <div class="app-content">
@@ -36,7 +37,7 @@
 			    </div>
 			    <br>
 			    <button type="button" class="btn btn-danger float-left" onclick="goBack()">Cancel</button>
-			    <button type="submit" class="btn btn-success float-right" value="upload">Add Dish</button>
+			    <button type="submit" class="btn btn-warning float-right" value="upload">Add Dish</button>
 			</form>
 		</div>
 		</div>

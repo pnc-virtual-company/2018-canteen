@@ -40,7 +40,7 @@
     <div class="row">
       <div class="col-md-12">
         <table id="user" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
-          <thead class="bg-secondary text-white">
+          <thead class="bg-dark text-white">
               <tr>
                   <th>User Card ID</th>
                   <th>User Name</th>
