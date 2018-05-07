@@ -52,7 +52,7 @@ class food extends CI_Controller {
     $this->load->view('dishes/updateDish', $data);            
     $this->load->view('templates/footer');         
      // upload User image configuaration                
-     $config['upload_path'] = './assets/dish_uploads/';
+     $config['upload_path'] = './assets/images/dish_uploads/';
     $config['allowed_types']= 'gif|jpg|png';
     $config['max_size'] = 10000;
     $config['max_width']  = 1024;

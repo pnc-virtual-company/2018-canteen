@@ -143,13 +143,13 @@
 	   	    }
 	   	});
 	  });
-	//    $('.datepicker').datepicker({
-	//      orientation:"bottom",
-	//      todayBtn: true,
-	//      todayHighlight: true,
-	//      autoclose:true,
-	//    });
-	// });
+	   $('.datepicker').datepicker({
+	     orientation:"bottom",
+	     todayBtn: true,
+	     todayHighlight: true,
+	     autoclose:true,
+	   });
+	});
 </script>
 
      
