@@ -17,6 +17,7 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
 
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/admin_dashboard.css">
 
+  
   <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
   <script src="<?php echo base_url();?>assets/tether-1.4.3/js/tether.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/popper-1.12.9..min.js"></script>
