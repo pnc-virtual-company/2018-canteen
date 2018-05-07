@@ -39,7 +39,6 @@
                   <th>Dish ID</th>
                   <th>Dish Name</th>
                   <th>Description</th>
-                  <th>Date</th>
                   <th>Action</th>
               </tr>
           </thead>
@@ -49,7 +48,6 @@
                   <td><?php echo $dish->dish_id ?></td>
                   <td><?php echo $dish->dish_name ?></td>                 
                   <td><?php echo $dish->description ?></td>
-                  <td><?php echo $dish->dish_date ?></td>
                 <!--   <td>
                     <img src="<?php echo base_url().'assets/uploads/'.$dish->dish_image ?>" alt="image" class="img-thumbnail" style="width:10%;">
                   </td> -->
@@ -59,7 +57,7 @@
                       food_name="<?php echo $dish->dish_name ?>" 
                       food_img="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image ?>" 
                       food_desc="<?php echo $dish->description ?>" 
-                      food_date="<?php echo $dish->dish_date ?>" 
+                     
                       class="show_food_detail" 
                       >
                         <span class="mdi mdi-eye-outline text-success" style="font-size: 20px;"></span>
@@ -107,7 +105,7 @@
                            <div class="col-md-4"></div>
                    </div>
                   <div class="row dish-info">
-                           <h4 class=" text-secondary "><small class=" text-center pop_food_desc"></small></h4><br>
+                           <h4 class=" text-secondary "><small class="text-center pop_food_desc"></small></h4><br>
                   </div>
               </div>
               <div class="modal-footer">
