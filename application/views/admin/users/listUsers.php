@@ -110,8 +110,7 @@
                   
                    <div class="row">
                           <div class="col-md-4">
-                            
-                                    <img src="" alt="image" class="img-thumbnail mx-auto d-block pop_user_img" >
+                            <img src="" alt="image" class="img-thumbnail mx-auto d-block pop_user_img" >
                           </div>
                            <div class="col-md-8">
                             <ul>
@@ -124,22 +123,14 @@
                                 <li>User Role: <span class="text-info pop_user_role"></span></li>
                             </ul>
                           </div>
-                      
                    </div>
-               
                    <div class="row">
-                            <div class="col-md-4">
-                              
-                                 <h5 class="text-center text-success pop_user_name"></h5>
-                            </div>
-                             <div class="col-md-8">
-                             </div>
-                         
+                    <div class="col-md-4">
+                      <h5 class="text-center text-success pop_user_name"></h5>
+                    </div>
+                      <div class="col-md-8">
+                      </div>
                    </div>
-                
-
-       
-                 
               </div>
               <div class="modal-footer text-center">
                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

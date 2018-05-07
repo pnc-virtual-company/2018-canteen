@@ -27,7 +27,6 @@ class User extends CI_Controller {
 	public function updateUser(){
         $id = $this->uri->segment(4);
         $data['getUsersUpdate'] = $this->Users_model->getUsersUpdate($id);
-        // $data['users'] = $this->Users_model->updateUsers($id);
         $data['title'] = 'Update Users';
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
