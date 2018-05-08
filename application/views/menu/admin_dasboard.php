@@ -42,7 +42,7 @@
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/listDish"><span class="mdi mdi-bowl" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">List All Dishes</span></a></li>
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/User/listUsers"><span class="mdi mdi-account-multiple" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">List All Users</span></a></li>
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calender/getCalender"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Create Menu</span></a></li>
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/createMenu"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Create Menu</span></a></li>
 
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favorit Food</span></a></li>
 

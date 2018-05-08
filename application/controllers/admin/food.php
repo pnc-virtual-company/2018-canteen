@@ -154,5 +154,16 @@ class food extends CI_Controller {
             $this->load->view('dishes/dinner', $data);
             $this->load->view('templates/footer', $data);
     }
+
+    function createMenu(){
+        $this->load->helper('form');
+        $data['dishes'] = $this->dishTypeModel->getDinner();
+        $data['title'] = 'create menu for today';
+        $data['activeLink'] = 'users';
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('dishes/createMenu', $data);
+        $this->load->view('templates/footer', $data);
+    }
     
 }

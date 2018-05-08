@@ -15,16 +15,13 @@ label{
 			<p>All best food in Passerelles Numeriques Cambodai canteen</p>
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>admin/food/listDish"><span class="mdi mdi-arrow-left-bold-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Back</a></li>
+			<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>admin/food/listDish"><span class="mdi mdi-arrow-left-bold-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Back to list dishes</a></li>
 		</ul>
 	</div>
 	<div class="row">
 		<div class="col-md-2"></div>
 			<div class="col-md-8 card-body">
-				<div class="card-header  text-center">
-					<h3 class="text-white">Update Dishes</h3>
-				</div>
-
+					<h2 class="text-white text-center">Update Dishes</h2>
 				<!-- loop data to show for update -->
 			 <?php foreach ($select_dishes as $dish):?>
 				<form action="<?php echo base_url() ?>admin/food/updateDishes/<?php echo  $dish->dish_id?>" method="POST" enctype="multipart/form-data" >
@@ -63,8 +60,8 @@ label{
 					<div class="row">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<button type="submit" class="btn btn-danger float-left">Cancel</button>
-							<button type="submit" class="btn btn-success float-right">Update Now</button>
+							<button type="button" class="btn btn-danger float-left" onclick="goBack()"><span class="mdi mdi-cancel"></span>&nbsp;&nbsp;Cancel</button>
+							<button type="submit" class="btn btn-warning float-right"><span class="mdi mdi-pencil" >&nbsp;&nbsp;Update Now</button>
 						</div>
 						<div class="col-md-2"></div>
 							
@@ -88,4 +85,8 @@ $(document).ready(function() {
     autoclose:true,
   });
 });
+  function goBack() {
+    window.history.back();
+  }
+
 </script>
