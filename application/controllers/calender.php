@@ -7,7 +7,7 @@ Class calender extends CI_Controller{
       
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
-		$this->load->view('admin/calender/calender', $data);
+				$this->load->view('admin/calender/calender', $data);
         $this->load->view('templates/footer', $data);
 	}	
 }

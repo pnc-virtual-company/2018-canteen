@@ -1,7 +1,8 @@
+
 		<!--Datepicker widget needs its CSS and JS files to work //-->
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css">
 		<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
-        <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
 		<dsiv class="row">
 			<div class="col-md-2"></div>
 			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
@@ -26,14 +27,14 @@
 				    		<div class="row">
 				    			 <?php if($this->session->loggedIn === TRUE) { ?>
 				    			<div class="col-md-4">
-				    				<a href="#" class="text-secondary">45&nbsp; <i class="mdi mdi-thumb-up text-info"></i>&nbsp; Interest</a>
+				    				<a href="#" >45&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
 				    			</div>
 						    	<div class="col-md-4 item">
 						    		<a href="#" data-toggle="modal" data-target="#exampleModal" 
-						    		data-whatever="@getbootstrap"><i class="mdi mdi-rice text-info"></i>&nbsp;Order</a>
+						    		data-whatever="@getbootstrap"><i class="mdi mdi-rice  "></i>&nbsp;Order</a>
 						    	</div>
 						    	<div class="col-md-4">
-						    		<a href="#" class="text-secondary" id="recomment"><i class="mdi mdi-comment text-info"></i>&nbsp; Recomment</a>
+						    		<a href="#" id="recomment"><i class="mdi mdi-comment  "></i>&nbsp; Recomment</a>
 						    	</div>
 						    	<?php } ?>
 				    		</div>
@@ -41,14 +42,9 @@
 				    	
 				    </div>
 				 </div>
-				
-				   <div class="user-comment" style="margin-left: 80px;">
-				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Khai Hok</i><p>I think this food look interest and I want to order this kind of food to be cook for the following day, I want to see this food to be cooked. </p>
-				    	 
-				    	 <i style="margin-left:-10px; color:blue;" class="mdi mdi-account-circle">Canteen Manager</i><p>Yes thank you , I will drop this food to daily menu to be cook.</p>
-
-				    </div>
-				   
+				   <div class="user-comment">
+					 	<img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:80%">   
+				   </div>
 			</div>
 		</div>
 
