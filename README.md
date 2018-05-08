@@ -1,57 +1,22 @@
-# Skeleton application
+# PNC Canteen Management System
 
-The Skeleton application is designed for the WEP Students of Passerelles numériques in Cambodia.
-It contains some useful frontend and backend libraries:
+ * Program version 1.0 07/05/2018
+ * Voice: 999-333-222
+ * Website: www.pnccateen.com
+ * Email: pnc.canteen@passerelenumeriques.org
 
- * CodeIgniter 3
- * PHPSpreadsheet (import/export Excel)
- * DOMPDF (create a PDF document)
- * picqer/php-barcode-generator Barcode generator
- * guzzlehttp/guzzle to call 3rd party API from PHP
- * sabre/vobject manipulate iCalendar objects (for an ICS feed)
+## This system can use or open some browser like:
 
- A lot of examples are provided for various frontend widgets:
+ * Chrome, Firefox, Internet explorer, Safari and some more.
+ * User should be register or login into system if they want to know more from system functionality.
+ 
 
- * Datatable
- * Calendar
- * Datepicker
- * Material design icons
- * Rich text editors
- * Treeview
- * etc.
+## The “PNC Canteen Management System” is designed for the all PNC’s people. It contains some useful of managing food and PNC’s party event. The system’s functionality are:  
 
-The Skeleton application is a starter kit for any CodeIgniter 3 projects.
-It contains a login page, session and user management.
+ *  Food managing, user can see the food for today, they also can like the food, can recommend the food, one more is they can order the food that the really like. For admin user they can post the food, can create food menu and can see information who was order the food with the total price.
 
-## PHP requirements
+ *  Managing party event, for normal user (staff) they can register to join the pnc party event and they can see the pnc party event schedule. And admin finance user he/she can manage event, like set the schedule for event and invite staff to join the party and can rend email to remind them again.  
 
- * PHP version at least 5.6 or 7.0+ (PHP 7 recommended).
- * PHP Extension dom
- * PHP Extension gd
- * PHP Extension mbstring
- * PHP Extension xml
- * PHP Extension zip
- * PHP Extension zlib
 
-## Setup
-
-If you have cloned the repository, you need an extra step to install the PHP libraries.
-Use composer (PHP dependencies manager) to install the libraies with this command:
-
-    composer install
-
-Create a database named (for example) skeleton with the collating option `utf8_general_ci`
-Import the schema by using the SQL script provided into the SQL folder.
-Edit the file `application/config/database.php` and point to your database.
-By default, the skeleton application uses a prefix (`skeleton_`) for all tables.
-This behaviour can be changed by editing the databases options along with the name into the database.
-
-The default user is *admin* and its password is *password*.
-
-/!\ IMPORTANT: Please change the name of the session cookie by opening `application/config/config.php` and change the value of  `sess_cookie_name` with the name of your application. For example:
-
-    $config['sess_cookie_name'] = 'ci_session';
-
-Would become:
-
-    $config['sess_cookie_name'] = 'my_application_session';
+## Referent of system’s building :
+ *  It build by Cordeinigter with MVC concept and PNC SKELETON source.  
