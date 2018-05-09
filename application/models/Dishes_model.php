@@ -33,6 +33,11 @@ class Dishes_model extends CI_Model {
         return $query->result();
     }
 
+    public function getMealTime(){
+        $query = $this->db->get('tbl_meal_time'); 
+        return $query->result();
+    }
+
     /**
      * Delete a user from the database
      * @param int $id identifier of the user
@@ -106,17 +111,14 @@ class Dishes_model extends CI_Model {
      * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
      */
     public function insert_dish(){
-        // get value from input name
-        $dishName = $this->input->post('dishName');
-        $dishDescription = $this->input->post('dishDescription');
-        $dishDate = $this->input->post('dishDate');
         $data = array('upload_data' => $this->upload->data());
-        $dishImage = $this->upload->data()['file_name']; // Get image name
         // matching insert value from input and database fields
-        $data =  array('
-            dish_name' => $dishName, 
-            'dish_image' => $dishImage,
-            'description' => $dishDescription
+        $data =  array(
+            'dish_name'   => $this->input->post('dishName'), 
+            'dish_image'  => $this->upload->data()['file_name'],
+            'description' => $this->input->post('dishDescription'),
+            'meal_time_id' => $this->input->post('mealtime'),
+            'dish_active' => 0,
         );
         // insert array value to database
         $this->db->insert("tbl_dishes", $data);
