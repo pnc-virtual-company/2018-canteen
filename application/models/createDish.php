@@ -30,7 +30,7 @@ class createDish extends CI_Model {
      */
     public function getPostMenu($dishId, $meal_time, $mealDate, $menuDescription) {
        $newMenu = $this->db->query("SELECT COUNT(menu_id) FROM tbl_menu");
-       var_dump($newMenu); die();
+       var_dump($newMenu); exit();
 
        $this->db->query('UPDATE tbl_dishes SET meal_time_id="'.$meal_time.'", dish_date="'.$mealDate.'" WHERE dish_id IN('.$dishId.')');
     }
