@@ -88,6 +88,7 @@ class food extends CI_Controller {
     public function add_dish()
     {
             $this->load->helper('form');
+            $data['mealTime'] = $this->Dishes_model->getMealTime();
             $data['dishes'] = $this->Dishes_model->getDishes();
             $data['title'] = 'List of Dishes';
             $data['activeLink'] = 'users';
