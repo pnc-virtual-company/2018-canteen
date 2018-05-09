@@ -22,8 +22,9 @@ class create_menu extends CI_Controller {
     public function index() {
         $this->load->helper('form');
         // $data['users'] = $this->users_model->getUsersAndRoles();
-        // $this->load->model('create_menu');
-        // $data['data_image']= $this->create_menu->getImage();
+        $this->load->model('Dishes_model');
+        $data['data_image']= $this->Dishes_model->getDishes();
+         $data['meal_time']= $this->Dishes_model->getMealTime();
 
         $data['title'] = 'List of users';
         $data['activeLink'] = 'users';
@@ -32,5 +33,30 @@ class create_menu extends CI_Controller {
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('admin/create_menu', $data);
         $this->load->view('templates/footer', $data);
+    }
+
+
+    /**
+     * Display the list of all list of food to create menu
+     * @author khai hok <khai.hok.passerellesnumeriques.org>
+     */
+    public function postMenu() {
+        $this->load->model('createDish');
+        $data['msg'] = '';
+        // $data['dish_menu'] = $this->createDish->getPostMenu();
+        if (isset($_POST['submit'])) {
+
+            $id = $_POST['dish_id'];
+            if (empty($id) || $id==0) {
+                $data['msg'] = 'empty';
+            } else {
+                $dishId = "'".implode("', ' ", $id)."'";
+                $meal_time =$this->input->post('meal_time');
+                $mealDate =$this->input->post('mealDate');
+                $menuDescription =$this->input->post('menuDescription');
+                // var_dump($menuDescription); die();
+                 $this->createDish->getPostMenu($dishId, $meal_time, $mealDate, $menuDescription);
+                }
+            }
     }
 }

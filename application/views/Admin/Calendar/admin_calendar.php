@@ -25,12 +25,12 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form  action="<?php echo base_url();?>calendar/addEvent" class="form-horizontal" method="post">
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
                       <label class="col-form-label text-bold">Event Title:</label>
-                      <input type="text" class="form-control" id="event-name" placeholder="Event title..." >
+                      <input type="text" class="form-control" id="event_title" placeholder="Event title..." >
                     </div>
                   </div>
                     
@@ -39,15 +39,15 @@
                   <div class="col-12">
                      <div class="form-group">
                       <label class="col-form-label">Email Content:</label>
-                      <textarea type="text" class="form-control" id="content-name" rows="4" cols="50" placeholder="Email Content..."></textarea> 
+                      <textarea type="text" class="form-control" id="content_email" rows="4" cols="50" placeholder="Email Content..."></textarea> 
                     </div> 
                   </div>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Add Now</button>
+              <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Add Event</button>
             </div>
           </div>
         </div>
