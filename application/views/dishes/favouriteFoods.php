@@ -1,12 +1,5 @@
 <script src="<?php echo base_url();?>assets/js/Chart-2.7.1.min.js"></script>
-<div class="app-content">
-    <div class="app-title">
-        <div>
-          <h1><i class="fa fa-dashboard"></i>Bar chart of favourite food</h1>
-          <p>This application is very useful for admin and finance to manage their needs.</p>
-        </div>
-  </div>
-
+<div class="container">
 <!--We just need a JS file //-->
 <br>
 <h1 class="text-info text-center">List All Favourite Food</h1>

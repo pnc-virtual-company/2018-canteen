@@ -5,7 +5,6 @@
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
   </div>
-</div>
 <!--We just need a JS file //-->
 <script src="<?php echo base_url();?>assets/js/Chart-2.7.1.min.js"></script>
 <br>
@@ -36,3 +35,4 @@ new Chart(document.getElementById("pie-chart"), {
     }
 });
 </script>
+</div>
