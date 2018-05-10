@@ -38,7 +38,7 @@ class food extends CI_Controller {
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('dishes/favouriteFoods', $data);
+        $this->load->view('admin/food/favouriteFoods', $data);
         $this->load->view('templates/footer', $data);
     }
 
