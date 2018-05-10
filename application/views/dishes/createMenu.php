@@ -1,7 +1,7 @@
 <div class="app-content">
 	  <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Create Calendar</h1>
+          <h1><i class="fa fa-dashboard"></i>Create Food Menu</h1>
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
   </div>
