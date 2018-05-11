@@ -1,4 +1,4 @@
-
+<!-- 
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
 <script src="<?php echo base_url();?>assets/js/bootbox-4.4.0.min.js"></script>
 	<div class="container">
@@ -9,7 +9,8 @@
 				  <a href="<?php echo base_url() ?>dishes/waterFood"><i class="mdi mdi-rice"></i>&nbsp; Water Food</a>
 				  <a href="<?php echo base_url() ?>dishes/menu"><i class="mdi mdi-rice"></i>&nbsp; Menu</a>
 				  <a href="<?php echo base_url() ?>dishes/favouriteFood "><i class="mdi mdi-heart"></i>&nbsp; Favourite Food</a>
-				  <a href="<?php echo base_url() ?>calendar/getStuffCalendar"><i class="mdi mdi-calendar"></i>&nbsp; Calendar</a>  
+				  <a href="<?php echo base_url() ?>calendar/getStuffCalendar"><i class="mdi mdi-calendar"></i>&nbsp;  Calendar</a>  
+				    <a href="<?php echo base_url() ?>upload/do_upload"><i class="mdi mdi-calendar"></i>&nbsp;  Calendar</a>  
 				</div>
 			</div>
-		</div>
+		</div> -->

@@ -1,20 +1,30 @@
+<style>
+  .app-sidebar__toggle:before {
+    content: "";
+  }
+  li>a:hover {
+    text-decoration: none;
+    color:#17a2b8;
+  }
+</style>
 
 <header class="app-header">
   <a class="app-header__logo" href="#">Canteen MS</a>
   <!-- Sidebar toggle button-->
-  &nbsp;&nbsp;<a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar">
-    <span class="mdi mdi-format-list-bulleted" style="color: white; font-size: 28px;"></span>
+  &nbsp;&nbsp;<a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"><span class="mdi mdi-format-list-bulleted" style="color: white; font-size: 28px;"></span>
   </a>
+  <a href="<?php echo base_url() ?>" class="text-white app-sidebar__toggle" style="font-size: 25px;" title="Go to public user interface" data-toggle="tooltip" data-placement="right"><span class="mdi mdi-arrow-left-bold-circle-outline text-white"></span>&nbsp;&nbsp;</a>
   <!-- Navbar Right Menu-->
   &nbsp;&nbsp;<ul class="app-nav">
     <!--Notification Menu-->
-    <li class="dropdown"><a style="color: white" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><span class="mdi mdi-account-plus lg" style="font-size: 20px;"></span>&nbsp;&nbsp;<?php echo $this->session->login;?> </a>
+    <li class="dropdown"><a style="color: white" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><span class="mdi mdi-settings" style="font-size: 20px;"></span>&nbsp;&nbsp;<?php echo  strtoupper($this->session->login);?> </a>
+      
       <ul class="dropdown-menu settings-menu dropdown-menu-right">
-        <li><a class="dropdown-item" href="page-user.html"><span class="mdi mdi-account-circle"></span>Profile</a></li>
+        <li><a class="dropdown-item text-info" href="#"><span class="mdi mdi-account-edit"></span>&nbsp;&nbsp;Profile</a></li>
         <?php if($this->session->loggedIn === TRUE) { ?>      
         <li>
-          <a class="dropdown-item" href="<?php echo base_url();?>connection/logout">
-            <i class="mdi mdi-power md-80">Logout</i>
+          <a class="dropdown-item text-danger" href="<?php echo base_url();?>connection/logout">
+            <i class="mdi mdi-power md-80 ">&nbsp;&nbsp;&nbsp;&nbsp;</i>Logout
           </a>
         </li>
         <?php } ?>
@@ -30,17 +40,20 @@
   </div>
   <ul class="app-menu" id="nav">
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/listDish"><span class="mdi mdi-bowl" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">List All Dishes</span></a></li>
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/waterFood"><span class="mdi mdi-bowl" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Water Food</span></a></li>
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/User/listUsers"><span class="mdi mdi-account-multiple" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">List All Users</span></a></li>
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calender/getCalender"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Create Menu</span></a></li>
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/createMenu"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Create Menu</span></a></li>
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favorit Food</span></a></li>
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favourite Food</span></a></li>
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getEvent"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Staff Event</span></a></li> 
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getEvent"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label"> Create Staff Events</span></a></li> 
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getRegister"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Staff Register</span></a></li> 
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getRegister"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Staff Reminder Event</span></a></li> 
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getMonthlyEvent"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Week and Month dinnner</span></a></li>      
+    <li>
+      <a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getMonthlyEvent"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Week & Monthly Report</span></a>
+    </li>      
+
   </ul> 
 </aside>
 
@@ -75,9 +88,6 @@
 
        })();
 
-</script>
-
-<script>
     for (var i = 0; i < document.links.length; i++) {
         if (document.links[i].href == document.URL) {
             document.links[i].className = 'active';

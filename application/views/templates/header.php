@@ -8,17 +8,20 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
-  <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/canteen-logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-4.0.0/css/bootstrap.min.css">
   <link href="<?php echo base_url();?>assets/MDI-2.1.19/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="<?php echo base_url();?>assets/css/top_menus.css" media="all" rel="stylesheet" type="text/css" />
   
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/skeleton-1.0.0.css">
 
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/admin_dashboard.css">
 
+  
   <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
   <script src="<?php echo base_url();?>assets/tether-1.4.3/js/tether.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/popper-1.12.9..min.js"></script>
+  <script src="<?php echo base_url();?>assets/js/top_menu.js"></script>
   <script src="<?php echo base_url();?>assets/bootstrap-4.0.0/js/bootstrap.min.js"></script>
 
 	<style type="text/css">

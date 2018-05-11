@@ -1,0 +1,59 @@
+        Thu, 10 May 2018 09:31:08 +0700 (ICT)
+Date: Thu, 10 May 2018 04:31:07 +0200
+From: "Skeleton" <do.not@reply.me>
+Return-Path: <do.not@reply.me>
+To: benjamin.balet@gmail.com
+Subject: =?UTF-8?Q?[Skeleton]=20Your=20pass?==?UTF-8?Q?word=20was?= =?UTF-8?Q?=20reset?=
+Reply-To: <do.not@reply.me>
+User-Agent: CodeIgniter
+X-Sender: do.not@reply.me
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: <5af3aeebe2226@reply.me>
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary="B_ALT_5af3aeebe2253"
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_5af3aeebe2253
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Your password was reset
+ Dear Benjamin BALET,
+ Your Skeleton password has been reset. If you did not perform this
+operation, please contact your manager.
+
+ *** This is an automatically generated message, please do not reply to this
+message ***
+
+
+--B_ALT_5af3aeebe2253
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+=3Chtml lang=3D=22en=22=3E
+ =3Chead=3E
+ =3Cmeta content=3D=22text/html=3B charset=3Dutf-8=22 http-equiv=3D=22Conte=
+nt-Type=22=3E
+ =3Cmeta charset=3D=22UTF-8=22=3E
+ =3Cstyle=3E
+ table =7Bwidth:50=25=3Bmargin:5px=3Bborder-collapse:collapse=3B=7D
+ table, th, td =7Bborder: 1px solid black=3B=7D
+ th, td =7Bpadding: 20px=3B=7D
+ h5 =7Bcolor:red=3B=7D
+ =3C/style=3E
+ =3C/head=3E
+ =3Cbody=3E
+ =3Ch3=3EYour password was reset=3C/h3=3E
+ =3Cp=3EDear Benjamin BALET,=3C/p=3E
+ =3Cp=3EYour Skeleton password has been reset. If you did not perform this =
+operation, please contact your manager.=3C/p=3E
+ =3Chr=3E
+ =3Ch5=3E=2A=2A=2A This is an automatically generated message, please do no=
+t reply to this message =2A=2A=2A=3C/h5=3E
+ =3C/body=3E
+=3C/html=3E
+
+--B_ALT_5af3aeebe2253--
