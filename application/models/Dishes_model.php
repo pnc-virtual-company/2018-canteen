@@ -94,18 +94,19 @@ public function selectDish($id){
      return $query->result();
      // var_dump($query);
 }
-        
-    public function updateDishes($id) {
+    public function updateDishes($id) 
+    {         
+        $this->upload->data()['file_name'];        
+        $data_image = array('upload_data' => $this->upload->data()); 
+      
         $data = array(
-            'dish_name' => $this->input->post('dishName'),
-            'dish_image' =>   'image.png',
-            'dish_date' => $this->input->post('dishDate'),
-            'description' => $this->input->post('description')
-        );
-        // var_dump($id); die();
-        $this->db->where('dish_id', $id);
-        $this->db->update('tbl_dishes', $data );
-        // return $query;
+            'dish_name' => $this->input->post('dishName'),            
+            'dish_image'      => $this->upload->data()['file_name'],         
+            'description' => $this->input->post('description')        
+        );        
+        $this->db->where('dish_id', $this->uri->segment(4));                
+        $this->db->update('tbl_dishes', $data);                
+        return true;    
     }
     
     public function viewDetail($dishId){
@@ -117,18 +118,14 @@ public function selectDish($id){
      * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
      */
     public function insert_dish(){
-        // get value from input name
-        $dishName = $this->input->post('dishName');
-        $dishDescription = $this->input->post('dishDescription');
-        $dishDate = $this->input->post('dishDate');
         $data = array('upload_data' => $this->upload->data());
-        $dishImage = $this->upload->data()['file_name']; // Get image name
         // matching insert value from input and database fields
-        $data =  array('
-            dish_name' => $dishName, 
-            'dish_image' => $dishImage,
-            'dish_date' => $dishDate,
-            'description' => $dishDescription
+        $data =  array(
+            'dish_name'   => $this->input->post('dishName'), 
+            'dish_image'  => $this->upload->data()['file_name'],
+            'description' => $this->input->post('dishDescription'),
+            'meal_time_id' => $this->input->post('mealtime'),
+            'dish_active' => 0,
         );
         // insert array value to database
         $this->db->insert("tbl_dishes", $data);

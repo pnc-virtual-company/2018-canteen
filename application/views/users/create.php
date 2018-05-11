@@ -18,7 +18,7 @@
 <?php
 $attributes = array('id' => 'target', 'class' => 'form-horizontal');
 echo form_open('users/create', $attributes); ?>
-
+  
     <div class="form-group">
       <label class="control-label" for="firstname">Firstname</label>
       <input type="text" class="form-control" name="firstname" id="firstname" required />

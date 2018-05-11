@@ -59,14 +59,4 @@ class Connection extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('welcome');
 	}
-
-	public function register(){
-		$this->load->view('templates/header');
-		$this->load->view('users/register');
-		$this->load->view('templates/footer');
-	}
-
-	public function create(){
-		echo "hello";
-	}
 }

@@ -145,24 +145,34 @@ class Users_model extends CI_Model {
     /**
      * Update a given user in the database. Update data are coming from an HTML form
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
+    public function getUsersUpdate($id)
+      {
+        $query = $this->db->get_where('tbl_users', array('id' => $id));
+      return $query->result();
+      }
     public function updateUsers() {
-        //Role field is a binary mask
-        $role = 0;
-        foreach($this->input->post("role") as $role_bit){
-            $role = $role | $role_bit;
-        }
+        $password = $this->input->post('password');
+        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
+        $hash = crypt($password, $salt);
+        $this->upload->data()['file_name'];
+        $data_image = array('upload_data' => $this->upload->data());
         $data = array(
-            'firstname' => $this->input->post('firstname'),
-            'lastname' => $this->input->post('lastname'),
-            'login' => $this->input->post('login'),
-            'email' => $this->input->post('email'),
-            'role' => $role
+            'firstname'  => $this->input->post('firstname'),
+            'lastname'   => $this->input->post('lastname'),
+            'login'      => $this->input->post('username'),
+            'email'      => $this->input->post('email'),
+            'card_id'    => $this->input->post('cardId'),
+            'class_name' => $this->input->post('class'),
+            'gender'     => $this->input->post('gender'),
+            'image'      => $this->upload->data()['file_name'],
+            'password'   => $hash,
         );
-        $this->db->where('id', $this->input->post('id'));
-        $result = $this->db->update('tbl_users', $data);
-        return $result;
+        // var_dump($data);die();
+        $this->db->where('id', $this->uri->segment(4));
+        $this->db->update('tbl_users', $data);
+        return true;
     }
 
     /**
@@ -337,4 +347,68 @@ class Users_model extends CI_Model {
         }
         return $rnd;
     }
+
+
+    public function addUsers(){
+        //Hash the clear password using bcrypt (8 iterations)
+        $password = $this->input->post('password');
+        $data = array('upload_data' => $this->upload->data());
+        $this->upload->data()['file_name'];
+        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
+        $hash = crypt($password, $salt);
+        $dataUser =  array(
+            'firstname'  => $this->input->post('firstname'),
+            'lastname'   => $this->input->post('lastname'),
+            'login'      => $this->input->post('username'),
+            'email'      => $this->input->post('email'),
+            'class_name' => $this->input->post('class'),
+            'card_id'    => $this->input->post('cardId'),
+            'gender'     => $this->input->post('gender'),
+            'image'      => $this->upload->data()['file_name'],
+            'password'   => $hash,
+            'role'       => '2',
+            'active'     => '1'
+        );
+        // var_dump($dataUser);die();
+        // insert array value to database
+        $this->db->insert("tbl_users", $dataUser);
+        return true;
+    }
+
+    public function getListUsers(){
+        $query = $this->db->query("select  user.*, role.id as role, role.name as rolename from tbl_users as user inner join tbl_roles as role where user.role = role.id");
+        return $query->result();
+    }    
+
+    public function deleteUsers($id) {
+        $this->db->delete('tbl_users', array('id' => $id));
+    }
+
+    public function insertUser(){
+
+        // get value from input name
+        $password = $this->input->post('password');
+        $data = array('upload_data' => $this->upload->data());
+        $this->upload->data()['file_name'];
+        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
+        $hash = crypt($password, $salt);
+
+        $data =  array(
+            'firstname'  => $this->input->post('firstname'),
+            'lastname'   => $this->input->post('lastname'),
+            'login'      => $this->input->post('loginname'),
+            'email'      => $this->input->post('useremail'),
+            'class_name' => $this->input->post('classname'),
+            'card_id'    => $this->input->post('cardid'),
+            'gender'     => $this->input->post('gender'),
+            'image'      => $this->upload->data()['file_name'],
+            'password'   => $hash,
+            'role'       => '3',
+            'active'     => '1'
+        );
+        // insert array value to database
+        $this->db->insert("tbl_users", $data);
+    }
+    
+
 }

@@ -26,10 +26,15 @@ class dishes extends CI_Controller {
 	}
 
 	public function favouriteFood(){
-		$data['title'] = 'menu';
+		// $data['title'] = 'menu';
 		$data['page'] = 'dishes/favouriteFoods';
+		$this->load->model('getUserActive');
+        $data['user'] = $this->getUserActive->getActive();
+		// $data['page'] = 'welcome';
+		// $this->load->view('templates/right_menu', $data);
 		$this->load->view('layout', $data);
 	}
+
 	
 	
 }
