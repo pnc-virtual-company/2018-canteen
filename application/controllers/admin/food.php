@@ -224,12 +224,5 @@ class food extends CI_Controller {
     $this->load->view('templates/footer');
 }
 
-// // Start update dishes
-function updateDishes() {
-    $id = $this->uri->segment(4);
-    $this->Dishes_model->updateDishes($id);
-    $this->listDish();
-
-}
 
 }
