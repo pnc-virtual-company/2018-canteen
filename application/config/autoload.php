@@ -79,7 +79,7 @@ $autoload['libraries'] = array('database', 'session');
 |	$autoload['drivers'] = array('cache' => 'cch');
 |
 */
-$autoload['drivers'] = array();
+$autoload['drivers'] = array('session');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Dishes_model');
+$autoload['model'] = array('Dishes_model','Users_model','dishTypeModel');

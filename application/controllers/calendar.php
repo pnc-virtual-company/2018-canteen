@@ -2,10 +2,12 @@
 <?php 
 Class calendar extends CI_Controller{
 	// stuff calendar
-	function getStuffCalendar()
-	{
+	function getStuffCalendar(){
+		$this->load->model('getUserActive');
+        $data['user'] = $this->getUserActive->getActive();
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/stuff_calendar';
+		// $this->load->view('templates/right_menu', $data);
 		$this->load->view('layout', $data);
 	}
 
@@ -52,10 +54,5 @@ Class calendar extends CI_Controller{
 	{
 
 	}
-	
-
-	
-
-
 }
  ?>
