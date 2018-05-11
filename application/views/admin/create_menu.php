@@ -50,7 +50,7 @@
   <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 nopad text-center" style="margin-bottom: 20px;">
     <label class="image-checkbox"> 
       <input type="checkbox" name="dish_id[]" value="<?php echo $dish->dish_id ?>">
-      <img class="img-responsive" src="<?php echo base_url('assets/images/'.$dish->dish_image); ?>" width="100%"  alt="" />
+      <img class="img-responsive" src="<?php echo base_url('assets/images/dish_uploads/'.$dish->dish_image); ?>" width="100%"  alt="" />
       <span class="mdi mdi-check d-none" style="font-size: 20px;"></span>
       <div class="text-center bg-primary" style="padding: 7px;">
        <h5>
