@@ -11,7 +11,7 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-dashboard"></i>Post Your Favorit Food</h1>
+      <h1><i class="fa fa-dashboard"></i>Menu Creation</h1>
       <p>All best food in Passerelles Numeriques Cambodai canteen</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
