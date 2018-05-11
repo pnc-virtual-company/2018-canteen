@@ -15,6 +15,7 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/skeleton-1.0.0.css">
 
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/admin_dashboard.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/createMenu.css">
 
   <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
   <script src="<?php echo base_url();?>assets/tether-1.4.3/js/tether.min.js"></script>
@@ -31,42 +32,6 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
   body {
       padding-top: 60px;
   }
-  #menu-background{
-  background-color: green;
-}
-
-.nopad {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-/*image gallery*/
-.image-checkbox {
-  cursor: pointer;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border: 4px solid transparent;
-  margin-bottom: 0;
-  outline: 0;
-}
-.image-checkbox input[type="checkbox"] {
-  display: none;
-}
-
-.image-checkbox-checked {
-  border-color: #4783B0;
-}
-.image-checkbox .mdi {
-  position: absolute;
-  color: #4A79A3;
-  background-color: #fff;
-  padding: 10px;
-  top: 0;
-  right: 0;
-}
-.image-checkbox-checked .mdi {
-  display: block !important;
-}
 	</style>
 </head>
 <body class="app sidebar-mini rtl">

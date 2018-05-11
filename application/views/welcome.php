@@ -13,13 +13,12 @@
 				    <!-- <div class="card-header">Header</div> -->
 				    <div class="card-body">
 				    	<div class="row">
-					    	<div class="col-md-6 text-center">
-					    		<img src="<?php echo base_url();?>assets/images/food1.jpg" alt="">
-					    	</div>
+
 					    	<div class="col-md-6">
-							<img src="<?php echo base_url();?>assets/images/food2.jpg" alt="">
+								<img src="<?php echo base_url();?>assets/images/food2.jpg" alt="">
+							</div>
+							
 						</div>
-					</div>
 				    </div> 
 				    <div class="card-footer">
 				    	<div class="container">
