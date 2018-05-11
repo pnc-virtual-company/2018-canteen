@@ -5,7 +5,6 @@ Class calendar extends CI_Controller{
 	function getStuffCalendar(){
 		$this->load->model('getUserActive');
         $data['user'] = $this->getUserActive->getActive();
-        
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/stuff_calendar';
 		// $this->load->view('templates/right_menu', $data);
@@ -13,7 +12,8 @@ Class calendar extends CI_Controller{
 	}
 
 	// admin calendar
-	function getAdminCalendar(){
+	function getAdminCalendar()
+	{
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/admin_calendar';
 	        	$this->load->view('templates/header', $data);
@@ -22,7 +22,8 @@ Class calendar extends CI_Controller{
 	        	$this->load->view('templates/footer', $data);
 	}	
 
-	function getEvent(){
+	function getEvent()
+	{
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/admin_calendar';
 	        	$this->load->view('templates/header', $data);
@@ -30,7 +31,8 @@ Class calendar extends CI_Controller{
 		$this->load->view('Admin/Calendar/admin_calendar', $data);
 	        	$this->load->view('templates/footer', $data);
 	}
-	function getRegister(){
+	function getRegister()
+	{
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/admin_calendar';
 	        	$this->load->view('templates/header', $data);
@@ -38,7 +40,8 @@ Class calendar extends CI_Controller{
 		$this->load->view('Admin/Calendar/admin_calendar', $data);
 	        	$this->load->view('templates/footer', $data);
 	}
-	function getMonthlyEvent(){
+	function getMonthlyEvent()
+	{
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/admin_calendar';
 	        	$this->load->view('templates/header', $data);
@@ -46,10 +49,10 @@ Class calendar extends CI_Controller{
 		$this->load->view('Admin/Calendar/admin_calendar', $data);
 	        	$this->load->view('templates/footer', $data);
 	}
-	
 
-	
+	function addEvent()
+	{
 
-
+	}
 }
  ?>

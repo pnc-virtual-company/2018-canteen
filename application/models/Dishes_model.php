@@ -33,7 +33,14 @@ class Dishes_model extends CI_Model {
         return $query->result();
     }
 
-    public function getMealTime(){
+
+    /**
+     * Get the meal time of tbl_dishes 
+     * @param int $id optional id of one user
+     * @return array record of tbl_dishes
+     * @author khai.hok <khai.hok@student.passerellesnumeriques.org>
+     */
+    public function getMealTime() {
         $query = $this->db->get('tbl_meal_time'); 
         return $query->result();
     }
@@ -81,12 +88,12 @@ class Dishes_model extends CI_Model {
      * @return int number of affected rows
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
-    public function selectDish($id){
-         $query = $this->db->get_where('tbl_dishes', array('dish_id' => $id));
-         return $query->result();
-         // var_dump($query);
-    }
-    
+
+public function selectDish($id){
+     $query = $this->db->get_where('tbl_dishes', array('dish_id' => $id));
+     return $query->result();
+     // var_dump($query);
+}
     public function updateDishes($id) 
     {         
         $this->upload->data()['file_name'];        
