@@ -35,6 +35,17 @@
 			      <label for="dishDescription">Dish Description:</label>
 			      <textarea name="dishDescription" cols="30" rows="4" class="form-control"></textarea>
 			    </div>
+			    <div class="form-group">
+			      <label for="dishDescription">Dish time</label><br>
+			      	<select name="plate" class="form-control" id="recipient-name" >
+						<?php 
+							$type  = array("Breakfast","Lunch","Dinner");
+							         	foreach ($type as  $value) {
+							           		echo "<option>".$value."</option>";
+							           			}
+							           	?>
+				</select>	
+			    </div>
 			    <br>
 			    <button type="button" class="btn btn-danger float-left" onclick="goBack()">Cancel</button>
 			    <button type="submit" class="btn btn-warning float-right" value="upload">Add Dish</button>

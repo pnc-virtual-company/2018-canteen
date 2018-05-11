@@ -8,14 +8,12 @@
  */
 ?>
 <style>
-
     .dish-info{
       padding-left: 16px;
     }
     .modal-title{
     margin-left: 150px;
     }
-
   table{
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
@@ -49,7 +47,7 @@
                   <td><?php echo $dish->dish_name ?></td>                 
                   <td><?php echo $dish->description ?></td>
                 <!--   <td>
-                    <img src="<?php echo base_url().'assets/uploads/'.$dish->dish_image ?>" alt="image" class="img-thumbnail" style="width:10%;">
+                    <img src="<?//php echo base_url().'assets/uploads/'.$dish->dish_image ?>" alt="image" class="img-thumbnail" style="width:10%;">
                   </td> -->
                   <td>
 
@@ -115,7 +113,6 @@
           </div>
         </div>
   <!-- End of modal creation -->
-  
 <link href="<?php echo base_url();?>assets/DataTable/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <script type="text/javascript" src="<?php echo base_url();?>assets/DataTable//DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/DataTable//DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>

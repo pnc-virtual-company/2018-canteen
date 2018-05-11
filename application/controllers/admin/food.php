@@ -154,5 +154,30 @@ class food extends CI_Controller {
             $this->load->view('dishes/dinner', $data);
             $this->load->view('templates/footer', $data);
     }
-    
+    function    showOrder(){
+        $food_ids = $this->input->post('fo_id');
+        data['orderdish'] = $this->Dishes_model->selectOrder($food_ids[$i]);
+    }
+   function addOrder(){
+       // okay now let get value from form
+        $food_ids = $this->input->post('fo_id');
+        $quantities = $this->input->post('plate');
+
+
+        // let loop the quantiy for each food to get only quantiy != 0
+        for($i = 0; $i<count($quantities); $i++)
+        {
+            // check if qty != 0, let insert it into db
+            if($quantities[$i] != 0)
+            {
+                // call model to insert to db
+                $ordered = $this->Dishes_model->createOrder($sfood_ids[$i], $quantities[$i]);
+                    if($ordered ){
+                        redirect('Welcome ');
+                    }
+            }
+        }
+        // do something after insert to DB
+  
+    }
 }

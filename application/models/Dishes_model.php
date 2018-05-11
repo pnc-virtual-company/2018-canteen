@@ -121,4 +121,62 @@ class Dishes_model extends CI_Model {
         // insert array value to database
         $this->db->insert("tbl_dishes", $data);
     }
+
+    public function getDishOrder (){
+        //set currrent time zone in php to cambodia time +7
+    //     date_default_timezone_set("Asia/Phnom_Penh");
+    //     $created_date = date('Y-m-d');
+    //     $this->db->where('dish_active =','1');
+    //     $query  = $this->db->get_where ('tbl_dishes',array('dish_active' =>1));
+    //     return $query->result();  
+     }
+    public function getMenu(){
+        date_default_timezone_set("Asia/Phnom_Penh");
+        $creating_date = date('Y-m-d');
+       $this->db->select('*');
+       $this->db->from('tbl_dishes');
+        $this->db->where (array('dish_active' =>1));
+        $this->db->where('menu_created_date=',$creating_date);
+        $query = $this->db->get();
+        return $query->result();
+    }
+public  function    selectOrder($food_id){
+        date_default_timezone_set("Asia/Phnom_Penh");
+        $creating_date = date('Y-m-d');
+       $this->db->select('*');
+       $this->db->from('tbl_dishes');
+        $this->db->where (array('dish_active' =>1));
+        $this->db->where (array('dish_id' =>$food_id));
+        $this->db->where('menu_created_date=',$creating_date);
+        $query = $this->db->get();
+        return $query->result();
+}
+   public function createOrder($food_id, $qty){
+        // set currrent time zone in php to cambodia time +7
+        date_default_timezone_set("Asia/Phnom_Penh");
+        $created_date = date('Y-m-d');
+        $current_logged_in =  $this->session->userdata('id');
+
+        // Insert order
+        $data_order = array(
+            'quantity'=> $qty,
+            'meal_time' => "Break fast",
+            'date' => $created_date
+        );
+        $this->db->insert('tbl_order', $data_order);
+
+        // Get the last id after inserted into tbl_order as above query
+        $order_id = $this->db->insert_id(); // This is primary key from tbl_order but it will be foreign key for tbl_dish_user of column "order_id"
+
+        // Insert dish user
+        $data_dish = array(
+                'user_id' => $current_logged_in,
+                'dish_id' => $food_id,
+                'order_id' => $order_id
+        );
+        $result = $this->db->insert('tbl_dish_user', $data_dish);
+
+        return $result;
+    }
+
 }
