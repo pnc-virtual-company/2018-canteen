@@ -35,6 +35,9 @@ class dishes extends CI_Controller {
 		$this->load->view('layout', $data);
 	}
 
+	public function DishOrder(){
+        $this->load->model('Dishes_model');	
+	}
 	
 	
 }
