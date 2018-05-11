@@ -15,7 +15,7 @@
       <p>All best food in Passerelles Numeriques Cambodai canteen</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item"><a href="#"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Food</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Food</a></li>
     </ul>
   </div>
   <form action="<?php echo base_url() ?>admin/create_menu/postMenu" method="POST" >
