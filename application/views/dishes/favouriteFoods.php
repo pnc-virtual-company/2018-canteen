@@ -1,10 +1,11 @@
-<!--We just need a JS file //-->
 <script src="<?php echo base_url();?>assets/js/Chart-2.7.1.min.js"></script>
+<div class="container">
+<!--We just need a JS file //-->
 <br>
 <h1 class="text-info text-center">List All Favourite Food</h1>
 <div class="row">
-  <div class="col-md-2"></div>
-      <div class="col-lg-8 col-md-6  col-sm-6 col-xs-12"> 
+  <div class="col-md-1"></div>
+      <div class="col-lg-10 col-md-6  col-sm-6 col-xs-12"> 
       <canvas id="pie-chart" width="800" height="450"></canvas>
       </div>
   <div class="col-md-2"></div>
@@ -28,3 +29,4 @@ new Chart(document.getElementById("pie-chart"), {
     }
 });
 </script>
+</div>

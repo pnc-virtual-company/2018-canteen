@@ -26,6 +26,17 @@
 			      <label for="email">Dish Name:</label>
 			      <input type="text" class="form-control" name="dishName" placeholder="Enter dish name " required >
 			    </div>
+			    <div class="form-group">
+			      <label for="email">Meal Time</label>
+			      <select name="mealtime" class="form-control">
+			      	<option value="">Choose Meal Times</option>
+			      	<?php 
+			      		foreach ($mealTime as $value) {
+			       	?>
+			      	<option value="<?php echo $value->time_id ?>"><?php echo $value->name ?></option>
+			      	<?php } ?>
+			      </select>
+			    </div>
 
 			    <div class="form-group">
 			      <label for="pwd">Dish Image:</label>
@@ -47,8 +58,8 @@
 				</select>	
 			    </div>
 			    <br>
-			    <button type="button" class="btn btn-danger float-left" onclick="goBack()">Cancel</button>
-			    <button type="submit" class="btn btn-warning float-right" value="upload">Add Dish</button>
+			    <button type="button" class="btn btn-danger float-left" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
+			    <button type="submit" class="btn btn-warning float-right" value="upload"><i class="mdi mdi-plus-circle-outline"></i>&nbsp;Add Dish</button>
 			</form>
 		</div>
 		</div>

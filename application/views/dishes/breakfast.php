@@ -30,8 +30,8 @@
 					<div class="card-body">
 						<h4 style="text-align: center;"><?php echo $breakfast->dish_name ?></h4>
 					<div class="thumbnail">
-						<a href="<?php echo base_url();?>assets/dish_uploads/5.jpg" target="_blank">
-						<img src="<?php echo base_url().'assets/dish_uploads/'.$breakfast->dish_image ?>" alt="Fjords" style="width:100% ;height : 200px;">
+						<a href="<?php echo base_url().'assets/images/dish_uploads/'.$breakfast->dish_image ?>" target="_blank">
+						<img src="<?php echo base_url().'assets/images/dish_uploads/'.$breakfast->dish_image ?>" alt="Fjords" style="width:100% ;height : 200px;">
 						<div class="overlay">
 							<div class="text">Water food Description</div>
 						</div>
