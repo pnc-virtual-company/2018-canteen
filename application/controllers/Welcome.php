@@ -13,12 +13,11 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('getUserActive');
-        $data['user'] = $this->getUserActive->getActive();
-
+        		$data['user'] = $this->getUserActive->getActive();
+        		$data['dishesOrder'] = $this->Dishes_model->getMenu();	
 		$data['page'] = 'welcome';
 		// $this->load->view('templates/right_menu', $data);
 		$this->load->view('layout', $data);
 
 	}
-	
 }

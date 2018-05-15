@@ -21,10 +21,8 @@
 			<div class="jumbotron">
 			<h2 class="text-center text-success">Add New Dish</h2>
 	
-			<form action="<?php echo base_url();?>addDish/insert_dish" enctype="multipart/form-data" method="POST">
-			
+			<form action="<?php echo base_url();?>addDish/insert_dish" enctype="multipart/form-data" method="POST">		
 		<!-- 	<?php //echo form_open_multipart('addDish/insert_dish');?>  -->
-				
 			    <div class="form-group">
 			      <label for="email">Dish Name:</label>
 			      <input type="text" class="form-control" name="dishname" placeholder="Enter dish name " required >
@@ -44,7 +42,17 @@
 			      <label for="pwd">Dish Date:</label>
 			      <input type="date" class="form-control" name="dishdate" required placeholder="Choose add date">
 			    </div>
-			    
+			    <div class="form-group">
+			      <label for="dishDescription">Dish time</label><br>
+			      	<select name="plate" class="form-control" id="recipient-name" >
+						<?php 
+							$type  = array("Breakfast","Lunch","Dinner");
+							         	foreach ($type as  $value) {
+							           		echo "<option>".$value."</option>";
+							           			}
+							           	?>
+				</select>	
+			    </div>
 			    <br>
 			    <button type="submit" class="btn btn-danger float-left">Cancel</button>
 			    <button type="submit" class="btn btn-success float-right" value="upload">Add Dish</button>

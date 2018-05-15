@@ -3,43 +3,48 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css">
 		<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
-		<dsiv class="row">
+		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
 				  <br>
 				  <i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i><span>&nbsp; Canteen Manager</span>
-				  <p>Dear all, I have release new kind of food, it would be cooked if everyone commented and click interest as rating the food, I will see that if the following food get more interest will be noted into daily menu.</p>
-				
-				 <div class="card">
+				<p>This is the food that I will cook tommorrow so everyone can order now </p>
+				  <div class="row">
+				   <?php foreach ($dishesOrder as $dish) {    ?>	
+			<div class="col-md-6">	
+				 <div class="card card-columns">
 				    <!-- <div class="card-header">Header</div> -->
+				   
 				    <div class="card-body">
-				    	<div class="row">
-
-					    	<div class="col-md-6">
-								<img src="<?php echo base_url();?>assets/images/food2.jpg" alt="">
-							</div>
-							
-						</div>
+				    	<div class="row">				    		
+					    	<div class="col-md-6 text-center">
+					    		<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" alt="" style="width: 400px; height: 300px;">
+					    	</div>							    	
+					</div><br>				    	
 				    </div> 
+				    
 				    <div class="card-footer">
 				    	<div class="container">
 				    		<div class="row">
 				    			 <?php if($this->session->loggedIn === TRUE) { ?>
 				    			<div class="col-md-4">
 				    				<a href="#" >45&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
-				    			</div>
-						    	<div class="col-md-4 item">
-						    		<a href="#" data-toggle="modal" data-target="#exampleModal" 
-						    		data-whatever="@getbootstrap"><i class="mdi mdi-rice  "></i>&nbsp;Order</a>
-						    	</div>
+				    			</div>				    			
+						    	<div class="col-md-4 item" id="food">
+						    		 <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" 
+						    		 food_img="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image ?>" 
+                      							><i class="mdi mdi-rice text-info show_food_img"></i>&nbsp;Order</a>			
+                      						</div>			    					    	
 						    	<div class="col-md-4">
 						    		<a href="#" id="recomment"><i class="mdi mdi-comment  "></i>&nbsp; Recomment</a>
 						    	</div>
 						    	<?php } ?>
 				    		</div>
-				    	</div>
-				    	
-				    </div>
+				    	</div>				    	
+				    </div>				  				 
+				</div>					 
+			</div>
+				   <?php } ?>
 				 </div>
 				   <div class="user-comment">
 					 	<img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:80%">   
@@ -60,61 +65,43 @@
 				        </button>
 				      </div>
 				      <div class="modal-body">
-				        <form>
+				       <form action="<?php echo base_url() ?>admin/food/addOrder" method="post">			        
 				        	<div class="row">
 				        		<div class="col-6">
-	        	<div class="row">
-				        		<div class="col-6">
-				        			<div class="form-group">
-						          	<label for="recipient-name" class="col-form-label">choose food</label>
-						           <img src="" alt="">
+				        			<div class="form-group">				        			
+							          	<label for="recipient-name" class="col-form-label"><?php echo $dish->dish_name ?></label>
+							           <img src="" alt="image" class="img-thumbnail mx-auto d-block pop_food_img " >
 						          </div>		        			
 				        		</div>
 				        		<div class="col-6">
 				        			<div class="form-group">
-						          	<label for="recipient-name" class="col-form-label">Quantity</label>
-						           	<select name="plate" class="form-control" id="recipient-name" >
-						           			<?php 
-						           				$price  = array(0,1000, 1500, 2000);
-						           			foreach ($price as  $value) {
-						           				echo "<option>".$value."</option>";
-						           				}
-						           			?>
-						           </select>	
+							          	
+							          	<label for="recipient-name" class="col-form-label">Quantity</label>
+							          	<input type="hidden" name="fo_id[]" value="<?php echo $dish->dish_id?>" />
 
-						          </div>
-				        			
-				        		</div>
-				        		<div class="col-6">
-				        			<div class="form-group">
-						          	<label for="recipient-name" class="col-form-label">choose food</label>
-						           <img src="" alt="">
-						          </div>		        			
-				        		</div>
-				        		<div class="col-6">
-				        			 <div class="form-group">
-				        			  <label for="recipient-name" class="col-form-label">Quantity</label>
-				        			 <select name="plate" class="form-control" id="recipient-name" >
-				        			 	<?php 
-				        			 		$plates  = array(0 ,1, 2, 3 , 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 ,25);
-				        			 	foreach ($plates as  $value) {
-				        			 		echo "<option>".$value."</option>";
-				        			 		}
-				        			 	?>
-				        			 </select>	
-				        			</div>
-				        		</div>
-				        	</div>
-				        	
+							           	<select name="plate[]" class="form-control" id="recipient-name" >
+							           			<?php 
+							           				$plate  = array(0,1,2,3,4,5,6,7,8,9,10);
+							           			foreach ($plate as  $value) {
+							           				echo "<option value='".$value."'>".$value."</option>";
+							           				}
+							           			?>
+							           </select>	
+							</div>
+						</div>							 	     	
+					</div>				        					        	
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-				        <button type="button" class="btn btn-success" data-dismiss="modal">Order Now</button>
+				        <button type="submit" class="btn btn-success">Order Now</button>
 				      </div>
+				  </form>
+				      
 				    </div>
 				  </div>
 				</div>
 			
 	<!-- End of modal creation -->
+
 <script>
 	$(function() {
 		var comment = "";
@@ -144,6 +131,15 @@
 	     todayHighlight: true,
 	     autoclose:true,
 	   });
+
+	     $('#food').on('click', '.show_food_img', function(e){
+        // => Get the value of current attribute on the its link clicked
+        var food_img = $(this).attr('user_img');
+        
+
+        // => After get the value then let set it into popup
+          $('.pop_food_img').attr('src', food_img);
+    });
 	});
 </script>
 

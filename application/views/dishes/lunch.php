@@ -11,19 +11,21 @@
 </style>
 <!-- Stylel css for water_food -->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/food_type.css">
-	<br>
-		<div class="header text-center">
-			<h1 class="text-info">Lunch</h1>
+	<main class="app-content">
+				<div class="app-title">
+		<div>
+			<h1>List All Lunch </h1>
+			<p>All best food in Passerelles Numeriques Cambodai canteen</p>
 		</div>
-		<hr>
-<div class="container">
-
+		<ul class="app-breadcrumb breadcrumb">
+			<li class="breadcrumb-item"><a href="<?php echo base_url() ?>Users"><span class="mdi mdi-arrow-left-bold-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Back To Welcome Board</a></li>
+		</ul>
+	</div>
 		<div class="row">
-			<div class="col-md-6 col-lg-2"></div>
 			<?php 
 			foreach ($dishes as $breakfast) {  //start foreach to looop each dishes
 			?> 
-			<div class=" col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 				<div class="card">
 					<div class="card-body">
 						<h4 style="text-align: center;"><?php echo $breakfast->dish_name ?></h4>
@@ -31,7 +33,7 @@
 						<a href="<?php echo base_url().'assets/images/dish_uploads/'.$breakfast->dish_image ?>" target="_blank">
 						<img src="<?php echo base_url().'assets/images/dish_uploads/'.$breakfast->dish_image ?>" alt="Fjords" style="width:100% ;height : 200px;">
 						<div class="overlay">
-							<div class="text">Water food Description</div>
+							<div class="text"><?php echo $breakfast->description ?></div>
 						</div>
 						</a>
 					</div>
@@ -40,5 +42,5 @@
 			</div>
 			<?php } // end foreach ?>
 		</div>	
-	</div>
+	</main>
 
