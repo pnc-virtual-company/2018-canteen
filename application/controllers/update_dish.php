@@ -1,4 +1,3 @@
-update_dish.php
 <?php 
 /**
      * Display a for that allows updating a given user
