@@ -179,13 +179,38 @@ public  function    selectOrder($food_id){
 
         // Insert dish user
         $data_dish = array(
-                'user_id' => $current_logged_in,
-                'dish_id' => $food_id,
-                'order_id' => $order_id
+          'user_id' => $current_logged_in,
+          'dish_id' => $food_id,
+          'order_id' => $order_id
         );
         $result = $this->db->insert('tbl_dish_user', $data_dish);
-
         return $result;
     }
 
+    public function preOrderList()
+    {
+      $this->db->select('orders.*,dishes.dish_name as dishName,sum(orders.quantity) as TotalQuantity,sum(orders.quantity)*1000 as TotalPayment');
+      $this->db->from('tbl_order as orders');
+      $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id');
+      $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
+      $this->db->group_by('dishName'); 
+      $query = $this->db->get();
+      return $query->result();
+    }
+
+    public function userOrderList(){
+      $this->db->select('users.id as userId,
+                    CONCAT(users.firstname," ",users.lastname) AS userName,
+                    users.class_name,
+                    dishes.dish_name as dishName,
+                    sum(orders.quantity) as totalQuanttiy,
+                    sum(orders.quantity)*1000 as TotalPayment');
+      $this->db->from('tbl_order as orders');
+      $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id') ;
+      $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
+      $this->db->join('tbl_users users', 'users.id = dishUsers.user_id');
+      $this->db->group_by('userName'); 
+      $query = $this->db->get();
+      return $query->result();
+    }
 }
