@@ -92,7 +92,6 @@ class Dishes_model extends CI_Model {
 public function selectDish($id){
      $query = $this->db->get_where('tbl_dishes', array('dish_id' => $id));
      return $query->result();
-     // var_dump($query);
 }
     public function updateDishes($id) 
     {         
@@ -131,14 +130,6 @@ public function selectDish($id){
         $this->db->insert("tbl_dishes", $data);
     }
 
-    public function getDishOrder (){
-        //set currrent time zone in php to cambodia time +7
-    //     date_default_timezone_set("Asia/Phnom_Penh");
-    //     $created_date = date('Y-m-d');
-    //     $this->db->where('dish_active =','1');
-    //     $query  = $this->db->get_where ('tbl_dishes',array('dish_active' =>1));
-    //     return $query->result();  
-     }
     public function getMenu(){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -149,7 +140,7 @@ public function selectDish($id){
         $query = $this->db->get();
         return $query->result();
     }
-public  function    selectOrder($food_id){
+public  function  selectOrder($food_id){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
        $this->db->select('*');
@@ -160,16 +151,15 @@ public  function    selectOrder($food_id){
         $query = $this->db->get();
         return $query->result();
 }
-   public function createOrder($food_id, $qty){
+   public function createOrder($dish_id,$meal_time_id){
         // set currrent time zone in php to cambodia time +7
         date_default_timezone_set("Asia/Phnom_Penh");
         $created_date = date('Y-m-d');
         $current_logged_in =  $this->session->userdata('id');
-
         // Insert order
         $data_order = array(
-            'quantity'=> $qty,
-            'meal_time' => "Break fast",
+            'quantity'=> $this->input->post('quantity'),
+            'meal_time' => $meal_time_id,
             'date' => $created_date
         );
         $this->db->insert('tbl_order', $data_order);
@@ -180,11 +170,10 @@ public  function    selectOrder($food_id){
         // Insert dish user
         $data_dish = array(
           'user_id' => $current_logged_in,
-          'dish_id' => $food_id,
+          'dish_id' => $dish_id,
           'order_id' => $order_id
         );
         $result = $this->db->insert('tbl_dish_user', $data_dish);
-        return $result;
     }
 
     public function preOrderList()
