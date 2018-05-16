@@ -199,7 +199,7 @@ public  function    selectOrder($food_id){
     }
 
     public function userOrderList(){
-      $this->db->select('users.id as userId,
+      $this->db->select('users.card_id as userId,
                     CONCAT(users.firstname," ",users.lastname) AS userName,
                     users.class_name,
                     dishes.dish_name as dishName,

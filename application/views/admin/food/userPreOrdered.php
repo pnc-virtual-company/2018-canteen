@@ -22,7 +22,7 @@
 <main class="app-content">
   <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i>Student Pre-Ordered</h1>
+            <h1><i class="fa fa-dashboard"></i>User Pre-Ordered Detail</h1>
             <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
   </div>
@@ -31,9 +31,9 @@
         <table id="food" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="thead-dark">
               <tr>
-                  <th>Student ID</th>
-                  <th>Student Name</th>
-                  <th>Student Class</th>
+                  <th>Card ID</th>
+                  <th>User Ordered Name</th>
+                  <th>Department Name</th>
                   <th>Pre-Order Quantity</th>
                   <th>Payment</th>
               </tr>

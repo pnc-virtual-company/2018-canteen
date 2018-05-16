@@ -33,7 +33,7 @@
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/createUser"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new user</a></li>
+          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/createUser"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new Staff</a></li>
 
         </ul>
   </div>
@@ -46,7 +46,7 @@
                   <th>User Name</th>
                   <th>Gender</th>
                   <th>Email</th>
-                  <th>Class Name</th> 
+                  <th>Department Name</th> 
                   <th>User Role</th>
                   <th>Action</th>
               </tr>

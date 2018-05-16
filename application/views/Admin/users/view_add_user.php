@@ -7,7 +7,7 @@
 <div class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Add new user</h1>
+          <h1><i class="fa fa-dashboard"></i>Form To Create New Staff</h1>
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -19,7 +19,7 @@
       <div class="col-sm-10">
         <div class="card bg-default ">
           <div class="card-body text-white">
-          <h1 class="text-center">Add New User</h1>
+          <h1 class="text-center">Add New Staff</h1>
            <form action="<?php echo base_url(); ?>admin/user/createUser" enctype="multipart/form-data" method="POST">
               <div class="row">
                 <div class="form-group col">
@@ -34,7 +34,7 @@
               <div class="row">
                 <div class="form-group col">
                   <label for="username"><strong>Login Name</strong></label>
-                  <input type="text" name="loginname" class="form-control" placeholder="username" required>
+                  <input type="text" name="loginname" class="form-control" placeholder="login Name" required>
                 </div>
                 <div class="form-group col">
                   <label for="email"><strong>Email</strong></label>
@@ -43,12 +43,12 @@
               </div>
               <div class="row">
                 <div class="form-group col">
-                  <label for="class"><strong>Class Name</strong></label>
-                  <input type="text" name="classname" class="form-control" placeholder="WEP-2018" required>
+                  <label for="class"><strong>Department Name</strong></label>
+                  <input type="text" name="classname" class="form-control" placeholder="Department Name" required>
                 </div>
                 <div class="form-group col">
                   <label for="cardId"><strong>Card ID</strong></label>
-                  <input type="text" class="form-control" placeholder="PNC2018-009" required name="cardid">
+                  <input type="text" class="form-control" required name="cardid" placeholder="Staff ID">
                 </div>
               </div>
               <div class="row">
