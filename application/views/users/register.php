@@ -84,11 +84,7 @@
               $('#formLogin').submit();
           }
       });
-<<<<<<< Updated upstream
-    });s
-=======
     });
->>>>>>> Stashed changes
   function goBack() {
     window.history.back();
 }
