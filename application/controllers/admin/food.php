@@ -25,6 +25,21 @@ class food extends CI_Controller {
         $data['dishes'] = $this->Dishes_model->getDishes();
         $data['title'] = 'List of Dishes';
         $data['activeLink'] = 'users';
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('Admin/food/listDish', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+    /**
+     * Display the list of all water food
+     * @author khai hok <khai.hok.passerellesnumeriques.org>
+     */
+    public function waterFood() {
+        $this->load->helper('form');
+        // $data['users'] = $this->users_model->getUsersAndRoles();
+        $data['title'] = 'List water food';
+        $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
@@ -40,6 +55,25 @@ class food extends CI_Controller {
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('admin/food/favouriteFoods', $data);
         $this->load->view('templates/footer', $data);
+    }
+
+  /**
+     * viewDishDetail
+     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
+     */
+    public function viewDishDetail(){
+        $dishId = $this->uri->segment('4');
+        $this->load->helper('form');
+        $this->load->model('Dishes_model');
+        $data['dishes'] = $this->Dishes_model->viewDetail($dishId);
+       $data['title'] = 'List Favourite Food';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('dishes/viewDishDetail', $data);
+        $this->load->view('templates/footer', $data);
+        
     }
 
    // // Start update dishes
@@ -167,4 +201,16 @@ class food extends CI_Controller {
         $this->load->view('templates/footer', $data);
     }
     
+ public function selectDish() {
+    $id = $this->uri->segment(4);
+    $data['select_dishes'] = $this->Dishes_model->selectDish($id);
+    $data['title'] = 'List of Dishes';
+    $data['activeLink'] = 'users';
+    $this->load->view('templates/header');
+    $this->load->view('menu/admin_dasboard');
+    $this->load->view('dishes/updateDish', $data);
+    $this->load->view('templates/footer');
+}
+
+
 }
