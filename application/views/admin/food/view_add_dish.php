@@ -45,6 +45,17 @@
 			      <input type="date" class="form-control" name="dishdate" required placeholder="Choose add date">
 			    </div>
 			    
+			    <div class="form-group">
+			      <label for="dishDescription">Dish time</label><br>
+			      	<select name="plate" class="form-control" id="recipient-name" >
+						<?php 
+							$type  = array("Breakfast","Lunch","Dinner");
+							         	foreach ($type as  $value) {
+							           		echo "<option>".$value."</option>";
+							           			}
+							           	?>
+				</select>	
+			    </div>
 			    <br>
 			    <button type="submit" class="btn btn-danger float-left">Cancel</button>
 			    <button type="submit" class="btn btn-success float-right" value="upload">Add Dish</button>

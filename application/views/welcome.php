@@ -3,23 +3,23 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css">
 		<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
-		<dsiv class="row">
+		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
 				  <br>
 				  <i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i><span>&nbsp; Canteen Manager</span>
-				  <p>Dear all, I have release new kind of food, it would be cooked if everyone commented and click interest as rating the food, I will see that if the following food get more interest will be noted into daily menu.</p>
-				
-				 <div class="card">
+				<p>This is the food that I will cook tommorrow so everyone can order now </p>
+				  <div class="row">
+				   <?php foreach ($dishesOrder as $dish) {    ?>	
+			<div class="col-md-6">	
+				 <div class="card card-columns">
 				    <!-- <div class="card-header">Header</div> -->
 				    <div class="card-body">
-				    	<div class="row">
-
-					    	<div class="col-md-6">
-								<img src="<?php echo base_url();?>assets/images/food2.jpg" alt="">
-							</div>
-							
-						</div>
+				    	<div class="row">				    		
+					    	<div class="col-md-6 text-center">
+					    		<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" alt="" style="width: 400px; height: 300px;">
+					    	</div>							    	
+					</div><br>				    	
 				    </div> 
 				    <div class="card-footer">
 				    	<div class="container">
@@ -27,19 +27,20 @@
 				    			 <?php if($this->session->loggedIn === TRUE) { ?>
 				    			<div class="col-md-4">
 				    				<a href="#" >45&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
-				    			</div>
-						    	<div class="col-md-4 item">
-						    		<a href="#" data-toggle="modal" data-target="#exampleModal" 
-						    		data-whatever="@getbootstrap"><i class="mdi mdi-rice  "></i>&nbsp;Order</a>
-						    	</div>
+				    			</div>				    			
+						    	<div class="col-md-4 item" id="food">
+						    		 <a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class=" view_data"><i class="mdi mdi-rice "></i>Order</a>	
+                   </div>			    					    	
 						    	<div class="col-md-4">
 						    		<a href="#" id="recomment"><i class="mdi mdi-comment  "></i>&nbsp; Recomment</a>
 						    	</div>
 						    	<?php } ?>
 				    		</div>
-				    	</div>
-				    	
-				    </div>
+				    	</div>				    	
+				    </div>				  				 
+				</div>					 
+			</div>
+				   <?php } ?>
 				 </div>
 				   <div class="user-comment">
 					 	<img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:80%">   
@@ -50,7 +51,7 @@
 		</div>
 	</div>
 	<!-- create modal of order item -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -59,92 +60,29 @@
 				          <span aria-hidden="true">&times;</span>
 				        </button>
 				      </div>
-				      <div class="modal-body">
-				        <form>
-				        	<div class="row">
-				        		<div class="col-6">
-	        	<div class="row">
-				        		<div class="col-6">
-				        			<div class="form-group">
-						          	<label for="recipient-name" class="col-form-label">choose food</label>
-						           <img src="" alt="">
-						          </div>		        			
-				        		</div>
-				        		<div class="col-6">
-				        			<div class="form-group">
-						          	<label for="recipient-name" class="col-form-label">Quantity</label>
-						           	<select name="plate" class="form-control" id="recipient-name" >
-						           			<?php 
-						           				$price  = array(0,1000, 1500, 2000);
-						           			foreach ($price as  $value) {
-						           				echo "<option>".$value."</option>";
-						           				}
-						           			?>
-						           </select>	
+				      <div class="modal-body" id="data">
 
-						          </div>
-				        			
-				        		</div>
-				        		<div class="col-6">
-				        			<div class="form-group">
-						          	<label for="recipient-name" class="col-form-label">choose food</label>
-						           <img src="" alt="">
-						          </div>		        			
-				        		</div>
-				        		<div class="col-6">
-				        			 <div class="form-group">
-				        			  <label for="recipient-name" class="col-form-label">Quantity</label>
-				        			 <select name="plate" class="form-control" id="recipient-name" >
-				        			 	<?php 
-				        			 		$plates  = array(0 ,1, 2, 3 , 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 ,25);
-				        			 	foreach ($plates as  $value) {
-				        			 		echo "<option>".$value."</option>";
-				        			 		}
-				        			 	?>
-				        			 </select>	
-				        			</div>
-				        		</div>
-				        	</div>
-				        	
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-				        <button type="button" class="btn btn-success" data-dismiss="modal">Order Now</button>
-				      </div>
 				    </div>
 				  </div>
 				</div>
 			
 	<!-- End of modal creation -->
+
 <script>
-	$(function() {
-		var comment = "";
-	   $('#recomment').click(function() {
-	   	bootbox.prompt({
-	   	    title: " ",
-	   	    inputType: 'textarea',
-	   	    placeholder: 'Leave your recomment here...',
-	   	    buttons: {
-	   	        confirm: {
-	   	            label: 'Comment',
-	   	            className: 'btn-success'
-	   	        },
-	   	        cancel: {
-	   	            label: 'Cancel',
-	   	            className: 'btn-danger'
-	   	        }
-	   	    },
-	   	    callback: function (result) {
-	   	       return result;
-	   	    }
-	   	});
-	  });
-	   $('.datepicker').datepicker({
-	     orientation:"bottom",
-	     todayBtn: true,
-	     todayHighlight: true,
-	     autoclose:true,
-	   });
-	});
+	$(document).ready(function(){  
+      $('.view_data').click(function(){  
+           var dish_id = $(this).attr("id");  
+           $.ajax({  
+                url:"<?php echo base_url() ?>Welcome/getDish",  
+                method:"post",  
+                data:{dish_id:dish_id},  
+                success:function(data){ 
+                $("#data").html(data);
+           			$('#dataModal').modal("show");
+                }  
+           });  
+      });  
+ });  
 </script>
 
      

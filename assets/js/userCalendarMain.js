@@ -16,14 +16,27 @@ $(function(){
         },
         // Get all events stored in database
         eventLimit: true, // allow "more" link when too many events
-        events: base_url+'calendar/getEvents',
+        events: base_url+'calendar/getDinnerEvents',
         selectHelper: true,
         editable: false, // Make the event resizable true           
             select: function(start, end) {
                 
                 $('#start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
                 $('#end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
-                 // Open modal to add event
+                    // Open modal to add event
+                    modal({
+                // Available buttons when editing
+                buttons: {
+                    join: {
+                        id: 'cancel-event',
+                        css: 'btn-danger',
+                        label: 'Cancel'
+                    }
+                },
+                title: 'Event name "' + calEvent.title + '"',
+                event: calEvent
+            });
+          
             }, 
            
         // Event Mouseover
@@ -53,15 +66,23 @@ $(function(){
             modal({
                 // Available buttons when editing
                 buttons: {
-                    update: {
+                    join: {
                         id: 'join-event',
                         css: 'btn-success',
                         label: 'OK'
+                    },
+                    cancel: {
+                        id: 'cancel-event',
+                        css: 'btn-danger',
+                        label: 'Cancel'
                     }
                 },
-                title: 'Join Event "' + calEvent.title + '"',
+                title: 'Event name "' + calEvent.title + '"',
                 event: calEvent
             });
+
+             
+            
         }
     });
 
@@ -76,14 +97,16 @@ $(function(){
                 + button.id  + '" class="btn ' + button.css + '">' + button.label + '</button>')
         })
         //Show Modal
-        $('.modal').modal('show');
+        $('#join_modal').modal('show');
+        // $('#cancel_modal').modal('show');
     }
-    
+
     // Handle click on join event Button
      $('.modal').on('click', '#join-event',  function(e){
-                // var userName = $(this).attr("id");
-                // alert(userName);
-                
+        /*Do something to get value to database*/
+                var userName = $(this).attr("id");
+                alert(userName);
+
             $.post(base_url+'calendar/userJoinEvent', {
                 start: $('#start').val(),
                 end: $('#end').val()

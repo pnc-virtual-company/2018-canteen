@@ -16,7 +16,7 @@ $(function(){
         },
         // Get all events stored in database
         eventLimit: true, // allow "more" link when too many events
-        events: base_url+'calendar/getLunchEvents',
+        events: base_url+'calendar/getDinnerEvents',
         selectable: true,
         selectHelper: true,
         editable: true, // Make the event resizable true           
@@ -34,7 +34,7 @@ $(function(){
                         label: 'Add Event' // Buttons label
                     }
                 },
-                title: 'Add New Lunch Event' // Modal title
+                title: 'Add New Dinner Event' // Modal title
             });
             }, 
            
@@ -47,7 +47,7 @@ $(function(){
                 end = start;
             }         
                        
-               $.post(base_url+'calendar/dragUpdateEvent',{                            
+               $.post(base_url+'calendar/dragUpdateDinnerEvent',{                            
                 id:event.id,
                 start : start,
                 end :end
@@ -64,7 +64,7 @@ $(function(){
                 end = start;
             }         
                        
-               $.post(base_url+'calendar/dragUpdateEvent',{                            
+               $.post(base_url+'calendar/dragUpdateDinnerEvent',{                            
                 id:event.id,
                 start : start,
                 end :end
@@ -132,7 +132,7 @@ $(function(){
         $('#title').val(data.event ? data.event.title : '');        
         $('#description').val(data.event ? data.event.description : '');
         $('#color').val(data.event ? data.event.color : '#3a87ad');
-        // $('#crud-form').val(data.event ? data.event.event : '');
+        $('#crud-form').val(data.event ? data.event.event : '');
         // Create Butttons
         $.each(data.buttons, function(index, button){
             $('.modal-footer').prepend('<button type="button" id="' 
@@ -145,11 +145,11 @@ $(function(){
     // Handle Click on Add Button
     $('.modal').on('click', '#add-event',  function(e){
         if(validator(['title', 'description'])) {
-            $.post(base_url+'calendar/addLunchEvent', {
+            $.post(base_url+'calendar/addDinnerEvent', {
                 title: $('#title').val(),
                 description: $('#description').val(),
                 color: $('#color').val(),
-                // event: $("form input[type='radio']:checked").val(),
+                event: $("form input[type='radio']:checked").val(),
                 start: $('#start').val(),
                 end: $('#end').val()
             }, function(result){
@@ -165,12 +165,12 @@ $(function(){
     // Handle click on Update Button
     $('.modal').on('click', '#update-event',  function(e){
         if(validator(['title', 'description'])) {
-            $.post(base_url+'calendar/updateLunchEvent', {
+            $.post(base_url+'calendar/updateDinnerEvent', {
                 id: currentEvent._id,
                 title: $('#title').val(),
                 description: $('#description').val(),
                 color: $('#color').val(),
-                // event: $("form input[type='radio']:checked").val()
+                event: $("form input[type='radio']:checked").val()
             }, function(result){
                 $('.alert').addClass('alert-success').text('Event updated successfuly');
                 $('.modal').modal('hide');
@@ -183,7 +183,7 @@ $(function(){
 
     // Handle Click on Delete Button
     $('.modal').on('click', '#delete-event',  function(e){
-        $.get(base_url+'calendar/deleteEvent?id=' + currentEvent._id, function(result){
+        $.get(base_url+'calendar/deleteDinnerEvent?id=' + currentEvent._id, function(result){
             $('.alert').addClass('alert-success').text('Event deleted successfully !');
             $('.modal').modal('hide');
             $('#calendar').fullCalendar("refetchEvents");

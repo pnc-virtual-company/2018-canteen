@@ -1,5 +1,21 @@
 <?php 
 	class  Email extends CI_Controller {
+		   public function __construct() {
+        parent::__construct();
+        log_message('debug', 'URI=' . $this->uri->uri_string());
+        $this->session->set_userdata('last_page', $this->uri->uri_string());
+        if($this->session->loggedIn === TRUE) {
+           // Allowed methods
+           if ($this->session->isAdmin || $this->session->isSuperAdmin) {
+             //User management is reserved to admins and super admins
+           } else {
+             redirect('errors/privileges');
+           }
+         } else {
+           redirect('connection/login');
+         }
+        $this->load->model('users_model');
+    }
 
 		function index(){
 			$config = array(
@@ -11,8 +27,8 @@
 			);
 			$this->load->library('email',$config);
 			$this->email->set_newline("\r\n");
-			$this->email->from('sun.meas@student.passerellesnumeriques.org','Sun Meas');
-			$this->email->to('meassun2014@gmail.com');
+			$this->email->from('sun.meas@student.passerellesnumeriques.org','Admin & Finance');
+			$this->email->to('WEP2018 Cambodia');
 			$this->email->subject('This is an email testing');
 			$this->email->message('It is working . Greate!');
 

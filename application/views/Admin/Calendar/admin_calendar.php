@@ -14,7 +14,7 @@
         <script src='<?php echo base_url();?>assets/js/adminCalendarMain.js'></script>
         
         <div class="container"><br> <br>
-                <!-- Notification -->
+                <!-- alert message -->
                 <div class="row">
                  <div class="col-md-2"></div>
                         <div class="col-md-10">
@@ -55,6 +55,7 @@
                                 <label class="col-md-4 control-label" for="description">Email Content</label>
                                 <div class="col-md-6">
                                     <textarea class="form-control" id="description" name="description"></textarea>
+                                    <span class="help-block">Email send automatically to staffs.</span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -65,13 +66,14 @@
                                 </div>
                             </div>
 
-                              <div class="form-group">
+                           <!--    <div class="form-group">
                                 <label class="col-md-4 control-label" for="event">Event Time</label>
                                 <div class="col-md-6">
                                  <label><input type="radio" name="event[]" id="event" value="Monthly Dinner">&nbsp;Monthly  </label>&nbsp;
                                  <label><input type="radio" name="event[]" id="event" value="Weekly Dinner">&nbsp;Weekly  </label>
                                </div> 
-                            </div>    
+                            </div>   
+                             --> 
                         </form>
                     </div>
 
