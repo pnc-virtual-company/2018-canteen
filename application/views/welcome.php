@@ -32,7 +32,7 @@
 						    		 <a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
                    </div>			    					    	
 						    	<div class="col-md-4">
-						    		<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recomment</a>
+						    		<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
 						    	</div>
 						    	<?php } ?>
 				    		</div>
