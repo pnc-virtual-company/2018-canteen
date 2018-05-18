@@ -12,23 +12,23 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('getUserActive');
-    $data['user'] = $this->getUserActive->getActive();
-    $data['dishesOrder'] = $this->Dishes_model->getMenu();	
+	$this->load->model('getUserActive');
+    	$data['user'] = $this->getUserActive->getActive();
+    	$data['dishesOrder'] = $this->Dishes_model->getMenu();	
 		$data['page'] = 'welcome';
 		$this->load->view('layout', $data);
 	}
 
 	public function getDish(){
-		$this->load->model('getUserActive');
+$this->load->model('getUserActive');
     $data['user'] = $this->getUserActive->getActive();
-		$id = $this->input->post('dish_id');
+$id = $this->input->post('dish_id');
     $data['dishesOrder'] = $this->Dishes_model->selectDish($id);
     $output = "";	
 		foreach ($data['dishesOrder'] as $dish) 
 		{	
 			$output .= '
-								<form action="'.base_url().'admin/PreOrder/insertOrderInfo/'.$id.'/'.$dish->meal_time_id.'" method="post">			        
+				<form action="'.base_url().'admin/PreOrder/insertOrderInfo/'.$id.'/'.$dish->meal_time_id.'" method="post">			        
 				        	<div class="row">
 				        		<div class="col-6">
 				        			<div class="form-group text-center">				        			
@@ -62,5 +62,9 @@ class Welcome extends CI_Controller {
 			';
 		}
 		echo $output;
+	}
+
+	public function comment(){
+		
 	}
 }
