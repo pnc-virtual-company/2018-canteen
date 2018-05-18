@@ -83,12 +83,9 @@
       $('.form-control').keypress(function(event) {
           if (event.keyCode == 13 || event.which == 13) {
               $('#formLogin').submit();
-          }
-      });
-
+              }
+          });
     });
-
-
 
   function goBack() {
     window.history.back();

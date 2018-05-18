@@ -29,10 +29,10 @@
 				    				<a href="#" >45&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
 				    			</div>				    			
 						    	<div class="col-md-4 item" id="food">
-						    		 <a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class=" view_data"><i class="mdi mdi-rice "></i>Order</a>	
+						    		 <a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
                    </div>			    					    	
 						    	<div class="col-md-4">
-						    		<a href="#" id="recomment"><i class="mdi mdi-comment  "></i>&nbsp; Recomment</a>
+						    		<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recomment</a>
 						    	</div>
 						    	<?php } ?>
 				    		</div>
@@ -78,9 +78,16 @@
                 success:function(data){ 
                 $("#data").html(data);
            			$('#dataModal').modal("show");
+						      	$('.view_data').text("Edit Order");
                 }  
            });  
-      });  
+      });
+
+        $('#btn-order').click(function(){
+	           			if ($data != NULL) {
+						      	$('.view_data').text("Edit Order");
+	           			}
+					      });
  });  
 </script>
 
