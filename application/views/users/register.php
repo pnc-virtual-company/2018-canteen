@@ -58,6 +58,7 @@
                 <div class="form-group col">
                   <label for="image"><strong>Student Picture</strong></label>
                   <input type="file" class="form-control" required name="image">
+                  <p class="text-warning"><?php echo $error_msg ?></p>
                 </div>
               </div>
               <div class="form-group">
@@ -82,9 +83,16 @@
       $('.form-control').keypress(function(event) {
           if (event.keyCode == 13 || event.which == 13) {
               $('#formLogin').submit();
+<<<<<<< HEAD
           }
       });
     });s
+=======
+              }
+          });
+    });
+
+>>>>>>> 36f31af8406cb2ac2b6cea6b7b6e7e273ab089d8
   function goBack() {
     window.history.back();
 }

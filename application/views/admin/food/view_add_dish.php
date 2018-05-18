@@ -36,14 +36,22 @@
 			    </div>
 
 			    <div class="form-group">
+<<<<<<< HEAD
 			      <label for="pwd">Dish Description:</label>
 			      <input type="text" class="form-control" name="dishdescription" required placeholder="Enter dish's description">
+=======
+			      <label for="pwd">Dish Image:</label>
+			      <input type="file" class="form-control" name="dishImage" required placeholder="Enter password">
+			       <!-- show error message when upload image -->
+			      <p><?php echo $error_msg ?></p> 
+>>>>>>> 36f31af8406cb2ac2b6cea6b7b6e7e273ab089d8
 			    </div>
 
 			    <div class="form-group">
 			      <label for="pwd">Dish Date:</label>
 			      <input type="date" class="form-control" name="dishdate" required placeholder="Choose add date">
 			    </div>
+<<<<<<< HEAD
 			    
 			    <div class="form-group">
 			      <label for="dishDescription">Dish time</label><br>
@@ -56,6 +64,8 @@
 							           	?>
 				</select>	
 			    </div>
+=======
+>>>>>>> 36f31af8406cb2ac2b6cea6b7b6e7e273ab089d8
 			    <br>
 			    <button type="submit" class="btn btn-danger float-left">Cancel</button>
 			    <button type="submit" class="btn btn-success float-right" value="upload">Add Dish</button>

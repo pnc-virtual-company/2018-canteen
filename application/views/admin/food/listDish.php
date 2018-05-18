@@ -34,7 +34,6 @@
         <table id="food" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="thead-dark">
               <tr>
-                  <th>Dish ID</th>
                   <th>Dish Name</th>
                   <th>Description</th>
                   <th>Action</th>
@@ -43,7 +42,6 @@
           <tbody>
             <?php foreach ($dishes as $dish):?>
                 <tr>
-                  <td><?php echo $dish->dish_id ?></td>
                   <td><?php echo $dish->dish_name ?></td>                 
                   <td><?php echo $dish->description ?></td>
                 <!--   <td>
@@ -51,7 +49,7 @@
                   </td> -->
                   <td>
 
-                      <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" 
+                      <a href="javascript:void()" title="View Dish" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" 
                       food_name="<?php echo $dish->dish_name ?>" 
                       food_img="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image ?>" 
                       food_desc="<?php echo $dish->description ?>" 
@@ -60,7 +58,7 @@
                       >
                         <span class="mdi mdi-eye-outline text-success" style="font-size: 20px;"></span>
                     </a>&nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>admin/food/updateDishes/<?php echo $dish->dish_id ?>" title="Edit user">
+                    <a href="<?php echo base_url() ?>admin/food/updateDishes/<?php echo $dish->dish_id ?>" title="Edit Dish">
                       <i class="mdi mdi-pencil" style="font-size: 20px;"></i>
                     </a>&nbsp;&nbsp;
                     <a href="<?php echo base_url() ?>admin/food/deleteDish/<?php echo $dish->dish_id ?>" class="confirm-delete text-danger" title="Delete Dish" style="font-size: 20px;">

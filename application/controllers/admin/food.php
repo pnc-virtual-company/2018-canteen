@@ -77,7 +77,7 @@ class food extends CI_Controller {
         
     }
 
-   // // Start update dishes
+    // Start update dishes
    public function updateDishes(){        
    $id = $this->uri->segment(4);        
    $data['select_dishes'] = $this->Dishes_model->selectDish($id);       
@@ -87,7 +87,7 @@ class food extends CI_Controller {
     $this->load->view('dishes/updateDish', $data);            
     $this->load->view('templates/footer');         
      // upload User image configuaration                
-     $config['upload_path'] = './assets/images/dish_uploads/';
+    $config['upload_path'] = './assets/images/dish_uploads/';
     $config['allowed_types']= 'gif|jpg|png';
     $config['max_size'] = 10000;
     $config['max_width']  = 1024;
@@ -96,7 +96,8 @@ class food extends CI_Controller {
     //Condition to know the if image insert or not                
     if ( ! $this->upload->do_upload('dishImage')) 
     {
-        echo $this->upload->display_errors();  // show error message                
+         echo $this->upload->display_errors();  // show error message     
+                
     }
     else                
     {                  
@@ -129,7 +130,7 @@ class food extends CI_Controller {
             $data['activeLink'] = 'users';
             $this->load->view('templates/header', $data);
             $this->load->view('menu/admin_dasboard', $data);
-            $this->load->view('admin/food/view_add_dish', $data);
+            
             $this->load->view('templates/footer', $data);
 
         // upload image config
@@ -144,7 +145,7 @@ class food extends CI_Controller {
                 //Condition to know the if image insert or not
                 if ( ! $this->upload->do_upload('dishImage'))
                 {
-                    echo $this->upload->display_errors();  // show error message
+                     $data['error_msg'] = $this->upload->display_errors();  // show error message
                 }
                 else
                 {
@@ -154,6 +155,7 @@ class food extends CI_Controller {
                         }
                 
                 }
+                $this->load->view('admin/food/view_add_dish', $data);
     }
 /**
      * show breakfast lunch and dinner in admin dashboard
@@ -233,5 +235,5 @@ class food extends CI_Controller {
     $this->load->view('menu/admin_dasboard');
     $this->load->view('dishes/updateDish', $data);
     $this->load->view('templates/footer');
-        }
+}
 }
