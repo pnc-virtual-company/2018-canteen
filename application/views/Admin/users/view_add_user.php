@@ -59,6 +59,8 @@
                 <div class="form-group col">
                   <label for="image"><strong>Staff Picture</strong></label>
                   <input type="file" class="form-control" required name="userimage">
+                  <!-- show error message when upload image  -->
+                   <p><?php echo $error_msg ?></p> 
                 </div>
               </div>
               <div class="form-group">
@@ -76,7 +78,7 @@
       <div class="col-md-1"></div>
     </div>
   </div>
-</div> <!-- /container -->
+</div> <!-- /container
 
 <script>
     $(function(){

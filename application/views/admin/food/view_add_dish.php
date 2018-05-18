@@ -41,21 +41,12 @@
 			    <div class="form-group">
 			      <label for="pwd">Dish Image:</label>
 			      <input type="file" class="form-control" name="dishImage" required placeholder="Enter password">
+			       <!-- show error message when upload image -->
+			      <p><?php echo $error_msg ?></p> 
 			    </div>
 			    <div class="form-group">
 			      <label for="dishDescription">Dish Description:</label>
 			      <textarea name="dishDescription" cols="30" rows="4" class="form-control"></textarea>
-			    </div>
-			    <div class="form-group">
-			      <label for="dishDescription">Dish time</label><br>
-			      	<select name="plate" class="form-control" id="recipient-name" >
-						<?php 
-							$type  = array("Breakfast","Lunch","Dinner");
-							         	foreach ($type as  $value) {
-							           		echo "<option>".$value."</option>";
-							           			}
-							           	?>
-				</select>	
 			    </div>
 			    <br>
 			    <button type="button" class="btn btn-danger float-left" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>

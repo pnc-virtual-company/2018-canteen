@@ -61,7 +61,6 @@
 				        </button>
 				      </div>
 				      <div class="modal-body" id="data">
-
 				    </div>
 				  </div>
 				</div>
