@@ -56,7 +56,7 @@ class Welcome extends CI_Controller {
 					</div>				        					        	
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-				        <button type="submit" class="btn btn-success">Order Now</button>
+				        <button type="submit" class="btn btn-success" id="btn-order">Order Now</button>
 				      </div>
 				  </form>
 			';
