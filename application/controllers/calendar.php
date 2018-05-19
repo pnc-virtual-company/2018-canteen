@@ -1,7 +1,12 @@
 
 <?php 
-Class calendar extends CI_Controller{
 
+/**
+ * CRUD that related to Calendar and sending email in the database.
+ * @return int number of affected rows
+ * @author sun MEAS <sun.meas@gmail.com>
+ */
+Class calendar extends CI_Controller{
 	// stuff calendar
 	function getJoinDinnerEvent(){
 		$this->load->model('getUserActive');
@@ -20,15 +25,6 @@ Class calendar extends CI_Controller{
 		$this->load->view('admin/Calendar/admin_calendar', $data);
 	        	$this->load->view('templates/footer', $data);
 	}	
-
-	function getRegister(){
-		$data['title'] = 'Calendar';
-		$data['page'] = 'Calendar/admin_calendar';
-	        	$this->load->view('templates/header', $data);
-	       	$this->load->view('menu/admin_dasboard', $data);
-		$this->load->view('Admin/Calendar/admin_calendar', $data);
-	        	$this->load->view('templates/footer', $data);
-	}
 	function getDinnerEvent(){
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/admin_calendar';
@@ -73,7 +69,8 @@ Class calendar extends CI_Controller{
 
 	Public function getDinnerEvents()
 	{
-		$result=$this->Calendar_model->getDinnerEvents();
+   		 $Dinner_ID = $this->uri->segment(4); 
+		$result=$this->Calendar_model->getDinnerEvents($Dinner_ID);
 		echo json_encode($result);
 	}
 	/*Add new event */
@@ -106,7 +103,5 @@ Class calendar extends CI_Controller{
 		$result=$this->Calendar_model->userJoinEvent();
 		echo $result;
 	}
-
-
 }
  ?>
