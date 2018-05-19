@@ -83,10 +83,16 @@
       $('.form-control').keypress(function(event) {
           if (event.keyCode == 13 || event.which == 13) {
               $('#formLogin').submit();
+<<<<<<< HEAD
+          }
+      });
+    });s
+=======
               }
           });
     });
 
+>>>>>>> 36f31af8406cb2ac2b6cea6b7b6e7e273ab089d8
   function goBack() {
     window.history.back();
 }

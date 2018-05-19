@@ -22,7 +22,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
         <a class="btn text-white" href="<?php echo base_url() ?>dishes/favouriteFood"><i class="mdi mdi-heart"></i>&nbsp;&nbsp;Favorite Food</a>
       </li>
       <li class="nav-item">
-        <a class=" btn text-white" href="<?php echo base_url() ?>calendar/getStuffCalendar"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
+        <a class=" btn text-white" href="<?php echo base_url() ?>calendar/getJoinDinnerEvent"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
       </li>
     </ul>
     </div>

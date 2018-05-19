@@ -1,115 +1,87 @@
-<div class="app-content">
-<!--     <div class="app-title">
-        <div>
-          <h1><i class="fa fa-dashboard"></i>Create Staff Event</h1>
-          <p>This application is very useful for admin and finance to manage their needs.</p>
-        </div>
-  </div> -->
-<!-- create modal of order item -->
-   <img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:70%">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Please Leave your event information</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form  action="<?php echo base_url();?>calendar/addEvent" class="form-horizontal" method="post">
+        <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href='<?php echo base_url();?>assets/css/fullcalendar.css' rel='stylesheet' />
+        <link href="<?php echo base_url();?>assets/css/bootstrapValidator.min.css" rel="stylesheet" />        
+        <link href="<?php echo base_url();?>assets/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+        <!-- Custom css  -->
+        <link href="<?php echo base_url();?>assets/css/custom.css" rel="stylesheet" />
+
+        <script src='<?php echo base_url();?>assets/js/moment.min.js'></script>
+        <script src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/bootstrapValidator.min.js"></script>
+        <script src="<?php echo base_url();?>assets/js/fullcalendar.min.js"></script>
+        <script src='<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js'></script>
+        <script src='<?php echo base_url();?>assets/js/adminCalendarMain.js'></script>
+        
+        <div class="container"><br> <br>
+                <!-- alert message -->
                 <div class="row">
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label class="col-form-label text-bold">Event Title:</label>
-                      <input type="text" class="form-control" id="event_title" placeholder="Event title..." >
-                    </div>
-                  </div>
-                    
-                  </div>
-                  <div class="row">
-                  <div class="col-12">
-                     <div class="form-group">
-                      <label class="col-form-label">Email Content:</label>
-                      <textarea type="text" class="form-control" id="content_email" rows="4" cols="50" placeholder="Email Content..."></textarea> 
-                    </div> 
-                  </div>
+                 <div class="col-md-2"></div>
+                        <div class="col-md-10">
+                                <div class="alert"></div>
+                        </div>
                 </div>
-              </form>
+            <div class="row clearfix">
+                <div class="col-md-2 column"></div>
+                <div class="col-md-10 column">
+                        <div id='calendar'></div>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Add Event</button>
-            </div>
-          </div>
         </div>
-      </div>
-<!-- End of modal creation -->
-<script type="text/javascript">
-$(document).ready(function() {
-  $('.datepicker').datepicker({
-    orientation:"bottom",
-    todayBtn: true,
-    todayHighlight: true,
-    autoclose:true,
-  });
-});
-</script>
-<script>
-  $(document).ready(function() {
 
-         $('#calendar').fullCalendar({
-             header: {
-                 left: 'prev,next today',
-                 center: 'title',
-                 right: 'month,agendaWeek,agendaDay'
-             },
-             defaultDate: '2016-09-12',
-             navLinks: true, // can click day/week names to navigate views
-             selectable: true,
-             selectHelper: true,
-             select: function(start, end) {
-                 // Display the modal.
-                 // You could fill in the start and end fields based on the parameters
-                 $('.modal').modal('show');
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    </div>
 
-             },
-             eventClick: function(event, element) {
-                 // Display the modal and set the values to the event values.
-                 $('.modal').modal('show');
-                 $('.modal').find('#title').val(event.title);
-                 $('.modal').find('#starts-at').val(event.start);
-                 $('.modal').find('#ends-at').val(event.end);
+                    <div class="modal-body"><br>    
+                       
+                        <div class="error"></div>
+                        <form class="form-horizontal" id="crud-form" >
+                        <input type="hidden" id="start">
+                        <input type="hidden" id="end">
+                        
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="title">Event Title</label>
+                                <div class="col-md-6">
+                                    <input id="title" name="title" type="text" class="form-control input-md" />
+                                </div>
+                            </div>   
 
-             },
-             editable: true,
-             eventLimit: true // allow "more" link when too many events
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="description">Email Content</label>
+                                <div class="col-md-6">
+                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                    <span class="help-block">Email send automatically to staffs.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="color">Event Color</label>
+                                <div class="col-md-6">
+                                    <input id="color" name="color" type="text" class="form-control input-md" readonly="readonly" />
+                                    <span class="help-block">Click to pick the presentative color</span>
+                                </div>
+                            </div>
 
-         });
+                           <!--    <div class="form-group">
+                                <label class="col-md-4 control-label" for="event">Event Time</label>
+                                <div class="col-md-6">
+                                 <label><input type="radio" name="event[]" id="event" value="Monthly Dinner">&nbsp;Monthly  </label>&nbsp;
+                                 <label><input type="radio" name="event[]" id="event" value="Weekly Dinner">&nbsp;Weekly  </label>
+                               </div> 
+                            </div>   
+                             --> 
+                        </form>
+                    </div>
 
-         // Bind the dates to datetimepicker.
-         // You should pass the options you need
-         $("#starts-at, #ends-at").datetimepicker();
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
 
-         // Whenever the user clicks on the "save" button om the dialog
-         $('#save-event').on('click', function() {
-             var title = $('#title').val();
-             if (title) {
-                 var eventData = {
-                     title: title,
-                     start: $('#starts-at').val(),
-                     end: $('#ends-at').val()
-                 };
-                 $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-             }
-             $('#calendar').fullCalendar('unselect');
+                </div>
+            </div>
+        </div>
 
-             // Clear modal inputs
-             $('.modal').find('input').val('');
-
-             // hide modal
-             $('.modal').modal('hide');
-         });
-     });
-</script>
-</div>
