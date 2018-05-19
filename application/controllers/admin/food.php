@@ -226,7 +226,6 @@ class food extends CI_Controller {
         $this->load->view('templates/footer', $data);
     }
     
-
  public function selectDish() {
     $id = $this->uri->segment(4);
     $data['select_dishes'] = $this->Dishes_model->selectDish($id);
