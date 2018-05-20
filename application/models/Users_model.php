@@ -409,6 +409,31 @@ class Users_model extends CI_Model {
         // insert array value to database
         $this->db->insert("tbl_users", $data);
     }
-    
+
+
+    /**
+     * Select a given user that join event in the database.
+     * @return int number of affected rows
+     * @author sun MEAS <sun.meas@gmail.com>
+     */
+
+    /*Function get all particapate of event lunch*/
+    public function getListParticipate(){
+         $query = $this->db->query('SELECT 
+                    staffParticpate.*, 
+                    lunchEvent.title AS "Title",
+                    users.class_name AS "ClassName",
+                    CONCAT(users.firstname , " " , users.lastname) AS "Staff_name"
+                    FROM tbl_staff_participation staffParticpate
+                    INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id
+                    INNER JOIN tbl_users users ON users.id = staffParticpate.user_id');
+                return $query->result();
+    }     
+
+    /*Function get status of event lunch*/
+    public function getStaffStatus(){
+         $query = $this->db->query('SELECT * FROM tbl_staff_participation');
+                return $query->result();
+    }   
 
 }
