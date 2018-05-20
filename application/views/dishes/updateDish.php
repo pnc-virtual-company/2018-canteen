@@ -60,7 +60,7 @@ label{
 					<div class="row">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<button type="button" class="btn btn-danger float-left" onclick="goBack()"><span class="mdi mdi-cancel"></span>&nbsp;&nbsp;Cancel</button>
+							<a href="<?php echo base_url(); ?>admin/food/listDish" class="btn btn-danger float-left"><span class="mdi mdi-cancel"></span>&nbsp;&nbsp;Cancel</a>
 							<button type="submit" class="btn btn-warning float-right"><span class="mdi mdi-pencil" >&nbsp;&nbsp;Update Now</button>
 						</div>
 						<div class="col-md-2"></div>
@@ -73,20 +73,3 @@ label{
 	
 	</div>
 </main>
-<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css">
-  
-  <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-  $('.datepicker').datepicker({
-    orientation:"bottom",
-    todayBtn: true,
-    todayHighlight: true,
-    autoclose:true,
-  });
-});
-  function goBack() {
-    window.history.back();
-  }
-
-</script>
