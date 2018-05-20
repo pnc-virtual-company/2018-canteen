@@ -55,3 +55,9 @@
 		</div>
 		</div>
 		<div class="col-md-2"></div>
+<script>
+	function goBack() {
+  	window.history.back();
+	}
+</script>
+

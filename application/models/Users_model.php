@@ -28,6 +28,13 @@ class Users_model extends CI_Model {
      * @return array record of tbl_users
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
+
+    /// get roles from tbl_role
+     public function selectRole(){
+    $query = $this->db-query('select.*','tbl_roles');
+    return $query->result();
+ }
+
     public function getUsers($id = 0) {
         $this->db->select('tbl_users.*');
         if ($id === 0) {
@@ -168,6 +175,7 @@ class Users_model extends CI_Model {
             'gender'     => $this->input->post('gender'),
             'image'      => $this->upload->data()['file_name'],
             'password'   => $hash,
+            'role' =>$this->input->post('role')
         );
         // var_dump($data);die();
         $this->db->where('id', $this->uri->segment(4));
@@ -376,8 +384,9 @@ class Users_model extends CI_Model {
     }
 
     public function getListUsers(){
-        $query = $this->db->query("select  user.*, role.id as role, role.name as rolename from tbl_users as user inner join tbl_roles as role where user.role = role.id");
+        $query = $this->db->query("select  user.*, role.id as role, role.name as rolename from tbl_users as user inner join tbl_roles as role where user.role = role.id order by id DESC");
         return $query->result();
+        return $order_by->result();
     }    
 
     public function deleteUsers($id) {
@@ -392,7 +401,7 @@ class Users_model extends CI_Model {
         $this->upload->data()['file_name'];
         $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
         $hash = crypt($password, $salt);
-
+        $userRole = $this->input->post('userRole');
         $data =  array(
             'firstname'  => $this->input->post('firstname'),
             'lastname'   => $this->input->post('lastname'),
@@ -403,7 +412,7 @@ class Users_model extends CI_Model {
             'gender'     => $this->input->post('gender'),
             'image'      => $this->upload->data()['file_name'],
             'password'   => $hash,
-            'role'       => '3',
+            'role'       => $userRole,
             'active'     => '1'
         );
         // insert array value to database

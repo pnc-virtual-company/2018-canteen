@@ -47,7 +47,6 @@ class User extends CI_Controller {
         $data['title'] = 'Update Users';
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('admin/users/UpdateUsers', $data);
         $this->load->view('templates/footer', $data);
           // upload User image configuaration
                 $config['upload_path']          = './assets/images/user_uploads/';
@@ -61,7 +60,7 @@ class User extends CI_Controller {
                 //Condition to know the if image insert or not
                 if ( ! $this->upload->do_upload('image'))
                 {
-                    echo $this->upload->display_errors();  // show error message
+                    $data['error_msg'] = $this->upload->display_errors();  // show error message
                 }
                 else
                 {
@@ -71,6 +70,7 @@ class User extends CI_Controller {
                   }
                 
                 }
+                        $this->load->view('admin/users/UpdateUsers', $data);
 
 	}
 	public function createUser(){
@@ -78,7 +78,6 @@ class User extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('templates/footer', $data);
-
         // upload image config
                 $config['upload_path']          = './assets/images/user_uploads/';
                 $config['allowed_types']        = 'gif|jpg|png';
@@ -100,7 +99,6 @@ class User extends CI_Controller {
                     if($data){
                             redirect('admin/user/listUsers');
                         }
-                
                 }
                 $this->load->view('admin/users/view_add_user', $data);
         }

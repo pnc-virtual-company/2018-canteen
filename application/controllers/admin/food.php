@@ -192,6 +192,7 @@ class food extends CI_Controller {
             $this->load->view('dishes/dinner', $data);
             $this->load->view('templates/footer', $data);
     }
+    
    function addOrder(){
        // okay now let get value from form
         $food_ids = $this->input->post('fo_id');
