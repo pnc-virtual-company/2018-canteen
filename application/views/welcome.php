@@ -43,7 +43,7 @@
 				   <?php } ?>
 				 </div>
 				   <div class="user-comment">
-					 	<img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:80%">   
+					 	<!-- <img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:80%">    -->
 				   </div>
 			</div>
 		</div>

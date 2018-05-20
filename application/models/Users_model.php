@@ -428,6 +428,12 @@ class Users_model extends CI_Model {
                     INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id
                     INNER JOIN tbl_users users ON users.id = staffParticpate.user_id');
                 return $query->result();
-    }        
+    }     
+
+    /*Function get status of event lunch*/
+    public function getStaffStatus(){
+         $query = $this->db->query('SELECT * FROM tbl_staff_participation');
+                return $query->result();
+    }   
 
 }

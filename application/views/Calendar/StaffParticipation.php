@@ -60,10 +60,9 @@
        <select class="form-control"  name="status" id="">
         <?php 
         $status  = array('All','Confirmed', 'Not yet confirmed');
-            foreach ($status as  $value) {
-              echo "<option>".$value."</option>";
-            }
-        ?>
+            foreach ($status as  $value): ?>
+               <option value="<?php echo $value;?>"><?php echo $value; ?></option>
+            <?php endforeach;?>
       </select>
     </div>
   </div>

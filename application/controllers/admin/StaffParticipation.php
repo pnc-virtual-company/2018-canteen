@@ -21,6 +21,7 @@
        function getListParticipate(){
           $data['page'] = 'Calendar/StaffParticipation';
           $this->load->model('Users_model');
+           $data['status'] = $this->Users_model->getStaffStatus();
           $data['userParticipate'] = $this->Users_model->getListParticipate();
           $data['title'] = 'List of Participate';
           $this->load->view('templates/header', $data);
@@ -28,7 +29,6 @@
           $this->load->view('Calendar/StaffParticipation', $data);
           $this->load->view('templates/footer', $data);
         }
-
 
      }
  ?>

@@ -9,7 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class JoinDinner_model extends CI_Model { 
 
 	public function getUserJoinEvent($Dinner_ID){
-	     // set currrent time zone in php to cambodia time +7
 	     $current_logged_in =  $this->session->userdata('id');
 
 	     // Insert join user

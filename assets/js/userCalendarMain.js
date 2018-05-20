@@ -48,10 +48,15 @@ $(function(){
         eventClick: function(calEvent, jsEvent, view) {
             // Set currentEvent variable according to the event clicked in the calendar
             currentEvent = calEvent;
-            var Dinner_ID = $(this).attr("id");  
+            var Dinner_ID = $(this).attr("dinner_event_id");
+            $.post(base_url+'UserjoinEvent/insertUserJoinEvent', {
+                start: $('#start').val(),
+                end: $('#end').val()
+            }, function(result){
+                $('.modal').modal('hide');
+            });
             // Open modal to edit or delete event
             modal({
-                // Available buttons when editing
                 buttons: {
                     join: {
                         id: 'join-event',
@@ -82,8 +87,7 @@ $(function(){
     // Handle click on join event Button
      $('.modal').on('click', '#join-event',  function(e){
         /*Do something to get value to database*/
-            var Dinner_ID = $(this).attr("dinner_event_id");  
-            $.post(base_url+Dinner_ID+'UserjoinEvent/insertUserJoinEvent', {
+            $.post(base_url+'UserjoinEvent/insertUserJoinEvent', {
                 start: $('#start').val(),
                 end: $('#end').val()
             }, function(result){
