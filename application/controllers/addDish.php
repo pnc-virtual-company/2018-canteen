@@ -22,11 +22,10 @@ Class addDish extends CI_Controller{
 	function view_dish(){
 		$data['title'] = 'dishes';
 		$data['page'] = 'dishes/add_new_dish';
-      
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
+    $this->load->view('templates/header', $data);
+    $this->load->view('menu/admin_dasboard', $data);
 		$this->load->view('dishes/add_new_dish', $data);
-        $this->load->view('templates/footer', $data);
+    $this->load->view('templates/footer', $data);
 
 	}	
 
@@ -47,9 +46,8 @@ Class addDish extends CI_Controller{
 		$this->load->helper(array('form', 'url'));	
 		// $data = array('upload_data' => $this->upload->data());         
 		// $imageName = $this->upload->data()['file_name'];
-		
 		$data['upload_data'] = $this->upload->data();
-        $this->resize($data['upload_data']['upload_path'], $data['upload_data']['file_name']);
+        // $this->resize($data['upload_data']['upload_path'], $data['upload_data']['file_name']);
         $imageName = $data['upload_data']['file_name'];
 
 

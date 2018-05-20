@@ -238,4 +238,5 @@ class food extends CI_Controller {
     $this->load->view('dishes/updateDish', $data);
     $this->load->view('templates/footer');
 }
+
 }

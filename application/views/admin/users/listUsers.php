@@ -65,7 +65,7 @@
                     <img src="<?php echo base_url().'assets/uploads/'.$user->user_image ?>" alt="image" class="img-thumbnail" style="width:10%;">
                   </td> -->
                   <td>
-                    <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" title="View food" data-whatever="@getbootstrap" 
+                    <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" title="View User" data-whatever="@getbootstrap" 
                       user_name="<?php echo $user->firstname." ".$user->lastname  ?>" 
                       user_img="<?php echo base_url().'assets/images/user_uploads/'.$user->image ?>" 
                       user_fname="<?php echo $user->firstname ?>"
@@ -81,10 +81,10 @@
                     >
                       <span class="mdi mdi-eye-outline text-success" style="font-size: 20px;"></span>
                     </a>&nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>admin/User/updateUser/<?php echo $user->id ?>" title="Edit user">
+                    <a href="<?php echo base_url() ?>admin/User/updateUser/<?php echo $user->id ?>" title="Edit User">
                       <i class="mdi mdi-pencil" style="font-size: 20px;"></i>
                     </a>&nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>admin/User/deleteUser/<?php echo $user->id ?>" class="confirm-delete text-danger" title="Delete user" style="font-size: 20px;">
+                    <a href="<?php echo base_url() ?>admin/User/deleteUser/<?php echo $user->id ?>" class="confirm-delete text-danger" title="Delete User" style="font-size: 20px;">
                       <i class="mdi mdi-delete" onclick="return confirm('Are you sure to delete this user?')"></i>
                     </a>
                     </td>

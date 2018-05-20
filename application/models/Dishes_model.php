@@ -204,4 +204,16 @@ public  function  selectOrder($food_id){
       $query = $this->db->get();
       return $query->result();
     }
+    public function storeInterest($userId){
+        $query = $this->db->get_where('tbl_users',array('id' => $userId));
+        if($query){
+
+            $getData = array(
+                'id' => $value['$userId'],
+                 
+            );
+            $this->db->insert_batch('tbl_dish_user', $getData);
+        }
+        
+    }
 }

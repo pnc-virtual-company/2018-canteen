@@ -11,8 +11,8 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-dashboard"></i>Post Your Favorit Food</h1>
-      <p>All best food in Passerelles Numeriques Cambodai canteen</p>
+      <h1><i class="fa fa-dashboard"></i>Create Menu For Today</h1>
+      <p>There are a lot of food to cook for PNC students and stafs.</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Food</a></li>

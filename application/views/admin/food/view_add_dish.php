@@ -1,7 +1,7 @@
 <style>
 	.jumbotron{
 		box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color:#009688;
+    		background-color:#009688;
 	}
 </style>
 <div class="app-content">
@@ -49,7 +49,7 @@
 			      <textarea name="dishDescription" cols="30" rows="4" class="form-control"></textarea>
 			    </div>
 			    <br>
-			    <a href="<?php echo base_url() ?>admin/food/listDish" type="button" class="btn btn-danger float-left"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
+			    <a href="<?php echo base_url() ?>admin/food/listDish" class="btn btn-danger float-left" ><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
 			    <button type="submit" class="btn btn-warning float-right" value="upload"><i class="mdi mdi-plus-circle-outline"></i>&nbsp;Add Dish</button>
 			</form>
 		</div>
