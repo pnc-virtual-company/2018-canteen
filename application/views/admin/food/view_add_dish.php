@@ -1,7 +1,7 @@
 <style>
 	.jumbotron{
 		box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color:#009688;
+    		background-color:#009688;
 	}
 </style>
 <div class="app-content">
