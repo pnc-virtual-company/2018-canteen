@@ -49,13 +49,12 @@
 			      <textarea name="dishDescription" cols="30" rows="4" class="form-control"></textarea>
 			    </div>
 			    <br>
-			    <button type="button" class="btn btn-danger float-left" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
+			    <a href="<?php echo base_url() ?>admin/food/listDish" type="button" class="btn btn-danger float-left"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
 			    <button type="submit" class="btn btn-warning float-right" value="upload"><i class="mdi mdi-plus-circle-outline"></i>&nbsp;Add Dish</button>
 			</form>
 		</div>
 		</div>
 		<div class="col-md-2"></div>
-	 
 <script>
 	function goBack() {
   	window.history.back();

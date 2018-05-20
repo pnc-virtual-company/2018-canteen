@@ -29,8 +29,10 @@ class Dishes_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getDishes() {
+        $this->db->order_by('dish_id', 'DESC');
         $query = $this->db->get('tbl_dishes'); 
         return $query->result();
+        // return $order->result();
     }
 
 
