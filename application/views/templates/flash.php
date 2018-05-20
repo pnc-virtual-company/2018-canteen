@@ -16,7 +16,7 @@
 <script type="text/javascript">
 //Flash message
 $(document).ready(function() {
-    $("#flashbox").alert();
+    $("#flashbox").fadeIn().delay(3000).fadeOut('slow');
 });
 </script>
 <?php } ?>

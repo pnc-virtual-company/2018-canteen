@@ -31,6 +31,7 @@
   </div>
     <div class="row">
       <div class="col-md-12">
+        <?php echo $flashPartialView;?>
         <table id="food" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="thead-dark">
               <tr>

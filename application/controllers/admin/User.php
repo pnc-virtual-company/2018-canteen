@@ -31,20 +31,35 @@ class User extends CI_Controller {
          }
         $this->load->model('users_model');
     }
+
+    public function index(){
+        $this->load->model('Users_model');
+        $data['users'] = $this->Users_model->getListUsers();
+        $data['title'] = 'List of Users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('admin/users/listUsers', $data);
+        $this->load->view('templates/footer', $data);
+
+    }
     
-	public function listUsers(){
+    public function listUsers(){
     $this->load->model('Users_model');
     $data['users'] = $this->Users_model->getListUsers();
     $data['title'] = 'List of Users';
+    $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
     $this->load->view('templates/header', $data);
     $this->load->view('menu/admin_dasboard', $data);
     $this->load->view('admin/users/listUsers', $data);
     $this->load->view('templates/footer', $data);
-	}
-	public function updateUser(){
+    }
+    public function updateUser(){
         $id = $this->uri->segment(4);
         $data['getUsersUpdate'] = $this->Users_model->getUsersUpdate($id);
+        $data['users'] = $this->Users_model->getListUsers();
         $data['title'] = 'Update Users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('admin/users/UpdateUsers', $data);
@@ -67,6 +82,7 @@ class User extends CI_Controller {
                 {
                   $data['users'] = $this->Users_model->updateUsers(); //load model
                   if($data){
+                    $this->session->set_flashdata('msg', 'The user has been updated.');
                       redirect('admin/User/listUsers');
                   }
                 
@@ -75,6 +91,7 @@ class User extends CI_Controller {
 	}
 	public function createUser(){
         $data['title'] = 'Create Users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('templates/footer', $data);
@@ -98,6 +115,7 @@ class User extends CI_Controller {
                     $this->load->model('Users_model');
                     $data['users'] = $this->Users_model->insertUser(); //load model
                     if($data){
+                          $this->session->set_flashdata('msg', 'User has been created.');
                             redirect('admin/user/listUsers');
                         }
                 
@@ -109,6 +127,7 @@ class User extends CI_Controller {
 
         $id = $this->uri->segment(4);
         $this->Users_model->deleteUsers($id);
+         $this->session->set_flashdata('msg', 'User has been deleted.');
         $this->listUsers();
 
 		
