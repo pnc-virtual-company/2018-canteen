@@ -31,23 +31,37 @@ class User extends CI_Controller {
          }
         $this->load->model('users_model');
     }
+
+    public function index(){
+        $this->load->model('Users_model');
+        $data['users'] = $this->Users_model->getListUsers();
+        $data['title'] = 'List of Users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('admin/users/listUsers', $data);
+        $this->load->view('templates/footer', $data);
+
+    }
     
-	public function listUsers(){
+    public function listUsers(){
     $this->load->model('Users_model');
     $data['users'] = $this->Users_model->getListUsers();
     $data['title'] = 'List of Users';
+    $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
     $this->load->view('templates/header', $data);
     $this->load->view('menu/admin_dasboard', $data);
     $this->load->view('admin/users/listUsers', $data);
     $this->load->view('templates/footer', $data);
-	}
-	public function updateUser(){
+    }
+    public function updateUser(){
         $id = $this->uri->segment(4);
         $data['getUsersUpdate'] = $this->Users_model->getUsersUpdate($id);
+        $data['users'] = $this->Users_model->getListUsers();
         $data['title'] = 'Update Users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('admin/users/UpdateUsers', $data);
         $this->load->view('templates/footer', $data);
           // upload User image configuaration
                 $config['upload_path']          = './assets/images/user_uploads/';
@@ -61,24 +75,26 @@ class User extends CI_Controller {
                 //Condition to know the if image insert or not
                 if ( ! $this->upload->do_upload('image'))
                 {
-                    echo $this->upload->display_errors();  // show error message
+                    $data['error_msg'] = $this->upload->display_errors();  // show error message
                 }
                 else
                 {
                   $data['users'] = $this->Users_model->updateUsers(); //load model
                   if($data){
+                    $this->session->set_flashdata('msg', 'The user has been updated.');
                       redirect('admin/User/listUsers');
                   }
                 
                 }
+                        $this->load->view('admin/users/UpdateUsers', $data);
 
 	}
 	public function createUser(){
         $data['title'] = 'Create Users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('templates/footer', $data);
-
         // upload image config
                 $config['upload_path']          = './assets/images/user_uploads/';
                 $config['allowed_types']        = 'gif|jpg|png';
@@ -98,9 +114,9 @@ class User extends CI_Controller {
                     $this->load->model('Users_model');
                     $data['users'] = $this->Users_model->insertUser(); //load model
                     if($data){
+                          $this->session->set_flashdata('msg', 'User has been created.');
                             redirect('admin/user/listUsers');
                         }
-                
                 }
                 $this->load->view('admin/users/view_add_user', $data);
         }
@@ -109,6 +125,7 @@ class User extends CI_Controller {
 
         $id = $this->uri->segment(4);
         $this->Users_model->deleteUsers($id);
+         $this->session->set_flashdata('msg', 'User has been deleted.');
         $this->listUsers();
 
 		

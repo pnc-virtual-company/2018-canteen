@@ -68,6 +68,21 @@
                 </div>
               </div>
               <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="">User Role</label>
+                    <select id="" class="form-control" name ="role">
+                      <option value="8">Supper admin</option>
+                        <option value="1">admin</option>
+                         <option value="2">normal user</option>
+                        <option value="3">staff</option>              
+                    </select>
+                </div>
+                 <div class="form-group col">
+                         <!-- show error message when upload image  -->
+                          <p><?php echo $error_msg ?></p>
+                      </div>
+              </div>
+              <div class="row">
                 <div class="form-group col">
                   <label for="gender"><strong>Gender</strong></label>
                   <input type="radio" name="gender" value="Male" 

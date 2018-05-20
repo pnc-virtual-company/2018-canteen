@@ -17,8 +17,11 @@
         <!-- alert message -->
         <div class="row">
          <div class="col-md-2"></div>
-                <div class="col-md-10">
+                <div class="col-md-8">
                         <div class="alert"></div>
+                </div>
+                <div class="col-md-2">
+                        <a href="<?php echo base_url() ?>admin/UserjoinEvent/getListJoinDinner" class="btn btn-primary">Dinner Report</a>
                 </div>
         </div>
     <div class="row clearfix">

@@ -1,4 +1,9 @@
 <?php
+/**
+ * CRUD that related to Calendar and sending email in the database.
+ * @return int number of affected rows
+ * @author sun MEAS <sun.meas@gmail.com>
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Calendar_model extends CI_Model {
@@ -48,7 +53,7 @@ class Calendar_model extends CI_Model {
 
 
 	/*Read the data from DB */
-	Public function getDinnerEvents()
+	Public function getDinnerEvents($Dinner_ID)
 	{
 		$sql = "SELECT * FROM tbl_dinner_events WHERE tbl_dinner_events.start BETWEEN ? AND ? ORDER BY tbl_dinner_events.start ASC";
 		return $this->db->query($sql, array($_GET['start'], $_GET['end']))->result();

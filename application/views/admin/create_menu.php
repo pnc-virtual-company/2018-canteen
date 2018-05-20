@@ -18,6 +18,7 @@
       <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Food</a></li>
     </ul>
   </div>
+  <?php echo $flashPartialView;?>
   <form action="<?php echo base_url() ?>admin/create_menu/postMenu" method="POST" >
     <div class="row">
       <div class="col-md-1">

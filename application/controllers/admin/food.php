@@ -31,6 +31,18 @@ class food extends CI_Controller {
         $this->load->model('users_model');
     }
 
+    public function index() {
+        $this->load->helper('form');
+        $this->load->model('Dishes_model');
+        // $data['dishes'] = $this->Dishes_model->getDishes();
+        $data['title'] = 'List of Dishes';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('Admin/food/listDish', $data);
+        $this->load->view('templates/footer', $data);
+    }
 
     /**
      * Display the list of all dry food
@@ -42,6 +54,7 @@ class food extends CI_Controller {
         $data['dishes'] = $this->Dishes_model->getDishes();
         $data['title'] = 'List of Dishes';
         $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('Admin/food/listDish', $data);
@@ -69,7 +82,6 @@ class food extends CI_Controller {
         $data['dishes'] = $this->Dishes_model->viewDetail($dishId);
        $data['title'] = 'List Favourite Food';
         $data['activeLink'] = 'users';
-        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('dishes/viewDishDetail', $data);
@@ -81,7 +93,8 @@ class food extends CI_Controller {
    public function updateDishes(){        
    $id = $this->uri->segment(4);        
    $data['select_dishes'] = $this->Dishes_model->selectDish($id);       
-    $data['title'] = 'Update Dishes';           
+    $data['title'] = 'Update Dishes'; 
+     $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
     $this->load->view('templates/header');            
     $this->load->view('menu/admin_dasboard');            
     $this->load->view('dishes/updateDish', $data);            
@@ -103,6 +116,7 @@ class food extends CI_Controller {
     {                  
         $data['dishes'] = $this->Dishes_model->updateDishes($id); //load model                  
         if($data){ 
+            $this->session->set_flashdata('msg', 'Dish has been updated.');
             redirect('admin/food/listDish');                  
         }                
     } 
@@ -114,6 +128,7 @@ class food extends CI_Controller {
     public function deleteDish(){
        $id = $this->uri->segment(4);
         $this->Dishes_model->deleteDishes($id);
+        $this->session->set_flashdata('msg', 'Dish has been Deleted.');
         $this->listDish();
     }
 
@@ -151,6 +166,7 @@ class food extends CI_Controller {
                 {
                     $data['dishes'] = $this->Dishes_model->insert_dish(); //load model
                     if($data){
+                        $this->session->set_flashdata('msg', 'Dish has been created.');
                             redirect('admin/food/listDish');
                         }
                 
@@ -192,6 +208,7 @@ class food extends CI_Controller {
             $this->load->view('dishes/dinner', $data);
             $this->load->view('templates/footer', $data);
     }
+    
    function addOrder(){
        // okay now let get value from form
         $food_ids = $this->input->post('fo_id');

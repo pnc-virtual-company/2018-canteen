@@ -39,6 +39,7 @@
   </div>
     <div class="row">
       <div class="col-md-12">
+        <?php echo $flashPartialView;?>
         <table id="user" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="bg-dark text-white">
               <tr>
@@ -148,6 +149,7 @@ $(document).ready(function() {
     //Transform the HTML table in a fancy datatable
     $('#user').dataTable({
         stateSave: true,
+        'ordering':false
     });
     $('#user').on('click', '.show_user_detail', function(e){
         // => Get the value of current attribute on the its link clicked

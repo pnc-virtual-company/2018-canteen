@@ -13,6 +13,7 @@
  
  <div class="container">
     <div class="col-md-10 column"><br><br><br><br>
+      <div class="alert"></div>
       <div id='calendar'></div>
     </div>
 </div>
@@ -29,7 +30,7 @@
         <h3 id="exampleModalLabel">Are you sure want to join this event?</h3>
       </div>
       <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">No</button> -->
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>

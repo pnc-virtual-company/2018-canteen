@@ -12,6 +12,7 @@
   }
 </style>
 <div class="container">
+    <?php echo $flashPartialView;?>
     <img src="<?php echo base_url();?>assets/images/pnc-canteenEnd.png" alt="canteen-logo" id="canteen-logo" class="text-center">
     <div class="row">
       <div class="col-sm-1"></div>
