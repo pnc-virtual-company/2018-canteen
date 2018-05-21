@@ -12,6 +12,7 @@
   }
 </style>
 <div class="container">
+    <?php echo $flashPartialView;?>
     <img src="<?php echo base_url();?>assets/images/pnc-canteenEnd.png" alt="canteen-logo" id="canteen-logo" class="text-center">
     <div class="row">
       <div class="col-sm-1"></div>
@@ -58,6 +59,7 @@
                 <div class="form-group col">
                   <label for="image"><strong>Student Picture</strong></label>
                   <input type="file" class="form-control" required name="image">
+                  <p class="text-warning"><?php echo $error_msg ?></p>
                 </div>
               </div>
               <div class="form-group">
@@ -65,7 +67,7 @@
                 <input type="radio" name="gender" value="Male" checked> Male
                 <input type="radio" name="gender" value="Female"> Female
               </div>
-              <button class=" btn btn-danger" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
+              <a class="btn btn-danger" href="<?php echo base_url() ?>"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
               <button class=" btn btn-info float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Register</button>
             </form>
             </form>
@@ -82,13 +84,16 @@
       $('.form-control').keypress(function(event) {
           if (event.keyCode == 13 || event.which == 13) {
               $('#formLogin').submit();
+<<<<<<< HEAD
           }
       });
-<<<<<<< Updated upstream
     });s
 =======
+              }
+          });
     });
->>>>>>> Stashed changes
+
+>>>>>>> 36f31af8406cb2ac2b6cea6b7b6e7e273ab089d8
   function goBack() {
     window.history.back();
 }

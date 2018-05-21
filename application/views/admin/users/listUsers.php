@@ -33,12 +33,13 @@
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/createUser"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new user</a></li>
+          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/createUser"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new Staff</a></li>
 
         </ul>
   </div>
     <div class="row">
       <div class="col-md-12">
+        <?php echo $flashPartialView;?>
         <table id="user" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="bg-dark text-white">
               <tr>
@@ -46,7 +47,7 @@
                   <th>User Name</th>
                   <th>Gender</th>
                   <th>Email</th>
-                  <th>Class Name</th> 
+                  <th>Department Name</th> 
                   <th>User Role</th>
                   <th>Action</th>
               </tr>
@@ -65,7 +66,7 @@
                     <img src="<?php echo base_url().'assets/uploads/'.$user->user_image ?>" alt="image" class="img-thumbnail" style="width:10%;">
                   </td> -->
                   <td>
-                    <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" title="View food" data-whatever="@getbootstrap" 
+                    <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" title="View User" data-whatever="@getbootstrap" 
                       user_name="<?php echo $user->firstname." ".$user->lastname  ?>" 
                       user_img="<?php echo base_url().'assets/images/user_uploads/'.$user->image ?>" 
                       user_fname="<?php echo $user->firstname ?>"
@@ -81,10 +82,10 @@
                     >
                       <span class="mdi mdi-eye-outline text-success" style="font-size: 20px;"></span>
                     </a>&nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>admin/User/updateUser/<?php echo $user->id ?>" title="Edit user">
+                    <a href="<?php echo base_url() ?>admin/User/updateUser/<?php echo $user->id ?>" title="Edit User">
                       <i class="mdi mdi-pencil" style="font-size: 20px;"></i>
                     </a>&nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>admin/User/deleteUser/<?php echo $user->id ?>" class="confirm-delete text-danger" title="Delete user" style="font-size: 20px;">
+                    <a href="<?php echo base_url() ?>admin/User/deleteUser/<?php echo $user->id ?>" class="confirm-delete text-danger" title="Delete User" style="font-size: 20px;">
                       <i class="mdi mdi-delete" onclick="return confirm('Are you sure to delete this user?')"></i>
                     </a>
                     </td>
@@ -148,6 +149,7 @@ $(document).ready(function() {
     //Transform the HTML table in a fancy datatable
     $('#user').dataTable({
         stateSave: true,
+        'ordering':false
     });
     $('#user').on('click', '.show_user_detail', function(e){
         // => Get the value of current attribute on the its link clicked

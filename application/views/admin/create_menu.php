@@ -13,13 +13,14 @@
   <div class="app-title">
     <div>
       <h1><i class="fa fa-dashboard"></i>Menu Creation</h1>
-      <p>All best food in Passerelles Numeriques Cambodia canteen</p>
+      <p>There are a lot of food to cook for PNC students and stafs.</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Food</a></li>
     </ul>
   </div>
-  <form id="form_menu" action="<?php echo base_url() ?>admin/create_menu/postMenu" method="POST">
+  <?php echo $flashPartialView;?>
+  <form action="<?php echo base_url() ?>admin/create_menu/postMenu" method="POST" >
     <div class="row">
       <div class="col-md-1">
        <label ><strong>Date:</strong></label>

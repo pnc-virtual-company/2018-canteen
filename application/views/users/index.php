@@ -20,7 +20,7 @@
 	  <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i>Canteen Management System</h1>
-          <p>This application is used to manage the dish and the events.</p>
+          <p>This application is used to manage the dishes and the events.</p>
         </div>
   </div>
     <div class="row">

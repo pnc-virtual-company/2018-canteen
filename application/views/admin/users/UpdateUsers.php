@@ -40,7 +40,7 @@
               <div class="row">
                 <div class="form-group col">
                   <label for="username"><strong>User Name</strong></label>
-                  <input type="text" name="username" class="form-control" placeholder="username" required value="<?php echo $user->login ?>">
+                  <input type="text" name="username" class="form-control" placeholder="login Name" required value="<?php echo $user->login ?>">
                 </div>
                 <div class="form-group col">
                   <label for="email"><strong>Email</strong></label>
@@ -49,12 +49,12 @@
               </div>
               <div class="row">
                 <div class="form-group col">
-                  <label for="class"><strong>Class Name</strong></label>
-                  <input type="text" name="class" class="form-control" placeholder="WEP-2018" required value="<?php echo $user->class_name ?>">
+                  <label for="class"><strong>Department Name</strong></label>
+                  <input type="text" name="class" class="form-control" required value="<?php echo $user->class_name ?>">
                 </div>
                 <div class="form-group col">
                   <label for="cardId"><strong>Card ID</strong></label>
-                  <input type="text" class="form-control" placeholder="PNC2018-009" required name="cardId" value="<?php echo $user->card_id ?>">
+                  <input type="text" class="form-control" required name="cardId" value="<?php echo $user->card_id ?>">
                 </div>
               </div>
               <div class="row">
@@ -63,9 +63,24 @@
                   <input type="password" class="form-control" required name="password" value="<?php echo $user->password ?>">
                 </div>
                 <div class="form-gorup col">
-                  <label for="image"><strong>Student Picture</strong></label>
+                  <label for="image"><strong>Profile Image</strong></label>
                   <input type="file" class="form-control" required name="image" value="<?php echo $user->image?>">
                 </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="">User Role</label>
+                    <select id="" class="form-control" name ="role">
+                      <option value="8">Supper admin</option>
+                        <option value="1">admin</option>
+                         <option value="2">normal user</option>
+                        <option value="3">staff</option>              
+                    </select>
+                </div>
+                 <div class="form-group col">
+                         <!-- show error message when upload image  -->
+                          <p><?php echo $error_msg ?></p>
+                      </div>
               </div>
               <div class="row">
                 <div class="form-group col">

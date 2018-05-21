@@ -14,6 +14,35 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * The difference with HR Controller is that operations are technical (CRUD, etc.).
  */
 class food extends CI_Controller {
+        public function __construct() {
+        parent::__construct();
+        log_message('debug', 'URI=' . $this->uri->uri_string());
+        $this->session->set_userdata('last_page', $this->uri->uri_string());
+        if($this->session->loggedIn === TRUE) {
+           // Allowed methods
+           if ($this->session->isAdmin || $this->session->isSuperAdmin) {
+             //User management is reserved to admins and super admins
+           } else {
+             redirect('errors/privileges');
+           }
+         } else {
+           redirect('connection/login');
+         }
+        $this->load->model('users_model');
+    }
+
+    public function index() {
+        $this->load->helper('form');
+        $this->load->model('Dishes_model');
+        // $data['dishes'] = $this->Dishes_model->getDishes();
+        $data['title'] = 'List of Dishes';
+        $data['activeLink'] = 'users';
+        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('Admin/food/listDish', $data);
+        $this->load->view('templates/footer', $data);
+    }
 
     /**
      * Display the list of all dry food
@@ -28,7 +57,7 @@ class food extends CI_Controller {
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('admin/food/listDish', $data);
+        $this->load->view('Admin/food/listDish', $data);
         $this->load->view('templates/footer', $data);
     }
 
@@ -42,17 +71,36 @@ class food extends CI_Controller {
         $this->load->view('templates/footer', $data);
     }
 
-   // // Start update dishes
+  /**
+     * viewDishDetail
+     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
+     */
+    public function viewDishDetail(){
+        $dishId = $this->uri->segment('4');
+        $this->load->helper('form');
+        $this->load->model('Dishes_model');
+        $data['dishes'] = $this->Dishes_model->viewDetail($dishId);
+       $data['title'] = 'List Favourite Food';
+        $data['activeLink'] = 'users';
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('dishes/viewDishDetail', $data);
+        $this->load->view('templates/footer', $data);
+        
+    }
+
+    // Start update dishes
    public function updateDishes(){        
    $id = $this->uri->segment(4);        
    $data['select_dishes'] = $this->Dishes_model->selectDish($id);       
-    $data['title'] = 'Update Dishes';           
+    $data['title'] = 'Update Dishes'; 
+     $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
     $this->load->view('templates/header');            
     $this->load->view('menu/admin_dasboard');            
     $this->load->view('dishes/updateDish', $data);            
     $this->load->view('templates/footer');         
      // upload User image configuaration                
-     $config['upload_path'] = './assets/images/dish_uploads/';
+    $config['upload_path'] = './assets/images/dish_uploads/';
     $config['allowed_types']= 'gif|jpg|png';
     $config['max_size'] = 10000;
     $config['max_width']  = 1024;
@@ -61,12 +109,14 @@ class food extends CI_Controller {
     //Condition to know the if image insert or not                
     if ( ! $this->upload->do_upload('dishImage')) 
     {
-        echo $this->upload->display_errors();  // show error message                
+         echo $this->upload->display_errors();  // show error message     
+                
     }
     else                
     {                  
         $data['dishes'] = $this->Dishes_model->updateDishes($id); //load model                  
         if($data){ 
+            $this->session->set_flashdata('msg', 'Dish has been updated.');
             redirect('admin/food/listDish');                  
         }                
     } 
@@ -78,6 +128,7 @@ class food extends CI_Controller {
     public function deleteDish(){
        $id = $this->uri->segment(4);
         $this->Dishes_model->deleteDishes($id);
+        $this->session->set_flashdata('msg', 'Dish has been Deleted.');
         $this->listDish();
     }
 
@@ -94,7 +145,7 @@ class food extends CI_Controller {
             $data['activeLink'] = 'users';
             $this->load->view('templates/header', $data);
             $this->load->view('menu/admin_dasboard', $data);
-            $this->load->view('admin/food/view_add_dish', $data);
+            
             $this->load->view('templates/footer', $data);
 
         // upload image config
@@ -109,16 +160,18 @@ class food extends CI_Controller {
                 //Condition to know the if image insert or not
                 if ( ! $this->upload->do_upload('dishImage'))
                 {
-                    echo $this->upload->display_errors();  // show error message
+                     $data['error_msg'] = $this->upload->display_errors();  // show error message
                 }
                 else
                 {
                     $data['dishes'] = $this->Dishes_model->insert_dish(); //load model
                     if($data){
+                        $this->session->set_flashdata('msg', 'Dish has been created.');
                             redirect('admin/food/listDish');
                         }
                 
                 }
+                $this->load->view('admin/food/view_add_dish', $data);
     }
 /**
      * show breakfast lunch and dinner in admin dashboard
@@ -155,6 +208,7 @@ class food extends CI_Controller {
             $this->load->view('dishes/dinner', $data);
             $this->load->view('templates/footer', $data);
     }
+    
    function addOrder(){
        // okay now let get value from form
         $food_ids = $this->input->post('fo_id');
@@ -198,5 +252,6 @@ class food extends CI_Controller {
     $this->load->view('menu/admin_dasboard');
     $this->load->view('dishes/updateDish', $data);
     $this->load->view('templates/footer');
-        }
+}
+
 }

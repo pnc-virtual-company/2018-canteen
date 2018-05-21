@@ -2,9 +2,7 @@
 	class c_users extends CI_Controller {
 
 		public function addUsers(){
-			$this->load->view('templates/header');
-			$this->load->view('users/register');
-			$this->load->view('templates/footer');
+      
          $config['upload_path']          = './assets/images/user_uploads';
          $config['allowed_types']        = 'gif|jpg|png';
          $config['max_size']             = 10000;
@@ -14,16 +12,21 @@
          //Condition to know the if image insert or not
          if ( ! $this->upload->do_upload('image'))
          {
-            echo $this->upload->display_errors();  // show error message
+          $data['error_msg'] = $this->upload->display_errors();    
          }
          else
          {
             $data['add_users'] = $this->Users_model->addUsers(); //load model
             if($data){
-               redirect('welcome');
+              $this->session->set_flashdata('msg', 'Your account has been created.');
+               redirect('c_users/addUsers');
             }
                 
          }
+          $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+          $this->load->view('templates/header');
+          $this->load->view('users/register',$data);
+          $this->load->view('templates/footer');
 		}
 	}
  ?>

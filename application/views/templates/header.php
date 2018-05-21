@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $title = (isset($title)) ? $title :  "PNC CANTEEN";
@@ -34,6 +35,7 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
 
 	<style type="text/css">
   body {
+      min-height: 0;
       padding-top: 60px;
   }
   }

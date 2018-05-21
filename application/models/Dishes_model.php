@@ -28,8 +28,10 @@ class Dishes_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getDishes() {
+        $this->db->order_by('dish_id', 'DESC');
         $query = $this->db->get('tbl_dishes'); 
         return $query->result();
+        // return $order->result();
     }
 
 
@@ -91,7 +93,6 @@ class Dishes_model extends CI_Model {
 public function selectDish($id){
      $query = $this->db->get_where('tbl_dishes', array('dish_id' => $id));
      return $query->result();
-     // var_dump($query);
 }
     public function updateDishes($id) 
     {         
@@ -130,14 +131,6 @@ public function selectDish($id){
         $this->db->insert("tbl_dishes", $data);
     }
 
-    public function getDishOrder (){
-        //set currrent time zone in php to cambodia time +7
-    //     date_default_timezone_set("Asia/Phnom_Penh");
-    //     $created_date = date('Y-m-d');
-    //     $this->db->where('dish_active =','1');
-    //     $query  = $this->db->get_where ('tbl_dishes',array('dish_active' =>1));
-    //     return $query->result();  
-     }
     public function getMenu(){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -172,8 +165,7 @@ public function selectDish($id){
         $query = $this->db->get();
         return $query->result();
     }
-    
-    public  function selectOrder($food_id){
+public  function  selectOrder($food_id){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
        $this->db->select('*');
@@ -184,16 +176,15 @@ public function selectDish($id){
         $query = $this->db->get();
         return $query->result();
 }
-   public function createOrder($food_id, $qty){
+   public function createOrder($dish_id,$meal_time_id){
         // set currrent time zone in php to cambodia time +7
         date_default_timezone_set("Asia/Phnom_Penh");
         $created_date = date('Y-m-d');
         $current_logged_in =  $this->session->userdata('id');
-
         // Insert order
         $data_order = array(
-            'quantity'=> $qty,
-            'meal_time' => "Break fast",
+            'quantity'=> $this->input->post('quantity'),
+            'meal_time' => $meal_time_id,
             'date' => $created_date
         );
         $this->db->insert('tbl_order', $data_order);
@@ -203,13 +194,49 @@ public function selectDish($id){
 
         // Insert dish user
         $data_dish = array(
-                'user_id' => $current_logged_in,
-                'dish_id' => $food_id,
-                'order_id' => $order_id
+          'user_id' => $current_logged_in,
+          'dish_id' => $dish_id,
+          'order_id' => $order_id
         );
         $result = $this->db->insert('tbl_dish_user', $data_dish);
-
-        return $result;
     }
 
+    public function preOrderList()
+    {
+      $this->db->select('orders.*,dishes.dish_name as dishName,sum(orders.quantity) as TotalQuantity,sum(orders.quantity)*1000 as TotalPayment');
+      $this->db->from('tbl_order as orders');
+      $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id');
+      $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
+      $this->db->group_by('dishName'); 
+      $query = $this->db->get();
+      return $query->result();
+    }
+
+    public function userOrderList(){
+      $this->db->select('users.card_id as userId,
+                    CONCAT(users.firstname," ",users.lastname) AS userName,
+                    users.class_name,
+                    dishes.dish_name as dishName,
+                    sum(orders.quantity) as totalQuanttiy,
+                    sum(orders.quantity)*1000 as TotalPayment');
+      $this->db->from('tbl_order as orders');
+      $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id') ;
+      $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
+      $this->db->join('tbl_users users', 'users.id = dishUsers.user_id');
+      $this->db->group_by('userName'); 
+      $query = $this->db->get();
+      return $query->result();
+    }
+    public function storeInterest($userId){
+        $query = $this->db->get_where('tbl_users',array('id' => $userId));
+        if($query){
+
+            $getData = array(
+                'id' => $value['$userId'],
+                 
+            );
+            $this->db->insert_batch('tbl_dish_user', $getData);
+        }
+        
+    }
 }

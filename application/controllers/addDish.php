@@ -2,15 +2,30 @@
 <?php 
 
 Class addDish extends CI_Controller{
+    public function __construct() {
+        parent::__construct();
+        log_message('debug', 'URI=' . $this->uri->uri_string());
+        $this->session->set_userdata('last_page', $this->uri->uri_string());
+        if($this->session->loggedIn === TRUE) {
+           // Allowed methods
+           if ($this->session->isAdmin || $this->session->isSuperAdmin) {
+             //User management is reserved to admins and super admins
+           } else {
+             redirect('errors/privileges');
+           }
+         } else {
+           redirect('connection/login');
+         }
+        $this->load->model('users_model');
+    }
 
 	function view_dish(){
 		$data['title'] = 'dishes';
 		$data['page'] = 'dishes/add_new_dish';
-      
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
+    $this->load->view('templates/header', $data);
+    $this->load->view('menu/admin_dasboard', $data);
 		$this->load->view('dishes/add_new_dish', $data);
-        $this->load->view('templates/footer', $data);
+    $this->load->view('templates/footer', $data);
 
 	}	
 
@@ -31,9 +46,8 @@ Class addDish extends CI_Controller{
 		$this->load->helper(array('form', 'url'));	
 		// $data = array('upload_data' => $this->upload->data());         
 		// $imageName = $this->upload->data()['file_name'];
-		
 		$data['upload_data'] = $this->upload->data();
-        $this->resize($data['upload_data']['upload_path'], $data['upload_data']['file_name']);
+        // $this->resize($data['upload_data']['upload_path'], $data['upload_data']['file_name']);
         $imageName = $data['upload_data']['file_name'];
 
 
