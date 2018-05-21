@@ -24,13 +24,14 @@ $sheet->setCellValue('D1', 'Dinner Event');
 $sheet->getStyle('A1:D1')->getFont()->setBold(true);
 $sheet->getStyle('A1:D1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
-$users = $this->users_model->getUsers();
+$users = $this->JoinDinner_model->getListJoinDinner();
 $line = 2;
 foreach ($users as $user) {
-    $sheet->setCellValue('A' . $line, $user['id']);
-    $sheet->setCellValue('B' . $line, $user['firstname']);
-    $sheet->setCellValue('C' . $line, $user['lastname']);
-    $sheet->setCellValue('D' . $line, $user['email']);
+    $sheet->setCellValue('A' . $line, $user['join_event_id']);
+    $sheet->setCellValue('B' . $line, $user['user_name']);
+    $sheet->setCellValue('C' . $line, $user['position']);
+    $sheet->setCellValue('C' . $line, $user['email']);
+    $sheet->setCellValue('D' . $line, $user['Title']);
     $line++;
 }
 
@@ -39,7 +40,7 @@ foreach(range('A', 'D') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
 
-$filename = 'users.' . 'xlsx';
+$filename = 'List users join dinner.' . 'xlsx';
 header('Content-Type: application/vnd.ms-excel');
 header('Content-Disposition: attachment;filename="' . $filename . '"');
 header('Cache-Control: max-age=0');

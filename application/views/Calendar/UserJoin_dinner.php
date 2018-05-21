@@ -54,8 +54,9 @@
                   <th>User ID</th>
                   <th>User Name</th>
                   <th>Position</th>
+                  <th>Email</th>
                   <th>Dinner Event</th>
-                  <th>Action</th>
+                  <!-- <th>Action</th> -->
               </tr>
           </thead>
           <tbody>
@@ -65,8 +66,9 @@
                   <td><?php echo $value->join_event_id ?></td>
                   <td><?php echo $value->user_name ?></td>
                   <td><?php echo $value->position ?></td>
+                  <td><a href="#"><?php echo $value->email ?></a></td>
                   <td><?php echo $value->Title ?></td>
-                  <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                <!--   <td>&nbsp;&nbsp;&nbsp;&nbsp;
 
                       <a href="#" title="View Dish">
                         <span class="mdi mdi-eye-outline text-success" style="font-size: 20px;"></span>
@@ -74,14 +76,14 @@
                     <a href="#" class="confirm-delete text-danger" title="Delete Dish" style="font-size: 20px;">
                       <i class="mdi mdi-delete" onclick="return confirm('Are you sure to delete this dish?')"></i>
                     </a>
-                    </td>
+                    </td> -->
                 </tr>
             <?php endforeach ?>
           </tbody>
         </table>
         <div class="row">
           <div class="col-md-12">
-                  <a href="#"><button type="submit" class="btn btn-warning"><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Export Excel</button></a>
+                  <a href="<?php echo base_url();?>UserjoinEvent/export"><button type="submit" class="btn btn-warning"><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Export Excel</button></a>
           </div>
         </div>
     </div>
