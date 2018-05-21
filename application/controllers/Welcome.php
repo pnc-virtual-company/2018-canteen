@@ -12,11 +12,14 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-	$this->load->model('getUserActive');
-    	$data['user'] = $this->getUserActive->getActive();
-    	$data['dishesOrder'] = $this->Dishes_model->getMenu();	
-		$data['page'] = 'welcome';
-		$this->load->view('layout', $data);
+			$data['title'] = 'This is Food for';
+			$this->load->model('getUserActive');
+        	$data['user'] = $this->getUserActive->getActive();
+        	$data['dishesOrder'] = $this->Dishes_model->getMenu();
+        	$data['dishesOrder1'] = $this->Dishes_model->getMenu1();
+        	$data['dishesOrder2'] = $this->Dishes_model->getMenu2();
+			$data['page'] = 'welcome';
+			$this->load->view('layout', $data);
 	}
 
 	public function getDish(){
@@ -62,9 +65,5 @@ $id = $this->input->post('dish_id');
 			';
 		}
 		echo $output;
-	}
-
-	public function comment(){
-		
 	}
 }
