@@ -75,6 +75,7 @@
                   <th>Staff ID</th>
                   <th>Staff Name</th>
                   <th>Position</th>
+                  <th>Email</th>
                   <th>Lunch Event</th>
                   <th>Status</th> 
                   <th>Selection</th>
@@ -87,6 +88,7 @@
                   <td><?php echo $participates->id ?></td>
                   <td><?php echo $participates->Staff_name ?></td>
                   <td><?php echo $participates->ClassName ?></td>
+                  <td><a href="#"><?php echo $participates->Email ?><a href='#'></a></td>
                   <td><?php echo $participates->Title ?></td>
                   <td><?php if ($participates->status ==1 ) 
                   {
@@ -95,7 +97,7 @@
                   {
                     echo "Not yet Confirmed";
                   }?></td>
-                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#" title="Click to Remind">
                   <?php if ($participates->status ==1 ) 
                   {
@@ -111,9 +113,9 @@
           </tbody>
         </table>
         <div class="row">
-          <div class="col-md-8"></div>
-          <div class="col-md-4">
-                  <a href="#"><button type="submit" class="btn btn-primary" disabled="disabled" ><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind</button></a><hr>
+          <div class="col-md-0"></div>
+          <div class="col-md-10">
+                  <a href="#"><button type="submit" class="btn btn-warning" disabled="disabled" ><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind</button></a>
           </div>
         </div>
       </div>
@@ -133,7 +135,7 @@ $(document).ready(function() {
 
     // Determine if checkbox is checked enable button
      $("#chremind").click(function() {
-       $(".btn-primary").attr("disabled", !this.checked); 
+       $(".btn-warning").attr("disabled", !this.checked); 
      });
 
 });

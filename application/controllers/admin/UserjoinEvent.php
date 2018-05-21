@@ -26,9 +26,9 @@
 
       /*Function to get the user join the events */
       public function insertUserJoinEvent(){
-          $Dinner_ID = $this->uri->segment(4); 
+          // $Dinner_ID = $this->uri->segment(4); 
           $this->load->model('JoinDinner_model');
-           $data['joinEvent'] = $this->JoinDinner_model->getUserJoinEvent($Dinner_ID);
+           $data['joinEvent'] = $this->JoinDinner_model->getUserJoinEvent();
            if ($data == TRUE) {
              redirect(base_url());
            }
@@ -42,8 +42,13 @@
           $data['title'] = 'List of user join Dinner';
           $this->load->view('templates/header', $data);
           $this->load->view('menu/admin_dasboard', $data);
-          $this->load->view('admin/Calendar/UserJoin_dinner', $data);
+          $this->load->view('Calendar/UserJoin_dinner', $data);
           $this->load->view('templates/footer', $data);
+        }
+
+        // Export of user join
+        public function export() {
+            $this->load->view('Calendar/export');
         }
 }
 

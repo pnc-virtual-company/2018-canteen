@@ -153,7 +153,7 @@ $(function(){
                 start: $('#start').val(),
                 end: $('#end').val()
             }, function(result){
-                $('.alert').addClass('alert-success').text('Event added successfuly');
+                $('.alert').addClass('alert-success').text('Event added & Send Email Invitation successfuly');
                 $('.modal').modal('hide');
                 $('#calendar').fullCalendar("refetchEvents");
                 hide_notify();
@@ -201,7 +201,8 @@ $(function(){
     // // Handle Click on Add Button
     // $('.modal').on('click', '#add-event',  function(e){
     //     if(validator(['title', 'description'])) {
-    //         $.post(base_url+'admin/Email/index', {
+    //         $.post(base_url+'calendar/addLunchEvent', {
+    //         // $.post(base_url+'admin/Email/index', {
     //             start: $('#start').val(),
     //             end: $('#end').val()
     //         }, function(result){
