@@ -18,7 +18,7 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/admin_dashboard.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/createMenu.css">
 
-  
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
   <script src="<?php echo base_url();?>assets/tether-1.4.3/js/tether.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/popper-1.12.9..min.js"></script>
@@ -26,6 +26,7 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
   <script src="<?php echo base_url();?>assets/bootstrap-4.0.0/js/bootstrap.min.js"></script>
 <!--   datepicker -->
   <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css"></script>
+  <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker3.css"></script>
   <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
@@ -34,6 +35,7 @@ $langCode= (isset($langCode)) ? $langCode :  "en";
 	<style type="text/css">
   body {
       padding-top: 60px;
+  }
   }
 	</style>
 </head>

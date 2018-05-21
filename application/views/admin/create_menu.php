@@ -8,23 +8,24 @@
  * @since      1.0.0
  */
 ?>
+
 <main class="app-content">
   <div class="app-title">
     <div>
       <h1><i class="fa fa-dashboard"></i>Menu Creation</h1>
-      <p>All best food in Passerelles Numeriques Cambodai canteen</p>
+      <p>All best food in Passerelles Numeriques Cambodia canteen</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Food</a></li>
     </ul>
   </div>
-  <form action="<?php echo base_url() ?>admin/create_menu/postMenu" method="POST" >
+  <form id="form_menu" action="<?php echo base_url() ?>admin/create_menu/postMenu" method="POST">
     <div class="row">
       <div class="col-md-1">
        <label ><strong>Date:</strong></label>
      </div>
      <div class="col-md-3 col-sm-6 col-xs-12">
-       <input type="text" id="datepicker" name="mealDate">
+       <input type="text" id="datepicker" name="mealDate" required="Please chosing date">
      </div>
      <div class="col-md-3 col-sm-0 col-xs-0"></div>
      <div class="col-md-1">
@@ -49,7 +50,7 @@
   <?php foreach($data_image as $dish) { ?>
   <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 nopad text-center" style="margin-bottom: 20px;">
     <label class="image-checkbox"> 
-      <input type="checkbox" name="dish_id[]" value="<?php echo $dish->dish_id ?>">
+      <input type="checkbox" id="checkbox" name="dish_id[]" value="<?php echo $dish->dish_id ?>">
       <img class="img-responsive" src="<?php echo base_url('assets/images/dish_uploads/'.$dish->dish_image); ?>" width="100%"  alt="" />
       <span class="mdi mdi-check d-none" style="font-size: 20px;"></span>
       <div class="text-center bg-primary" style="padding: 7px;">
@@ -67,13 +68,14 @@
    <h3><u>Food Description</u></h3>
    <textarea class="form-control form-rounded" rows="3" placeholder="Please inter description of menu" name="menuDescription"></textarea><br>
    <!--   <input type="submit" name="submit" value="submit"> -->
-   <button type="submit" name="submit" value="submit" class="btn btn-primary" target="_blank">Create Menu</button>
+   <button type="submit" name="submit" value="submit" class="btn btn-primary" target="_blank" id="create_menu">Create Menu</button>
  </div>
  <div class="col-md-2"></div>
 </div>
 </form>
 </main>
-<script>  
+<script type="text/javascript">
+  
  $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
   // image gallery
   // init the state from the input
@@ -93,6 +95,18 @@
 
     e.preventDefault();
   });
+
+  $(document).ready(function() {
+     $('#create_menu').click(function(){
+       // e.preventDefault();
+           if($('#checkbox').is(':checked')){
+             $('form#form_menu').submit(); 
+           }else{
+           alert('Please select dishes');
+           return false;     
+         }
+      });
+  }); 
 </script>
 
 
