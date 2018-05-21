@@ -28,6 +28,7 @@ class createDish extends CI_Model {
     public function getPostMenu($dishId, $meal_time, $mealDate, $menuDescription) {
        $this->db->query('UPDATE tbl_dishes SET dish_active =1, meal_time_id="'.$meal_time.'", menu_created_date="'.$mealDate.'", menu_description ="'.$menuDescription.'" WHERE dish_id IN('.$dishId.')');
 
-       $this->db->query('INSERT INTO tbl_menu_description (menu_description, menu_date, meal_time) VALUES("'.$menuDescription.'", "'.$mealDate.'", "'.$meal_time.'" )');
+        $this->db->query('UPDATE tbl_dishes SET dish_active =1, meal_time_id="'.$meal_time.'", menu_created_date="'.$mealDate.'", menu_description ="'.$menuDescription.'" WHERE meal_time_id="'.$meal_time.'"');
+
     }
 }
