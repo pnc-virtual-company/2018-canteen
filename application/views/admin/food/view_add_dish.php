@@ -29,7 +29,6 @@
 			    <div class="form-group">
 			      <label for="email">Meal Time</label>
 			      <select name="mealtime" class="form-control">
-			      	<option value="">Choose Meal Times</option>
 			      	<?php 
 			      		foreach ($mealTime as $value) {
 			       	?>

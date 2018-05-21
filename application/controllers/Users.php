@@ -17,7 +17,7 @@ class Users extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Khai HOK <khai.hok@student.passerellesnumeriques.org>
+     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
      */
     public function __construct() {
         parent::__construct();
@@ -27,8 +27,8 @@ class Users extends CI_Controller {
            // Allowed methods
            if ($this->session->isAdmin || $this->session->isSuperAdmin) {
              //User management is reserved to admins and super admins
-           } else {
-             redirect('errors/privileges');
+           }else {
+             redirect('welcome');
            }
          } else {
            redirect('connection/login');

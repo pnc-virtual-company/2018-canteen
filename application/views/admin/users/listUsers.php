@@ -33,7 +33,7 @@
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/createUser"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new Staff</a></li>
+          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/createUser"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new User</a></li>
 
         </ul>
   </div>
@@ -120,7 +120,7 @@
                                 <li>last Name: <span class="text-info pop_user_lname"></span></li>
                                 <li>Gender: <span class="text-info pop_user_gender"></span></li>
                                 <li>Email: <span class="text-info pop_user_email"></span></li>
-                                <li>Class Name: <span class="text-info pop_user_classname"></span></li>
+                                <li>Department Name: <span class="text-info pop_user_classname"></span></li>
                                 <li>User Role: <span class="text-info pop_user_role"></span></li>
                             </ul>
                           </div>

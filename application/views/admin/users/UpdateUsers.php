@@ -70,11 +70,11 @@
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="">User Role</label>
-                    <select id="" class="form-control" name ="role">
+                    <select class="form-control" name ="role">
+                      <option value="2">Normal user</option>
+                      <option value="3">Staff</option>              
+                      <option value="1">Admin</option>
                       <option value="8">Supper admin</option>
-                        <option value="1">admin</option>
-                         <option value="2">normal user</option>
-                        <option value="3">staff</option>              
                     </select>
                 </div>
                  <div class="form-group col">
@@ -103,7 +103,7 @@
               </div>
               <?php      
                   } ?>
-              <button class=" btn btn-danger" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
+              <a href="<?php echo base_url() ?>admin/User/listUsers" class=" btn btn-danger"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
               <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Update</button>
             </form>
           </div>
@@ -113,17 +113,3 @@
     </div>
   </div>
 </div> <!-- /container -->
-
-<script>
-    $(function(){
-      $('.form-control').keypress(function(event) {
-          if (event.keyCode == 13 || event.which == 13) {
-              $('#formLogin').submit();
-          }
-      });
-    });s
-  function goBack() {
-    window.history.back();
-  }
-
-</script>

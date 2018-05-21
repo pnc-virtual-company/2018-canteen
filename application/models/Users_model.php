@@ -220,8 +220,10 @@ class Users_model extends CI_Model {
     private function loadProfile($row) {
       /*
         00000001 1  Admin
-        00000100 8  HR Officier / Local HR Manager
-        00001000 16 HR Manager
+        0000000100 2  User
+        00000002000 3  Staff
+        0000010000 8  HR Officier / Local HR Manager
+        0000100000 16 HR Manager
         = 00001101 25 Can access to HR functions
        */
         $isAdmin = FALSE;
@@ -229,18 +231,28 @@ class Users_model extends CI_Model {
             $isAdmin = TRUE;
         }
         $isSuperAdmin = FALSE;
-        if (((int) $row->role & 25)) {
+        if (((int) $row->role & 8)) {
             $isSuperAdmin = TRUE;
+        }
+        $isUser = FALSE;
+        if (((int) $row->role & 2)) {
+            $isUser = TRUE;
+        }
+        $isStaff = FALSE;
+        if (((int) $row->role & 3)) {
+            $isStaff = TRUE;
         }
 
         $newdata = array(
             'login' => $row->login,
-            'id' => $row->id,
+            'id'    => $row->id,
             'firstname' => $row->firstname,
             'lastname' => $row->lastname,
             'fullname' => $row->firstname . ' ' . $row->lastname,
             'isAdmin' => $isAdmin,
             'isSuperAdmin' => $isSuperAdmin,
+            'isUser' => $isUser,
+            'isStaff' => $isStaff,
             'loggedIn' => TRUE
         );
         $this->session->set_userdata($newdata);
