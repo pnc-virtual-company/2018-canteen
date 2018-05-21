@@ -46,6 +46,14 @@
   </div>
   <div class="col-md-1 col-sm-0 col-xs-12"></div>
 </div>
+<div class="row">
+  <div class="col-md-8">
+   <h3><u>Food Description</u></h3>
+   <textarea class="form-control form-rounded" rows="3" placeholder="Please insert description of menu" name="menuDescription" style="resize: none;"></textarea><br>
+   <!--   <input type="submit" name="submit" value="submit"> -->
+ </div>
+ <div class="col-md-4"><br><br><button type="submit" name="submit" value="submit" class="btn btn-primary" target="_blank" id="create_menu">Create Menu</button></div>
+</div>
 <br><br>
 <div class="row">
   <?php foreach($data_image as $dish) { ?>
@@ -63,16 +71,7 @@
   <?php } ?>
 </div>
 
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-   <h3><u>Food Description</u></h3>
-   <textarea class="form-control form-rounded" rows="3" placeholder="Please inter description of menu" name="menuDescription"></textarea><br>
-   <!--   <input type="submit" name="submit" value="submit"> -->
-   <button type="submit" name="submit" value="submit" class="btn btn-primary" target="_blank" id="create_menu">Create Menu</button>
- </div>
- <div class="col-md-2"></div>
-</div>
+
 </form>
 </main>
 <script type="text/javascript">
@@ -97,17 +96,6 @@
     e.preventDefault();
   });
 
-  $(document).ready(function() {
-     $('#create_menu').click(function(){
-       // e.preventDefault();
-           if($('#checkbox').is(':checked')){
-             $('form#form_menu').submit(); 
-           }else{
-           alert('Please select dishes');
-           return false;     
-         }
-      });
-  }); 
 </script>
 
 

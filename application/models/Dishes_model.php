@@ -149,7 +149,7 @@ public function selectDish($id){
        $this->db->select('*');
        $this->db->from('tbl_dishes');
         $this->db->where (array('dish_active' =>1));
-        $this->db->where('menu_created_date>=',$creating_date);
+        $this->db->where('menu_created_date=',$creating_date);
         $this->db->where('meal_time_id=',2);
         $query = $this->db->get();
         return $query->result();
