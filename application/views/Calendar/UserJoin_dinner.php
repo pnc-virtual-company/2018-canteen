@@ -83,7 +83,8 @@
         </table>
         <div class="row">
           <div class="col-md-12">
-                  <a href="<?php echo base_url();?>UserjoinEvent/export"><button type="submit" class="btn btn-warning"><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Export Excel</button></a>
+                  <!-- <a href="<?php echo base_url();?>UserjoinEvent/export"><button type="submit" class="btn btn-warning"><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Export Excel</button></a> -->
+                  <a href="<?php echo base_url();?>users/export" class="btn btn-warning"><i class="mdi mdi-file-excel"></i>&nbsp;Export Excel List</a>
           </div>
         </div>
     </div>
