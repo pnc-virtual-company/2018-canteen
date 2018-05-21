@@ -240,14 +240,13 @@ class food extends CI_Controller {
         $this->load->helper('form');
         $data['dishes'] = $this->dishTypeModel->getDinner();
         $data['title'] = 'create menu for today';
-        $data['activeLink'] = 'users';
+        $data['activeLink'] = 'Create Menu';
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('dishes/createMenu', $data);
         $this->load->view('templates/footer', $data);
     }
     
-
  public function selectDish() {
     $id = $this->uri->segment(4);
     $data['select_dishes'] = $this->Dishes_model->selectDish($id);

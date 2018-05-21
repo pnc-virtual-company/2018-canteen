@@ -14,7 +14,8 @@ class JoinDinner_model extends CI_Model {
 	     // Insert join user
 	     $data_join = array(
 	       'user_id' => $current_logged_in,
-	       'dinner_event_id' => $Dinner_ID
+	       'dinner_event_id' => '1'
+	       // 'dinner_event_id' => $Dinner_ID
 	     );
 	     $result = $this->db->insert('tbl_join_events', $data_join);
 	 }
@@ -25,12 +26,15 @@ class JoinDinner_model extends CI_Model {
 	                 joinEvent.*, 
 	                 dinnerEvent.title AS "Title",
 	                 users.class_name AS "position",
+	                 users.email AS "email",
 	                 CONCAT(users.firstname , " " , users.lastname) AS "user_name"
 	                 FROM tbl_join_events joinEvent
 	                 INNER JOIN tbl_dinner_events dinnerEvent ON dinnerEvent.id = joinEvent.dinner_event_id
 	                 INNER JOIN tbl_users users ON users.id = joinEvent.user_id');
 	             return $query->result();
-	 }        
+	 }      
+
+
 
 }
  

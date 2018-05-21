@@ -86,6 +86,34 @@
               </div>
              <a class=" btn btn-danger" href="<?php echo base_url() ?>admin/User/listUsers"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
               <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add User</button>
+                  <label for="image"><strong>Staff Picture</strong></label>
+                  <input type="file" class="form-control" required name="userimage">
+                </div>
+              </div>
+              <div class="row">
+                      <div class="form-group col-md-6">
+                        <label for="">Choose Role</label>
+                        <select name="userRole" id="" class="form-control">
+                            <option value="1">Admin</option>
+                            <option value="2">Staff</option>
+                            <option value="3">Normal user</option>
+                              <!--   <?php 
+                                  //foreach ($roles as $role) {
+                                ?>
+                              <option value="<?php //echo $role->id ?>"><?php //echo $role->name ?></option>
+                              <?php// } ?>  -->
+
+                        </select>
+                      </div>
+                
+              </div>
+              <div class="form-group">
+                <label for="gender"><strong>Gender</strong></label>
+                <input type="radio" name="gender" value="Male" checked> Male
+                <input type="radio" name="gender" value="Female"> Female
+              </div>
+             <a class=" btn btn-danger" href="<?php echo base_url() ?>admin/User/listUsers"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
+              <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add Staff</button>
             </form>
             </form>
           </div>

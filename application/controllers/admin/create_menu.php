@@ -50,6 +50,10 @@ class create_menu extends CI_Controller {
      * Display the select multiple of dishes info from when we select image to create menu.   * @author khai hok <khai.hok.passerellesnumeriques.org>
      */
     public function postMenu() {
+        if(isset($_POST['submit'])){
+                $id = $_POST['dish_id']; 
+              $this->load->model('createDish');
+               $dishId = "'".implode("', '", $id)."'";
          // $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->model('createDish');
         $data['msg'] = '';
@@ -62,7 +66,14 @@ class create_menu extends CI_Controller {
                 $meal_time =$this->input->post('meal_time');
                 $mealDate =$this->input->post('mealDate');
                 $menuDescription =$this->input->post('menuDescription');
+                $data['meal_time'] = $meal_time;
                 $this->createDish->getPostMenu($dishId, $meal_time, $mealDate, $menuDescription);
+                    redirect('welcome', $data);
+               
+            // }else {
+            //     echo "Supper Error";
+         }
+
                 $this->session->set_flashdata('msg', 'Menu has been created.');
                     redirect('admin/create_menu/index');
                 }
