@@ -26,12 +26,18 @@
 
       /*Function to get the user join the events */
       public function insertUserJoinEvent(){
-          // $Dinner_ID = $this->uri->segment(4); 
+          $Dinner_ID = $this->uri->segment(4); 
           $this->load->model('JoinDinner_model');
-           $data['joinEvent'] = $this->JoinDinner_model->getUserJoinEvent();
+           $data['joinEvent'] = $this->JoinDinner_model->getUserJoinEvent($Dinner_ID);
            if ($data == TRUE) {
              redirect(base_url());
            }
+       }
+
+        // Get user join dinner events
+       function getDinner(){
+        $id = $this->uri->segment(4);        
+        $data['dinnerEvent'] = $this->JoinDinner_model->selectDinner($id);       
        }
 
        // Get user join dinner events
@@ -48,7 +54,7 @@
 
         // Export of user join
         public function export() {
-            $this->load->view('Calendar/export');
+            $this->load->view('users/export');
         }
 }
 

@@ -39,7 +39,7 @@
           <input type="text" id="datepicker" name="mealDate" title="datepicker" placeholder="Select date here">
        </div>
      </div>
-     <div class="col-md-3 col-sm-0 col-xs-0"></div>
+     <div class="col-md-4"></div>
      <div class="col-md-1">
        <label for="exampleSelect1"><strong>Meal:</strong></label>
      </div>
@@ -58,12 +58,11 @@
   <div class="col-md-1 col-sm-0 col-xs-12"></div>
 </div>
 <div class="row">
-  <div class="col-md-8">
-   <h3><u>Food Description</u></h3>
+  <div class="col-md-12">
    <textarea class="form-control form-rounded" rows="3" placeholder="Please insert description of menu" name="menuDescription" style="resize: none;"></textarea><br>
    <!--   <input type="submit" name="submit" value="submit"> -->
  </div>
- <div class="col-md-4"><br><br><button type="submit" name="submit" value="submit" class="btn btn-primary" target="_blank" id="create_menu">Create Menu</button></div>
+ <div class="col-md-12"><button type="submit" name="submit" value="submit" class="btn btn-primary float-right" target="_blank" id="create_menu">Create Menu</button></div>
 </div>
 <br><br>
 <div class="row">
@@ -74,15 +73,12 @@
       <img class="img-responsive" src="<?php echo base_url('assets/images/dish_uploads/'.$dish->dish_image); ?>" width="100%"  alt="" />
       <span class="mdi mdi-check d-none" style="font-size: 20px;"></span>
       <div class="text-center bg-primary" style="padding: 7px;">
-       <h5>
-        <?php echo $dish->dish_id ?>.&nbsp;<?php echo $dish->dish_name ?></h5>
+       <h5 style="color: #E5E8E8;"><?php echo $dish->dish_name ?></h5>
       </div>
     </label>
   </div>
   <?php } ?>
 </div>
-
-
 </form>
 </main>
   <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css"></script>
@@ -96,7 +92,6 @@
     autoclose:true,
 });
   // image gallery
-  // init the state from the input
   $(".image-checkbox").each(function () {
     if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
       $(this).addClass('image-checkbox-checked');
@@ -110,10 +105,8 @@
     $(this).toggleClass('image-checkbox-checked');
     var $checkbox = $(this).find('input[type="checkbox"]');
     $checkbox.prop("checked",!$checkbox.prop("checked"))
-
     e.preventDefault();
   });
-
 </script>
 
 
