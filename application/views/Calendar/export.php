@@ -19,10 +19,11 @@ $sheet->setTitle(mb_strimwidth('Users Join event list', 0, 28, "..."));  //Maxim
 $sheet->setCellValue('A1', 'User ID');
 $sheet->setCellValue('B1', 'Full Name');
 $sheet->setCellValue('C1', 'Position');
-$sheet->setCellValue('D1', 'Dinner Event');
+$sheet->setCellValue('D1', 'Position');
+$sheet->setCellValue('E1', 'Dinner Event');
 
-$sheet->getStyle('A1:D1')->getFont()->setBold(true);
-$sheet->getStyle('A1:D1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A1:E1')->getFont()->setBold(true);
+$sheet->getStyle('A1:E1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 $users = $this->JoinDinner_model->getListJoinDinner();
 $line = 2;
@@ -30,13 +31,13 @@ foreach ($users as $user) {
     $sheet->setCellValue('A' . $line, $user['join_event_id']);
     $sheet->setCellValue('B' . $line, $user['user_name']);
     $sheet->setCellValue('C' . $line, $user['position']);
-    $sheet->setCellValue('C' . $line, $user['email']);
-    $sheet->setCellValue('D' . $line, $user['Title']);
+    $sheet->setCellValue('D' . $line, $user['email']);
+    $sheet->setCellValue('E' . $line, $user['Title']);
     $line++;
 }
 
 //Autofit
-foreach(range('A', 'D') as $colD) {
+foreach(range('A', 'E') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
 
