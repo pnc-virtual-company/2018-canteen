@@ -14,7 +14,11 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * The difference with HR Controller is that operations are technical (CRUD, etc.).
  */
 class food extends CI_Controller {
-        public function __construct() {
+ /**
+     * Default constructor
+     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+     */
+    public function __construct() {
         parent::__construct();
         log_message('debug', 'URI=' . $this->uri->uri_string());
         $this->session->set_userdata('last_page', $this->uri->uri_string());
@@ -22,8 +26,8 @@ class food extends CI_Controller {
            // Allowed methods
            if ($this->session->isAdmin || $this->session->isSuperAdmin) {
              //User management is reserved to admins and super admins
-           } else {
-             redirect('errors/privileges');
+           }else {
+             redirect('welcome');
            }
          } else {
            redirect('connection/login');

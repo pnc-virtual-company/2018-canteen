@@ -21,18 +21,22 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
       <li class="nav-item">
         <a class="btn text-white" href="<?php echo base_url() ?>dishes/favouriteFood"><i class="mdi mdi-heart"></i>&nbsp;&nbsp;Favorite Food</a>
       </li>
-      <li class="nav-item">
-        <a class=" btn text-white" href="<?php echo base_url() ?>calendar/getJoinDinnerEvent"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
-      </li>
+      <?php if($this->session->isAdmin || $this->session->isSuperAdmin) { ?>
+        <li class="nav-item">
+          <a class=" btn text-white" href="<?php echo base_url() ?>calendar/getJoinDinnerEvent"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
+        </li>
+      <?php } ?>
     </ul>
     </div>
       <ul class="navbar-nav ml-auto">
+       <?php if($this->session->isAdmin || $this->session->isSuperAdmin) { ?>
+          <li>
+             <a href="<?php echo base_url() ?>users" class="text-white" style="font-size: 25px;" title="Go to dashboard" data-toggle="tooltip" data-placement="left"><span class="mdi mdi-arrow-right-bold-circle-outline text-white"></span>&nbsp;&nbsp;</a>
+          </li>
+      <?php } ?>
         <?php if($this->session->loggedIn === TRUE) { ?>
-      <li>
-         <a href="<?php echo base_url() ?>users" class="text-white" style="font-size: 25px;" title="Go to dashboard" data-toggle="tooltip" data-placement="left"><span class="mdi mdi-arrow-right-bold-circle-outline text-white"></span>&nbsp;&nbsp;</a>
-      </li>
           <li class="nav-item ">
-              <a class="nav-link text-white" href="<?php echo base_url();?>connection/logout">
+              <a class="nav-link text-white" title="Sign Out" href="<?php echo base_url();?>connection/logout">
                 <?php echo $this->session->fullname;?> <i class="mdi mdi-power"></i>
               </a>
           </li>

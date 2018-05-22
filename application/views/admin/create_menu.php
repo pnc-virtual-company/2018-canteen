@@ -8,6 +8,16 @@
  * @since      1.0.0
  */
 ?>
+<style>
+  [title~=datepicker] {
+    border:none;
+    outline: none;
+    width:230px;
+    padding: 5px;
+    background: #e5e5e5;
+    border-bottom: 2px solid gray;
+  }
+</style>
 <main class="app-content">
   <div class="app-title">
     <div>
@@ -25,7 +35,9 @@
        <label ><strong>Date:</strong></label>
      </div>
      <div class="col-md-3 col-sm-6 col-xs-12">
-       <input type="text" id="datepicker" name="mealDate" required="Please chosing date">
+       <div class="input-group">
+          <input type="text" id="datepicker" name="mealDate" title="datepicker" placeholder="Select date here">
+       </div>
      </div>
      <div class="col-md-4"></div>
      <div class="col-md-1">
@@ -69,9 +81,16 @@
 </div>
 </form>
 </main>
-
-<script type="text/javascript"> 
- $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+  <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css"></script>
+  <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script>  
+ $('#datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    orientation:"bottom",
+    todayBtn: true,
+    todayHighlight: true,
+    autoclose:true,
+});
   // image gallery
   $(".image-checkbox").each(function () {
     if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
