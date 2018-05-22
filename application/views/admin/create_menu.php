@@ -8,7 +8,6 @@
  * @since      1.0.0
  */
 ?>
-<<<<<<< HEAD
 <style>
   [title~=datepicker] {
     border:none;
@@ -19,9 +18,6 @@
     border-bottom: 2px solid gray;
   }
 </style>
-=======
-
->>>>>>> 1e2833f40c86d0c71a1a2353a5558f8820f77fb9
 <main class="app-content">
   <div class="app-title">
     <div>
@@ -39,13 +35,9 @@
        <label ><strong>Date:</strong></label>
      </div>
      <div class="col-md-3 col-sm-6 col-xs-12">
-<<<<<<< HEAD
        <div class="input-group">
           <input type="text" id="datepicker" name="mealDate" title="datepicker" placeholder="Select date here">
        </div>
-=======
-       <input type="text" id="datepicker" name="mealDate" required="Please chosing date">
->>>>>>> 1e2833f40c86d0c71a1a2353a5558f8820f77fb9
      </div>
      <div class="col-md-3 col-sm-0 col-xs-0"></div>
      <div class="col-md-1">
@@ -93,7 +85,6 @@
 
 </form>
 </main>
-<<<<<<< HEAD
   <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css"></script>
   <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
 <script>  
@@ -104,11 +95,6 @@
     todayHighlight: true,
     autoclose:true,
 });
-=======
-<script type="text/javascript">
-  
- $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
->>>>>>> 1e2833f40c86d0c71a1a2353a5558f8820f77fb9
   // image gallery
   // init the state from the input
   $(".image-checkbox").each(function () {

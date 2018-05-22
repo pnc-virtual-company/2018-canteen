@@ -3,9 +3,8 @@
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color:#009688;
   }
-    input[type="radio"],
-    input[type="file"]{
-    margin-left: 20px;
+  input[type="radio"] {
+    margin-left: 15px;
   }
 </style>
 <div class="app-content">
@@ -15,7 +14,7 @@
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/listUsers"><span class="mdi mdi-arrow-left-bold-circle-outline" style="font-size: 20px;"></span>&nbsp;&nbsp;List Users</a></li>
+          <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/User/listUsers"><span class="mdi mdi-arrow-left-bold-circle-outline" style="font-size: 20px;"></span>&nbsp;&nbsp;Go Back</a></li>
         </ul>
   </div>
     <div class="row">
@@ -52,68 +51,38 @@
                 </div>
                 <div class="form-group col">
                   <label for="cardId"><strong>Card ID</strong></label>
-                  <input type="text" class="form-control" required name="cardid" placeholder="User ID">
+                  <input type="text" class="form-control" required name="cardid" placeholder="User Card ID">
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col">
-                   <label> <strong>Choose Role</strong></label>
-                    <select name="userRole" id="" class="form-control">
-                        <option value="2">Normal User</option>
-                        <option value="3">Staff</option>
-                        <option value="1">Admin</option>
-                        <option value="8">Super Admin</option>
-                    </select>
-                </div>
                 <div class="form-group col">
                   <label for="password"><strong>Password</strong></label>
                   <input type="password" placeholder="password" name="password" class="form-control" require>
                 </div>
-              </div>
-              <div class="row">
-                  <div class="form-group col-md-6">
-                      <label><strong>Staff Picture</strong></label>
-                      <input type="file" class="form-control" required name="userimage" title="No picture selected">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <div class="form-group">
-                      <br>
-                      <label for="gender"><strong>Gender</strong></label><br>
-                      <input type="radio" name="gender" value="Female" id="female" checked> <label for="female">Female</label>
-                      <input type="radio" name="gender" value="Male" id="male"> <label for="male">Male</label>
-                    </div>
-                  </div>
-              </div>
-             <a class=" btn btn-danger" href="<?php echo base_url() ?>admin/User/listUsers"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
-              <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add User</button>
-                  <label for="image"><strong>Staff Picture</strong></label>
+                <div class="form-group col">
+                  <label for="image"><strong>User Picture</strong></label>
                   <input type="file" class="form-control" required name="userimage">
                 </div>
               </div>
               <div class="row">
-                      <div class="form-group col-md-6">
-                        <label for="">Choose Role</label>
-                        <select name="userRole" id="" class="form-control">
-                            <option value="1">Admin</option>
-                            <option value="2">Staff</option>
-                            <option value="3">Normal user</option>
-                              <!--   <?php 
-                                  //foreach ($roles as $role) {
-                                ?>
-                              <option value="<?php //echo $role->id ?>"><?php //echo $role->name ?></option>
-                              <?php// } ?>  -->
-
-                        </select>
-                      </div>
-                
-              </div>
-              <div class="form-group">
-                <label for="gender"><strong>Gender</strong></label>
-                <input type="radio" name="gender" value="Male" checked> Male
-                <input type="radio" name="gender" value="Female"> Female
+                <div class="form-group col-md-6">
+                  <label><strong>Choose Role</strong></label>
+                  <select name="userRole"  class="form-control" multiple="multiple">
+                      <?php 
+                        foreach ($roles as $role) {
+                       ?>
+                       <option value="<?php echo $role->id ?>"><?php echo $role->name ?></option>
+                       <?php } ?>
+                  </select>
+                </div>
+                <div class="col form-group col-md-6"><br>
+                  <label for="gender"><strong>Gender</strong></label><br>
+                  <input type="radio" name="gender" value="Female" id="female" checked><label for="female">&nbsp;&nbsp;Female</label> 
+                  <input type="radio" name="gender" value="Male" id="male"><label for="male">&nbsp;&nbsp;Male</label> 
+                </div>
               </div>
              <a class=" btn btn-danger" href="<?php echo base_url() ?>admin/User/listUsers"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
-              <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add Staff</button>
+              <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add User</button>
             </form>
             </form>
           </div>
