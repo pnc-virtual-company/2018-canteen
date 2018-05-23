@@ -153,7 +153,7 @@ $(function(){
                 start: $('#start').val(),
                 end: $('#end').val()
             }, function(result){
-                $('.alert').addClass('alert-success').text('Event added successfuly');
+                $('.alert').addClass('alert-success').text('Event added and sent email successfuly');
                 $('.modal').modal('hide');
                 $('#calendar').fullCalendar("refetchEvents");
                 hide_notify();

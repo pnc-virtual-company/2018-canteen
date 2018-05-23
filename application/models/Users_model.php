@@ -432,6 +432,7 @@ class Users_model extends CI_Model {
                     staffParticpate.*, 
                     lunchEvent.title AS "Title",
                     users.class_name AS "ClassName",
+                    users.email AS "Email",
                     CONCAT(users.firstname , " " , users.lastname) AS "Staff_name"
                     FROM tbl_staff_participation staffParticpate
                     INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id

@@ -44,14 +44,52 @@ Class calendar extends CI_Controller{
 	/*Add new event */
 	Public function addLunchEvent()
 	{
+		$message= $this->load->view('Calendar/sendMailResult');
 		$result=$this->Calendar_model->addLunchEvent();
 		echo $result;
+		/*Sending email to invite the staff the join the lunch in PNC*/
+		$config = array(
+		'protocol' => 'smtp',
+		'smtp_host' => 'ssl://smtp.googlemail.com',
+		'smtp_port' => 465,
+		'smtp_user' => 'pnc.temporary.vc2018@passerellesnumeriques.org', 
+		'smtp_pass' => 'Pnc!Wep2018?',
+		'mailtype' => 'html',
+		'wordwrap' => TRUE
+		);
+		    $this->load->library('email', $config);
+		    $this->email->set_newline("\r\n");
+		   $this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org', 'Admin & Finance');
+		    $this->email->to('sun.meas@student.passerellesnumeriques.org');
+		    $this->email->subject('Lunch Invitation');
+		    // $this->email->message('You are invited to join lunch at PNC');
+		    $this->email->message($message);
+		    $this->email->send();
 	}
 	/*Update Event */
 	Public function updateLunchEvent()
 	{
+		$message= $this->load->view('Calendar/sendMailResult');
 		$result=$this->Calendar_model->updateLunchEvent();
 		echo $result;
+		/*Sending email to invite the staff the join the lunch in PNC*/
+		$config = array(
+		'protocol' => 'smtp',
+		'smtp_host' => 'ssl://smtp.googlemail.com',
+		'smtp_port' => 465,
+		'smtp_user' => 'pnc.temporary.vc2018@passerellesnumeriques.org', 
+		'smtp_pass' => 'Pnc!Wep2018?',
+		'mailtype' => 'html',
+		'wordwrap' => TRUE
+		);
+		    $this->load->library('email', $config);
+		    $this->email->set_newline("\r\n");
+		   $this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org', 'Admin & Finance');
+		    $this->email->to('sun.meas@student.passerellesnumeriques.org');
+		    $this->email->subject('Lunch Invitation Updated');
+		    // $this->email->message($message);
+		    $this->email->message('');
+		    $this->email->send();
 	}
 	/*Delete Event*/
 	Public function deleteEvent()

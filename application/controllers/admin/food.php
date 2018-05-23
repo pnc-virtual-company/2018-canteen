@@ -209,28 +209,27 @@ class food extends CI_Controller {
             $this->load->view('templates/footer', $data);
     }
     
-   function addOrder(){
-       // okay now let get value from form
-        $food_ids = $this->input->post('fo_id');
-        $quantities = $this->input->post('plate');
+   // function addOrder(){
+   //     // okay now let get value from form
+   //      $food_ids = $this->input->post('fo_id');
+   //      $quantities = $this->input->post('plate');
 
-
-        // let loop the quantiy for each food to get only quantiy != 0
-        for($i = 0; $i<count($quantities); $i++)
-        {
-            // check if qty != 0, let insert it into db
-            if($quantities[$i] != 0)
-            {
-                // call model to insert to db
-                $ordered = $this->Dishes_model->createOrder($sfood_ids[$i], $quantities[$i]);
-                    if($ordered ){
-                        redirect('Welcome ');
-                    }
-            }
-        }
-        // do something after insert to DB
+   //      // let loop the quantiy for each food to get only quantiy != 0
+   //      for($i = 0; $i<count($quantities); $i++)
+   //      {
+   //          // check if qty != 0, let insert it into db
+   //          if($quantities[$i] != 0)
+   //          {
+   //              // call model to insert to db
+   //              $ordered = $this->Dishes_model->createOrder($sfood_ids[$i], $quantities[$i]);
+   //                  if($ordered ){
+   //                      redirect('Welcome ');
+   //              }
+   //          }       
+   //      }
+     
   
-    }
+   //  }
 
     function createMenu(){
         $this->load->helper('form');
@@ -243,7 +242,6 @@ class food extends CI_Controller {
         $this->load->view('templates/footer', $data);
     }
     
-
  public function selectDish() {
     $id = $this->uri->segment(4);
     $data['select_dishes'] = $this->Dishes_model->selectDish($id);
