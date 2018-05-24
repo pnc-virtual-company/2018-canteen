@@ -48,6 +48,7 @@
   <div class="col-md-1 col-sm-0 col-xs-12"></div>
     <div class="row">
       <div class="col-md-12">
+        <a href="<?php echo base_url();?>admin/UserjoinEvent/exportUserJoinEvent" class="btn btn-primary float-right"><i class="mdi mdi-file-excel"></i>&nbsp;Export</a>
         <table id="user" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="bg-dark text-white">
               <tr>
@@ -81,12 +82,6 @@
             <?php endforeach ?>
           </tbody>
         </table>
-        <div class="row">
-          <div class="col-md-12">
-                  <!-- <a href="<?php echo base_url();?>UserjoinEvent/export"><button type="submit" class="btn btn-warning"><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Export Excel</button></a> -->
-                  <a href="<?php echo base_url();?>users/export" class="btn btn-warning"><i class="mdi mdi-file-excel"></i>&nbsp;Export Excel List</a>
-          </div>
-        </div>
     </div>
 </main>
 

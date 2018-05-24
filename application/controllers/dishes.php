@@ -91,4 +91,7 @@ class Dishes extends CI_Controller {
             $this->output->set_output('false');
         }
     }
+    public function dishExport() {
+        $this->load->view('dishes/dishExport');
+    }
 }

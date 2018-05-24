@@ -51,7 +51,7 @@
 		</div>
 	</div>
 </div>
-<!-- <br><br>
+<br><br>
 <div class="row">
 	<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
 	<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -136,7 +136,7 @@
 			<?php } ?>
 		</div>
 	</div>
-</div> -->
+</div>
 <!-- create modal of order item -->
 <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">

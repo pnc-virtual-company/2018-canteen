@@ -40,6 +40,7 @@
     <div class="row">
       <div class="col-md-12">
         <?php echo $flashPartialView;?>
+        <a href="<?php echo base_url();?>Admin/User/exportUser" class="btn btn-primary float-right"><i class="mdi mdi-file-excel"></i>&nbsp;Export</a>
         <table id="user" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="bg-dark text-white">
               <tr>
@@ -62,9 +63,6 @@
                   <td><?php echo $user->email ?></td>
                   <td><?php echo $user->class_name ?></td>
                   <td><?php echo $user->rolename?></td>
-                <!--   <td>
-                    <img src="<?php echo base_url().'assets/uploads/'.$user->user_image ?>" alt="image" class="img-thumbnail" style="width:10%;">
-                  </td> -->
                   <td>
                     <a href="javascript:void()" data-toggle="modal" data-target="#exampleModal" title="View User" data-whatever="@getbootstrap" 
                       user_name="<?php echo $user->firstname." ".$user->lastname  ?>" 

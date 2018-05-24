@@ -48,6 +48,7 @@
         </div>
       </div>
       <div class="col-md-12">
+         <a href="<?php echo base_url();?>admin/PreOrder/exportDishOrdered" class="btn btn-primary float-right"><i class="mdi mdi-file-excel"></i>&nbsp;Export</a>
         <table id="food" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="thead-dark">
               <tr>

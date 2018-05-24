@@ -21,6 +21,4 @@ class addDishs extends  CI_Model
 		return $result;
 	}
 	
-} 
-
- ?> 
+}
