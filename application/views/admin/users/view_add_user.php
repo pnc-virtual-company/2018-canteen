@@ -62,6 +62,7 @@
                 <div class="form-group col">
                   <label for="image"><strong>User Picture</strong></label>
                   <input type="file" class="form-control" required name="userimage">
+                  <p><?php echo $error_msg ?></p>
                 </div>
               </div>
               <div class="row">

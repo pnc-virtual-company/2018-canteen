@@ -5,24 +5,20 @@
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
 <br><br>
 <div class="row">
-	<div class="col-md-2"></div>
-	<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">
+	<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 		<?php foreach($dishesOrder as $menu){ ?>
 		<h2 style="color: #009688;">Breakfast</h2>
 		<strong><hr style="box-shadow: 1px 1px 1px;"></strong>		
-		<i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
+		<i class="mdi mdi-account-circle text-danger" style="font-size:18px"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
 		<p><?php echo $menu->menu_description; ?> </p>
 		<?php break;}?>
 		<div class="row">
 			<?php foreach($dishesOrder as $dish) {    ?>	
-			<div class="col-md-6" style="margin-bottom: 20px;">	
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
 				<div class="card card-columns">
-					<div class="card-body">
-						<div class="row">				    		
-							<div class="col-md-6 text-center">
-								<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" alt="" style="width: 400px; height: 300px;" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">
-							</div>							    	
-						</div><br>				    	
+					<div class="card-body">			    		
+							<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">			    	
 					</div> 
 					<div class="card-footer">
 						<div class="container">
@@ -49,88 +45,80 @@
 </div>
 <br><br>
 <div class="row">
-	<div class="col-md-2"></div>
-	<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">
+	<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 		<?php foreach($dishesOrder1 as $menu){ ?>
 		<h2 style="color: #009688;">Lunch</h2>
 		<strong><hr style="box-shadow: 1px 1px 1px;"></strong>		
-		<i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
+		<i  style="font-size:18px" class="mdi mdi-account-circle text-danger"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
 		<p><?php echo $menu->menu_description; ?> </p>
 		<?php break;}?>
 		<div class="row">
 			<?php foreach($dishesOrder1 as $dish) {    ?>	
-			<div class="col-md-6">	
-				<div class="card card-columns">
-					<div class="card-body">
-						<div class="row">				    		
-							<div class="col-md-6 text-center">
-								<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" alt="" style="width: 400px; height: 300px;" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">
-							</div>							    	
-						</div><br>				    	
-					</div> 
-					<div class="card-footer">
-						<div class="container">
-							<div class="row">
-								<?php if($this->session->loggedIn === TRUE) { ?>
-								<div class="col-md-4">
-									<a href="#" >45&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
-								</div>				    			
-								<div class="col-md-4 item" id="food">
-									<a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
-								</div>			    					    	
-								<div class="col-md-4">
-									<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
+					<div class="card card-columns">
+						<div class="card-body">			    		
+								<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">			    	
+						</div> 
+						<div class="card-footer">
+							<div class="container">
+								<div class="row">
+									<?php if($this->session->loggedIn === TRUE) { ?>
+									<div class="col-md-4">
+										<a href="#" >45&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+									</div>				    			
+									<div class="col-md-4 item" id="food">
+										<a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
+									</div>			    					    	
+									<div class="col-md-4">
+										<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
+									</div>
+									<?php } ?>
 								</div>
-								<?php } ?>
-							</div>
-						</div>				    	
-					</div>				  				 
-				</div>					 
-			</div>
+							</div>				    	
+						</div>				  				 
+					</div>					 
+				</div>
 			<?php } ?>
 		</div>
 	</div>
 </div>
 <br><br>
 <div class="row">
-	<div class="col-md-2"></div>
-	<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+		<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 		<?php foreach($dishesOrder2 as $menu){ ?>
 		<h2 style="color: #009688;">Dinner</h2>
 		<strong><hr style="box-shadow: 1px 1px 1px;"></strong>		
-		<i style="margin-left:-10px; color:purple;" class="mdi mdi-account-circle"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
+		<i style="font-size:18px" class="mdi mdi-account-circle text-danger"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
 		<p><?php echo $menu->menu_description; ?> </p>
 		<?php break;}?>
 		<div class="row">
 			<?php foreach($dishesOrder2 as $dish) {    ?>	
-			<div class="col-md-6">	
-				<div class="card card-columns">
-					<div class="card-body">
-						<div class="row">				    		
-							<div class="col-md-6 text-center">
-								<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" alt="" style="width: 400px; height: 300px;" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">
-							</div>							    	
-						</div><br>				    	
-					</div> 
-					<div class="card-footer">
-						<div class="container">
-							<div class="row">
-								<?php if($this->session->loggedIn === TRUE) { ?>
-								<div class="col-md-4">
-									<a href="#" >45&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
-								</div>				    			
-								<div class="col-md-4 item" id="food">
-									<a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
-								</div>			    					    	
-								<div class="col-md-4">
-									<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
-								</div>
-								<?php } ?>
-							</div>
-						</div>				    	
-					</div>				  				 
-				</div>					 
-			</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
+						<div class="card card-columns">
+							<div class="card-body">			    		
+									<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">			    	
+							</div> 
+							<div class="card-footer">
+								<div class="container">
+									<div class="row">
+										<?php if($this->session->loggedIn === TRUE) { ?>
+										<div class="col-md-4">
+											<a href="#" >45&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+										</div>				    			
+										<div class="col-md-4 item" id="food">
+											<a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
+										</div>			    					    	
+										<div class="col-md-4">
+											<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
+										</div>
+										<?php } ?>
+									</div>
+								</div>				    	
+							</div>				  				 
+						</div>					 
+					</div>
 			<?php } ?>
 		</div>
 	</div>

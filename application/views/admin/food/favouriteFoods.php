@@ -1,4 +1,5 @@
 
+
 <?php
 /**
  * This view displays the chart of favorit food.
@@ -58,8 +59,3 @@
     </div>
   </div>
 </main>
-
-
-
-
-

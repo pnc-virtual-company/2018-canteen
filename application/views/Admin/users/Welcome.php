@@ -9,54 +9,29 @@ class Welcome extends CI_Controller {
 			parent::__construct();
 			log_message('debug', 'URI=' . $this->uri->uri_string());
 	}
-		/**
-	     * Load welcome page in public user interface.
-	     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-	     */
+
 	public function index()
 	{
-	$data['title'] = 'Home';
-      	$data['dishesOrder'] = $this->Dishes_model->getMenu();
-      	$data['dishesOrder1'] = $this->Dishes_model->getMenu1();
-      	$data['dishesOrder2'] = $this->Dishes_model->getMenu2();
-	$data['page'] = 'welcome';
-	$this->load->view('layout', $data);
+			$data['title'] = 'This is Food for';
+			$this->load->model('getUserActive');
+        	$data['user'] = $this->getUserActive->getActive();
+        	$data['dishesOrder'] = $this->Dishes_model->getMenu();
+        	$data['dishesOrder1'] = $this->Dishes_model->getMenu1();
+        	$data['dishesOrder2'] = $this->Dishes_model->getMenu2();
+			$data['page'] = 'welcome';
+			$this->load->view('layout', $data);
 	}
-		/**
-	    * This function is use to create the order for each usergdf
-	    * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-	  */
-	public function insertOrderInfo(){
-	  $dish_id = $this->uri->segment(3);
-	  $meal_time_id = $this->uri->segment(4); 
-	  $data['userPreOrder'] = $this->Dishes_model->createOrder($dish_id,$meal_time_id);
-	  if ($data == TRUE) {
-	    redirect(base_url());
-	  }
-	}
-	/**
-     * Dishplay  favorite food in public user interface
-     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-     */
-	public function favoriteFood(){
-		$this->load->model('foodFavorite');
-		$data['dishes'] = $this->foodFavorite->dishesFavorite();
-		$data['title'] = 'Favorite Food';
-		$data['page'] = 'dishes/favouriteFoods';
-		$this->load->view('layout', $data);
-	}
-		/**
-	     * Display popup and allow user to order their food.
-	     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-	     */
+
 	public function getDish(){
-		$id = $this->input->post('dish_id');
+$this->load->model('getUserActive');
+    $data['user'] = $this->getUserActive->getActive();
+$id = $this->input->post('dish_id');
     $data['dishesOrder'] = $this->Dishes_model->selectDish($id);
     $output = "";	
 		foreach ($data['dishesOrder'] as $dish) 
 		{	
 			$output .= '
-				<form action="'.base_url().'Welcome/insertOrderInfo/'.$id.'/'.$dish->meal_time_id.'" method="post">			        
+				<form action="'.base_url().'admin/PreOrder/insertOrderInfo/'.$id.'/'.$dish->meal_time_id.'" method="post">			        
 				        	<div class="row">
 				        		<div class="col-6">
 				        			<div class="form-group text-center">				        			

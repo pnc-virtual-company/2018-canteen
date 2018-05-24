@@ -145,7 +145,6 @@ public function selectDish($id){
         return $query->result();
     }
 
-
     /**
      * Get the info from tbl_dishes where dishes match with Lunch. 
      * @param int $id optional id of one dish.
@@ -163,6 +162,7 @@ public function selectDish($id){
         $query = $this->db->get();
         return $query->result();
     }
+
     /**
      * Get the info from tbl_dishes where dishes match with dinner. 
      * @param int $id optional id of one dish.

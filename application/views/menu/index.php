@@ -19,11 +19,11 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
         <a class=" btn text-white active" href="<?php echo base_url() ?>"><i class="mdi mdi-home-circle"></i>&nbsp;&nbsp;Home</a>
        </li>
       <li class="nav-item">
-        <a class="btn text-white" href="<?php echo base_url() ?>dishes/favouriteFood"><i class="mdi mdi-heart"></i>&nbsp;&nbsp;Favorite Food</a>
+        <a class="btn text-white" href="<?php echo base_url() ?>welcome/favoriteFood"><i class="mdi mdi-heart"></i>&nbsp;&nbsp;Favorite Food</a>
       </li>
-      <?php if($this->session->isAdmin || $this->session->isSuperAdmin) { ?>
+      <?php if($this->session->isSuperAdmin || $this->session->isStaff) { ?>
         <li class="nav-item">
-          <a class=" btn text-white" href="<?php echo base_url() ?>calendar/getJoinDinnerEvent"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
+          <a class="btn text-white" href="<?php echo base_url() ?>calendar/getJoinDinnerEvent"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
         </li>
       <?php } ?>
     </ul>
@@ -31,7 +31,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
       <ul class="navbar-nav ml-auto">
        <?php if($this->session->isAdmin || $this->session->isSuperAdmin) { ?>
           <li>
-             <a href="<?php echo base_url() ?>users" class="text-white" style="font-size: 25px;" title="Go to dashboard" data-toggle="tooltip" data-placement="left"><span class="mdi mdi-arrow-right-bold-circle-outline text-white"></span>&nbsp;&nbsp;</a>
+             <a href="<?php echo base_url() ?>Dishes" class="text-white" style="font-size: 25px;" title="Go to dashboard" data-toggle="tooltip" data-placement="left"><span class="mdi mdi-arrow-right-bold-circle-outline text-white"></span>&nbsp;&nbsp;</a>
           </li>
       <?php } ?>
         <?php if($this->session->loggedIn === TRUE) { ?>
@@ -44,7 +44,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
 
               <li class="nav-item <?php echo ($activeLink=='users'?'actives':'');?>">
                 <div class="row">
-                  <a class="mdi mdi-lock text-white" href="<?php echo base_url();?>users">&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a class="mdi mdi-lock text-white" href="<?php echo base_url();?>Dishes">&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
                   <a class=" text-white">OR&nbsp;&nbsp;&nbsp;&nbsp;</a>
                   <a class=" text-white mdi mdi-account-plus" href="<?php echo base_url();?>c_users/addUsers">&nbsp;&nbsp;Register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </div>
