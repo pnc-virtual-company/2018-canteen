@@ -65,15 +65,6 @@ $route['users/check/login'] = 'users/checkLoginByAjax';
 $route['users'] = 'users';
 $route['users/register'] = 'users/register';
 
-//Examples
-$route['examples/index'] = 'examples/index';
-$route['examples/views/(:any)'] = 'examples/renderView/$1';
-$route['examples/i18n/(:any)'] = 'examples/i18n/$1';
-$route['examples/i18n'] = 'examples/i18n';
-$route['examples/backend/typeahead/files/(:any)'] = 'examples/listFiles/$1';
-$route['examples/backend/pdf/file/display'] = 'examples/generatePDF';
-$route['examples/backend/pdf/file/download'] = 'examples/downloadPDF';
-$route['examples/backend/rest/time/server'] = 'examples/getServerTimeByApi';
 
 //Errors
 $route['errors/privileges'] = 'errors/privileges';

@@ -1,16 +1,16 @@
-<!-- <script src="<?php echo base_url();?>assets/js/Chart-2.7.1.min.js"></script>
+ <script src="<?php echo base_url();?>assets/js/Chart-2.7.1.min.js"></script>
 <div class="container">
-<!--We just need a JS file //-->
+<!--We just need a JS file //
 <br> -->
-<!-- <h1 class="text-info text-center">List All Favourite Food</h1>
+<h1 class="text-info text-center">List All Favourite Food</h1>
 <div class="row">
   <div class="col-md-1"></div>
       <div class="col-lg-10 col-md-6  col-sm-6 col-xs-12"> 
       <canvas id="pie-chart" width="800" height="450"></canvas>
       </div>
   <div class="col-md-2"></div>
-</div> -->
-<!-- <script type="text/javascript">
+</div>
+<script type="text/javascript">
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
@@ -29,5 +29,5 @@ new Chart(document.getElementById("pie-chart"), {
     }
 });
 </script>
-</div> -->
-  <img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:70%">
+</div>
+ 

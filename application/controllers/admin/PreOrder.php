@@ -13,7 +13,7 @@ class PreOrder extends CI_Controller {
           if ($this->session->isAdmin || $this->session->isSuperAdmin) {
             //User management is reserved to admins and super admins
           }else {
-            redirect('welcome');
+            redirect(base_url());
           }
         } else {
           redirect('connection/login');
@@ -38,14 +38,4 @@ class PreOrder extends CI_Controller {
     $this->load->view('Admin/food/userPreOrdered', $data);
     $this->load->view('templates/footer', $data);
   }
-
-  public function insertOrderInfo(){
-    $dish_id = $this->uri->segment(4); 
-    $meal_time_id = $this->uri->segment(5); 
-    $data['userPreOrder'] = $this->Dishes_model->createOrder($dish_id,$meal_time_id);
-    if ($data == TRUE) {
-      redirect(base_url());
-    }
-  }
-
 }

@@ -42,6 +42,7 @@ label{
 							<div class="form-group">
 								<label class="text-white" >Dish Image</label>
 								<input type="file" class="form-control" name="dishImage" value="<?php echo $dish->dish_image; ?>">
+									<p><?php echo $error_message ?></p>
 							</div>
 						</div>
 						<div class="col-md-2"></div>

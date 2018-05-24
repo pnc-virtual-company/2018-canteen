@@ -36,28 +36,67 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
   <div class="app-sidebar__user app-menu__label">
-    <a href="<?php echo base_url() ?>Users"><img class="" style="width: 40%; margin-left: 22%; margin-bottom: -10%;" src="<?php echo base_url();?>assets/images/pnc-canteenEnd.png" alt="User Image"></a>
+    <a href="<?php echo base_url() ?>Dishes"><img class="" style="width: 40%; margin-left: 22%; margin-bottom: -10%;" src="<?php echo base_url();?>assets/images/pnc-canteenEnd.png" alt="User Image"></a>
   </div>
   <ul class="app-menu" id="nav">
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/listDish"><span class="mdi mdi-bowl" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">List All Dishes</span></a></li>
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/User/listUsers"><span class="mdi mdi-account-multiple" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">List All Users</span></a></li>
-
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/create_menu"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Create Menu</span></a></li>
-
-    <li><a class="app-menu__item" href="<?php echo base_url() ?>admin/PreOrder/preOrderList"><span class="mdi mdi-rice" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Pre-Ordered Food</span></a></li>
-
-    <li><a class="app-menu__item" href="<?php echo base_url() ?>admin/PreOrder/userOrderList"><span class="mdi mdi-account-multiple" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Users Pre-Ordered</span></a></li>
-
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favourite Food</span></a></li>
-
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getAdminCalendar"><span class="mdi mdi-calendar" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label"> Create Staff Events</span></a></li> 
-
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/StaffParticipation/getListParticipate"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Staff Reminder Event</span></a></li> 
-
-    <li>
-      <a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getDinnerEvent"><span class="mdi mdi-calendar" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Week & Monthly Report</span></a>
-    </li>      
-
+    <li class="treeview">
+      <a class="app-menu__item" href="<?php echo base_url()?>Dishes"></i><span class="mdi mdi-view-dashboard" style="font-size: 20px;"></span>&nbsp;&nbsp;&nbsp;Dashboard</a>
+    </li>
+    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"></i><span class=" mdi mdi-food" style="font-size: 20px;"></span>&nbsp;&nbsp;&nbsp;Canteen
+    <span class="mdi mdi-arrow-down-drop-circle-outline" style="font-size: 20px;margin-left: 40%;"></span>
+    </a>
+      <ul class="treeview-menu">
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/listDish">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Dishes
+          </a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url(); ?>admin/create_menu">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Create Menu
+          </a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url() ?>admin/PreOrder/preOrderList">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Pre-Ordered
+          </a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url() ?>admin/PreOrder/userOrderList">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>User Pre-Ordered
+          </a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Favorite Dishes
+          </a>
+        </li>
+      </ul>
+    </li>
+    <?php if ($this->session->isSuperAdmin) { ?>
+    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"></i><span class="mdi mdi-calendar" style="font-size: 20px;"></span>&nbsp;&nbsp;&nbsp;Events<span class="mdi mdi-arrow-down-drop-circle-outline" style="font-size: 20px;margin-left: 45%;"></span></a>
+      <ul class="treeview-menu">
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getAdminCalendar">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Staff Lunch
+          </a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url(); ?>admin/StaffParticipation/getListParticipate">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Staff Lunch Reminder
+          </a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getDinnerEvent">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Student Event & Report
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="treeview">
+      <a class="app-menu__item" href="<?php echo base_url()?>admin/User/listUsers"></i><span class="mdi mdi-account-multiple" style="font-size: 20px;"></span>&nbsp;&nbsp;&nbsp;Users</a>
+    </li>
+    <?php } ?>
   </ul> 
 </aside>
 
@@ -74,7 +113,6 @@
           event.preventDefault();
           $('.app').toggleClass('sidenav-toggled');
         });
-
          // Activate sidebar treeview toggle
          $("[data-toggle='treeview']").click(function(event) {
           event.preventDefault();
