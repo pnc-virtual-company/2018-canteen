@@ -25,10 +25,12 @@ class remindEmail extends CI_Controller {
       $this->email->message('We would like to remind you again to join the lunch event.');
    if($this->email->send())
       {
-       $this->getListParticipate();
+       $this->sendReminded();
       } else {
        show_error($this->email->print_debugger());
      }
+       $this->sendReminded();
  }
+
 
 }

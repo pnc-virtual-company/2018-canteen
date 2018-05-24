@@ -32,5 +32,11 @@
           $this->load->view('templates/footer', $data);
         }
 
+
+        function sendReminded(){
+           $this->load->model('Participate_model');
+           $this->Participate_model->getReminded();
+         }
+
      }
  ?>

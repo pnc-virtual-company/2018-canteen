@@ -50,6 +50,7 @@
                         <div class="alert"></div>
                 </div>
         </div>
+<?php if($this->session->loggedIn === TRUE) { ?>
   <div class="col-md-3 col-sm-0 col-xs-0"></div>
      <div class="col-md-1">
        <label for="exampleSelect1"><strong>Status:</strong></label>
@@ -88,17 +89,13 @@
                   <td><?php echo $participates->Title ?></td>
                   <td><?php if ($participates->status ==0  &&  $participates->reminded ==0 ) 
                   {
-                          // echo "Not yet Confirmed";
                           echo "<mark class='badge btn-warning' >Not yet Confirmed</mark>";
                   } else if ($participates->status ==1 && $participates->reminded ==0 ) 
                   {
-                         // echo "Confirmed";
                           echo "<mark class='badge btn-success' >Confirmed</mark>";
                   }else if($participates->status ==0 && $participates->reminded ==1){
-                          // echo "Not yet Confirmed";
                           echo "<mark class='badge btn-warning' >Not yet Confirmed</mark>";
                   }else if($participates->status ==1 && $participates->reminded ==1){
-                          // echo "Confirmed";
                           echo "<mark class='badge btn-success' >Confirmed</mark>";
                   }?></td>
                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -126,6 +123,7 @@
         </div>
       </div>
     </div>
+<?php } ?>
 </main>
 
 <link href="<?php echo base_url();?>assets/DataTable/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -142,6 +140,8 @@ $(document).ready(function() {
     // Determine if checkbox is checked enable button
      $("#chremind").click(function() {
        $(".btn-warning").attr("disabled", !this.checked); 
+       // var $user_id= $(this).attr('user_id');
+       // alert($user_id);
      });
      /*alert success reminding email*/
       $(".btn-warning").click(function() {

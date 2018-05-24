@@ -28,6 +28,18 @@ class Participate_model extends CI_Model {
         $this->db->order_by('user_id', 'DESC');
         $query = $this->db->get('tbl_staff_participation'); 
         return $query->result();
-        // var_dump($result);die();
     }
+
+    public function getReminded(){
+         // $current_logged_in =  $this->session->userdata('id');
+
+         // Insert reminded
+         $data_reminded = array(
+           'user_id' => '2',
+           'lunch_event_id' => '63',
+           'status' => '0',
+           'reminded' => '1'
+         );
+         $result = $this->db->update('tbl_staff_participation', $data_reminded);
+     }
 }
