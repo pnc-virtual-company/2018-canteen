@@ -1,3 +1,5 @@
+
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -12,12 +14,10 @@ class Welcome extends CI_Controller {
 
 	public function index() 
 	{
-		$this->load->model('getUserActive');
-    	$data['user'] = $this->getUserActive->getActive();
+
     	$rows = array();
     	$result = $this->Dishes_model->getMenu(1);
-    	
-    	// We will create new array to store new element value check is the food already order
+    	// We will create new array to store new element value check is the food already order, it is the same as like unlick yesteraday
     	if($result->num_rows() > 0)
     	{
     		foreach ($result->result() as $row) {
@@ -82,8 +82,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function getDish(){
-	$this->load->model('getUserActive');
-	    $data['user'] = $this->getUserActive->getActive();
+	
 	$id = $this->input->post('dish_id');
 	$status_form = $this->input->post('status_form');
 
@@ -170,11 +169,16 @@ class Welcome extends CI_Controller {
 			';
 		}
 
+
+
+
+
+
 	}
 	echo $output;
 }
-// create order
-public function insertOrderInfo(){
+
+	 public function insertOrderInfo(){
     $dish_id = $this->uri->segment(3); 
     $meal_time_id = $this->uri->segment(4); 
     $data['userPreOrder'] = $this->Dishes_model->createOrder($dish_id,$meal_time_id);

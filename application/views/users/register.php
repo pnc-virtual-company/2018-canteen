@@ -10,6 +10,9 @@
     width: 25%;
     margin-left:38%;
   }
+    input[type="radio"]{
+    margin-left: 40px;
+  }
 </style>
 <div class="container">
     <?php echo $flashPartialView;?>
@@ -59,13 +62,13 @@
                 <div class="form-group col">
                   <label for="image"><strong>Student Picture</strong></label>
                   <input type="file" class="form-control" required name="image">
-                  <p class="text-warning"><?php echo $error_msg ?></p>
+                  <p><?php echo $error_msg ?></p>
                 </div>
               </div>
               <div class="form-group">
-                <label for="gender"><strong>Gender</strong></label>
-                <input type="radio" name="gender" value="Male" checked> Male
-                <input type="radio" name="gender" value="Female"> Female
+                <label for="gender"><strong>Gender:</strong></label>
+                <input type="radio" name="gender" value="Female" id="female" checked> <label for="female">Female</label>
+                <input type="radio" name="gender" value="Male" id="male"> <label for="male">Male</label>
               </div>
               <a class="btn btn-danger" href="<?php echo base_url() ?>"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
               <button class=" btn btn-info float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Register</button>

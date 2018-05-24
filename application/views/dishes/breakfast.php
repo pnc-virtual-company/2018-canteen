@@ -22,7 +22,7 @@
 			<p>All best food in Passerelles Numeriques Cambodai canteen</p>
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url() ?>Users"><span class="mdi mdi-arrow-left-bold-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Back To Welcome Board</a></li>
+			<li class="breadcrumb-item"><a href="<?php echo base_url() ?>Dishes"><span class="mdi mdi-arrow-left-bold-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Back To Welcome Board</a></li>
 		</ul>
 	</div>
 		<div class="row">

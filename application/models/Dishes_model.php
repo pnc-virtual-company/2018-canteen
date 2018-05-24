@@ -143,6 +143,29 @@ public function selectDish($id){
         return $query;
     }
     
+    /*public function getMenu1(){
+        date_default_timezone_set("Asia/Phnom_Penh");
+        $creating_date = date('Y-m-d');
+       $this->db->select('*');
+       $this->db->from('tbl_dishes');
+        $this->db->where (array('dish_active' =>1));
+        $this->db->where('menu_created_date=',$creating_date);
+        $this->db->where('meal_time_id=',2);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getMenu2(){
+        date_default_timezone_set("Asia/Phnom_Penh");
+        $creating_date = date('Y-m-d');
+       $this->db->select('*');
+       $this->db->from('tbl_dishes');
+        $this->db->where (array('dish_active' =>1));
+        $this->db->where('menu_created_date=',$creating_date);
+        $this->db->where('meal_time_id=',3);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    */
 public  function  selectOrder($food_id){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');

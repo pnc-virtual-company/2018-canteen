@@ -59,51 +59,46 @@
               </div>
               <div class="row">
                 <div class="form-group col">
-                  <label for="password"><strong>Password</strong></label>
-                  <input type="password" class="form-control" required name="password" value="<?php echo $user->password ?>">
+                  <label for="password"><strong>Change New Password</strong></label>
+                  <input type="password" class="form-control" name="password" placeholder="New password">
                 </div>
                 <div class="form-gorup col">
-                  <label for="image"><strong>Profile Image</strong></label>
-                  <input type="file" class="form-control" required name="image" value="<?php echo $user->image?>">
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-6">
                   <label for="">User Role</label>
-                    <select id="" class="form-control" name ="role">
-                      <option value="8">Supper admin</option>
-                        <option value="1">admin</option>
-                         <option value="2">normal user</option>
-                        <option value="3">staff</option>              
-                    </select>
+                    <select class="form-control" name="role" multiple="multiple">
+                          <?php foreach ($roles as $role): ?>
+                              <option value="<?php echo $role->id ?>" <?php if ($role->id == $user->role) echo "selected" ?>><?php echo $role->name ?></option>
+                          <?php endforeach ?>
+                          </select>
                 </div>
-                 <div class="form-group col">
-                         <!-- show error message when upload image  -->
-                          <p><?php echo $error_msg ?></p>
-                      </div>
               </div>
               <div class="row">
-                <div class="form-group col">
-                  <label for="gender"><strong>Gender</strong></label>
-                  <input type="radio" name="gender" value="Male" 
-                  <?php 
-                      if ($user->gender == "Male") {
-                          echo "checked";
-                      } 
-                  ?>
-                  > Male
-                  <input type="radio" name="gender" value="Female"
+                 <div class="form-group col">
+                  <label for="image"><strong>Profile Image</strong></label>
+                  <input type="file" class="form-control" name="image">
+                  <!-- show error message when upload image  -->
+                  <p><?php echo $error_msg ?></p>
+                </div>
+                <div class="form-group col-md-6"><br>
+                  <label for="gender"><strong>Gender:</strong></label>
+                  <input type="radio" id="female" name="gender" value="Female"
                     <?php 
                       if ($user->gender == "Female") {
                           echo "checked";
                       }
                      ?>
-                  > Female
+                  > <label for="female">&nbsp;&nbsp;Female</label>
+                  <input type="radio" id="male" name="gender" value="Male" 
+                  <?php 
+                      if ($user->gender == "Male") {
+                          echo "checked";
+                      } 
+                  ?>
+                  ><label for="male">&nbsp;&nbsp;Male</label> 
                 </div>
               </div>
               <?php      
                   } ?>
-              <button class=" btn btn-danger" onclick="goBack()"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</button>
+              <a href="<?php echo base_url() ?>admin/User/listUsers" class=" btn btn-danger"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
               <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Update</button>
             </form>
           </div>
@@ -113,17 +108,3 @@
     </div>
   </div>
 </div> <!-- /container -->
-
-<script>
-    $(function(){
-      $('.form-control').keypress(function(event) {
-          if (event.keyCode == 13 || event.which == 13) {
-              $('#formLogin').submit();
-          }
-      });
-    });s
-  function goBack() {
-    window.history.back();
-  }
-
-</script>

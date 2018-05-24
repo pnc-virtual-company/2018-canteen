@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Connection extends CI_Controller {
 	/**
 	 * Default constructor
-	 * @author Benjamin BALET <benjamin.balet@gmail.com>
+	 * @author kimsoeng kao <kimsoeng.kao@gmail.com>
 	 */
 	public function __construct() {
 			parent::__construct();
@@ -13,7 +13,7 @@ class Connection extends CI_Controller {
 
 	/**
 	 * Login form of the application
-	 * @author Benjamin BALET <benjamin.balet@gmail.com>
+	 * @author kimsoeng kao <kimsoeng.kao@gmail.com>
 	 */
 	public function login()
 	{
@@ -39,7 +39,7 @@ class Connection extends CI_Controller {
 					redirect($this->session->userdata('last_page'));
 				} else {
 					log_message('debug', 'Not last_page set. Redirect to the home page');
-					redirect('welcome');
+					redirect(base_url());
 				}
 			} else {
 				log_message('error', 'Invalid credentials for user ' . $this->input->post('login'));
@@ -51,12 +51,12 @@ class Connection extends CI_Controller {
 
 	/**
 	 * Logout endpoint. Destroy the PHP session
-	 * @author Benjamin BALET <benjamin.balet@gmail.com>
+	 * @author kimsoeng kao <kimsoeng.kao@gmail.com>
 	 */
 	public function logout()
 	{
 		log_message('debug', 'Logout current user and redirect to the home page');
 		$this->session->sess_destroy();
-		redirect('welcome');
+		redirect(base_url());
 	}
 }

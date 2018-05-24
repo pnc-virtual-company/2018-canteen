@@ -4,7 +4,6 @@
 		<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/left_menu.css">
     <br><br>
-    <!-- menu for break fase -->
 		<div class="row">				
 			<div class="col-md-2"></div>
 			<div class="col-lg-8 col-md-6  col-sm-6 col-xs-12">		
@@ -131,7 +130,7 @@
 				   </div>
 			</div>
 		</div>
-		<!-- Dinner part menu-->
+		<!-- Dinner part -->
 		<br />
 		<br />
 		<div class="row">
@@ -215,7 +214,7 @@
 	<!-- End of modal creation -->
 
 <script>
-	$(document).ready(function(){  
+$(document).ready(function(){  
       $('.view_data').click(function(){  
            var dish_id = $(this).attr("id");  
            // get button status to show form order or edit order

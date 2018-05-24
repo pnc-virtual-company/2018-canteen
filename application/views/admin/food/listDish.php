@@ -22,7 +22,7 @@
 <main class="app-content">
   <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i>Manage All Dishes</h1>
+            <h1><i class="fa fa-dashboard"></i>Manage Dishes</h1>
             <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">

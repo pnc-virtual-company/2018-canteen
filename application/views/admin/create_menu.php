@@ -8,15 +8,24 @@
  * @since      1.0.0
  */
 ?>
-
+<style>
+  [title~=datepicker] {
+    border:none;
+    outline: none;
+    width:230px;
+    padding: 5px;
+    background: #e5e5e5;
+    border-bottom: 2px solid gray;
+  }
+</style>
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-dashboard"></i>Menu Creation</h1>
-      <p>There are a lot of food to cook for PNC students and stafs.</p>
+      <h1><i class="fa fa-dashboard"></i>Create New Menu</h1>
+      <p>There are a lot of food to cook for PNC students and staffs.</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Food</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Dish</a></li>
     </ul>
   </div>
   <?php echo $flashPartialView;?>
@@ -26,9 +35,11 @@
        <label ><strong>Date:</strong></label>
      </div>
      <div class="col-md-3 col-sm-6 col-xs-12">
-       <input type="text" id="datepicker" name="mealDate" required="Please chosing date">
+       <div class="input-group">
+          <input type="text" id="datepicker" name="mealDate" title="datepicker" placeholder="Select date here">
+       </div>
      </div>
-     <div class="col-md-3 col-sm-0 col-xs-0"></div>
+     <div class="col-md-4"></div>
      <div class="col-md-1">
        <label for="exampleSelect1"><strong>Meal:</strong></label>
      </div>
@@ -47,12 +58,11 @@
   <div class="col-md-1 col-sm-0 col-xs-12"></div>
 </div>
 <div class="row">
-  <div class="col-md-8">
-   <h3><u>Food Description</u></h3>
+  <div class="col-md-12">
    <textarea class="form-control form-rounded" rows="3" placeholder="Please insert description of menu" name="menuDescription" style="resize: none;"></textarea><br>
    <!--   <input type="submit" name="submit" value="submit"> -->
  </div>
- <div class="col-md-4"><br><br><button type="submit" name="submit" value="submit" class="btn btn-primary" target="_blank" id="create_menu">Create Menu</button></div>
+ <div class="col-md-12"><button type="submit" name="submit" value="submit" class="btn btn-primary float-right" target="_blank" id="create_menu">Create Menu</button></div>
 </div>
 <br><br>
 <div class="row">
@@ -63,22 +73,25 @@
       <img class="img-responsive" src="<?php echo base_url('assets/images/dish_uploads/'.$dish->dish_image); ?>" width="100%"  alt="" />
       <span class="mdi mdi-check d-none" style="font-size: 20px;"></span>
       <div class="text-center bg-primary" style="padding: 7px;">
-       <h5>
-        <?php echo $dish->dish_id ?>.&nbsp;<?php echo $dish->dish_name ?></h5>
+       <h5 style="color: #E5E8E8;"><?php echo $dish->dish_name ?></h5>
       </div>
     </label>
   </div>
   <?php } ?>
 </div>
-
-
 </form>
 </main>
-<script type="text/javascript">
-  
- $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+  <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/css/bootstrap-datepicker.min.css"></script>
+  <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script>  
+ $('#datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    orientation:"bottom",
+    todayBtn: true,
+    todayHighlight: true,
+    autoclose:true,
+});
   // image gallery
-  // init the state from the input
   $(".image-checkbox").each(function () {
     if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
       $(this).addClass('image-checkbox-checked');
@@ -92,10 +105,8 @@
     $(this).toggleClass('image-checkbox-checked');
     var $checkbox = $(this).find('input[type="checkbox"]');
     $checkbox.prop("checked",!$checkbox.prop("checked"))
-
     e.preventDefault();
   });
-
 </script>
 
 

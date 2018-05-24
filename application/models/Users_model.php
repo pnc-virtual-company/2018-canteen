@@ -22,6 +22,32 @@ class Users_model extends CI_Model {
 
     }
 
+    public function addUsers(){
+        //Hash the clear password using bcrypt (8 iterations)
+        $password = $this->input->post('password');
+        $data = array('upload_data' => $this->upload->data());
+        $this->upload->data()['file_name'];
+        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
+        $hash = crypt($password, $salt);
+        $dataUser =  array(
+            'firstname'  => $this->input->post('firstname'),
+            'lastname'   => $this->input->post('lastname'),
+            'login'      => $this->input->post('username'),
+            'email'      => $this->input->post('email'),
+            'class_name' => $this->input->post('class'),
+            'card_id'    => $this->input->post('cardId'),
+            'gender'     => $this->input->post('gender'),
+            'image'      => $this->upload->data()['file_name'],
+            'password'   => $hash,
+            'role'       => '2',
+            'active'     => '1'
+        );
+        // var_dump($dataUser);die();
+        // insert array value to database
+        $this->db->insert("tbl_users", $dataUser);
+        return true;
+    }
+
     /**
      * Get the list of tbl_users or one user
      * @param int $id optional id of one user
@@ -31,7 +57,7 @@ class Users_model extends CI_Model {
 
     /// get roles from tbl_role
      public function selectRole(){
-    $query = $this->db-query('select.*','tbl_roles');
+    $query = $this->db->get('tbl_roles');
     return $query->result();
  }
 
@@ -48,7 +74,7 @@ class Users_model extends CI_Model {
     /**
      * Get the list of tbl_users and their tbl_roles
      * @return array record of tbl_users
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function getUsersAndRoles() {
         $this->db->select('tbl_users.id, active, firstname, lastname, login, email');
@@ -63,13 +89,14 @@ class Users_model extends CI_Model {
    * Get the list of tbl_roles or one role
    * 00000001 1  Admin
    * 00000010 2	User
+   * 00000010 3 Staff
    * 00000100 8	HR Officier / Local HR Manager
    * 00001000 16	HR Manager
    * 00010000 32	General Manager
    * 00100000 34	Global Manager
    * @param int $id optional id of one role
    * @return array record of tbl_roles
-   * @author Benjamin BALET <benjamin.balet@gmail.com>
+   * @author kimsoeng kao <kimsoeng.kao@gmail.com>
    */
   public function getRoles($id = 0) {
       if ($id === 0) {
@@ -83,8 +110,8 @@ class Users_model extends CI_Model {
     /**
      * Get the name of a given user
      * @param int $id Identifier of employee
-     * @return string firstname and lastname of the employee
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @return string firstname and lastname of the Users
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function getName($id) {
         $record = $this->getUsers($id);
@@ -97,7 +124,7 @@ class Users_model extends CI_Model {
      * Check if a login can be used before creating the user
      * @param string $login login identifier
      * @return bool TRUE if available, FALSE otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function isLoginAvailable($login) {
         $this->db->from('tbl_users');
@@ -159,10 +186,7 @@ class Users_model extends CI_Model {
         $query = $this->db->get_where('tbl_users', array('id' => $id));
       return $query->result();
       }
-    public function updateUsers() {
-        $password = $this->input->post('password');
-        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
-        $hash = crypt($password, $salt);
+    public function updateUsers($password) {
         $this->upload->data()['file_name'];
         $data_image = array('upload_data' => $this->upload->data());
         $data = array(
@@ -174,7 +198,7 @@ class Users_model extends CI_Model {
             'class_name' => $this->input->post('class'),
             'gender'     => $this->input->post('gender'),
             'image'      => $this->upload->data()['file_name'],
-            'password'   => $hash,
+            'password'   => $password,
             'role' =>$this->input->post('role')
         );
         // var_dump($data);die();
@@ -184,28 +208,10 @@ class Users_model extends CI_Model {
     }
 
     /**
-     * Update a given user in the database. Update data are coming from an HTML form
-     * @param int $id Identifier of the user
-     * @param string $password password in clear
-     * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
-     */
-    public function resetPassword($id, $password) {
-        //Hash the clear password using bcrypt (8 iterations)
-        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
-        $hash = crypt($password, $salt);
-        $data = array(
-            'password' => $hash
-        );
-        $this->db->where('id', $id);
-        return $this->db->update('tbl_users', $data);
-    }
-
-    /**
      * Generate a random password
      * @param int $length length of the generated password
      * @return string generated password
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function randomPassword($length) {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -219,27 +225,39 @@ class Users_model extends CI_Model {
      */
     private function loadProfile($row) {
       /*
-        00000001 1  Admin
-        00000100 8  HR Officier / Local HR Manager
-        00001000 16 HR Manager
+        000000010  Admin
+        0000000100 2  User
+        00000001000 3  Staff
+        0000010000 8  HR Officier / Local HR Manager
+        0000100000 16 HR Manager
         = 00001101 25 Can access to HR functions
        */
         $isAdmin = FALSE;
         if (((int) $row->role & 1)) {
             $isAdmin = TRUE;
         }
+        $isUser = FALSE;
+        if (((int) $row->role & 2)) {
+            $isUser = TRUE;
+        }
+        $isStaff = FALSE;
+        if (((int) $row->role & 3)) {
+            $isStaff = TRUE;
+        }
         $isSuperAdmin = FALSE;
-        if (((int) $row->role & 25)) {
+        if (((int) $row->role & 8)) {
             $isSuperAdmin = TRUE;
         }
 
         $newdata = array(
             'login' => $row->login,
-            'id' => $row->id,
+            'id'    => $row->id,
             'firstname' => $row->firstname,
             'lastname' => $row->lastname,
             'fullname' => $row->firstname . ' ' . $row->lastname,
             'isAdmin' => $isAdmin,
+            'isUser' => $isUser,
+            'isStaff' => $isStaff,
             'isSuperAdmin' => $isSuperAdmin,
             'loggedIn' => TRUE
         );
@@ -251,7 +269,7 @@ class Users_model extends CI_Model {
      * @param string $login user login
      * @param string $password password
      * @return bool TRUE if the user is succesfully authenticated, FALSE otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function checkCredentials($login, $password) {
         $this->db->from('tbl_users');
@@ -356,33 +374,6 @@ class Users_model extends CI_Model {
         return $rnd;
     }
 
-
-    public function addUsers(){
-        //Hash the clear password using bcrypt (8 iterations)
-        $password = $this->input->post('password');
-        $data = array('upload_data' => $this->upload->data());
-        $this->upload->data()['file_name'];
-        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
-        $hash = crypt($password, $salt);
-        $dataUser =  array(
-            'firstname'  => $this->input->post('firstname'),
-            'lastname'   => $this->input->post('lastname'),
-            'login'      => $this->input->post('username'),
-            'email'      => $this->input->post('email'),
-            'class_name' => $this->input->post('class'),
-            'card_id'    => $this->input->post('cardId'),
-            'gender'     => $this->input->post('gender'),
-            'image'      => $this->upload->data()['file_name'],
-            'password'   => $hash,
-            'role'       => '2',
-            'active'     => '1'
-        );
-        // var_dump($dataUser);die();
-        // insert array value to database
-        $this->db->insert("tbl_users", $dataUser);
-        return true;
-    }
-
     public function getListUsers(){
         $query = $this->db->query("select  user.*, role.id as role, role.name as rolename from tbl_users as user inner join tbl_roles as role where user.role = role.id order by id DESC");
         return $query->result();
@@ -392,9 +383,7 @@ class Users_model extends CI_Model {
     public function deleteUsers($id) {
         $this->db->delete('tbl_users', array('id' => $id));
     }
-
     public function insertUser(){
-
         // get value from input name
         $password = $this->input->post('password');
         $data = array('upload_data' => $this->upload->data());
