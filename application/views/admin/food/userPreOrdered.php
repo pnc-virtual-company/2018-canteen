@@ -22,7 +22,7 @@
 <main class="app-content">
   <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i>User Pre-Ordered Detail</h1>
+            <h1><i class="fa fa-dashboard"></i>Users Pre-Ordered</h1>
             <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
   </div>

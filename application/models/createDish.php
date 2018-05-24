@@ -27,5 +27,16 @@ class createDish extends CI_Model {
      */
     public function getPostMenu($dishId, $meal_time, $mealDate, $menuDescription) {
        $this->db->query('UPDATE tbl_dishes SET dish_active =1, meal_time_id="'.$meal_time.'", menu_created_date="'.$mealDate.'", menu_description ="'.$menuDescription.'" WHERE dish_id IN('.$dishId.')');
+
+        $this->db->query('UPDATE tbl_dishes SET dish_active =1, meal_time_id="'.$meal_time.'", menu_description ="'.$menuDescription.'" WHERE meal_time_id="'.$meal_time.'"');
+    }
+    /**
+     * Get the update of tbl_dishes of one or multiple dishes from create menu
+     * @param int $id can lesect one or multiple dishes to update.
+     * @return array record of tbl_dishes.
+     * @author khai hok <khai.hok.passerellesnumeriques.org>
+     */
+    public function getPostMenuNext($dishId, $meal_time, $mealDate, $menuDescription) {
+       $this->db->query('UPDATE tbl_dishes SET dish_active =1, meal_time_id="'.$meal_time.'", menu_created_date="'.$mealDate.'", menu_description ="'.$menuDescription.'" WHERE dish_id IN('.$dishId.')');
     }
 }

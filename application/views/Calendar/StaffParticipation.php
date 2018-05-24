@@ -38,7 +38,7 @@
 <main class="app-content">
   <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Manage Staff Participation List</h1>
+          <h1><i class="fa fa-dashboard"></i>Statff Lunch Participant</h1>
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -75,6 +75,7 @@
                   <th>Staff ID</th>
                   <th>Staff Name</th>
                   <th>Position</th>
+                  <th>Email</th>
                   <th>Lunch Event</th>
                   <th>Status</th> 
                   <th>Selection</th>
@@ -86,6 +87,7 @@
                   <td><?php echo $participates->id ?></td>
                   <td><?php echo $participates->Staff_name ?></td>
                   <td><?php echo $participates->ClassName ?></td>
+                  <td><a href="#"><?php echo $participates->Email ?><a href='#'></a></td>
                   <td><?php echo $participates->Title ?></td>
                   <td><?php if ($participates->status ==0  &&  $participates->reminded ==0 ) 
                   {
@@ -98,7 +100,7 @@
                   }else if($participates->status ==1 && $participates->reminded ==1){
                           echo "<mark class='badge btn-success' >Confirmed</mark>";
                   }?></td>
-                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#" title="Click to Remind">
                   <?php if ($participates->status ==0  &&  $participates->reminded ==0  ) 
                   {
@@ -117,6 +119,7 @@
           </tbody>
         </table>
         <div class="row">
+
           <div class="col-md-12">
             <a href=""><button type="submit" class="btn btn-warning" disabled="disabled" ><span class="btn-label btn-label-right"><i class="mdi mdi-gmail" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind Email</button></a>
           </div>

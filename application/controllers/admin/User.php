@@ -15,22 +15,26 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  */
 class User extends CI_Controller {
 
-       public function __construct() {
-        parent::__construct();
-        log_message('debug', 'URI=' . $this->uri->uri_string());
-        $this->session->set_userdata('last_page', $this->uri->uri_string());
-        if($this->session->loggedIn === TRUE) {
-           // Allowed methods
-           if ($this->session->isAdmin || $this->session->isSuperAdmin) {
-             //User management is reserved to admins and super admins
-           } else {
-             redirect('errors/privileges');
-           }
+      /**
+       * Default constructor
+       * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+       */
+      public function __construct() {
+      parent::__construct();
+      log_message('debug', 'URI=' . $this->uri->uri_string());
+      $this->session->set_userdata('last_page', $this->uri->uri_string());
+      if($this->session->loggedIn === TRUE) {
+         // Allowed methods
+         if ($this->session->isSuperAdmin) {
+           //User management is reserved to admins and super admins
          } else {
-           redirect('connection/login');
+           redirect(base_url());
          }
-        $this->load->model('users_model');
-    }
+       } else {
+         redirect('connection/login');
+       }
+      $this->load->model('users_model');
+  }
 
     public function index(){
         $this->load->model('Users_model');
@@ -42,6 +46,31 @@ class User extends CI_Controller {
         $this->load->view('admin/users/listUsers', $data);
         $this->load->view('templates/footer', $data);
 
+    }
+
+    protected function getRandomBytes($length) {
+        if(function_exists('openssl_random_pseudo_bytes')) {
+          $rnd = openssl_random_pseudo_bytes($length, $strong);
+          if ($strong === TRUE)
+            return $rnd;
+        }
+        $sha =''; $rnd ='';
+        if (file_exists('/dev/urandom')) {
+          $fp = fopen('/dev/urandom', 'rb');
+          if ($fp) {
+              if (function_exists('stream_set_read_buffer')) {
+                  stream_set_read_buffer($fp, 0);
+              }
+              $sha = fread($fp, $length);
+              fclose($fp);
+          }
+        }
+        for ($i=0; $i<$length; $i++) {
+          $sha  = hash('sha256',$sha.mt_rand());
+          $char = mt_rand(0,62);
+          $rnd .= chr(hexdec($sha[$char].$sha[$char+1]));
+        }
+        return $rnd;
     }
     
     public function listUsers(){
@@ -57,6 +86,8 @@ class User extends CI_Controller {
     public function updateUser(){
         $id = $this->uri->segment(4);
         $data['getUsersUpdate'] = $this->Users_model->getUsersUpdate($id);
+        // var_dump($data['getUsersUpdate']);die();
+        $data['roles'] = $this->users_model->selectRole();
         $data['users'] = $this->Users_model->getListUsers();
         $data['title'] = 'Update Users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
@@ -73,18 +104,36 @@ class User extends CI_Controller {
                 $this->load->library('upload', $config);
 
                 //Condition to know the if image insert or not
-                if ( ! $this->upload->do_upload('image'))
+                if ( !$this->upload->do_upload('image'))
                 {
                     $data['error_msg'] = $this->upload->display_errors();  // show error message
+
                 }
                 else
                 {
-                  $data['users'] = $this->Users_model->updateUsers(); //load model
-                  if($data){
-                    $this->session->set_flashdata('msg', 'The user has been updated.');
-                      redirect('admin/User/listUsers');
+                  $oldPassword = "";
+                  $password = "";
+                  $newPassword = $this->input->post('password');
+                  foreach ($data['getUsersUpdate'] as $user) {
+                        $oldPassword = $user->password;    
+                     if ($newPassword == "") {
+                        $password = $oldPassword;
+                        $data['users'] = $this->Users_model->updateUsers($password); //load model
+                        if($data){
+                          $this->session->set_flashdata('msg', 'The user has been updated.');
+                            redirect('admin/User/listUsers');
+                        }
+                     }else{
+                        $password = $newPassword;
+                        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
+                        $hash = crypt($password, $salt);
+                        $data['users'] = $this->Users_model->updateUsers($hash); //load model
+                        if($data){
+                          $this->session->set_flashdata('msg', 'The user has been updated.');
+                            redirect('admin/User/listUsers');
+                        }
+                     }
                   }
-                
                 }
                         $this->load->view('admin/users/UpdateUsers', $data);
 
@@ -118,6 +167,7 @@ class User extends CI_Controller {
                             redirect('admin/user/listUsers');
                         }
                 }
+                $data['roles'] = $this->users_model->selectRole();
                 $this->load->view('admin/users/view_add_user', $data);
         }
 	

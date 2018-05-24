@@ -7,7 +7,7 @@
 <div class="app-content">
 	  <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i>Form to create new dish</h1>
+            <h1><i class="fa fa-dashboard"></i>Create New Dish</h1>
             <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -29,7 +29,6 @@
 			    <div class="form-group">
 			      <label for="email">Meal Time</label>
 			      <select name="mealtime" class="form-control">
-			      	<option value="">Choose Meal Times</option>
 			      	<?php 
 			      		foreach ($mealTime as $value) {
 			       	?>

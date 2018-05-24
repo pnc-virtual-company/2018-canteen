@@ -7,10 +7,28 @@
  * @author sun MEAS <sun.meas@gmail.com>
  */
 Class calendar extends CI_Controller{
+	    /**
+	     * Default constructor
+	     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+	     */
+	    public function __construct() {
+	    parent::__construct();
+	    log_message('debug', 'URI=' . $this->uri->uri_string());
+	    $this->session->set_userdata('last_page', $this->uri->uri_string());
+	    if($this->session->loggedIn === TRUE) {
+	       // Allowed methods
+	       if ($this->session->isSuperAdmin || $this->session->isStaff) {
+	         //User management is reserved to admins and super admins
+	       } else {
+	         redirect(base_url());
+	       }
+	     } else {
+	       redirect('connection/login');
+	     }
+	    $this->load->model('users_model');
+	}
 	// stuff calendar
 	function getJoinDinnerEvent(){
-		$this->load->model('getUserActive');
-        		$data['user'] = $this->getUserActive->getActive();
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/userJoinCalendar';
 		$this->load->view('layout', $data);
@@ -20,18 +38,18 @@ Class calendar extends CI_Controller{
 	function getAdminCalendar(){
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/admin_calendar';
-	        	$this->load->view('templates/header', $data);
-	       	$this->load->view('menu/admin_dasboard', $data);
-		$this->load->view('admin/Calendar/admin_calendar', $data);
-	        	$this->load->view('templates/footer', $data);
+	  $this->load->view('templates/header', $data);
+	 	$this->load->view('menu/admin_dasboard', $data);
+		$this->load->view('Calendar/admin_calendar', $data);
+	  $this->load->view('templates/footer', $data);
 	}	
 	function getDinnerEvent(){
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/admin_calendar';
-	        	$this->load->view('templates/header', $data);
-	       	$this->load->view('menu/admin_dasboard', $data);
-		$this->load->view('Admin/Calendar/dinnerEvent', $data);
-	        	$this->load->view('templates/footer', $data);
+	  $this->load->view('templates/header', $data);
+	  $this->load->view('menu/admin_dasboard', $data);
+		$this->load->view('Calendar/dinnerEvent', $data);
+	  $this->load->view('templates/footer', $data);
 	}
 
 	/*Get all staff lunch Events */
@@ -44,9 +62,8 @@ Class calendar extends CI_Controller{
 	/*Add new event */
 	Public function addLunchEvent()
 	{
-		$message= $this->load->view('Calendar/sendMailResult');
-		$result=$this->Calendar_model->addLunchEvent();
-		echo $result;
+		// $message= $this->load->view('Calendar/sendMailResult');
+		// $result=$this->Calendar_model->addLunchEvent();
 		/*Sending email to invite the staff the join the lunch in PNC*/
 		$config = array(
 		'protocol' => 'smtp',
@@ -62,8 +79,8 @@ Class calendar extends CI_Controller{
 		   $this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org', 'Admin & Finance');
 		    $this->email->to('sun.meas@student.passerellesnumeriques.org');
 		    $this->email->subject('Lunch Invitation');
-		    // $this->email->message('You are invited to join lunch at PNC');
-		    $this->email->message($message);
+		    $this->email->message('You are invited to join lunch at PNC');
+		    // $this->email->message($message);
 		    $this->email->send();
 	}
 	/*Update Event */
@@ -87,7 +104,6 @@ Class calendar extends CI_Controller{
 		   $this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org', 'Admin & Finance');
 		    $this->email->to('sun.meas@student.passerellesnumeriques.org');
 		    $this->email->subject('Lunch Invitation Updated');
-		    // $this->email->message($message);
 		    $this->email->message('');
 		    $this->email->send();
 	}

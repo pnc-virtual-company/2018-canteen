@@ -1,13 +1,13 @@
+<script src="<?php echo base_url();?>assets/js/Chart-2.7.1.min.js"></script>
 <div class="app-content">
-    <img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:70%">
-    <<!-- div class="app-title">
+    <!-- <img src="<?php echo base_url() ?>assets/images/coming-soon.png" alt="" style="width:70%"> -->
+    <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i>Bar chart of favourite food</h1>
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
   </div>
-<!--We just need a JS file //-->
-<!-- <script src="<?php echo base_url();?>assets/js/Chart-2.7.1.min.js"></script>
+<!-- We just need a JS file // -->
 <br>
 <h1 class="text-info text-center">List All Favourite Food</h1>
 <div class="row">
@@ -17,8 +17,8 @@
       </div>
   <div class="col-md-2"></div>
 </div>
-<script type="text/javascript"> -->
-<!-- new Chart(document.getElementById("pie-chart"), {
+<script type="text/javascript">
+new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
       labels: ["Bai sach chrouk", "Fish amok", "Khmer red curry", "Lap Khmer", "Nom banh chok"],
@@ -35,5 +35,5 @@
       }
     }
 });
-</script> --> -->
+</script>
 </div>
