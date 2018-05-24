@@ -39,6 +39,8 @@ class Welcome extends CI_Controller {
      * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
      */
 	public function favoriteFood(){
+		$this->load->model('foodFavorite');
+		$data['dishes'] = $this->foodFavorite->dishesFavorite();
 		$data['title'] = 'Favorite Food';
 		$data['page'] = 'dishes/favouriteFoods';
 		$this->load->view('layout', $data);

@@ -8,7 +8,6 @@
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
-
 /**
  * This controller serves the user management pages and tools.
  * The difference with HR Controller is that operations are technical (CRUD, etc.).
@@ -50,6 +49,19 @@ class Dishes extends CI_Controller {
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('users/index', $data);
         $this->load->view('templates/footer', $data);
+    }
+
+     /**
+     * Display the list of all favorte dishes as pie chart
+     * @author khai hok <khai.hok.passerellesnumeriques.org>
+     */
+    public function favouriteFood(){
+         $this->load->model('foodFavorite');
+        $data['dishes'] = $this->foodFavorite->dishesFavorite();
+        $data['page'] = 'dishes/favouriteFoods';
+        $this->load->model('getUserActive');
+        $data['user'] = $this->getUserActive->getActive();
+        $this->load->view('layout', $data);
     }
 
     /**
