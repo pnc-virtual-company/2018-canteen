@@ -12,6 +12,10 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * 
  */
 class create_menu extends CI_Controller {
+     /**
+     * Allow only admin and super admin to use this function
+     * @author khai hok <khai.hok.passerellesnumeriques.org>
+     */
  public function __construct() {
     parent::__construct();
     log_message('debug', 'URI=' . $this->uri->uri_string());
@@ -21,7 +25,7 @@ class create_menu extends CI_Controller {
      if ($this->session->isAdmin || $this->session->isSuperAdmin) {
              //User management is reserved to admins and super admins
      } else {
-       redirect('errors/privileges');
+       redirect(base_url());
    }
 } else {
  redirect('connection/login');
