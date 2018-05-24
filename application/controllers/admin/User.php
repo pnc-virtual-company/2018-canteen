@@ -35,8 +35,12 @@ class User extends CI_Controller {
        }
       $this->load->model('users_model');
   }
-
-    public function index(){
+  // Explort the list of users
+  public function exportUser() {
+    $data['users'] = $this->Users_model->getListUsers();
+    $this->load->view('Admin/users/userExport',$data);
+  }
+  public function index(){
         $this->load->model('Users_model');
         $data['users'] = $this->Users_model->getListUsers();
         $data['title'] = 'List of Users';

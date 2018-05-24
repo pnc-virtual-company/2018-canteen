@@ -13,29 +13,23 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setTitle(mb_strimwidth('Users list', 0, 28, "..."));  //Maximum 31 characters
-
-$sheet->setCellValue('A1', 'User ID');
-$sheet->setCellValue('B1', 'Full Name');
-$sheet->setCellValue('C1', 'Department Name');
-$sheet->setCellValue('D1', 'Email');
-$sheet->setCellValue('E1', 'Student Event');
-
-$sheet->getStyle('A1:E1')->getFont()->setBold(true);
-$sheet->getStyle('A1:E1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->setCellValue('A1','Dish Name');
+$sheet->setCellValue('B1','Quantity Ordered');
+$sheet->setCellValue('C1','Total Payment');
+$sheet->getStyle('A1:C1')->getFont()->setBold(true);
+$sheet->getStyle('A1:C1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 $line = 2;
-foreach ($userJoinEvent as $user) {
-    $sheet->setCellValue('A' . $line, $user->card_id);
-    $sheet->setCellValue('B' . $line, $user->user_name);
-    $sheet->setCellValue('C' . $line, $user->position);
-    $sheet->setCellValue('D' . $line, $user->email);
-    $sheet->setCellValue('E' . $line, $user->Title);
+foreach ($dishPreOrder as $dish) {
+    $sheet->setCellValue('A' . $line, $dish->dishName);
+    $sheet->setCellValue('B' . $line, $dish->TotalQuantity);
+    $sheet->setCellValue('C' . $line, $dish->TotalPayment);
     $line++;
 }
 //Autofit
 foreach(range('A','E') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
-$filename = 'User join dinner.' . 'xlsx';
+$filename = 'Dishes Pre-Ordered.' . 'xlsx';
 header('Content-Type: application/vnd.ms-excel');
 header('Content-Disposition: attachment;filename="'. $filename . '"');
 header('Cache-Control: max-age=0');

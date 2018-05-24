@@ -32,6 +32,7 @@ class JoinDinner_model extends CI_Model {
 	                 joinEvent.*, 
 	                 dinnerEvent.title AS "Title",
 	                 users.class_name AS "position",
+	                 users.card_id AS "card_id",
 	                 users.email AS "email",
 	                 CONCAT(users.firstname , " " , users.lastname) AS "user_name"
 	                 FROM tbl_join_events joinEvent
@@ -39,18 +40,6 @@ class JoinDinner_model extends CI_Model {
 	                 INNER JOIN tbl_users users ON users.id = joinEvent.user_id');
 	             return $query->result();
 	 }      
-
-	 public function getFileExcel($id = 0) {
-	     $this->db->select('tbl_join_events.join_event_id, CONCAT(tbl_users.firstname, " ",tbl_users.lastname) AS "user_name", tbl_dinner_events.title AS "Title", tbl_users.class_name AS "position", tbl_users.email AS "email" ');
-	     $this->db->join('tbl_dinner_events', 'tbl_dinner_events.id = tbl_join_events.dinner_event_id' );
-	     $this->db->join('tbl_users', 'tbl_users.id = tbl_join_events.user_id');
-	     if ($id === 0) {
-	         $query = $this->db->get('tbl_join_events');
-	         return $query->result_array();
-	     }
-	     $query = $this->db->get_where('tbl_join_events', array('tbl_join_events.join_event_id' => $id));
-	     return $query->row_array();
-	 }
 
 }
  
