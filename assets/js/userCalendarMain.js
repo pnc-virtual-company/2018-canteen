@@ -79,7 +79,6 @@ $(function(){
 
     // Handle click on join event Button
      $('.modal').on('click', '#join-event',  function(e){
-        /*Do something to get value to database*/
             $.post(base_url+'admin/UserjoinEvent/insertUserJoinEvent', {
                 start: $('#start').val(),
                 end: $('#end').val()

@@ -1,6 +1,6 @@
 <?php 
 class PreOrder extends CI_Controller {
-	   public function __construct() {
+     public function __construct() {
         parent::__construct();
         log_message('debug', 'URI=' . $this->uri->uri_string());
         $this->session->set_userdata('last_page', $this->uri->uri_string());
@@ -16,7 +16,7 @@ class PreOrder extends CI_Controller {
          }
         $this->load->model('users_model');
     }
-	public function preOrderList(){
+  public function preOrderList(){
       $data['preOrder'] = $this->Dishes_model->preOrderList();
       $data['title'] = 'Pre Order Food';
       $this->load->view('templates/header', $data);
@@ -33,14 +33,5 @@ class PreOrder extends CI_Controller {
     $this->load->view('Admin/food/userPreOrdered', $data);
     $this->load->view('templates/footer', $data);
   }
-
-  public function insertOrderInfo(){
-    $dish_id = $this->uri->segment(4); 
-    $meal_time_id = $this->uri->segment(5); 
-    $data['userPreOrder'] = $this->Dishes_model->createOrder($dish_id,$meal_time_id);
-    if ($data == TRUE) {
-      redirect(base_url());
-    }
-  }
-
+  
 }

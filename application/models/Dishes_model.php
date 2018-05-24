@@ -131,40 +131,18 @@ public function selectDish($id){
         $this->db->insert("tbl_dishes", $data);
     }
 
-    public function getMenu(){
+    public function getMenu($number){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
        $this->db->select('*');
        $this->db->from('tbl_dishes');
         $this->db->where (array('dish_active' =>1));
         $this->db->where('menu_created_date=',$creating_date);
-        $this->db->where('meal_time_id=',1);
+        $this->db->where('meal_time_id=', $number);
         $query = $this->db->get();
-        return $query->result();
+        return $query;
     }
-
-    public function getMenu1(){
-        date_default_timezone_set("Asia/Phnom_Penh");
-        $creating_date = date('Y-m-d');
-       $this->db->select('*');
-       $this->db->from('tbl_dishes');
-        $this->db->where (array('dish_active' =>1));
-        $this->db->where('menu_created_date=',$creating_date);
-        $this->db->where('meal_time_id=',2);
-        $query = $this->db->get();
-        return $query->result();
-    }
-    public function getMenu2(){
-        date_default_timezone_set("Asia/Phnom_Penh");
-        $creating_date = date('Y-m-d');
-       $this->db->select('*');
-       $this->db->from('tbl_dishes');
-        $this->db->where (array('dish_active' =>1));
-        $this->db->where('menu_created_date=',$creating_date);
-        $this->db->where('meal_time_id=',3);
-        $query = $this->db->get();
-        return $query->result();
-    }
+    
 public  function  selectOrder($food_id){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -239,4 +217,40 @@ public  function  selectOrder($food_id){
         }
         
     }
+     // Check if user already order dish
+    function checkIfUserOrderDish($dish_id, $user_id)
+    {
+        $this->db->where('dish_id', $dish_id);
+        $this->db->where('user_id', $user_id);
+        $result = $this->db->get('tbl_dish_user');
+        if($result->num_rows() > 0)
+        {
+          return true; // return true if user alreay order that dish
+        }else{
+          return false; // return false if user not yet order
+        }
+    }
+    // Get user dish order to edit
+    function selectDishEdit($dish_id, $user_id)
+    {
+       $this->db->where('tbl_dish_user.dish_id', $dish_id);
+        $this->db->where('tbl_dish_user.user_id', $user_id);
+        $this->db->join('tbl_dish_user', 'tbl_dishes.dish_id = tbl_dish_user.dish_id');
+        $this->db->join('tbl_order', 'tbl_order.order_id = tbl_dish_user.order_id'); // join to get the quantity in tbl order
+        $result = $this->db->get('tbl_dishes');      
+        return $result->result();
+    }
+    
+    // Update order info
+    function updateOrderInfo($order_id)
+    {
+      $qty = $this->input->post('quantity'); // get qty from edit form popup
+
+      return $this->db->where('order_id', $order_id)
+      ->update('tbl_order', array('quantity'=> $qty));
+    }
+
+
+
+
 }

@@ -58,11 +58,14 @@
      <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="form-group">
        <select class="form-control"  name="status" id="">
-        <?php 
+      <!--   <?php 
         $status  = array('All','Confirmed', 'Not yet confirmed');
             foreach ($status as  $value): ?>
                <option value="<?php echo $value;?>"><?php echo $value; ?></option>
-            <?php endforeach;?>
+            <?php endforeach;?> -->
+            <option>All</option>
+            <option>Confirmed</option>
+            <option>Not yet confirmed</option>
       </select>
     </div>
   </div>
@@ -115,7 +118,7 @@
         <div class="row">
           <div class="col-md-0"></div>
           <div class="col-md-10">
-                  <a href="#"><button type="submit" class="btn btn-warning" disabled="disabled" ><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind</button></a>
+                  <a href="<?php echo base_url() ?>admin/Email"><button type="submit" class="btn btn-warning" disabled="disabled" ><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind Email</button></a>
           </div>
         </div>
       </div>

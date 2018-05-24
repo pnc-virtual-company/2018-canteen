@@ -48,25 +48,8 @@
         <h4 id="exampleModalLabel">Are you sure want to cancel this event?</h4>
       </div>
       <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">No</button> -->
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>
 </div>
-<!-- <script>
-  $(document).ready(function(){  
-      $('.view_data').click(function(){  
-           var dinner_ID = $(this).attr("id");  
-           $.ajax({  
-                url:"<?php echo base_url() ?>UserJoinEvent/insertUserJoinEvent",  
-                method:"post",  
-                data:{id:dinner_ID},  
-                success:function(data){ 
-                $("#data").html(data);
-                $('#join_modal').modal("show");
-                }  
-           });  
-      });
-
- });  
-</script> -->

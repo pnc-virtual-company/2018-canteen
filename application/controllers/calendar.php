@@ -44,30 +44,16 @@ Class calendar extends CI_Controller{
 	/*Add new event */
 	Public function addLunchEvent()
 	{
-		$result=$this->Calendar_model->addLunchEvent();
+		$result['data']=$this->Calendar_model->addLunchEvent();
 		echo $result;
 
-		// Sending email to invitation to staff
-		$config = array(
-			'protocol' => 'smtp',
-			'smtp_host' => 'ssl://smtp.googlemail.com',
-			'smtp_port' => 465,
-			'smtp_user' => 'pnc.temporary.vc2018@passerellesnumeriques.org',
-			'smtp_pass' => 'Pnc!Wep2018?'
-		);
-		$this->load->library('email',$config);
-		$this->email->set_newline("\r\n");
-		$this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org','Admin & Finance');
-		$this->email->to('sun.meas@student.passerellesnumeriques.org');
-		$this->email->subject('This is an email testing');
-		$this->email->message('It is working . Greate!');
-		
 	}
 	/*Update Event */
 	Public function updateLunchEvent()
 	{
 		$result=$this->Calendar_model->updateLunchEvent();
 		echo $result;
+
 	}
 	/*Delete Event*/
 	Public function deleteEvent()

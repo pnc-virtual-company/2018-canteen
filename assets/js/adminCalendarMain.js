@@ -132,7 +132,6 @@ $(function(){
         $('#title').val(data.event ? data.event.title : '');        
         $('#description').val(data.event ? data.event.description : '');
         $('#color').val(data.event ? data.event.color : '#3a87ad');
-        // $('#crud-form').val(data.event ? data.event.event : '');
         // Create Butttons
         $.each(data.buttons, function(index, button){
             $('.modal-footer').prepend('<button type="button" id="' 
@@ -149,7 +148,6 @@ $(function(){
                 title: $('#title').val(),
                 description: $('#description').val(),
                 color: $('#color').val(),
-                // event: $("form input[type='radio']:checked").val(),
                 start: $('#start').val(),
                 end: $('#end').val()
             }, function(result){
@@ -201,8 +199,8 @@ $(function(){
     // // Handle Click on Add Button
     // $('.modal').on('click', '#add-event',  function(e){
     //     if(validator(['title', 'description'])) {
-    //         $.post(base_url+'calendar/addLunchEvent', {
-    //         // $.post(base_url+'admin/Email/index', {
+    //         // $.post(base_url+'calendar/addLunchEvent', {
+    //         $.post(base_url+'admin/Email/index', {
     //             start: $('#start').val(),
     //             end: $('#end').val()
     //         }, function(result){
