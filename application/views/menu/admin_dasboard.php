@@ -48,7 +48,7 @@
 
     <li><a class="app-menu__item" href="<?php echo base_url() ?>admin/PreOrder/userOrderList"><span class="mdi mdi-account-multiple" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Users Pre-Ordered</span></a></li>
 
-    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood"><span class="mdi mdi-folder-plus" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favourite Food</span></a></li>
+    <li><a class="app-menu__item" href="<?php echo base_url(); ?>admin/food/favouriteFood"><span class="mdi mdi-heart-box-outline" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label">Favourite Food</span></a></li>
 
     <li><a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getAdminCalendar"><span class="mdi mdi-calendar" style="font-size: 20px;"></span>&nbsp;&nbsp;<span class="app-menu__label"> Create Staff Events</span></a></li> 
 

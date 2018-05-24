@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class dishes extends CI_Controller {
 
-	// public function menu(){
-	// 	$this->load->view('dishes/menu');
-	// }
 	public function dryFood()
 	{
 		 $data['title'] = 'dry food';
@@ -25,21 +22,22 @@ class dishes extends CI_Controller {
 		$this->load->view('layout', $data);
 	}
 
+    /**
+     * Display the list of all favorte dishes as pie chart
+     * @author khai hok <khai.hok.passerellesnumeriques.org>
+     */
 	public function favouriteFood(){
-		// $data['title'] = 'menu';
+		 $this->load->model('foodFavorite');
+		$data['dishes'] = $this->foodFavorite->dishesFavorite();
 		$data['page'] = 'dishes/favouriteFoods';
 		$this->load->model('getUserActive');
         $data['user'] = $this->getUserActive->getActive();
-		// $data['page'] = 'welcome';
-		// $this->load->view('templates/right_menu', $data);
 		$this->load->view('layout', $data);
 	}
 
 	public function DishOrder(){
         $this->load->model('Dishes_model');	
-	}
-	
-	
+	}	
 }
 // }
 ?>
