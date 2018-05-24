@@ -33,8 +33,40 @@ class Dishes_model extends CI_Model {
         return $query->result();
         // return $order->result();
     }
+   /**
+     * This function is use to inseret interes data into tbl_rates..
+     * @return array record of tbl_rates
+     * @author Davy PEONG <davy.peong@student.passerellesnumerique.org>
+     */
+    public function getStoreInterest($user_id, $dish_id){
+        $interesData = array( 
+          'store_rate' => "1",
+          'dish_id' => $dish_id,
+          'user_id' => $user_id
+        );
+        $this->db->insert('tbl_rates', $interesData);
 
-
+        // $this->db->select(count('user_id'));
+        // $this->db->from('tbl_rates');
+        // $this->db->where (array('dish_id' =>$dish_id));
+        // $query = $this->db->get();
+        // $result= $query->result();
+      
+        // $interestDish = array(
+        //    'current_interest'   => $result
+        // );
+        // $this->db->where('dish_id', $dish_id);
+        // $this->db->update('tbl_dishes ', $interestDish); 
+    }
+    /**
+     * This function is use to delete data from tbl_rates..
+     * @return array record of tbl_rates
+     * @author Davy PEONG <davy.peong@student.passerellesnumerique.org>
+     */
+    public function getStoreUninterest($user_id){
+        $this->db->where('user_id', $user_id);
+        $this->db->delete(' tbl_rates');
+    }
     /**
      * Get the meal time of tbl_dishes 
      * @param int $id optional id of one user

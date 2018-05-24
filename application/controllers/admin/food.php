@@ -36,6 +36,22 @@ class food extends CI_Controller {
      * Display all the dishes in dashboard admin
      * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
      */
+    public function storeInterest(){
+        $user_id = $this->session->userdata('id');
+        $dish_id = $this->input->post('dish_id');
+        $this->Dishes_model->getStoreInterest($user_id, $dish_id);
+    }
+    /**
+     * Get the delte number of rate from tbl_rate 
+     * @param int $id can lesect one or multiple dishes to update.
+     * @return array record of tbl_rate.
+     * @author davy peong <davy.peong.passerellesnumeriques.org>
+     */
+    public function storeUninterest(){
+        $user_id = $this->session->userdata('id');
+        $this->Dishes_model->getStoreUninterest($user_id);
+
+    }
     public function index() {
         $this->load->helper('form');
         $this->load->model('Dishes_model');
@@ -49,6 +65,8 @@ class food extends CI_Controller {
     $this->load->view('Admin/food/listDish', $data);
     $this->load->view('templates/footer', $data);
     }
+    
+
     /**
      * Display the list of all food
      * @author khai hok <khai.hok.passerellesnumeriques.org>
