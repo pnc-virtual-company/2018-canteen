@@ -27,10 +27,10 @@
         $this->load->model('users_model');
     }
 
-       // public function getParticipate()
+       // public function getParticipant()
        // {
-       //         $this->load->model('Users_model');
-       //         $data['userParticipate'] = $this->Users_model->getListParticipate();
+       //         $this->load->model('Participate_model');
+       //         $data['userParticipate'] = $this->Participate_model->getParticipant();
        //         $data['title'] = 'List of Participate';
        //         $this->load->view('templates/header', $data);
        //         $this->load->view('menu/admin_dasboard', $data);
@@ -41,6 +41,8 @@
        function getListParticipate(){
           $data['page'] = 'Calendar/StaffParticipation';
           $this->load->model('Users_model');
+          $this->load->model('Participate_model');
+          $data['data_participate'] = $this->Participate_model->getParticipant();
            $data['status'] = $this->Users_model->getStaffStatus();
           $data['userParticipate'] = $this->Users_model->getListParticipate();
           $data['title'] = 'List of Participate';
@@ -49,6 +51,12 @@
           $this->load->view('Calendar/StaffParticipation', $data);
           $this->load->view('templates/footer', $data);
         }
+
+
+        function sendReminded(){
+           $this->load->model('Participate_model');
+           $this->Participate_model->getReminded();
+         }
 
      }
  ?>

@@ -45,12 +45,12 @@
           <li class="breadcrumb-item"><a href="<?php echo base_url() ?>calendar/getAdminCalendar"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new Event</a></li>
         </ul>
   </div>
-        <!-- <div class="row">
-         <div class="col-md-2"></div>
-                <div class="col-md-10">
-                        <div class="alert">You have reminded successfully.</div>
+        <div class="row">
+                <div class="col-md-12">
+                        <div class="alert"></div>
                 </div>
-        </div> -->
+        </div>
+<?php if($this->session->loggedIn === TRUE) { ?>
   <div class="col-md-3 col-sm-0 col-xs-0"></div>
      <div class="col-md-1">
        <label for="exampleSelect1"><strong>Status:</strong></label>
@@ -84,42 +84,49 @@
           <tbody>
             <?php foreach ($userParticipate as $participates):?> 
                 <tr>
-                 
                   <td><?php echo $participates->id ?></td>
                   <td><?php echo $participates->Staff_name ?></td>
                   <td><?php echo $participates->ClassName ?></td>
                   <td><a href="#"><?php echo $participates->Email ?><a href='#'></a></td>
                   <td><?php echo $participates->Title ?></td>
-                  <td><?php if ($participates->status ==1 ) 
+                  <td><?php if ($participates->status ==0  &&  $participates->reminded ==0 ) 
                   {
-                          echo "Confirmed";
-                  } else
+                          echo "<mark class='badge btn-warning' >Not yet Confirmed</mark>";
+                  } else if ($participates->status ==1 && $participates->reminded ==0 ) 
                   {
-                    echo "Not yet Confirmed";
+                          echo "<mark class='badge btn-success' >Confirmed</mark>";
+                  }else if($participates->status ==0 && $participates->reminded ==1){
+                          echo "<mark class='badge btn-warning' >Not yet Confirmed</mark>";
+                  }else if($participates->status ==1 && $participates->reminded ==1){
+                          echo "<mark class='badge btn-success' >Confirmed</mark>";
                   }?></td>
                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#" title="Click to Remind">
-                  <?php if ($participates->status ==1 ) 
+                  <?php if ($participates->status ==0  &&  $participates->reminded ==0  ) 
                   {
-                          echo "";
-                  } else
+                          echo '<input name="checkbox-0 " type="checkbox" id="chremind" name="user_id[]" value="<?php echo $participates->user_id ?>">';
+                  } else if($participates->status ==1 && $participates->reminded ==0)
                   {
-                    echo '<input name="checkbox-0 " type="checkbox" id="chremind">';
+                          echo '';
+                  }else if($participates->status ==0 && $participates->reminded ==1){
+                          echo "<mark class='badge btn-primary' >Reminded</mark>";
                   }?>
                     </a>
+       
                     </td>
                 </tr>
             <?php endforeach ?>
           </tbody>
         </table>
         <div class="row">
-          <div class="col-md-0"></div>
-          <div class="col-md-10">
-                  <a href="#"><button type="submit" class="btn btn-warning" disabled="disabled" ><span class="btn-label btn-label-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind</button></a>
+
+          <div class="col-md-12">
+            <a href=""><button type="submit" class="btn btn-warning" disabled="disabled" ><span class="btn-label btn-label-right"><i class="mdi mdi-gmail" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind Email</button></a>
           </div>
         </div>
       </div>
     </div>
+<?php } ?>
 </main>
 
 <link href="<?php echo base_url();?>assets/DataTable/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -136,6 +143,19 @@ $(document).ready(function() {
     // Determine if checkbox is checked enable button
      $("#chremind").click(function() {
        $(".btn-warning").attr("disabled", !this.checked); 
+       // var $user_id= $(this).attr('user_id');
+       // alert($user_id);
+     });
+     /*alert success reminding email*/
+      $(".btn-warning").click(function() {
+                $('.alert').addClass('alert-success').text('You have sent email remind successfully.');
+        $.ajax({    
+            url:"<?php echo base_url() ?>admin/remindEmail",  
+            success: function() {
+                // $('.alert').addClass('alert-success').text('You have sent email remind successfully.');
+            }
+        });
+
      });
 
 });
