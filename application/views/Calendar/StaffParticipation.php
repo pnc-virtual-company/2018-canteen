@@ -57,16 +57,15 @@
      </div>
      <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="form-group">
-       <select class="form-control"  name="status" id="">
-      <!--   <?php 
-        $status  = array('All','Confirmed', 'Not yet confirmed');
-            foreach ($status as  $value): ?>
-               <option value="<?php echo $value;?>"><?php echo $value; ?></option>
-            <?php endforeach;?> -->
-            <option>All</option>
-            <option>Confirmed</option>
-            <option>Not yet confirmed</option>
-      </select>
+        <select class="form-control" onchange="location = this.value;">
+          <option value="<?php echo base_url() ?>admin/StaffParticipation/getListParticipate/2" 
+              <?php if ($statusId == 2) {echo "selected";}?> >All
+          </option>
+          <option value="<?php echo base_url() ?>admin/StaffParticipation/getListParticipate/1" <?php if ($statusId == 1) {echo "selected";}?> > Confirmed
+          </option>
+          <option value="<?php echo base_url() ?>admin/StaffParticipation/getListParticipate/0"
+             <?php if ($statusId == 0) {echo "selected";}?> >Not yet confirm</option>
+        </select>
     </div>
   </div>
   <div class="col-md-1 col-sm-0 col-xs-12"></div>

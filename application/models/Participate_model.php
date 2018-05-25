@@ -25,8 +25,8 @@ class Participate_model extends CI_Model {
      */
 
   public function getParticipant() {
+        $query = $this->db->get_where('tbl_staff_participation'); 
         $this->db->order_by('user_id', 'DESC');
-        $query = $this->db->get('tbl_staff_participation'); 
         return $query->result();
     }
 

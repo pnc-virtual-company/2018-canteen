@@ -35,7 +35,29 @@ label{
 						</div>
 						<div class="col-md-2"></div>
 					</div>
-					
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<div class="form-group">
+								<label class="text-white">Description</label>
+								<textarea type="text" class="form-control" name="description"><?php echo $dish->description;?></textarea> 
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<div class="form-group">
+								<label class="text-white">Meal Time</label>
+								  <select class="form-control" name="mealTime" multiple="multiple">
+								    <?php foreach ($mealTime as $meal): ?>
+								      <option value="<?php echo $meal->time_id ?>" <?php if ($meal->time_id == $dish->meal_time_id) echo "selected" ?>><?php echo $meal->name ?></option>
+								    <?php endforeach ?>
+								  </select>
+							</div>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
@@ -47,17 +69,6 @@ label{
 						</div>
 						<div class="col-md-2"></div>
 					</div>
-
-					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
-							<div class="form-group">
-								<label class="text-white">Description</label>
-								<textarea type="text" class="form-control" name="description"><?php echo $dish->description;?></textarea> 
-							</div>
-						</div>
-					</div>
-
 					<div class="row">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
@@ -65,7 +76,6 @@ label{
 							<button type="submit" class="btn btn-warning float-right"><span class="mdi mdi-pencil" >&nbsp;&nbsp;Update Now</button>
 						</div>
 						<div class="col-md-2"></div>
-							
 					</div>
 					<?php endforeach ?>  
 				</form> 

@@ -32,6 +32,40 @@ class food extends CI_Controller {
  }
  $this->load->model('users_model');
 }
+
+    public function index() {
+        $this->load->helper('form');
+        $this->load->model('Dishes_model');
+
+        // $data['dishes'] = $this->Dishes_model->getDishes();
+    $data['title'] = 'List of Dishes';
+    $data['activeLink'] = 'users';
+    $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+    $this->load->view('templates/header', $data);
+    $this->load->view('menu/admin_dasboard', $data);
+    $this->load->view('Admin/food/listDish', $data);
+    $this->load->view('templates/footer', $data);
+    }
+
+    public function shortMealType(){
+      $this->load->helper('form');
+      $mealType = $this->uri->segment(4);
+      $data['mealType'] = "";
+      if ($mealType ==1 ) {
+        $data['mealType'] = "List All BreakFast";
+      }else if ($mealType ==2 ) {
+        $data['mealType'] = "List All Lunch";
+      }else {
+        $data['mealType'] = "List All Dinner";
+      }
+      $data['dishes'] = $this->Dishes_model->shortMealType($mealType);
+      $data['title'] = 'List of Dishes';
+      $data['activeLink'] = 'users';
+      $this->load->view('templates/header', $data);
+      $this->load->view('menu/admin_dasboard', $data);
+      $this->load->view('dishes/shortMealType', $data);
+      $this->load->view('templates/footer', $data); 
+    }
      /**
      * Display all the dishes in dashboard admin
      * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
@@ -52,24 +86,11 @@ class food extends CI_Controller {
         $this->Dishes_model->getStoreUninterest($user_id);
 
     }
-    public function index() {
-        $this->load->helper('form');
-        $this->load->model('Dishes_model');
-
-        // $data['dishes'] = $this->Dishes_model->getDishes();
-    $data['title'] = 'List of Dishes';
-    $data['activeLink'] = 'users';
-    $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
-    $this->load->view('templates/header', $data);
-    $this->load->view('menu/admin_dasboard', $data);
-    $this->load->view('Admin/food/listDish', $data);
-    $this->load->view('templates/footer', $data);
-    }
     
 
     /**
      * Display the list of all food
-     * @author khai hok <khai.hok.passerellesnumeriques.org>
+     * @author kimsoeng kao <kimsoeng.kao.passerellesnumeriques.org>
      */
     public function listDish() {
         $this->load->helper('form');
@@ -102,7 +123,8 @@ class food extends CI_Controller {
 
     // Start update dishes
    public function updateDishes(){        
-    $id = $this->uri->segment(4);        
+    $id = $this->uri->segment(4);
+    $data['mealTime'] = $this->Dishes_model->getMealTime();
     $data['select_dishes'] = $this->Dishes_model->selectDish($id);       
     $data['title'] = 'Update Dishes'; 
     $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
@@ -181,41 +203,6 @@ public function add_dish()
                 }
                 $this->load->view('admin/food/view_add_dish', $data);
             }
-    /**
-     * show breakfast lunch and dinner in admin dashboard
-     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
-     */
-    function showBreakfast() {
-        $this->load->helper('form');
-        $data['dishes'] = $this->dishTypeModel->getBreakfast();
-        $data['title'] = 'List of Dishes';
-        $data['activeLink'] = 'users';
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('dishes/breakfast', $data);
-        $this->load->view('templates/footer', $data);
-    }
-    function showLunch() {
-        $this->load->helper('form');
-        $data['dishes'] = $this->dishTypeModel->getLunch();
-        $data['title'] = 'List of Dishes';
-        $data['activeLink'] = 'users';
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('dishes/lunch', $data);
-        $this->load->view('templates/footer', $data);
-    }
-
-    function showDinner() {
-        $this->load->helper('form');
-        $data['dishes'] = $this->dishTypeModel->getDinner();
-        $data['title'] = 'List of Dishes';
-        $data['activeLink'] = 'users';
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('dishes/dinner', $data);
-        $this->load->view('templates/footer', $data);
-    }
 
    function addOrder(){
        // okay now let get value from form

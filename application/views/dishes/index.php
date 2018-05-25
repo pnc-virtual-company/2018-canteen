@@ -28,7 +28,7 @@
 				<h1 class="text-center text-secondary">Welcome To Canteen Management System</h1><br><br>		
       	<div class="row">
       		<div class="col-md-4">
-      			<a href="<?php echo	base_url() ?>admin/food/showBreakfast">
+      			<a href="<?php echo	base_url() ?>admin/food/shortMealType/1">
 			      	<div class="card card-info">
 			      		<div class="card-body  bg-info text-center">
 			      				<i class="mdi mdi-coffee mdi-48px text-danger"></i>
@@ -40,7 +40,7 @@
 			</a>
       		</div>
       		<div class="col-md-4">
-      			<a href="<?php echo	base_url() ?>admin/food/showLunch">
+      			<a href="<?php echo	base_url() ?>admin/food/shortMealType/2">
 			      	<div class="card card-info">
 			      		<div class="card-body  bg-warning text-center">
 			      				<i class="mdi mdi-rice mdi-48px text-danger"></i>
@@ -52,7 +52,7 @@
 			</a>
       		</div>
       		<div class="col-md-4">
-      			<a href="<?php echo	base_url() ?>admin/food/showDinner">
+      			<a href="<?php echo	base_url() ?>admin/food/shortMealType/3">
 			      	<div class="card card-info">	
 			      		<div class="card-body  bg-success text-center">
 			      				<i class="mdi mdi-food mdi-48px text-danger"></i>
@@ -67,5 +67,3 @@
       </div>
     </div>
 </div>
-
-

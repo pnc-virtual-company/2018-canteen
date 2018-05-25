@@ -180,12 +180,6 @@
 				});  
 			});
 
-			$('#btn-order').click(function(){
-				if ($data != NULL) {
-					$('.view_data').text("Edit Order");
-				}
-			});
-
 			$('.interest').click(function(){
 	        	var dish_id = $(this).attr("id");
 	        	$('.Interest').hide();

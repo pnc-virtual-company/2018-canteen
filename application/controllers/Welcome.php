@@ -84,6 +84,18 @@ class Welcome extends CI_Controller {
 		$this->load->view('layout', $data);
 	}
 
+		/**
+     * Dishplay  favorite food in public user interface
+     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+     */
+	public function favoriteFood(){
+		$this->load->model('foodFavorite');
+		$data['dishes'] = $this->foodFavorite->dishesFavorite();
+		$data['title'] = 'Favorite Food';
+		$data['page'] = 'dishes/favouriteFoods';
+		$this->load->view('layout', $data);
+	}
+
 	public function getDish(){
 	
 	$id = $this->input->post('dish_id');

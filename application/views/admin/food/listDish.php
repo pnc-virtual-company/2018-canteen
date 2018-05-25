@@ -46,9 +46,6 @@
                 <tr>
                   <td><?php echo $dish->dish_name ?></td>                 
                   <td><?php echo $dish->description ?></td>
-                <!--   <td>
-                    <img src="<?//php echo base_url().'assets/uploads/'.$dish->dish_image ?>" alt="image" class="img-thumbnail" style="width:10%;">
-                  </td> -->
                   <td>
 
                       <a href="javascript:void()" title="View Dish" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" 

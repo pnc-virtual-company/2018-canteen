@@ -22,6 +22,18 @@ class Dishes_model extends CI_Model {
     }
 
     /**
+     * Get the list of dishes base on type
+     * @param int $mealType for catch the type of the dish
+     * @return array record of tbl_dishes
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+     */
+    public function shortMealType($mealType){
+        $query = $this->db->get_where('tbl_dishes', array('meal_time_id'=>$mealType));
+        return $query->result();
+    }
+
+
+    /**
      * Get the list of tbl_dishes or one user
      * @param int $id optional id of one user
      * @return array record of tbl_dishes
@@ -131,9 +143,10 @@ public function selectDish($id){
         $data_image = array('upload_data' => $this->upload->data()); 
       
         $data = array(
-            'dish_name' => $this->input->post('dishName'),            
-            'dish_image'      => $this->upload->data()['file_name'],         
-            'description' => $this->input->post('description')        
+            'dish_name'  => $this->input->post('dishName'),            
+            'dish_image' => $this->upload->data()['file_name'],         
+            'description' => $this->input->post('description'),        
+            'meal_time_id' => $this->input->post('mealTime')        
         );        
         $this->db->where('dish_id', $this->uri->segment(4));                
         $this->db->update('tbl_dishes', $data);                
@@ -247,6 +260,23 @@ public  function  selectOrder($food_id){
       $query = $this->db->get();
       return $query->result();
     }
+
+    /**
+    * Get all the food which are already ordered for breakfast
+    * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+    */
+    public function preOrderMealType($mealType)
+    {
+      $this->db->select('orders.*,dishes.dish_name as dishName,sum(orders.quantity) as TotalQuantity,sum(orders.quantity)*1000 as TotalPayment');
+      $this->db->from('tbl_order as orders');
+      $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id');
+      $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
+      $this->db->where('dishes.meal_time_id', $mealType);
+      $this->db->group_by('dishName'); 
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     public function storeInterest($userId){
         $query = $this->db->get_where('tbl_users',array('id' => $userId));
         if($query){

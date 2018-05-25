@@ -43,11 +43,19 @@
           $this->load->model('Users_model');
           $this->load->model('Participate_model');
           $data['data_participate'] = $this->Participate_model->getParticipant();
-           $data['status'] = $this->Users_model->getStaffStatus();
-          $data['userParticipate'] = $this->Users_model->getListParticipate();
+          $data['status'] = $this->Users_model->getStaffStatus();
           $data['title'] = 'List of Participate';
           $this->load->view('templates/header', $data);
           $this->load->view('menu/admin_dasboard', $data);
+          $status = $this->uri->segment(4);
+          $data['statusId'] = $this->uri->segment(4);
+           if ($status == 2) {
+              $data['$statusId'] = $status;
+              $data['userParticipate'] = $this->Users_model->getListParticipate();
+           }else if ($status != 2) {
+              $data['$statusId'] = $status;
+              $data['userParticipate'] = $this->Users_model->shortListParticipate($status);
+           }
           $this->load->view('Calendar/StaffParticipation', $data);
           $this->load->view('templates/footer', $data);
         }
