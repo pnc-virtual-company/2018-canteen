@@ -15,29 +15,33 @@
 		<?php foreach($dishesOrder as $menu){ ?>
 		<h2 style="color: #009688;">Breakfast</h2>
 		<strong><hr style="box-shadow: 1px 1px 1px;"></strong>		
-		<i class="mdi mdi-account-circle text-danger" style="font-size:18px"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
-		<p><?php echo $menu->menu_description; ?> </p>
+		<i class="mdi mdi-account-circle text-danger" style="font-size:18px"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu[ 'menu_created_date'] ; ?></span>
+		<p><?php echo $menu[ 'menu_description']; ?> </p>
 		<?php break;}?>
 		<div class="row">
 			<?php foreach($dishesOrder as $dish) {    ?>	
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
 				<div class="card card-columns">
 					<div class="card-body">			    		
-							<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">			    	
+							<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish['dish_image'];?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish[ 'dish_name'] ?>">			    	
 					</div> 
 					<div class="card-footer">
 						<div class="container">
 							<div class="row">
 								<?php if($this->session->loggedIn === TRUE) { ?>
 								<div class="col-md-4 Interest">
-				    				<a class="interest" href="#" name="view" value=view" id="<?php echo $dish->dish_id;?>"><?php echo $dish->current_interest; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+				    				<a class="interest" href="#" name="view" value=view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
 				    			</div>
 				    			<div class="col-md-4 Uninterest">
-				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php echo $dish->dish_id?>"><?php echo $dish->current_interest; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
+				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
 				    			</div>			    			
-								<div class="col-md-4 item" id="food">
-									<a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
-								</div>			    					    	
+								    	<div class="col-md-4 item" id="food">
+						    		 <?php if($dish['is_user_order'] == false){ ?>
+						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
+						    		 <?php }else{ ?>
+						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_edit_order" class="view_data"><i class="mdi mdi-pencil"></i>Edit Order</a>	
+                   					<?php } ?>
+                   				</div>		    					    	
 								<div class="col-md-4">
 									<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
 								</div>
@@ -58,38 +62,42 @@
 		<?php foreach($dishesOrder1 as $menu){ ?>
 		<h2 style="color: #009688;">Lunch</h2>
 		<strong><hr style="box-shadow: 1px 1px 1px;"></strong>		
-		<i  style="font-size:18px" class="mdi mdi-account-circle text-danger"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
-		<p><?php echo $menu->menu_description; ?> </p>
+		<i class="mdi mdi-account-circle text-danger" style="font-size:18px"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu[ 'menu_created_date'] ; ?></span>
+		<p><?php echo $menu[ 'menu_description']; ?> </p>
 		<?php break;}?>
 		<div class="row">
 			<?php foreach($dishesOrder1 as $dish) {    ?>	
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
-					<div class="card card-columns">
-						<div class="card-body">			    		
-								<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">			    	
-						</div> 
-						<div class="card-footer">
-							<div class="container">
-								<div class="row">
-									<?php if($this->session->loggedIn === TRUE) { ?>
-									<div class="col-md-4 Interest">
-				    				<a class="interest" href="#" name="view" value=view" id="<?php echo $dish->dish_id;?>"><?php echo $dish->current_interest; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
+				<div class="card card-columns">
+					<div class="card-body">			    		
+							<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish['dish_image'];?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish[ 'dish_name'] ?>">			    	
+					</div> 
+					<div class="card-footer">
+						<div class="container">
+							<div class="row">
+								<?php if($this->session->loggedIn === TRUE) { ?>
+								<div class="col-md-4 Interest">
+				    				<a class="interest" href="#" name="view" value=view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
 				    			</div>
 				    			<div class="col-md-4 Uninterest">
-				    				<a class="uninterest" href="#" name="view" style='color: orange;'value="view" id="<?php echo $dish->dish_id?>"><?php echo $dish->current_interest; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
-				    			</div>					    			
-									<div class="col-md-4 item" id="food">
-										<a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
-									</div>			    					    	
-									<div class="col-md-4">
-										<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
-									</div>
-									<?php } ?>
+				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
+				    			</div>			    			
+								    	<div class="col-md-4 item" id="food">
+						    		 <?php if($dish['is_user_order'] == false){ ?>
+						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
+						    		 <?php }else{ ?>
+						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_edit_order" class="view_data"><i class="mdi mdi-pencil"></i>Edit Order</a>	
+                   					<?php } ?>
+                   				</div>			    					    	
+								<div class="col-md-4">
+									<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
 								</div>
-							</div>				    	
-						</div>				  				 
-					</div>					 
-				</div>
+								<?php } ?>
+							</div>
+						</div>				    	
+					</div>				  				 
+				</div>					 
+			</div>
 			<?php } ?>
 		</div>
 	</div>
@@ -101,38 +109,42 @@
 		<?php foreach($dishesOrder2 as $menu){ ?>
 		<h2 style="color: #009688;">Dinner</h2>
 		<strong><hr style="box-shadow: 1px 1px 1px;"></strong>		
-		<i style="font-size:18px" class="mdi mdi-account-circle text-danger"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu->menu_created_date; ?></span>
-		<p><?php echo $menu->menu_description; ?> </p>
+		<i class="mdi mdi-account-circle text-danger" style="font-size:18px"></i>&nbsp;<strong style="color: #009688; font-size: 17px;">Canteen Manager</strong> <span>| <?php  echo $menu[ 'menu_created_date'] ; ?></span>
+		<p><?php echo $menu[ 'menu_description']; ?> </p>
 		<?php break;}?>
-		<div class="row">
+	<div class="row">
 			<?php foreach($dishesOrder2 as $dish) {    ?>	
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
-						<div class="card card-columns">
-							<div class="card-body">			    		
-									<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish->dish_image?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish->dish_name ?>">			    	
-							</div> 
-							<div class="card-footer">
-								<div class="container">
-										<div class="row">
-											<?php if($this->session->loggedIn === TRUE) { ?>
-											<div class="col-md-4 Interest">
-					    				    <a class="interest" href="#" name="view" value=view" id="<?php echo $dish->dish_id;?>"><?php echo $dish->current_interest; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
-				    			        </div>
-						    			<div class="col-md-4 Uninterest">
-						    				<a class="uninterest" href="#" name="view" style='color: orange;'value="view" id="<?php echo $dish->dish_id?>"><?php echo $dish->current_interest; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
-						    			</div>					    			
-										<div class="col-md-4 item" id="food">
-											<a href="#" name="view" value="view" id="<?php echo $dish->dish_id?>" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
-										</div>			    					    	
-										<div class="col-md-4">
-											<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
-										</div>
-										<?php } ?>
-									</div>
-								</div>				    	
-							</div>				  				 
-						</div>					 
-					</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
+				<div class="card card-columns">
+					<div class="card-body">			    		
+							<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish['dish_image'];?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish[ 'dish_name'] ?>">			    	
+					</div> 
+					<div class="card-footer">
+						<div class="container">
+							<div class="row">
+								<?php if($this->session->loggedIn === TRUE) { ?>
+								<div class="col-md-4 Interest">
+				    				<a class="interest" href="#" name="view" value=view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+				    			</div>
+				    			<div class="col-md-4 Uninterest">
+				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
+				    			</div>			    			
+								    	<div class="col-md-4 item" id="food">
+						    		 <?php if($dish['is_user_order'] == false){ ?>
+						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
+						    		 <?php }else{ ?>
+						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_edit_order" class="view_data"><i class="mdi mdi-pencil"></i>Edit Order</a>	
+                   					<?php } ?>
+                   				</div>			    					    	
+								<div class="col-md-4">
+									<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
+								</div>
+								<?php } ?>
+							</div>
+						</div>				    	
+					</div>				  				 
+				</div>					 
+			</div>
 			<?php } ?>
 		</div>
 	</div>

@@ -89,7 +89,8 @@ Class calendar extends CI_Controller{
 	{
 		$result=$this->Calendar_model->updateLunchEvent();
 		echo $result;
-		/*Sending email to invite the staff the join the lunch in PNC*/
+
+	/*Sending email to invite the staff the join the lunch in PNC*/
 		$config = array(
 		'protocol' => 'smtp',
 		'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -107,6 +108,7 @@ Class calendar extends CI_Controller{
 		    $this->email->message('You are invited to join lunch at PNC');
 		    $this->email->send();
 	}
+	
 	/*Delete Event*/
 	Public function deleteEvent()
 	{

@@ -27,8 +27,8 @@
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new dish</a></li>
-        </ul>
-  </div>
+       </ul>
+  </div >
     <div class="row">
       <div class="col-md-12">
         <?php echo $flashPartialView;?>
