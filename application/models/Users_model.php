@@ -246,7 +246,7 @@ class Users_model extends CI_Model {
      */
     private function loadProfile($row) {
       /*
-        000000010  Admin
+        000000010  1 Admin
         0000000100 2  User
         00000001000 4  Staff
         0000010000 8  HR Officier / Local HR Manager
@@ -446,6 +446,27 @@ class Users_model extends CI_Model {
                     FROM tbl_staff_participation staffParticpate
                     INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id
                     INNER JOIN tbl_users users ON users.id = staffParticpate.user_id');
+                return $query->result();
+    }
+
+    /**
+     * short the staff confirm and not yet confirm
+     * @return int $status is for short of confirm or not yet confirm
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+     */
+
+    /*Function get all particapate of event lunch*/
+    public function shortListParticipate($statusId){
+         $query = $this->db->query('SELECT 
+                    staffParticpate.*, 
+                    lunchEvent.title AS "Title",
+                    users.class_name AS "ClassName",
+                    users.email AS "Email",
+                    CONCAT(users.firstname , " " , users.lastname) AS "Staff_name"
+                    FROM tbl_staff_participation staffParticpate
+                    INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id
+                    INNER JOIN tbl_users users ON users.id = staffParticpate.user_id
+                    WHERE staffParticpate.status = "$statusId" ');
                 return $query->result();
     }     
 

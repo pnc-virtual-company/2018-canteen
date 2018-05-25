@@ -25,10 +25,18 @@ class PreOrder extends CI_Controller {
     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
     */
 	public function preOrderList(){
-      $data['preOrder'] = $this->Dishes_model->preOrderList();
       $data['title'] = 'Pre Order Food';
       $this->load->view('templates/header', $data);
       $this->load->view('menu/admin_dasboard', $data);
+      $mealType = $this->uri->segment(4);
+      $data['mealTypeId'] = 0;
+        if ($mealType == 0 ) {
+          $data['mealTypeId'] = $mealType;
+          $data['dishes'] = $this->Dishes_model->preOrderList();
+        }else if($mealType != 0){
+          $data['mealTypeId'] = $mealType;
+          $data['dishes'] = $this->Dishes_model->preOrderMealType($mealType);
+        }
       $this->load->view('Admin/food/preOrder', $data);
       $this->load->view('templates/footer', $data);
   }

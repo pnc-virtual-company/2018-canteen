@@ -39,15 +39,23 @@
 
        // }
        function getListParticipate(){
+          $statusId = $this->uri->segment(4);
+          $data['$status'] = 2;
           $data['page'] = 'Calendar/StaffParticipation';
           $this->load->model('Users_model');
           $this->load->model('Participate_model');
           $data['data_participate'] = $this->Participate_model->getParticipant();
-           $data['status'] = $this->Users_model->getStaffStatus();
-          $data['userParticipate'] = $this->Users_model->getListParticipate();
+          $data['status'] = $this->Users_model->getStaffStatus();
           $data['title'] = 'List of Participate';
           $this->load->view('templates/header', $data);
           $this->load->view('menu/admin_dasboard', $data);
+           if ($statusId == 2) {
+              $data['$status'] = $statusId;
+              $data['userParticipate'] = $this->Users_model->getListParticipate();
+           }else if ($statusId != 2) {
+              $data['$status'] = $statusId;
+              $data['userParticipate'] = $this->Users_model->shortListParticipate($statusId);
+           }
           $this->load->view('Calendar/StaffParticipation', $data);
           $this->load->view('templates/footer', $data);
         }

@@ -57,7 +57,7 @@
           </a>
         </li>
         <li>
-          <a class="app-menu__item" href="<?php echo base_url() ?>admin/PreOrder/preOrderList">
+          <a class="app-menu__item" href="<?php echo base_url() ?>admin/PreOrder/preOrderList/0">
             <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Pre-Ordered
           </a>
         </li>
@@ -82,7 +82,7 @@
           </a>
         </li>
         <li>
-          <a class="app-menu__item" href="<?php echo base_url(); ?>admin/StaffParticipation/getListParticipate">
+          <a class="app-menu__item" href="<?php echo base_url(); ?>admin/StaffParticipation/getListParticipate/2">
             <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Staff Lunch Reminder
           </a>
         </li>

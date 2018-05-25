@@ -27,23 +27,21 @@
         </div>
   </div>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-8"></div>
+      <div class="col-md-4">
         <div class="form-group">
-           <label class="control-label col-sm-2" for="email">Date</label>
-           <div class="col-sm-10">
-              <input type="text" id="datepicker" name="mealDate">
-           </div>
-         </div>
-      </div>
-      <div class="col-md-6"></div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="sel1">Meal</label>
-          <select class="form-control" id="sel1">
-            <option value="">select meal time</option>
-            <option >BreakFast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
+          <label for="sel1">Select Meal Type</label>
+          <select class="form-control" id="sel1" onchange="location = this.value;">
+            <option value="<?php echo base_url() ?>admin/PreOrder/preOrderList/0" 
+                <?php if ($mealTypeId == 0) {echo "selected";}?> >All
+            </option>
+            <option value="<?php echo base_url() ?>admin/PreOrder/preOrderList/1"
+             <?php if ($mealTypeId == 1) {echo "selected";}?> >BreakFast
+            </option>
+            <option value="<?php echo base_url() ?>admin/PreOrder/preOrderList/2"
+               <?php if ($mealTypeId == 2) {echo "selected";}?> >Lunch</option>
+            <option value="<?php echo base_url() ?>admin/PreOrder/preOrderList/3"
+               <?php if ($mealTypeId == 3) {echo "selected";}?> >Dinner</option>
           </select>
         </div>
       </div>
@@ -59,7 +57,7 @@
           </thead>
           <tbody>
             <?php 
-                foreach ($preOrder as $dish):
+                foreach ($dishes as $dish):
               ?>
                 <tr>
                   <td><?php echo $dish->dishName?></td>
