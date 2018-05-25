@@ -1,9 +1,9 @@
 <?php
 /**
  * This model contains the business logic and manages the persistence of tbl_dishes and tbl_roles
- * @copyright  Copyright (c) 2018 khai HOK
+ * @copyright  Copyright (c) 2018 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/khaihok/2018-canteen
+ * @link       https://github.com/bbalet/skeleton
  * @since      1.0.0
  */
 
@@ -90,28 +90,31 @@ class Dishes_model extends CI_Model {
     }
 
     /**
-     * Delete a dishes from the database
+     * Delete a user from the database
      * @param int $id identifier of the user
-     * @author Davy Peong <davy.peong@student.passerellesnumreriqes.org>
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteDishes($id) {
         $this->db->delete('tbl_dishes', array('dish_id' => $id));
     }
 
     /**
-      * set_dish from database with image
-     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
+     * Insert a new user into the database. Inserted data are coming from an HTML form
+     * @return string deciphered password (so as to send it by e-mail in clear)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
-    
     public function setDishes() {
         //Hash the clear password using bcrypt (8 iterations)
         $password = $this->input->post('password');
         $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
         $hash = crypt($password, $salt);
+
+        //Role field is a binary mask
         $role = 0;
         foreach($this->input->post("role") as $role_bit){
             $role = $role | $role_bit;
         }
+
         $data = array(
             'firstname' => $this->input->post('firstname'),
             'lastname' => $this->input->post('lastname'),
@@ -125,8 +128,9 @@ class Dishes_model extends CI_Model {
     }
 
     /**
-      *  from database with image
-     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
+     * Update a given user in the database. Update data are coming from an HTML form
+     * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
 
 public function selectDish($id){
@@ -171,32 +175,19 @@ public function selectDish($id){
         $this->db->insert("tbl_dishes", $data);
     }
 
-    /**
-     * Get the info from tbl_dishes where dishes match with breakfast 
-     * @param int $id optional id of one dish.
-     * @return array record of tbl_dishes
-     * @author khai.hok <khai.hok@student.passerellesnumeriques.org>
-     */
-    public function getMenu(){
+    public function getMenu($number){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
        $this->db->select('*');
        $this->db->from('tbl_dishes');
         $this->db->where (array('dish_active' =>1));
         $this->db->where('menu_created_date=',$creating_date);
-        $this->db->where('meal_time_id=',1);
+        $this->db->where('meal_time_id=', $number);
         $query = $this->db->get();
-        return $query->result();
+        return $query;
     }
-
-
-    /**
-     * Get the info from tbl_dishes where dishes match with Lunch. 
-     * @param int $id optional id of one dish.
-     * @return array record of tbl_dishes
-     * @author khai.hok <khai.hok@student.passerellesnumeriques.org>
-     */
-    public function getMenu1(){
+    
+    /*public function getMenu1(){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
        $this->db->select('*');
@@ -207,11 +198,7 @@ public function selectDish($id){
         $query = $this->db->get();
         return $query->result();
     }
-    /**
-     * Get the info from tbl_dishes where dishes match with dinner. 
-     * @return array record of tbl_dishes
-     * @author khai.hok <khai.hok@student.passerellesnumeriques.org>
-     */
+    
     public function getMenu2(){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -223,6 +210,7 @@ public function selectDish($id){
         $query = $this->db->get();
         return $query->result();
     }
+    */
 public  function  selectOrder($food_id){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -301,4 +289,40 @@ public  function  selectOrder($food_id){
         }
         
     }
+     // Check if user already order dish
+    function checkIfUserOrderDish($dish_id, $user_id)
+    {
+        $this->db->where('dish_id', $dish_id);
+        $this->db->where('user_id', $user_id);
+        $result = $this->db->get('tbl_dish_user');
+        if($result->num_rows() > 0)
+        {
+          return true; // return true if user alreay order that dish
+        }else{
+          return false; // return false if user not yet order
+        }
+    }
+    // Get user dish order to edit
+    function selectDishEdit($dish_id, $user_id)
+    {
+       $this->db->where('tbl_dish_user.dish_id', $dish_id);
+        $this->db->where('tbl_dish_user.user_id', $user_id);
+        $this->db->join('tbl_dish_user', 'tbl_dishes.dish_id = tbl_dish_user.dish_id');
+        $this->db->join('tbl_order', 'tbl_order.order_id = tbl_dish_user.order_id'); // join to get the quantity in tbl order
+        $result = $this->db->get('tbl_dishes');      
+        return $result->result();
+    }
+    
+    // Update order info
+    function updateOrderInfo($order_id)
+    {
+      $qty = $this->input->post('quantity'); // get qty from edit form popup
+
+      return $this->db->where('order_id', $order_id)
+      ->update('tbl_order', array('quantity'=> $qty));
+    }
+
+
+
+
 }

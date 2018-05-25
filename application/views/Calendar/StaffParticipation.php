@@ -59,12 +59,12 @@
       <div class="form-group">
         <select class="form-control" onchange="location = this.value;">
           <option value="<?php echo base_url() ?>admin/StaffParticipation/getListParticipate/2" 
-              <?php if ($status == 2) {echo "selected";}?> >All
+              <?php if ($statusId == 2) {echo "selected";}?> >All
           </option>
-          <option value="<?php echo base_url() ?>admin/StaffParticipation/getListParticipate/1" <?php if ($status == 1) {echo "selected";}?> > Confirmed
+          <option value="<?php echo base_url() ?>admin/StaffParticipation/getListParticipate/1" <?php if ($statusId == 1) {echo "selected";}?> > Confirmed
           </option>
           <option value="<?php echo base_url() ?>admin/StaffParticipation/getListParticipate/0"
-             <?php if ($status == 0) {echo "selected";}?> >Not yet confirm</option>
+             <?php if ($statusId == 0) {echo "selected";}?> >Not yet confirm</option>
         </select>
     </div>
   </div>
@@ -121,7 +121,6 @@
           </tbody>
         </table>
         <div class="row">
-
           <div class="col-md-12">
             <a href=""><button type="submit" class="btn btn-warning" disabled="disabled" ><span class="btn-label btn-label-right"><i class="mdi mdi-gmail" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind Email</button></a>
           </div>

@@ -58,15 +58,6 @@ class PreOrder extends CI_Controller {
   * Export the user who already the dishes
   * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
   */
-  public function exportUserOrdered() {
-    $data['userPreOrder'] = $this->Users_model->userOrderList();
-    $this->load->view('Admin/users/exportUserOrdered',$data);
-  }
-
-  /**
-  * Export the user who already the dishes
-  * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-  */
   public function exportDishOrdered() {
     $data['dishPreOrder'] = $this->Dishes_model->preOrderList();
     $this->load->view('Admin/food/exportDishOrdered',$data);

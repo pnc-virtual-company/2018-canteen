@@ -20,8 +20,8 @@ class JoinDinner_model extends CI_Model {
 	     // Insert join user
 	     $data_join = array(
 	       'user_id' => $current_logged_in,
-	       // 'dinner_event_id' => $Dinner_ID
 	       'dinner_event_id' => '52'
+	       // 'dinner_event_id' => $Dinner_ID
 	     );
 	     $result = $this->db->insert('tbl_join_events', $data_join);
 	 }

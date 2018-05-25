@@ -456,7 +456,8 @@ class Users_model extends CI_Model {
      */
 
     /*Function get all particapate of event lunch*/
-    public function shortListParticipate($statusId){
+    public function shortListParticipate($status){
+        // echo $status;die();
          $query = $this->db->query('SELECT 
                     staffParticpate.*, 
                     lunchEvent.title AS "Title",
@@ -466,7 +467,7 @@ class Users_model extends CI_Model {
                     FROM tbl_staff_participation staffParticpate
                     INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id
                     INNER JOIN tbl_users users ON users.id = staffParticpate.user_id
-                    WHERE staffParticpate.status = "$statusId" ');
+                    WHERE staffParticpate.status ='. $status);
                 return $query->result();
     }     
 
