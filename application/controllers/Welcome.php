@@ -30,6 +30,7 @@ class Welcome extends CI_Controller {
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
     					'menu_description' => $row->menu_description,
+    					'current_interest' => $row->current_interest,
     					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'))
     				);
     		}
@@ -50,6 +51,7 @@ class Welcome extends CI_Controller {
     					'dish_active' => $row->dish_active,
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
+    					'current_interest' => $row->current_interest,
     					'menu_description' => $row->menu_description,
     					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'))
     				);
@@ -71,6 +73,7 @@ class Welcome extends CI_Controller {
     					'dish_active' => $row->dish_active,
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
+    					'current_interest' => $row->current_interest,
     					'menu_description' => $row->menu_description,
     					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'))
     				);

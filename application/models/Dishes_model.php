@@ -25,16 +25,47 @@ class Dishes_model extends CI_Model {
      * Get the list of tbl_dishes or one user
      * @param int $id optional id of one user
      * @return array record of tbl_dishes
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author chantha roeurn <chantha.roeurn@gmail.com>
      */
     public function getDishes() {
         $this->db->order_by('dish_id', 'DESC');
         $query = $this->db->get('tbl_dishes'); 
         return $query->result();
-        // return $order->result();
     }
+   /**
+     * This function is use to inseret interes data into tbl_rates..
+     * @return array record of tbl_rates
+     * @author Davy PEONG <davy.peong@student.passerellesnumerique.org>
+     */
+    public function getStoreInterest($user_id, $dish_id){
+        $interesData = array( 
+          'store_rate' => "1",
+          'dish_id' => $dish_id,
+          'user_id' => $user_id
+        );
+        $this->db->insert('tbl_rates', $interesData);
 
-
+        // $this->db->select(count('user_id'));
+        // $this->db->from('tbl_rates');
+        // $this->db->where (array('dish_id' =>$dish_id));
+        // $query = $this->db->get();
+        // $result= $query->result();
+      
+        // $interestDish = array(
+        //    'current_interest'   => $result
+        // );
+        // $this->db->where('dish_id', $dish_id);
+        // $this->db->update('tbl_dishes ', $interestDish); 
+    }
+    /**
+     * This function is use to delete data from tbl_rates..
+     * @return array record of tbl_rates
+     * @author Davy PEONG <davy.peong@student.passerellesnumerique.org>
+     */
+    public function getStoreUninterest($user_id){
+        $this->db->where('user_id', $user_id);
+        $this->db->delete(' tbl_rates');
+    }
     /**
      * Get the meal time of tbl_dishes 
      * @param int $id optional id of one user
@@ -154,6 +185,7 @@ public function selectDish($id){
         $query = $this->db->get();
         return $query->result();
     }
+    
     public function getMenu2(){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -201,7 +233,10 @@ public  function  selectOrder($food_id){
         );
         $result = $this->db->insert('tbl_dish_user', $data_dish);
     }
-
+    /**
+    * Get all the food which are already ordered
+    * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+    */
     public function preOrderList()
     {
       $this->db->select('orders.*,dishes.dish_name as dishName,sum(orders.quantity) as TotalQuantity,sum(orders.quantity)*1000 as TotalPayment');
@@ -209,22 +244,6 @@ public  function  selectOrder($food_id){
       $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id');
       $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
       $this->db->group_by('dishName'); 
-      $query = $this->db->get();
-      return $query->result();
-    }
-
-    public function userOrderList(){
-      $this->db->select('users.card_id as userId,
-                    CONCAT(users.firstname," ",users.lastname) AS userName,
-                    users.class_name,
-                    dishes.dish_name as dishName,
-                    sum(orders.quantity) as totalQuanttiy,
-                    sum(orders.quantity)*1000 as TotalPayment');
-      $this->db->from('tbl_order as orders');
-      $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id') ;
-      $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
-      $this->db->join('tbl_users users', 'users.id = dishUsers.user_id');
-      $this->db->group_by('userName'); 
       $query = $this->db->get();
       return $query->result();
     }

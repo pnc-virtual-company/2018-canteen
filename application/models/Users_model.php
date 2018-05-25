@@ -22,6 +22,27 @@ class Users_model extends CI_Model {
 
     }
 
+    /**
+     * Get list of user who already order the dishes
+     * @return array record of tbl_users
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+     */
+    public function userOrderList(){
+      $this->db->select('users.card_id as userId,
+                    CONCAT(users.firstname," ",users.lastname) AS userName,
+                    users.class_name,
+                    dishes.dish_name as dishName,
+                    sum(orders.quantity) as totalQuanttiy,
+                    sum(orders.quantity)*1000 as TotalPayment');
+      $this->db->from('tbl_order as orders');
+      $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id') ;
+      $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
+      $this->db->join('tbl_users users', 'users.id = dishUsers.user_id');
+      $this->db->group_by('userName'); 
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     public function addUsers(){
         //Hash the clear password using bcrypt (8 iterations)
         $password = $this->input->post('password');
@@ -52,7 +73,7 @@ class Users_model extends CI_Model {
      * Get the list of tbl_users or one user
      * @param int $id optional id of one user
      * @return array record of tbl_users
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
 
     /// get roles from tbl_role
@@ -227,7 +248,7 @@ class Users_model extends CI_Model {
       /*
         000000010  Admin
         0000000100 2  User
-        00000001000 3  Staff
+        00000001000 4  Staff
         0000010000 8  HR Officier / Local HR Manager
         0000100000 16 HR Manager
         = 00001101 25 Can access to HR functions
@@ -241,7 +262,7 @@ class Users_model extends CI_Model {
             $isUser = TRUE;
         }
         $isStaff = FALSE;
-        if (((int) $row->role & 3)) {
+        if (((int) $row->role & 4)) {
             $isStaff = TRUE;
         }
         $isSuperAdmin = FALSE;
@@ -377,8 +398,7 @@ class Users_model extends CI_Model {
     public function getListUsers(){
         $query = $this->db->query("select  user.*, role.id as role, role.name as rolename from tbl_users as user inner join tbl_roles as role where user.role = role.id order by id DESC");
         return $query->result();
-        return $order_by->result();
-    }    
+    }  
 
     public function deleteUsers($id) {
         $this->db->delete('tbl_users', array('id' => $id));

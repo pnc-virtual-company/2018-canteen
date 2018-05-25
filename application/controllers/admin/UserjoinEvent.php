@@ -56,8 +56,9 @@
         }
 
         // Export of user join
-        public function export() {
-            $this->load->view('users/export');
+        public function exportUserJoinEvent() {
+          $data['userJoinEvent'] = $this->JoinDinner_model->getListJoinDinner();
+          $this->load->view('Calendar/export',$data);
         }
 }
 

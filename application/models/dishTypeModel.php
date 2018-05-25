@@ -21,6 +21,3 @@
        return $query->result();
 		}
 	}
- ?>
-
-
