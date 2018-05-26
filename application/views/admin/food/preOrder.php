@@ -39,12 +39,16 @@
       <div class="col-md-3">
         <div class="form-group">
           <label for="sel1">Meal</label>
-          <select class="form-control" id="sel1">
-            <option value="">select meal time</option>
-            <option >BreakFast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
-          </select>
+         <select class="form-control meal_time" id="sel1">
+           
+ <option <?php echo (!isset($_GET['meal_time']))?"selected":""; ?> value="all">select meal time</option>
+        
+<option <?php echo (isset($_GET['meal_time']) && $_GET['meal_time'] == "1")?"selected":""; ?> value="1">BreakFast</option>
+     
+<option <?php echo (isset($_GET['meal_time']) && $_GET['meal_time'] == "2")?"selected":""; ?> value="2">Lunch</option>
+           
+ <option <?php echo (isset($_GET['meal_time']) && $_GET['meal_time'] == "3")?"selected":""; ?>  value="3">Dinner</option>
+</select>
         </div>
       </div>
       <div class="col-md-12">
@@ -79,6 +83,32 @@
 <script type="text/javascript">
 $(document).ready(function() {
     //Transform the HTML table in a fancy datatable
+    // Change url when select meal time id
+  $('.meal_time').change(function(){
+   
+   var val_time = $(this).val();
+      
+if(val_time == "1"){
+       
+ window.location.href = "<?php echo base_url(); ?>admin/PreOrder/preOrderList?meal_time=1";
+      
+}
+      else if(val_time == "2")
+     
+ {
+        window.location.href = "<?php echo base_url(); ?>admin/PreOrder/preOrderList?meal_time=2";
+     
+ }
+      else if(val_time == "3")
+      
+{
+        window.location.href = "<?php echo base_url(); ?>admin/PreOrder/preOrderList?meal_time=3";
+   
+   }else{
+     
+   window.location.href = "<?php echo base_url(); ?>admin/PreOrder/preOrderList";
+      }
+  });
     $('#food').dataTable({
         stateSave: true,
     });

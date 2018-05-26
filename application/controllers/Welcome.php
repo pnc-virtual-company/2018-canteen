@@ -17,6 +17,9 @@ class Welcome extends CI_Controller {
 
     	$rows = array();
     	$result = $this->Dishes_model->getMenu(1);
+    	 // Get current date
+    	date_default_timezone_set("Asia/Phnom_Penh");
+        	$current_date = date('Y-m-d');
     	// We will create new array to store new element value check is the food already order, it is the same as like unlick yesteraday
     	if($result->num_rows() > 0)
     	{
@@ -30,8 +33,8 @@ class Welcome extends CI_Controller {
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
     					'menu_description' => $row->menu_description,
-    					'current_interest' => $row->current_interest,
-    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'))
+    					// 'order_date'=>$row->date,
+    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,1)
     				);
     		}
     	}
@@ -51,12 +54,12 @@ class Welcome extends CI_Controller {
     					'dish_active' => $row->dish_active,
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
-    					'current_interest' => $row->current_interest,
     					'menu_description' => $row->menu_description,
-    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'))
+    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,2)
     				);
     		}
     	}
+
     	$data['dishesOrder1'] = $rows_lunch;
     	// Dinner time 
     	$rows_dinner = array();
@@ -73,9 +76,8 @@ class Welcome extends CI_Controller {
     					'dish_active' => $row->dish_active,
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
-    					'current_interest' => $row->current_interest,
     					'menu_description' => $row->menu_description,
-    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'))
+    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,3)
     				);
     		}
     	}
@@ -172,16 +174,11 @@ class Welcome extends CI_Controller {
 			';
 		}
 
-
-
-
-
-
 	}
 	echo $output;
 }
 
-	 public function insertOrderInfo(){
+public function insertOrderInfo(){
     $dish_id = $this->uri->segment(3); 
     $meal_time_id = $this->uri->segment(4); 
     $data['userPreOrder'] = $this->Dishes_model->createOrder($dish_id,$meal_time_id);

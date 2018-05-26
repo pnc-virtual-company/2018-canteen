@@ -25,7 +25,13 @@ class PreOrder extends CI_Controller {
     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
     */
 	public function preOrderList(){
-      $data['preOrder'] = $this->Dishes_model->preOrderList();
+     if(isset($_GET['meal_time'])){ // If url has ? meal time let filter it
+        $meal_time_id = $_GET['meal_time'];
+
+        $data['preOrder'] = $this->Dishes_model->preOrderList($meal_time_id);
+      }else{ // No ? meal time so show all
+        $data['preOrder'] = $this->Dishes_model->preOrderList();
+      }
       $data['title'] = 'Pre Order Food';
       $this->load->view('templates/header', $data);
       $this->load->view('menu/admin_dasboard', $data);
