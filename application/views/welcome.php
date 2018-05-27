@@ -30,12 +30,12 @@
 							<div class="row">
 								<?php if($this->session->loggedIn === TRUE) { ?>
 								<div class="col-md-4 Interest">
-				    				<a class="interest" href="#" name="view" value=view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+				    				<a class="interest" href="#" name="view" value=view" id="<?php// echo $dish['dish_id'];?>"><?php //echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
 				    			</div>
-				    			<div class="col-md-4 Uninterest">
-				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
-				    			</div>			    			
-								    	<div class="col-md-4 item" id="food">
+				    			<!-- <div class="col-md-4 Uninterest">
+				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php// echo $dish[ 'dish_id']?>"><?php //echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
+				    			</div>	 -->		    			
+					<div class="col-md-4 item" id="food">
 						    		 <?php if($dish['is_user_order'] == false){ ?>
 						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
 						    		 <?php }else{ ?>
@@ -77,19 +77,19 @@
 							<div class="row">
 								<?php if($this->session->loggedIn === TRUE) { ?>
 								<div class="col-md-4 Interest">
-				    				<a class="interest" href="#" name="view" value=view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+				    				<a class="interest" href="#" name="view" value=view" id="<?php// echo $dish['dish_id'];?>"><?php// echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
 				    			</div>
-				    			<div class="col-md-4 Uninterest">
-				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
-				    			</div>			    			
-								    	<div class="col-md-4 item" id="food">
+				    			<!-- <div class="col-md-4 Uninterest">
+				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php// echo $dish[ 'dish_id']?>"><?php //echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
+				    			</div> -->			    			
+							<div class="col-md-4 item" id="food">
 						    		 <?php if($dish['is_user_order'] == false){ ?>
 						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
 						    		 <?php }else{ ?>
 						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_edit_order" class="view_data"><i class="mdi mdi-pencil"></i>Edit Order</a>	
-                   					<?php } ?>
-                   				</div>			    					    	
-								<div class="col-md-4">
+                   							<?php } ?>
+                   						</div>			    					    	
+							<div class="col-md-4">
 									<a href="#" id="recomment"><i class="mdi mdi-comment"></i>&nbsp; Recommend</a>
 								</div>
 								<?php } ?>
@@ -124,11 +124,11 @@
 							<div class="row">
 								<?php if($this->session->loggedIn === TRUE) { ?>
 								<div class="col-md-4 Interest">
-				    				<a class="interest" href="#" name="view" value=view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+				    				<a class="interest" href="#" name="view" value=view" id="<?php //echo $dish['dish_id'];?>"><?php// echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
 				    			</div>
-				    			<div class="col-md-4 Uninterest">
-				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
-				    			</div>			    			
+				    			<!-- <div class="col-md-4 Uninterest">
+				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php //echo $dish[ 'dish_id']?>"><?php //echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
+				    			</div>	 -->		    			
 								    	<div class="col-md-4 item" id="food">
 						    		 <?php if($dish['is_user_order'] == false){ ?>
 						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
@@ -168,14 +168,15 @@
 		$(document).ready(function(){  
 			$('.view_data').click(function(){  
 				var dish_id = $(this).attr("id");  
+				var btn_status = $(this).attr('button-status');
 				$.ajax({  
 					url:"<?php echo base_url() ?>Welcome/getDish",  
 					method:"post",  
-					data:{dish_id:dish_id},  
+					data:{dish_id:dish_id, status_form: btn_status}, 
 					success:function(data){ 
 						$("#data").html(data);
 						$('#dataModal').modal("show");
-						$('.view_data').text("Edit Order");
+						// $('.view_data').text("Edit Order");
 					}  
 				});  
 			});
@@ -187,7 +188,7 @@
 				$.ajax({  
 					url:"<?php echo base_url() ?>admin/food/storeInterest",  
 					method:"post",  
-					data:{dish_id:dish_id},  
+					data:{dish_id:dish_id, status_form: btn_status}, 
 					success:function(data){ 
 						// $("#data").html(data);
 						// $('#dataModal').modal("show");
