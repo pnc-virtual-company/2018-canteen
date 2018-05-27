@@ -78,6 +78,32 @@
 <script type="text/javascript">
 $(document).ready(function() {
     //Transform the HTML table in a fancy datatable
+    // Change url when select meal time id
+  $('.meal_time').change(function(){
+   
+   var val_time = $(this).val();
+      
+if(val_time == "1"){
+       
+ window.location.href = "<?php echo base_url(); ?>admin/PreOrder/preOrderList?meal_time=1";
+      
+}
+      else if(val_time == "2")
+     
+ {
+        window.location.href = "<?php echo base_url(); ?>admin/PreOrder/preOrderList?meal_time=2";
+     
+ }
+      else if(val_time == "3")
+      
+{
+        window.location.href = "<?php echo base_url(); ?>admin/PreOrder/preOrderList?meal_time=3";
+   
+   }else{
+     
+   window.location.href = "<?php echo base_url(); ?>admin/PreOrder/preOrderList";
+      }
+  });
     $('#food').dataTable({
         stateSave: true,
     });

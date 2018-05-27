@@ -3,14 +3,11 @@
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color:#009688;
   }
-  input[type="radio"] {
-    margin-left: 15px;
-  }
 </style>
 <div class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Form To Create New User</h1>
+          <h1><i class="fa fa-dashboard"></i>Form To Create New Staff</h1>
           <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -22,7 +19,7 @@
       <div class="col-sm-10">
         <div class="card bg-default ">
           <div class="card-body text-white">
-          <h1 class="text-center">Add New User</h1>
+          <h1 class="text-center">Add New Staff</h1>
            <form action="<?php echo base_url(); ?>admin/user/createUser" enctype="multipart/form-data" method="POST">
               <div class="row">
                 <div class="form-group col">
@@ -51,7 +48,7 @@
                 </div>
                 <div class="form-group col">
                   <label for="cardId"><strong>Card ID</strong></label>
-                  <input type="text" class="form-control" required name="cardid" placeholder="User Card ID">
+                  <input type="text" class="form-control" required name="cardid" placeholder="Staff ID">
                 </div>
               </div>
               <div class="row">
@@ -60,9 +57,8 @@
                   <input type="password" placeholder="password" name="password" class="form-control" require>
                 </div>
                 <div class="form-group col">
-                  <label for="image"><strong>User Picture</strong></label>
+                  <label for="image"><strong>Staff Picture</strong></label>
                   <input type="file" class="form-control" required name="userimage">
-                  <p><?php echo $error_msg ?></p>
                 </div>
               </div>
               <div class="row">
@@ -83,7 +79,7 @@
                 </div>
               </div>
              <a class=" btn btn-danger" href="<?php echo base_url() ?>admin/User/listUsers"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
-              <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add User</button>
+              <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add Staff</button>
             </form>
             </form>
           </div>
