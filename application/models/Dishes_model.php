@@ -215,15 +215,21 @@ public  function  selectOrder($food_id){
         $result = $this->db->insert('tbl_dish_user', $data_dish);
     }
 
+      /**
+    * Get all the food which are already preordered
+    * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+    */
     public function preOrderList($meal_time_id = null)
     {
-      $this->db->select('orders.*,dishes.dish_name as dishName,sum(orders.quantity) as TotalQuantity,sum(orders.quantity)*1000 as TotalPayment');
+      // set currrent time zone in php to cambodia time +7
+        date_default_timezone_set("Asia/Phnom_Penh");
+        $current_date = date('Y-m-d');
+      $this->db->select('orders.*,dishes.dish_id as dish_id,dishes.dish_name as dishName,sum(orders.quantity) as TotalQuantity,sum(orders.quantity)*1000 as TotalPayment');
       $this->db->from('tbl_order as orders');
-      
-      $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id');
-      $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
-      // $this->db->where('meal_time_id',1);
-      $this->db->group_by('dishName'); 
+      $this->db->join('tbl_dish_user as dishUsers', 'dishUsers.order_id = orders.order_id');
+      $this->db->join('tbl_dishes as dishes', 'dishes.dish_id = dishUsers.dish_id');
+      $this->db->where('orders.date', $current_date);
+      $this->db->group_by('dish_id'); 
       $query = $this->db->get();
       return $query->result();
     }
@@ -234,10 +240,14 @@ public  function  selectOrder($food_id){
     */
     public function preOrderMealType($mealType)
     {
-      $this->db->select('orders.*,dishes.dish_name as dishName,sum(orders.quantity) as TotalQuantity,sum(orders.quantity)*1000 as TotalPayment');
+      // set currrent time zone in php to cambodia time +7
+        date_default_timezone_set("Asia/Phnom_Penh");
+        $current_date = date('Y-m-d');
+      $this->db->select('orders.*,dishes.dish_id as dish_id,dishes.dish_name as dishName,sum(orders.quantity) as TotalQuantity,sum(orders.quantity)*1000 as TotalPayment');
       $this->db->from('tbl_order as orders');
       $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id');
       $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
+      $this->db->where('orders.date', $current_date);
       $this->db->where('dishes.meal_time_id', $mealType);
       $this->db->group_by('dishName'); 
       $query = $this->db->get();

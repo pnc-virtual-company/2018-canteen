@@ -1,4 +1,3 @@
-
 <?php 
 
 /**
@@ -146,4 +145,3 @@ Class calendar extends CI_Controller{
 		echo $result;
 	}
 }
- ?>

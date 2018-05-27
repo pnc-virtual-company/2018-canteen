@@ -106,6 +106,7 @@ if(val_time == "1"){
   });
     $('#food').dataTable({
         stateSave: true,
+        'ordering':false
     });
   $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
 });

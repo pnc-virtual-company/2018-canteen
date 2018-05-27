@@ -35,9 +35,9 @@
           $data['page'] = 'Calendar/StaffParticipation';
           $this->load->model('Users_model');
           $this->load->model('Participate_model');
-          $data['userParticipate'] = $this->Participate_model->getListParticipate();
-          $data['data_participate'] = $this->Participate_model->getParticipant();
-          $data['status'] = $this->Users_model->getStaffStatus();
+          // $data['userParticipate'] = $this->Participate_model->getListParticipate();
+          // $data['data_participate'] = $this->Participate_model->getParticipant();
+          // $data['status'] = $this->Users_model->getStaffStatus();
           $data['title'] = 'List of Participate';
           $this->load->view('templates/header', $data);
           $this->load->view('menu/admin_dasboard', $data);
@@ -56,5 +56,4 @@
 
      }
 
-    
- ?>
+

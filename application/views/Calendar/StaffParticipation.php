@@ -150,8 +150,6 @@ $(document).ready(function() {
      });
      /*alert success reminding email*/
       $(".clickRemind").click(function() {
-       // var $userID= $(this).attr('id');
-       // alert($userID);
                 $('.alert').addClass('alert-success').text('You have sent email remind successfully.');
         $.ajax({    
             url:"<?php echo base_url() ?>admin/remindEmail",  

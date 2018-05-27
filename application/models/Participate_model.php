@@ -42,6 +42,7 @@ class Participate_model extends CI_Model {
                     INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id
                     INNER JOIN tbl_users users ON users.id = staffParticpate.user_id');
                 return $query->result();
+         // var_dump($query->result);die();
     }     
 
 
