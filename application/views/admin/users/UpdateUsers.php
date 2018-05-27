@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-gorup col">
                   <label for="">User Role</label>
-                    <select class="form-control" name="role" multiple="multiple">
+                    <select class="form-control" name="role">
                       <?php foreach ($roles as $role): ?>
                         <option value="<?php echo $role->id ?>" <?php if ($role->id == $user->role) echo "selected" ?>><?php echo $role->name ?></option>
                       <?php endforeach ?>
