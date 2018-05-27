@@ -168,7 +168,6 @@ $(function(){
                 title: $('#title').val(),
                 description: $('#description').val(),
                 color: $('#color').val(),
-                // event: $("form input[type='radio']:checked").val()
             }, function(result){
                 $('.alert').addClass('alert-success').text('Event updated successfuly');
                 $('.modal').modal('hide');

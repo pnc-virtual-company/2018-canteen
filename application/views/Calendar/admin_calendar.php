@@ -12,23 +12,29 @@
         <script src="<?php echo base_url();?>assets/js/fullcalendar.min.js"></script>
         <script src='<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js'></script>
         <script src='<?php echo base_url();?>assets/js/adminCalendarMain.js'></script>
-        
-        <div class="container"><br> <br>
+       <br>
+          <main class="app-content"  style="background:white;"> 
+              <div class="app-title">
+                <div>
+                    <h1><i class="fa fa-dashboard"></i>Create Staff lunch</h1>
+                    <p>This application is very useful for admin and finance to manage their needs.</p>
+                </div>
+                </div >
+   
                 <!-- alert message -->
-                <div class="row">
-                 <div class="col-md-2"></div>
-                        <div class="col-md-10">
+                <div class="row clearfix">
+                        <div class="col-md-12 column">
                                 <div class="alert"></div>
                         </div>
                 </div>
             <div class="row clearfix">
-                <div class="col-md-2 column"></div>
-                <div class="col-md-10 column">
+                <div class="col-md-12 column">
                         <div id='calendar'></div>
                 </div>
             </div>
-        </div>
-
+   </main>        
+        <!-- </div> -->
+  
         <div class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -66,14 +72,6 @@
                                 </div>
                             </div>
 
-                           <!--    <div class="form-group">
-                                <label class="col-md-4 control-label" for="event">Event Time</label>
-                                <div class="col-md-6">
-                                 <label><input type="radio" name="event[]" id="event" value="Monthly Dinner">&nbsp;Monthly  </label>&nbsp;
-                                 <label><input type="radio" name="event[]" id="event" value="Weekly Dinner">&nbsp;Weekly  </label>
-                               </div> 
-                            </div>   
-                             --> 
                         </form>
                     </div>
 
@@ -83,5 +81,6 @@
 
                 </div>
             </div>
+
         </div>
 

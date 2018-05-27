@@ -26,19 +26,16 @@ class food extends CI_Controller {
            // Allowed methods
            if ($this->session->isAdmin || $this->session->isSuperAdmin) {
              //User management is reserved to admins and super admins
-           }else {
-             redirect('welcome');
-           }
-         } else {
-           redirect('connection/login');
-         }
-        $this->load->model('users_model');
-    }
 
-     /**
-     * Display all the dishes in dashboard admin
-     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-     */
+         }else {
+           redirect('welcome');
+       }
+   } else {
+     redirect('connection/login');
+ }
+ $this->load->model('users_model');
+}
+
     public function index() {
         $this->load->helper('form');
         $this->load->model('Dishes_model');
@@ -55,6 +52,51 @@ class food extends CI_Controller {
     /**
      * Display the list of all dry food
      * @author khai hok <khai.hok.passerellesnumeriques.org>
+ */
+    public function shortMealType(){
+      $this->load->helper('form');
+      $mealType = $this->uri->segment(4);
+      $data['mealType'] = "";
+      if ($mealType ==1 ) {
+        $data['mealType'] = "List All BreakFast";
+      }else if ($mealType ==2 ) {
+        $data['mealType'] = "List All Lunch";
+      }else {
+        $data['mealType'] = "List All Dinner";
+      }
+      $data['dishes'] = $this->Dishes_model->shortMealType($mealType);
+      $data['title'] = 'List of Dishes';
+      $data['activeLink'] = 'users';
+      $this->load->view('templates/header', $data);
+      $this->load->view('menu/admin_dasboard', $data);
+      $this->load->view('dishes/shortMealType', $data);
+      $this->load->view('templates/footer', $data); 
+    }
+     /**
+     * Display all the dishes in dashboard admin
+     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+     */
+    public function storeInterest(){
+        $user_id = $this->session->userdata('id');
+        $dish_id = $this->input->post('dish_id');
+        $this->Dishes_model->getStoreInterest($user_id, $dish_id);
+    }
+    /**
+     * Get the delte number of rate from tbl_rate 
+     * @param int $id can lesect one or multiple dishes to update.
+     * @return array record of tbl_rate.
+     * @author davy peong <davy.peong.passerellesnumeriques.org>
+     */
+    public function storeUninterest(){
+        $user_id = $this->session->userdata('id');
+        $this->Dishes_model->getStoreUninterest($user_id);
+
+    }
+    
+
+    /**
+     * Display the list of all food
+     * @author kimsoeng kao <kimsoeng.kao.passerellesnumeriques.org>
      */
     public function listDish() {
         $this->load->helper('form');
@@ -81,7 +123,8 @@ class food extends CI_Controller {
 
     // Start update dishes
    public function updateDishes(){        
-    $id = $this->uri->segment(4);        
+    $id = $this->uri->segment(4);
+    $data['mealTime'] = $this->Dishes_model->getMealTime();
     $data['select_dishes'] = $this->Dishes_model->selectDish($id);       
     $data['title'] = 'Update Dishes'; 
     $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
@@ -199,7 +242,6 @@ class food extends CI_Controller {
             $this->load->view('templates/footer', $data);
     }
     
-
    function addOrder(){
        // okay now let get value from form
         $food_ids = $this->input->post('fo_id');

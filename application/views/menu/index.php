@@ -23,7 +23,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
       </li>
       <?php if($this->session->isSuperAdmin || $this->session->isStaff) { ?>
         <li class="nav-item">
-          <a class="btn text-white" href="<?php echo base_url() ?>calendar/getJoinDinnerEvent"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
+          <a class="btn text-white" href="<?php echo base_url() ?>Welcome/getJoinDinnerEvent"><span class="mdi mdi-calendar-multiple-check"></span>&nbsp;&nbsp;Calendar</a>
         </li>
       <?php } ?>
     </ul>

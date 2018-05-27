@@ -27,11 +27,12 @@
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add new dish</a></li>
-        </ul>
-  </div>
+       </ul>
+  </div >
     <div class="row">
       <div class="col-md-12">
         <?php echo $flashPartialView;?>
+        <a href="<?php echo base_url();?>Dishes/dishExport" class="btn btn-primary float-right"><i class="mdi mdi-file-excel"></i>&nbsp;Export</a>
         <table id="food" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" width="100%">
           <thead class="thead-dark">
               <tr>
@@ -45,9 +46,6 @@
                 <tr>
                   <td><?php echo $dish->dish_name ?></td>                 
                   <td><?php echo $dish->description ?></td>
-                <!--   <td>
-                    <img src="<?//php echo base_url().'assets/uploads/'.$dish->dish_image ?>" alt="image" class="img-thumbnail" style="width:10%;">
-                  </td> -->
                   <td>
 
                       <a href="javascript:void()" title="View Dish" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" 

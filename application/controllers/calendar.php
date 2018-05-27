@@ -64,7 +64,6 @@ Class calendar extends CI_Controller{
 	{
 		$result=$this->Calendar_model->addLunchEvent();
 		echo $result;
-
 	/*Sending email to invite the staff the join the lunch in PNC*/
 		$this->load->model('Participate_model');      
 		$selectMessage = $this->Participate_model->getLatestDescrition();     
@@ -96,6 +95,7 @@ Class calendar extends CI_Controller{
 		$result=$this->Calendar_model->updateLunchEvent();
 		echo $result;
 	}
+	
 	/*Delete Event*/
 	Public function deleteEvent()
 	{
@@ -112,8 +112,7 @@ Class calendar extends CI_Controller{
 
 	Public function getDinnerEvents()
 	{
-   		 $Dinner_ID = $this->uri->segment(4); 
-		$result=$this->Calendar_model->getDinnerEvents($Dinner_ID);
+		$result=$this->Calendar_model->getDinnerEvents();
 		echo json_encode($result);
 	}
 	/*Add new event */

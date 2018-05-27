@@ -44,10 +44,9 @@ class Dishes extends CI_Controller {
         $data['users'] = $this->users_model->getUsersAndRoles();
         $data['title'] = 'List of users';
         $data['activeLink'] = 'users';
-        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('users/index', $data);
+        $this->load->view('dishes/index', $data);
         $this->load->view('templates/footer', $data);
     }
 
@@ -90,5 +89,8 @@ class Dishes extends CI_Controller {
         } else {
             $this->output->set_output('false');
         }
+    }
+    public function dishExport() {
+        $this->load->view('dishes/dishExport');
     }
 }

@@ -62,26 +62,21 @@
                 </div>
               </div>
               <div class="row">
-                      <div class="form-group col-md-6">
-                        <label for="">Choose Role</label>
-                        <select name="userRole" id="" class="form-control">
-                            <option value="1">Admin</option>
-                            <option value="2">Staff</option>
-                            <option value="3">Normal user</option>
-                              <!--   <?php 
-                                  //foreach ($roles as $role) {
-                                ?>
-                              <option value="<?php //echo $role->id ?>"><?php //echo $role->name ?></option>
-                              <?php// } ?>  -->
-
-                        </select>
-                      </div>
-                
-              </div>
-              <div class="form-group">
-                <label for="gender"><strong>Gender</strong></label>
-                <input type="radio" name="gender" value="Male" checked> Male
-                <input type="radio" name="gender" value="Female"> Female
+                <div class="form-group col-md-6">
+                  <label><strong>Choose Role</strong></label>
+                  <select name="userRole"  class="form-control">
+                      <?php 
+                        foreach ($roles as $role) {
+                       ?>
+                       <option value="<?php echo $role->id ?>"><?php echo $role->name ?></option>
+                       <?php } ?>
+                  </select>
+                </div>
+                <div class="col form-group col-md-6"><br>
+                  <label for="gender"><strong>Gender</strong></label><br>
+                  <input type="radio" name="gender" value="Female" id="female" checked><label for="female">&nbsp;&nbsp;Female</label> 
+                  <input type="radio" name="gender" value="Male" id="male"><label for="male">&nbsp;&nbsp;Male</label> 
+                </div>
               </div>
              <a class=" btn btn-danger" href="<?php echo base_url() ?>admin/User/listUsers"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
               <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Add Staff</button>
@@ -94,6 +89,7 @@
     </div>
   </div>
 </div> <!-- /container
+<<<<<<< HEAD
 
 <script>
     $(function(){
@@ -161,3 +157,5 @@
   	window.history.back();
 	}
 </script> -->
+=======
+>>>>>>> aab75e28c6f6399777735618a51e630717cfd36e

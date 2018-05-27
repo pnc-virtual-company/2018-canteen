@@ -53,19 +53,12 @@ class Participate_model extends CI_Model {
                 $this->db->limit('1');  
                 $query =  $this->db->get();
                 return $query->result(); 
+  }
+  public function getParticipant() {
+        $query = $this->db->get_where('tbl_staff_participation'); 
+        $this->db->order_by('user_id', 'DESC');
+        return $query->result();
     }
-
-/*select the remind user email*/
-  // public function getParticipant($user_id) {
-  //      $query = $this->db->query('SELECT 
-  //                   tbl_staff_participation.*, 
-  //                   tbl_users.email,
-  //                   tbl_users.firstname
-  //                   FROM tbl_staff_participation 
-  //                   INNER JOIN tbl_users ON tbl_users.id = tbl_staff_participation.$user_id');
-  //               return $query->result();
-  //   }
-    
 
  // Insert reminded
     public function getReminded($user_id){
