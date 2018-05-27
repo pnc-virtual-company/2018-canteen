@@ -65,30 +65,21 @@ Class calendar extends CI_Controller{
 		$result=$this->Calendar_model->addLunchEvent();
 		echo $result;
 
-	/*Sending email to invite the staff the join the lunch in PNC*/
-		$this->load->model('Participate_model');      
-		$selectMessage = $this->Participate_model->getLatestDescrition();     
-		foreach ($selectMessage as $descr) {        
-		  $eventName = $descr->title;      
-		  $contentEmail = $descr->description;      
-		}     
-		$mesg = $this->load->view('Calendar/sendMailResult','',true);
+		// Sending email to invitation to staff
 		$config = array(
-		'protocol' => 'smtp',
-		'smtp_host' => 'ssl://smtp.googlemail.com',
-		'smtp_port' => 465,
-		'smtp_user' => 'pnc.temporary.vc2018@passerellesnumeriques.org', 
-		'smtp_pass' => 'Pnc!Wep2018?',
-		'mailtype' => 'html',
-		'wordwrap' => TRUE
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'pnc.temporary.vc2018@passerellesnumeriques.org',
+			'smtp_pass' => 'Pnc!Wep2018?'
 		);
-		$this->load->library('email', $config);
+		$this->load->library('email',$config);
 		$this->email->set_newline("\r\n");
-		$this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org', 'Admin & Finance');
+		$this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org','Admin & Finance');
 		$this->email->to('sun.meas@student.passerellesnumeriques.org');
-		$this->email->subject($eventName);
-		$this->email->message('Dear Staffs,  '.'<br><br>'.$contentEmail.$mesg);
-		$this->email->send();
+		$this->email->subject('This is an email testing');
+		$this->email->message('It is working . Greate!');
+		
 	}
 	/*Update Event */
 	Public function updateLunchEvent()

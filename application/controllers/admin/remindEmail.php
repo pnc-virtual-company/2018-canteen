@@ -8,6 +8,10 @@ class remindEmail extends CI_Controller {
 
  /*Function email to remind the participated user to join the lunch event*/
  public function index() {
+
+/*Sending email to invite the staff the join the lunch in PNC*/
+  $mesg = $this->load->view('Calendar/sendMailResult','',true);
+  $email_to = ('sun.meas@student.passerellesnumeriques.org');
   $config = array(
   'protocol' => 'smtp',
   'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -20,16 +24,15 @@ class remindEmail extends CI_Controller {
       $this->load->library('email', $config);
       $this->email->set_newline("\r\n");
      $this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org', 'Admin & Finance');
-      $this->email->to('sun.meas@student.passerellesnumeriques.org');
+    $this->email->to($email_to);
       $this->email->subject('Lunch Invitation Reminding');
-      $this->email->message('We would like to remind you again to join the lunch event.');
+      $this->email->message('Dear staff, '.'<br><br>'.'You are reminded to join the lunch event at PNC.'.$mesg);
    if($this->email->send())
       {
        $this->sendReminded();
       } else {
        show_error($this->email->print_debugger());
      }
-       $this->sendReminded();
  }
 
 
