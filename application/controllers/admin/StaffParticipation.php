@@ -26,24 +26,18 @@
          }
         $this->load->model('users_model');
     }
-
-       // public function getParticipant()
-       // {
-       //         $this->load->model('Participate_model');
-       //         $data['userParticipate'] = $this->Participate_model->getParticipant();
-       //         $data['title'] = 'List of Participate';
-       //         $this->load->view('templates/header', $data);
-       //         $this->load->view('menu/admin_dasboard', $data);
-       //         $this->load->view('Calendar/UserParticipation', $data);
-       //         $this->load->view('templates/footer', $data);
-
-       // }
+    /**
+     * List all the participation that join the lunch event
+     * @author Sun MEAS <sun.meas@student.passerellesnumeriques.org>
+     */
+/*List all participant that join the lunch event*/
        function getListParticipate(){
           $data['page'] = 'Calendar/StaffParticipation';
           $this->load->model('Users_model');
           $this->load->model('Participate_model');
-          $data['data_participate'] = $this->Participate_model->getParticipant();
-          $data['status'] = $this->Users_model->getStaffStatus();
+          // $data['userParticipate'] = $this->Participate_model->getListParticipate();
+          // $data['data_participate'] = $this->Participate_model->getParticipant();
+          // $data['status'] = $this->Users_model->getStaffStatus();
           $data['title'] = 'List of Participate';
           $this->load->view('templates/header', $data);
           $this->load->view('menu/admin_dasboard', $data);
@@ -60,10 +54,6 @@
           $this->load->view('templates/footer', $data);
         }
 
-
-        function sendReminded(){
-           $this->load->model('Participate_model');
-           $this->Participate_model->getReminded();
-         }
-
      }
+
+

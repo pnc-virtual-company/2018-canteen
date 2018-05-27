@@ -53,7 +53,7 @@ class Calendar_model extends CI_Model {
 
 
 	/*Read the data from DB */
-	Public function getDinnerEvents($Dinner_ID)
+	Public function getDinnerEvents()
 	{
 		$sql = "SELECT * FROM tbl_dinner_events WHERE tbl_dinner_events.start BETWEEN ? AND ? ORDER BY tbl_dinner_events.start ASC";
 		return $this->db->query($sql, array($_GET['start'], $_GET['end']))->result();

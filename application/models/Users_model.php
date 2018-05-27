@@ -428,7 +428,6 @@ class Users_model extends CI_Model {
         $this->db->insert("tbl_users", $data);
     }
 
-
     /**
      * Select a given user that join event in the database.
      * @return int number of affected rows
