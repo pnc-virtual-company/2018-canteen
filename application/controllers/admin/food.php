@@ -112,9 +112,10 @@ class food extends CI_Controller {
     }
 
     public function favouriteFood(){
-        $data['title'] = 'List Favourite Food';
+        $data['title'] = 'List Favorite Food';
         $data['activeLink'] = 'users';
-        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->model('foodFavorite');
+        $data['dishes'] = $this->foodFavorite->dishesFavorite();
         $this->load->view('templates/header', $data);
         $this->load->view('menu/admin_dasboard', $data);
         $this->load->view('admin/food/favouriteFoods', $data);
@@ -205,41 +206,6 @@ class food extends CI_Controller {
                 
                 }
                 $this->load->view('admin/food/view_add_dish', $data);
-    }
-/**
-     * show breakfast lunch and dinner in admin dashboard
-     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
-     */
-    function showBreakfast() {
-            $this->load->helper('form');
-            $data['dishes'] = $this->dishTypeModel->getBreakfast();
-            $data['title'] = 'List of Dishes';
-            $data['activeLink'] = 'users';
-            $this->load->view('templates/header', $data);
-            $this->load->view('menu/admin_dasboard', $data);
-            $this->load->view('dishes/breakfast', $data);
-            $this->load->view('templates/footer', $data);
-    }
-        function showLunch() {
-            $this->load->helper('form');
-            $data['dishes'] = $this->dishTypeModel->getLunch();
-            $data['title'] = 'List of Dishes';
-            $data['activeLink'] = 'users';
-            $this->load->view('templates/header', $data);
-            $this->load->view('menu/admin_dasboard', $data);
-            $this->load->view('dishes/lunch', $data);
-            $this->load->view('templates/footer', $data);
-    }
-
-    function showDinner() {
-            $this->load->helper('form');
-            $data['dishes'] = $this->dishTypeModel->getDinner();
-            $data['title'] = 'List of Dishes';
-            $data['activeLink'] = 'users';
-            $this->load->view('templates/header', $data);
-            $this->load->view('menu/admin_dasboard', $data);
-            $this->load->view('dishes/dinner', $data);
-            $this->load->view('templates/footer', $data);
     }
     
    function addOrder(){
