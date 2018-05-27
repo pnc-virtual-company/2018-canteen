@@ -55,6 +55,7 @@ class Welcome extends CI_Controller {
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
     					'menu_description' => $row->menu_description,
+    					'current_interest'=>$row->current_interest,
     					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,2)
     				);
     		}
@@ -77,6 +78,7 @@ class Welcome extends CI_Controller {
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
     					'menu_description' => $row->menu_description,
+    					'current_interest'=>$row->current_interest,
     					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,3)
     				);
     		}
@@ -95,7 +97,7 @@ class Welcome extends CI_Controller {
 
 	/// if check statu form for order or edit
 	if($status_form == "btn_order"){
-    	$data['dishesOrder'] = $this->Dishes_model->selectDish($id);
+    	$data['dishesOrder'] = $this->Dishes_model->selectDish($id,$this->session->userdata('id'));
 		foreach ($data['dishesOrder'] as $dish) 
 		{	
 			$output .= '

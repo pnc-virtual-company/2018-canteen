@@ -90,7 +90,7 @@ class Dishes_model extends CI_Model {
      * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
 
-public function selectDish($id){
+public function selectDish($id,$user_id){
      $query = $this->db->get_where('tbl_dishes', array('dish_id' => $id));
      return $query->result();
 }
