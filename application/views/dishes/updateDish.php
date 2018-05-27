@@ -49,7 +49,7 @@ label{
 						<div class="col-md-8">
 							<div class="form-group">
 								<label class="text-white">Meal Time</label>
-								  <select class="form-control" name="mealTime" multiple="multiple">
+								  <select class="form-control" name="mealTime">
 								    <?php foreach ($mealTime as $meal): ?>
 								      <option value="<?php echo $meal->time_id ?>" <?php if ($meal->time_id == $dish->meal_time_id) echo "selected" ?>><?php echo $meal->name ?></option>
 								    <?php endforeach ?>

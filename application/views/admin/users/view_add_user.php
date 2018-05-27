@@ -68,7 +68,7 @@
               <div class="row">
                 <div class="form-group col-md-6">
                   <label><strong>Choose Role</strong></label>
-                  <select name="userRole"  class="form-control" multiple="multiple">
+                  <select name="userRole"  class="form-control">
                       <?php 
                         foreach ($roles as $role) {
                        ?>
