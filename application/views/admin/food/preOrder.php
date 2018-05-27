@@ -80,6 +80,7 @@ $(document).ready(function() {
     //Transform the HTML table in a fancy datatable
     $('#food').dataTable({
         stateSave: true,
+        'ordering':false
     });
   $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
 });
