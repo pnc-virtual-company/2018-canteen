@@ -24,22 +24,52 @@ class Participate_model extends CI_Model {
      * @author Sun MEAS <sun.meas@student.passerellesnumeriques.org>
      */
 
+    /*Function get status of event lunch*/
+    public function getStaffStatus(){
+         $query = $this->db->query('SELECT * FROM tbl_staff_participation');
+                return $query->result();
+    }   
+
+    /*Function get all particapate of event lunch*/
+    public function getListParticipate(){
+         $query = $this->db->query('SELECT 
+                    staffParticpate.*, 
+                    lunchEvent.title AS "Title",
+                    users.class_name AS "ClassName",
+                    users.email AS "Email",
+                    CONCAT(users.firstname , " " , users.lastname) AS "Staff_name"
+                    FROM tbl_staff_participation staffParticpate
+                    INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id
+                    INNER JOIN tbl_users users ON users.id = staffParticpate.user_id');
+                return $query->result();
+         // var_dump($query->result);die();
+    }     
+
+
+/*select the remind user email*/
+  public function getLatestDescrition() {
+                $this->db->select('*');
+                $this->db->from('tbl_lunch_events');
+                $this->db->order_by('id', 'DESC');
+                $this->db->limit('1');  
+                $query =  $this->db->get();
+                return $query->result(); 
+  }
   public function getParticipant() {
         $query = $this->db->get_where('tbl_staff_participation'); 
         $this->db->order_by('user_id', 'DESC');
         return $query->result();
     }
 
-    public function getReminded(){
-         // $current_logged_in =  $this->session->userdata('id');
-
-         // Insert reminded
+ // Insert reminded
+    public function getReminded($user_id){
          $data_reminded = array(
-           'user_id' => '2',
+           'user_id' => $user_id,
            'lunch_event_id' => '63',
            'status' => '0',
            'reminded' => '1'
          );
-         $result = $this->db->update('tbl_staff_participation', $data_reminded);
+         $query = $this->db->update('tbl_staff_participation', array('user_id' => $user_id ), $data_reminded);
+        return $query->result();
      }
 }

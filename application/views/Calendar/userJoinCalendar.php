@@ -12,7 +12,7 @@
  <script src='<?php echo base_url();?>assets/js/userCalendarMain.js'></script>
  
  <div class="container">
-    <div class="col-md-10 column"><br><br><br><br>
+    <div class="col-md-12 column"><br><br><br><br>
       <div class="alert"></div>
       <div id='calendar'></div>
     </div>

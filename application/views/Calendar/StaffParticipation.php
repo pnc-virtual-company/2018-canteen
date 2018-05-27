@@ -106,23 +106,22 @@
                     <a href="#" title="Click to Remind">
                   <?php if ($participates->status ==0  &&  $participates->reminded ==0  ) 
                   {
-                          echo '<input name="checkbox-0 " type="checkbox" id="chremind" name="user_id[]" value="<?php echo $participates->user_id ?>">';
+                    echo "<label class='checkbox-inline'><input type='checkbox' name='check' class='clickUser'id=' ".$participates->user_id." '></label>";
                   } else if($participates->status ==1 && $participates->reminded ==0)
                   {
-                          echo '';
+                          echo "<mark class='badge btn-primary' >Attended</mark>";
                   }else if($participates->status ==0 && $participates->reminded ==1){
                           echo "<mark class='badge btn-primary' >Reminded</mark>";
                   }?>
                     </a>
-       
                     </td>
                 </tr>
-            <?php endforeach ?>
           </tbody>
+            <?php endforeach ?>
         </table>
         <div class="row">
           <div class="col-md-12">
-            <a href=""><button type="submit" class="btn btn-warning" disabled="disabled" ><span class="btn-label btn-label-right"><i class="mdi mdi-gmail" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind Email</button></a>
+            <a href=""><button type="submit" class="btn btn-warning clickRemind" id="<?php echo $participates->user_id?>" disabled="disabled" ><span class="btn-label btn-label-right"><i class="mdi mdi-gmail" aria-hidden="true"></i></span>&nbsp;&nbsp;Remind Email</button></a>
           </div>
         </div>
       </div>
@@ -142,18 +141,19 @@ $(document).ready(function() {
     });
 
     // Determine if checkbox is checked enable button
-     $("#chremind").click(function() {
-       $(".btn-warning").attr("disabled", !this.checked); 
-       // var $user_id= $(this).attr('user_id');
-       // alert($user_id);
+     $(".clickUser").click(function() {
+            if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+                   $(".btn-warning").attr("disabled", !this.check); 
+            }else {
+                   $(".btn-warning").attr("disabled", !this.checked); 
+            }
      });
      /*alert success reminding email*/
-      $(".btn-warning").click(function() {
+      $(".clickRemind").click(function() {
                 $('.alert').addClass('alert-success').text('You have sent email remind successfully.');
         $.ajax({    
             url:"<?php echo base_url() ?>admin/remindEmail",  
             success: function() {
-                // $('.alert').addClass('alert-success').text('You have sent email remind successfully.');
             }
         });
 
@@ -161,3 +161,6 @@ $(document).ready(function() {
 
 });
 </script>
+
+
+

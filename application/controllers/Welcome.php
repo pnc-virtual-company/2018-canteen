@@ -97,6 +97,16 @@ class Welcome extends CI_Controller {
 		$data['page'] = 'dishes/favouriteFoods';
 		$this->load->view('layout', $data);
 	}
+	/**
+	     * Dishplay  staff calendar in public user interface
+	     * @author sun meas <sun.meas@student.passerellesnumeriques.org>
+	     */
+	// stuff calendar
+	function getJoinDinnerEvent(){
+		$data['title'] = 'Calendar';
+		$data['page'] = 'Calendar/userJoinCalendar';
+		$this->load->view('layout', $data);
+	}
 
 	public function getDish(){
 	
