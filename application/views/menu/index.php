@@ -46,7 +46,7 @@ $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
                 <div class="row">
                   <a class="mdi mdi-lock text-white" href="<?php echo base_url();?>Dishes">&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
                   <a class=" text-white">OR&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                  <a class=" text-white mdi mdi-account-plus" href="<?php echo base_url();?>c_users/addUsers">&nbsp;&nbsp;Register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a class=" text-white mdi mdi-account-plus" href="<?php echo base_url();?>Register">&nbsp;&nbsp;Register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </div>
               </li>
           <?php }?>

@@ -7,6 +7,9 @@
 	.Uninterest{
 		display: none;
 	}
+	.card {
+		margin-top:10px;
+	}
 </style>
 <br><br>
 <div class="row">
@@ -23,18 +26,19 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
 				<div class="card card-columns">
 					<div class="card-body">			    		
-							<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish['dish_image'];?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish[ 'dish_name'] ?>">			    	
+							<img src="<?php echo base_url().'assets/images/dish_uploads/'.$dish['dish_image'];?>" class="img-responsive" data-toggle="tooltip" data-placement="bottom" title="<?php echo $dish['dish_name'] ?>">			    	
 					</div> 
 					<div class="card-footer">
 						<div class="container">
 							<div class="row">
 								<?php if($this->session->loggedIn === TRUE) { ?>
-								<div class="col-md-4 Interest">
-				    				<a class="interest" href="#" name="view" value=view" id="<?php// echo $dish['dish_id'];?>"><?php //echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
-				    			</div>
-				    			<!-- <div class="col-md-4 Uninterest">
-				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php// echo $dish[ 'dish_id']?>"><?php //echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
-				    			</div>	 -->		    			
+										<div class="col-md-4 box_interest_btn_<?php echo $dish['dish_id']; ?>">
+										<?php if($dish['isUserInterest'] == false){ ?>
+					    				     <a class="interest" href="javascript:void()" name="view" value="view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish['current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+					    	            <?php }else{ ?>
+					    				    <a class="uninterest" href="javascript:void()" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Uninterest</a>
+					    				<?php } ?>
+				    			</div>		    			
 					<div class="col-md-4 item" id="food">
 						    		 <?php if($dish['is_user_order'] == false){ ?>
 						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
@@ -76,12 +80,13 @@
 						<div class="container">
 							<div class="row">
 								<?php if($this->session->loggedIn === TRUE) { ?>
-								<div class="col-md-4 Interest">
-				    				<a class="interest" href="#" name="view" value=view" id="<?php// echo $dish['dish_id'];?>"><?php// echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
-				    			</div>
-				    			<!-- <div class="col-md-4 Uninterest">
-				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php// echo $dish[ 'dish_id']?>"><?php //echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
-				    			</div> -->			    			
+								<div class="col-md-4 box_interest_btn_<?php echo $dish['dish_id']; ?>">
+										<?php if($dish['isUserInterest'] == false){ ?>
+					    				     <a class="interest" href="javascript:void()" name="view" value="view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish['current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+					    	            <?php }else{ ?>
+					    				    <a class="uninterest" href="javascript:void()" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Uninterest</a>
+					    				<?php } ?>
+				    			</div>		  		    			
 							<div class="col-md-4 item" id="food">
 						    		 <?php if($dish['is_user_order'] == false){ ?>
 						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
@@ -123,12 +128,13 @@
 						<div class="container">
 							<div class="row">
 								<?php if($this->session->loggedIn === TRUE) { ?>
-								<div class="col-md-4 Interest">
-				    				<a class="interest" href="#" name="view" value=view" id="<?php //echo $dish['dish_id'];?>"><?php// echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
-				    			</div>
-				    			<!-- <div class="col-md-4 Uninterest">
-				    				<a class="uninterest" href="#" name="view" style='color:orange;'value="view" id="<?php //echo $dish[ 'dish_id']?>"><?php //echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Interest</a>
-				    			</div>	 -->		    			
+								<div class="col-md-4 box_interest_btn_<?php echo $dish['dish_id']; ?>">
+										<?php if($dish['isUserInterest'] == false){ ?>
+					    				     <a class="interest" href="javascript:void()" name="view" value="view" id="<?php echo $dish['dish_id'];?>"><?php echo $dish['current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>
+					    	            <?php }else{ ?>
+					    				    <a class="uninterest" href="javascript:void()" name="view" style='color:orange;'value="view" id="<?php echo $dish[ 'dish_id']?>"><?php echo $dish[ 'current_interest']; ?>&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Uninterest</a>
+					    				<?php } ?>
+				    			</div>		  	    			
 								    	<div class="col-md-4 item" id="food">
 						    		 <?php if($dish['is_user_order'] == false){ ?>
 						    		 	<a href="#" name="view" value="view" id="<?php echo $dish['dish_id']; ?>" button-status="btn_order" class="view_data"><i class="mdi mdi-rice"></i>Order</a>	
@@ -176,39 +182,36 @@
 					success:function(data){ 
 						$("#data").html(data);
 						$('#dataModal').modal("show");
-						// $('.view_data').text("Edit Order");
 					}  
 				});  
 			});
 
-			$('.interest').click(function(){
+			$(document).on("click",'.interest', function(){
+
 	        	var dish_id = $(this).attr("id");
-	        	$('.Interest').hide();
-		        $('.Uninterest').show();  
 				$.ajax({  
-					url:"<?php echo base_url() ?>admin/food/storeInterest",  
-					method:"post",  
-					data:{dish_id:dish_id, status_form: btn_status}, 
-					success:function(data){ 
-						// $("#data").html(data);
-						// $('#dataModal').modal("show");
-						// $('.view_data').text("Edit Order");
+					url:"<?php echo base_url() ?>Welcome/storeInterest",  
+					method:"post",
+					type: "html",  
+					async: false,
+					data:{dish_id:dish_id},  
+					success:function(data){
+						$(".box_interest_btn_"+dish_id).html(data);
 					}  
 				});  
             });
   
-         $('.uninterest').click(function(){
+         $(document).on("click",'.uninterest', function(){
+
            var dish_id = $(this).attr("id");
-	        	$('.Interest').show();
-		        $('.Uninterest').hide();  
 				$.ajax({  
-					url:"<?php echo base_url() ?>admin/food/storeUninterest",  
+					url:"<?php echo base_url() ?>Welcome/storeUninterest",  
 					method:"post",  
+					type: "html",
+					async: false,
 					data:{dish_id:dish_id},  
 					success:function(data){ 
-						// $("#data").html(data);
-						// $('#dataModal').modal("show");
-						// $('.view_data').text("Edit Order");
+						$(".box_interest_btn_"+dish_id).html(data);
 					}  
 				});  
          }); 

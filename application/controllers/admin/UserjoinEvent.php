@@ -24,40 +24,52 @@
            } else {
              redirect('connection/login');
            }
-          $this->load->model('users_model');
+          $this->load->model('UsersModel');
       }
 
-      /*Function to get the user join the events */
+       /**
+        * @return user join the events
+        * @author sun meas <sun.meas@student.passerellesnumeriques.org>
+      */
       public function insertUserJoinEvent(){
           $Dinner_ID = $this->uri->segment(4); 
-          $this->load->model('JoinDinner_model');
-           $data['joinEvent'] = $this->JoinDinner_model->getUserJoinEvent($Dinner_ID);
+          $this->load->model('JoinDinnerModel');
+           $data['joinEvent'] = $this->JoinDinnerModel->getUserJoinEvent($Dinner_ID);
            if ($data == TRUE) {
              redirect(base_url());
            }
        }
 
-        // Get user join dinner events
+        /**
+        * @return list of user to join dinner event
+        * @author sun meas <sun.meas@student.passerellesnumeriques.org>
+      */
        function getDinner(){
         $id = $this->uri->segment(4);        
-        $data['dinnerEvent'] = $this->JoinDinner_model->selectDinner($id);       
+        $data['dinnerEvent'] = $this->JoinDinnerModel->selectDinner($id);       
        }
 
-       // Get user join dinner events
+        /**
+        * @return Get user join dinner event
+        * @author sun meas <sun.meas@student.passerellesnumeriques.org>
+      */
        function getListJoinDinner(){
-          $data['page'] = 'Calendar/UserJoin_dinner';
-          $this->load->model('JoinDinner_model');
-          $data['joinEvent'] = $this->JoinDinner_model->getListJoinDinner();
+          $data['page'] = 'Calendar/userJoinDinner';
+          $this->load->model('JoinDinnerModel');
+          $data['joinEvent'] = $this->JoinDinnerModel->getListJoinDinner();
           $data['title'] = 'List of user join Dinner';
           $this->load->view('templates/header', $data);
-          $this->load->view('menu/admin_dasboard', $data);
-          $this->load->view('Calendar/UserJoin_dinner', $data);
+          $this->load->view('menu/adminDasboard', $data);
+          $this->load->view('Calendar/userJoinDinner', $data);
           $this->load->view('templates/footer', $data);
         }
 
-        // Export of user join
+        /**
+        * @return Get user join dinner event
+        * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+      */
         public function exportUserJoinEvent() {
-          $data['userJoinEvent'] = $this->JoinDinner_model->getListJoinDinner();
+          $data['userJoinEvent'] = $this->JoinDinnerModel->getListJoinDinner();
           $this->load->view('Calendar/export',$data);
         }
 }
