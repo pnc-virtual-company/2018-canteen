@@ -33,18 +33,18 @@ class food extends CI_Controller {
    } else {
      redirect('connection/login');
  }
- $this->load->model('users_model');
+ $this->load->model('UsersModel');
 }
 
     public function index() {
         $this->load->helper('form');
-        $this->load->model('Dishes_model');
-        // $data['dishes'] = $this->Dishes_model->getDishes();
+        $this->load->model('DishesModel');
+        // $data['dishes'] = $this->DishesModel->getDishes();
         $data['title'] = 'List of Dishes';
         $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('menu/adminDasboard', $data);
         $this->load->view('Admin/food/listDish', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -64,34 +64,15 @@ class food extends CI_Controller {
       }else {
         $data['mealType'] = "List All Dinner";
       }
-      $data['dishes'] = $this->Dishes_model->shortMealType($mealType);
+      $data['dishes'] = $this->DishesModel->shortMealType($mealType);
       $data['title'] = 'List of Dishes';
       $data['activeLink'] = 'users';
       $this->load->view('templates/header', $data);
-      $this->load->view('menu/admin_dasboard', $data);
+      $this->load->view('menu/adminDasboard', $data);
       $this->load->view('dishes/shortMealType', $data);
       $this->load->view('templates/footer', $data); 
     }
-     /**
-     * Display all the dishes in dashboard admin
-     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-     */
-    public function storeInterest(){
-        $user_id = $this->session->userdata('id');
-        $dish_id = $this->input->post('dish_id');
-        $this->Dishes_model->getStoreInterest($user_id, $dish_id);
-    }
-    /**
-     * Get the delte number of rate from tbl_rate 
-     * @param int $id can lesect one or multiple dishes to update.
-     * @return array record of tbl_rate.
-     * @author davy peong <davy.peong.passerellesnumeriques.org>
-     */
-    public function storeUninterest(){
-        $user_id = $this->session->userdata('id');
-        $this->Dishes_model->getStoreUninterest($user_id);
-
-    }
+  
     
 
     /**
@@ -100,13 +81,13 @@ class food extends CI_Controller {
      */
     public function listDish() {
         $this->load->helper('form');
-        $this->load->model('Dishes_model');
-        $data['dishes'] = $this->Dishes_model->getDishes();
+        $this->load->model('DishesModel');
+        $data['dishes'] = $this->DishesModel->getDishes();
         $data['title'] = 'List of Dishes';
         $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('menu/adminDasboard', $data);
         $this->load->view('Admin/food/listDish', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -117,7 +98,7 @@ class food extends CI_Controller {
         $this->load->model('foodFavorite');
         $data['dishes'] = $this->foodFavorite->dishesFavorite();
         $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('menu/adminDasboard', $data);
         $this->load->view('admin/food/favouriteFoods', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -125,12 +106,12 @@ class food extends CI_Controller {
     // Start update dishes
    public function updateDishes(){        
     $id = $this->uri->segment(4);
-    $data['mealTime'] = $this->Dishes_model->getMealTime();
-    $data['select_dishes'] = $this->Dishes_model->selectDish($id);       
+    $data['mealTime'] = $this->DishesModel->getMealTime();
+    $data['select_dishes'] = $this->DishesModel->selectDish($id);       
     $data['title'] = 'Update Dishes'; 
     $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
     $this->load->view('templates/header');            
-    $this->load->view('menu/admin_dasboard');                    
+    $this->load->view('menu/adminDasboard');                    
      // upload User image configuaration                
     $config['upload_path'] = './assets/images/dish_uploads/';
     $config['allowed_types']= 'gif|jpg|png';
@@ -146,7 +127,7 @@ class food extends CI_Controller {
     }
     else                
     {                  
-        $data['dishes'] = $this->Dishes_model->updateDishes($id); //load model                  
+        $data['dishes'] = $this->DishesModel->updateDishes($id); //load model                  
         if($data){ 
             $this->session->set_flashdata('msg', 'Dish has been updated.');
             redirect('admin/food/listDish');                  
@@ -161,24 +142,24 @@ class food extends CI_Controller {
     */
     public function deleteDish(){
        $id = $this->uri->segment(4);
-        $this->Dishes_model->deleteDishes($id);
+        $this->DishesModel->deleteDishes($id);
         $this->session->set_flashdata('msg', 'Dish has been Deleted.');
         $this->listDish();
     }
 
 /**
-     * add_dish with image
+     * addDish with image
      * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
      */
-    public function add_dish()
+    public function addDish()
     {
             $this->load->helper('form');
-            $data['mealTime'] = $this->Dishes_model->getMealTime();
-            $data['dishes'] = $this->Dishes_model->getDishes();
+            $data['mealTime'] = $this->DishesModel->getMealTime();
+            $data['dishes'] = $this->DishesModel->getDishes();
             $data['title'] = 'List of Dishes';
             $data['activeLink'] = 'users';
             $this->load->view('templates/header', $data);
-            $this->load->view('menu/admin_dasboard', $data);
+            $this->load->view('menu/adminDasboard', $data);
             
             $this->load->view('templates/footer', $data);
 
@@ -198,14 +179,14 @@ class food extends CI_Controller {
                 }
                 else
                 {
-                    $data['dishes'] = $this->Dishes_model->insert_dish(); //load model
+                    $data['dishes'] = $this->DishesModel->insert_dish(); //load model
                     if($data){
                         $this->session->set_flashdata('msg', 'Dish has been created.');
                             redirect('admin/food/listDish');
                         }
                 
                 }
-                $this->load->view('admin/food/view_add_dish', $data);
+                $this->load->view('admin/food/addDish', $data);
     }
     
    function addOrder(){
@@ -219,7 +200,7 @@ class food extends CI_Controller {
             if($quantities[$i] != 0)
             {
                 // call model to insert to db
-                $ordered = $this->Dishes_model->createOrder($sfood_ids[$i], $quantities[$i]);
+                $ordered = $this->DishesModel->createOrder($sfood_ids[$i], $quantities[$i]);
                     if($ordered ){
                         redirect('Welcome ');
                     }
@@ -235,18 +216,18 @@ class food extends CI_Controller {
         $data['title'] = 'create menu for today';
         $data['activeLink'] = 'Create Menu';
         $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('menu/adminDasboard', $data);
         $this->load->view('dishes/createMenu', $data);
         $this->load->view('templates/footer', $data);
     }
     
  public function selectDish() {
     $id = $this->uri->segment(4);
-    $data['select_dishes'] = $this->Dishes_model->selectDish($id);
+    $data['select_dishes'] = $this->DishesModel->selectDish($id);
     $data['title'] = 'List of Dishes';
     $data['activeLink'] = 'users';
     $this->load->view('templates/header');
-    $this->load->view('menu/admin_dasboard');
+    $this->load->view('menu/adminDasboard');
     $this->load->view('dishes/updateDish', $data);
     $this->load->view('templates/footer');
 }

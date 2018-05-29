@@ -52,7 +52,7 @@
           </a>
         </li>
         <li>
-          <a class="app-menu__item" href="<?php echo base_url(); ?>admin/create_menu">
+          <a class="app-menu__item" href="<?php echo base_url(); ?>admin/createMenu">
             <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Create Menu
           </a>
         </li>
@@ -78,7 +78,7 @@
       <ul class="treeview-menu">
         <li>
           <a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getAdminCalendar">
-            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Staff Lunch
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Create Staff Lunch
           </a>
         </li>
         <li>
@@ -88,7 +88,12 @@
         </li>
         <li>
           <a class="app-menu__item" href="<?php echo base_url(); ?>calendar/getDinnerEvent">
-            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Student Event & Report
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Create Student Events
+          </a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="<?php echo base_url() ?>admin/UserjoinEvent/getListJoinDinner">
+            <span class="mdi mdi-circle-outline" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;</span>Student Events Reports
           </a>
         </li>
       </ul>

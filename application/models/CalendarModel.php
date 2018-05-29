@@ -6,7 +6,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Calendar_model extends CI_Model {
+class CalendarModel extends CI_Model {
 
 
 	/*Read the data from DB */

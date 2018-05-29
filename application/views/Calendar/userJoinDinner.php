@@ -30,10 +30,6 @@
     hieght: 10px;
     clear:both;
   }
- /* input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-}*/
 </style>
 <main class="app-content">
   <div class="app-title">
@@ -57,7 +53,6 @@
                   <th>Position</th>
                   <th>Email</th>
                   <th>Dinner Event</th>
-                  <!-- <th>Action</th> -->
               </tr>
           </thead>
           <tbody>
@@ -69,15 +64,6 @@
                   <td><?php echo $value->position ?></td>
                   <td><a href="#"><?php echo $value->email ?></a></td>
                   <td><?php echo $value->Title ?></td>
-                <!--   <td>&nbsp;&nbsp;&nbsp;&nbsp;
-
-                      <a href="#" title="View Dish">
-                        <span class="mdi mdi-eye-outline text-success" style="font-size: 20px;"></span>
-                    </a>&nbsp;&nbsp;
-                    <a href="#" class="confirm-delete text-danger" title="Delete Dish" style="font-size: 20px;">
-                      <i class="mdi mdi-delete" onclick="return confirm('Are you sure to delete this dish?')"></i>
-                    </a>
-                    </td> -->
                 </tr>
             <?php endforeach ?>
           </tbody>

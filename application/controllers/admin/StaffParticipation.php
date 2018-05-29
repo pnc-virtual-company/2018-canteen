@@ -24,7 +24,7 @@
          } else {
            redirect('connection/login');
          }
-        $this->load->model('users_model');
+        $this->load->model('UsersModel');
     }
     /**
      * List all the participation that join the lunch event
@@ -33,22 +33,19 @@
 /*List all participant that join the lunch event*/
        function getListParticipate(){
           $data['page'] = 'Calendar/StaffParticipation';
-          $this->load->model('Users_model');
-          $this->load->model('Participate_model');
-          // $data['userParticipate'] = $this->Participate_model->getListParticipate();
-          // $data['data_participate'] = $this->Participate_model->getParticipant();
-          // $data['status'] = $this->Users_model->getStaffStatus();
+          $this->load->model('UsersModel');
+          $this->load->model('ParticipateModel');
           $data['title'] = 'List of Participate';
           $this->load->view('templates/header', $data);
-          $this->load->view('menu/admin_dasboard', $data);
+          $this->load->view('menu/adminDasboard', $data);
           $status = $this->uri->segment(4);
           $data['statusId'] = $this->uri->segment(4);
            if ($status == 2) {
               $data['$statusId'] = $status;
-              $data['userParticipate'] = $this->Users_model->getListParticipate();
+              $data['userParticipate'] = $this->UsersModel->getListParticipate();
            }else if ($status != 2) {
               $data['$statusId'] = $status;
-              $data['userParticipate'] = $this->Users_model->shortListParticipate($status);
+              $data['userParticipate'] = $this->UsersModel->shortListParticipate($status);
            }
           $this->load->view('Calendar/StaffParticipation', $data);
           $this->load->view('templates/footer', $data);

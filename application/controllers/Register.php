@@ -1,7 +1,7 @@
 <?php 
-	class c_users extends CI_Controller {
+	class Register extends CI_Controller {
 
-		public function addUsers(){
+		public function index(){
       
          $config['upload_path']          = './assets/images/user_uploads';
          $config['allowed_types']        = 'gif|jpg|png';
@@ -16,10 +16,10 @@
          }
          else
          {
-            $data['add_users'] = $this->Users_model->addUsers(); //load model
+            $data['add_users'] = $this->UsersModel->addUsers(); //load model
             if($data){
               $this->session->set_flashdata('msg', 'Your account has been created.');
-               redirect('c_users/addUsers');
+               redirect('Register');
             }
                 
          }
@@ -29,4 +29,3 @@
           $this->load->view('templates/footer');
 		}
 	}
- ?>

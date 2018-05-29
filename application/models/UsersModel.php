@@ -13,7 +13,7 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * This model contains the business logic and manages the persistence of tbl_users and tbl_roles
  * It is also used by the session controller for the authentication.
  */
-class Users_model extends CI_Model {
+class UsersModel extends CI_Model {
 
     /**
      * Default constructor
@@ -28,6 +28,9 @@ class Users_model extends CI_Model {
      * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function userOrderList(){
+        // set currrent time zone in php to cambodia time +7
+        date_default_timezone_set("Asia/Phnom_Penh");
+        $current_date = date('Y-m-d');
       $this->db->select('users.card_id as userId,
                     CONCAT(users.firstname," ",users.lastname) AS userName,
                     users.class_name,
@@ -38,11 +41,16 @@ class Users_model extends CI_Model {
       $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id') ;
       $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
       $this->db->join('tbl_users users', 'users.id = dishUsers.user_id');
+    $this->db->where('orders.date', $current_date);
       $this->db->group_by('userName'); 
       $query = $this->db->get();
       return $query->result();
     }
 
+     /**
+     * create the new users
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+     */
     public function addUsers(){
         //Hash the clear password using bcrypt (8 iterations)
         $password = $this->input->post('password');
@@ -63,10 +71,16 @@ class Users_model extends CI_Model {
             'role'       => '2',
             'active'     => '1'
         );
-        // var_dump($dataUser);die();
         // insert array value to database
         $this->db->insert("tbl_users", $dataUser);
         return true;
+    }
+
+
+    /// get roles from tbl_role
+     public function selectRole(){
+        $query = $this->db->get('tbl_roles');
+        return $query->result();
     }
 
     /**
@@ -75,13 +89,6 @@ class Users_model extends CI_Model {
      * @return array record of tbl_users
      * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
-
-    /// get roles from tbl_role
-     public function selectRole(){
-    $query = $this->db->get('tbl_roles');
-    return $query->result();
- }
-
     public function getUsers($id = 0) {
         $this->db->select('tbl_users.*');
         if ($id === 0) {
@@ -110,7 +117,7 @@ class Users_model extends CI_Model {
    * Get the list of tbl_roles or one role
    * 00000001 1  Admin
    * 00000010 2	User
-   * 00000010 3 Staff
+   * 00000010 4 Staff
    * 00000100 8	HR Officier / Local HR Manager
    * 00001000 16	HR Manager
    * 00010000 32	General Manager
@@ -160,53 +167,20 @@ class Users_model extends CI_Model {
     }
 
     /**
-     * Delete a user from the database
-     * @param int $id identifier of the user
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
-     */
-    public function deleteUser($id) {
-        $this->db->delete('tbl_users', array('id' => $id));
-    }
-
-    /**
-     * Insert a new user into the database. Inserted data are coming from an HTML form
-     * @return string deciphered password (so as to send it by e-mail in clear)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
-     */
-    public function setUsers() {
-        //Hash the clear password using bcrypt (8 iterations)
-        $password = $this->input->post('password');
-        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
-        $hash = crypt($password, $salt);
-
-        //Role field is a binary mask
-        $role = 0;
-        foreach($this->input->post("role") as $role_bit){
-            $role = $role | $role_bit;
-        }
-
-        $data = array(
-            'firstname' => $this->input->post('firstname'),
-            'lastname' => $this->input->post('lastname'),
-            'login' => $this->input->post('login'),
-            'email' => $this->input->post('email'),
-            'password' => $hash,
-            'role' => $role
-        );
-        $this->db->insert('tbl_users', $data);
-        return $password;
-    }
-
-    /**
      * Update a given user in the database. Update data are coming from an HTML form
      * @return int number of affected rows
      * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function getUsersUpdate($id)
-      {
-        $query = $this->db->get_where('tbl_users', array('id' => $id));
+    {
+      $query = $this->db->get_where('tbl_users', array('id' => $id));
       return $query->result();
-      }
+    }
+     /**
+     * update a user
+     * @return int  password
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+     */
     public function updateUsers($password) {
         $this->upload->data()['file_name'];
         $data_image = array('upload_data' => $this->upload->data());
@@ -222,7 +196,6 @@ class Users_model extends CI_Model {
             'password'   => $password,
             'role' =>$this->input->post('role')
         );
-        // var_dump($data);die();
         $this->db->where('id', $this->uri->segment(4));
         $this->db->update('tbl_users', $data);
         return true;
@@ -453,7 +426,6 @@ class Users_model extends CI_Model {
      * @return int $status is for short of confirm or not yet confirm
      * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
-
     /*Function get all particapate of event lunch*/
     public function shortListParticipate($status){
         // echo $status;die();

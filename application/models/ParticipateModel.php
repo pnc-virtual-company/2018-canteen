@@ -8,7 +8,7 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * This model contains the business logic and manages the persistence of btl_staff_event
  * It is also used by the session controller for the authentication.
  */
-class Participate_model extends CI_Model {
+class ParticipateModel extends CI_Model {
 
     /**
      * Default constructor
@@ -42,7 +42,6 @@ class Participate_model extends CI_Model {
                     INNER JOIN tbl_lunch_events lunchEvent ON lunchEvent.id = staffParticpate.lunch_event_id
                     INNER JOIN tbl_users users ON users.id = staffParticpate.user_id');
                 return $query->result();
-         // var_dump($query->result);die();
     }     
 
 
@@ -61,15 +60,16 @@ class Participate_model extends CI_Model {
         return $query->result();
     }
 
- // Insert reminded
-    public function getReminded($user_id){
+    // Insert reminded
+    public function getReminded(){
          $data_reminded = array(
-           'user_id' => $user_id,
-           'lunch_event_id' => '63',
+           'user_id' => '11',
+           'lunch_event_id' => '46',
            'status' => '0',
            'reminded' => '1'
          );
-         $query = $this->db->update('tbl_staff_participation', array('user_id' => $user_id ), $data_reminded);
+         $query = $this->db->update('tbl_staff_participation', $data_reminded);
         return $query->result();
      }
+
 }

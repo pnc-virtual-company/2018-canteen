@@ -14,7 +14,7 @@ class Welcome extends CI_Controller {
 	{
 
     	$rows = array();
-    	$result = $this->Dishes_model->getMenu(1);
+    	$result = $this->DishesModel->getMenu(1);
     	 // Get current date
     	date_default_timezone_set("Asia/Phnom_Penh");
         	$current_date = date('Y-m-d');
@@ -31,8 +31,9 @@ class Welcome extends CI_Controller {
     					'meal_time_id' => $row->meal_time_id,
     					'menu_created_date' => $row->menu_created_date,
     					'menu_description' => $row->menu_description,
-    					// 'order_date'=>$row->date,
-    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,1)
+    					'current_interest'=>$row->current_interest,
+    					'is_user_order' => $this->DishesModel->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,1),
+    					'isUserInterest' => $this->DishesModel->selectIsUserInterest($row->dish_id, $this->session->userdata('id'))
     				);
     		}
     	}
@@ -40,7 +41,7 @@ class Welcome extends CI_Controller {
 
     	// Lunch time 
     	$rows_lunch = array();
-    	$result = $this->Dishes_model->getMenu(2);
+    	$result = $this->DishesModel->getMenu(2);
     	if($result->num_rows() > 0)
     	{
     		foreach ($result->result() as $row) {
@@ -54,7 +55,8 @@ class Welcome extends CI_Controller {
     					'menu_created_date' => $row->menu_created_date,
     					'menu_description' => $row->menu_description,
     					'current_interest'=>$row->current_interest,
-    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,2)
+    					'is_user_order' => $this->DishesModel->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,2),
+    					'isUserInterest' => $this->DishesModel->selectIsUserInterest($row->dish_id, $this->session->userdata('id'))
     				);
     		}
     	}
@@ -62,7 +64,7 @@ class Welcome extends CI_Controller {
     	$data['dishesOrder1'] = $rows_lunch;
     	// Dinner time 
     	$rows_dinner = array();
-    	$result = $this->Dishes_model->getMenu(3);
+    	$result = $this->DishesModel->getMenu(3);
     	// We will create new array to store new element value check is the food already order, it is the same as like unlick yesteraday
     	if($result->num_rows() > 0)
     	{
@@ -77,7 +79,8 @@ class Welcome extends CI_Controller {
     					'menu_created_date' => $row->menu_created_date,
     					'menu_description' => $row->menu_description,
     					'current_interest'=>$row->current_interest,
-    					'is_user_order' => $this->Dishes_model->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,3)
+    					'is_user_order' => $this->DishesModel->checkIfUserOrderDish($row->dish_id, $this->session->userdata('id'),$current_date,3),
+    					'isUserInterest' => $this->DishesModel->selectIsUserInterest($row->dish_id, $this->session->userdata('id'))
     				);
     		}
     	}
@@ -117,7 +120,7 @@ class Welcome extends CI_Controller {
 
 	/// if check statu form for order or edit
 	if($status_form == "btn_order"){
-    	$data['dishesOrder'] = $this->Dishes_model->selectDish($id,$this->session->userdata('id'));
+    	$data['dishesOrder'] = $this->DishesModel->selectDish($id,$this->session->userdata('id'));
 		foreach ($data['dishesOrder'] as $dish) 
 		{	
 			$output .= '
@@ -155,7 +158,7 @@ class Welcome extends CI_Controller {
 			';
 		}
 	}else{ // Edit form
-		$dish_order_edit_data = $this->Dishes_model->selectDishEdit($id, $this->session->userdata('id'));
+		$dish_order_edit_data = $this->DishesModel->selectDishEdit($id, $this->session->userdata('id'));
 
 		foreach ($dish_order_edit_data as $dish) 
 		{	
@@ -199,23 +202,72 @@ class Welcome extends CI_Controller {
 	}
 	echo $output;
 }
-
+  
+ /**
+     * insert quantity data of the dishes
+     * @author kimsoeng kao <kimsoeng.kao.passerellesnumeriques.org>
+     */ 
 public function insertOrderInfo(){
     $dish_id = $this->uri->segment(3); 
     $meal_time_id = $this->uri->segment(4); 
-    $data['userPreOrder'] = $this->Dishes_model->createOrder($dish_id,$meal_time_id);
+    $data['userPreOrder'] = $this->DishesModel->createOrder($dish_id,$meal_time_id);
     if ($data == TRUE) {
       redirect(base_url());
-       ///  $data['dishesOrder']  = $this->Dish_model->updateOrder($dish_id);
     }else{
       $data == true;
     }
   }
-  // edit order info 
+    /**
+     * Edit order information.
+     * @author chantha roeurn <chantha.roeurn.passerellesnumeriques.org>
+     */ 
   public function EditOrderInfo()
   {
     $order_id = $this->uri->segment(3);
-    $this->Dishes_model->updateOrderInfo($order_id); 
+    $this->DishesModel->updateOrderInfo($order_id); 
     redirect(base_url());
   }
+
+     /**
+     * Use to inseret into tbl_rate and update to tbl_dishes.
+     * @return the record of the staffs & Confirmation the email reminding
+     * @author sun meas <sun.meas.passerellesnumeriques.org>
+     */ 
+  function ConfirmReminded()
+  {
+   $this->load->view('templates/header');
+   $this->load->view('Calendar/Confirmation');
+   $this->load->view('templates/footer');
+  }
+
+     /**
+     * Use to inseret into tbl_rate and update to tbl_dishes.
+     * @param int $id can lesect one or multiple dishes to update.
+     * @return array record of tbl_rate.
+     * @author davy peong <davy.peong.passerellesnumeriques.org>
+     */ 
+     public function storeInterest(){
+        $this->load->model('DishesModel');
+        $user_id = $this->session->userdata('id');
+        $dish_id = $this->input->post('dish_id');
+        $this->DishesModel->getStoreInterest($user_id, $dish_id);
+        $count_interest = $this->DishesModel->selectAndStoreInterest($dish_id);
+        echo '<a class="uninterest" href="javascript:void()" name="view" style="color:orange;" value="view" id="'.$dish_id.'">'.$count_interest.'&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Uninterest</a>';
+    }
+    /**
+     * Get the delte number of rate from tbl_rate 
+     * @param delete with condition dish_id with dish_id
+     * @return array record of tbl_rate.
+     * @author davy peong <davy.peong.passerellesnumeriques.org>
+     */
+   public function storeUninterest(){
+        $this->load->model('DishesModel');
+        $user_id = $this->session->userdata('id');
+        $dish_id = $this->input->post('dish_id');
+        $this->DishesModel->getStoreUninterest($user_id, $dish_id);
+        $count_interest = $this->DishesModel->selectAndStoreInterest($dish_id);
+        echo '<a class="interest" href="javascript:void()" name="view" value="view" id="'.$dish_id.'">'.$count_interest.'&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>';
+
+    }
+
 }

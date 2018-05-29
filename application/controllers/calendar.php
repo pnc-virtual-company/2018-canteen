@@ -24,7 +24,7 @@ Class calendar extends CI_Controller{
 	     } else {
 	       redirect('connection/login');
 	     }
-	    $this->load->model('users_model');
+	    $this->load->model('UsersModel');
 	}
 	// stuff calendar
 	function getJoinDinnerEvent(){
@@ -36,17 +36,17 @@ Class calendar extends CI_Controller{
 	// admin calendar
 	function getAdminCalendar(){
 		$data['title'] = 'Calendar';
-		$data['page'] = 'Calendar/admin_calendar';
+		$data['page'] = 'Calendar/adminCalendar';
 	  $this->load->view('templates/header', $data);
-	 	$this->load->view('menu/admin_dasboard', $data);
-		$this->load->view('Calendar/admin_calendar', $data);
+	 	$this->load->view('menu/adminDasboard', $data);
+		$this->load->view('Calendar/adminCalendar', $data);
 	  $this->load->view('templates/footer', $data);
 	}	
 	function getDinnerEvent(){
 		$data['title'] = 'Calendar';
-		$data['page'] = 'Calendar/admin_calendar';
+		$data['page'] = 'Calendar/adminCalendar';
 	  $this->load->view('templates/header', $data);
-	  $this->load->view('menu/admin_dasboard', $data);
+	  $this->load->view('menu/adminDasboard', $data);
 		$this->load->view('Calendar/dinnerEvent', $data);
 	  $this->load->view('templates/footer', $data);
 	}
@@ -55,17 +55,17 @@ Class calendar extends CI_Controller{
 
 	Public function getLunchEvents()
 	{
-		$result=$this->Calendar_model->getLunchEvents();
+		$result=$this->CalendarModel->getLunchEvents();
 		echo json_encode($result);
 	}
 	/*Add new event */
 	Public function addLunchEvent()
 	{
-		$result=$this->Calendar_model->addLunchEvent();
+		$result=$this->CalendarModel->addLunchEvent();
 		echo $result;
 	/*Sending email to invite the staff the join the lunch in PNC*/
-		$this->load->model('Participate_model');      
-		$selectMessage = $this->Participate_model->getLatestDescrition();     
+		$this->load->model('ParticipateModel');      
+		$selectMessage = $this->ParticipateModel->getLatestDescrition();     
 		foreach ($selectMessage as $descr) {        
 		  $eventName = $descr->title;      
 		  $contentEmail = $descr->description;      
@@ -91,19 +91,19 @@ Class calendar extends CI_Controller{
 	/*Update Event */
 	Public function updateLunchEvent()
 	{
-		$result=$this->Calendar_model->updateLunchEvent();
+		$result=$this->CalendarModel->updateLunchEvent();
 		echo $result;
 	}
 	
 	/*Delete Event*/
 	Public function deleteEvent()
 	{
-		$result=$this->Calendar_model->deleteLunchEvent();
+		$result=$this->CalendarModel->deleteLunchEvent();
 		echo $result;
 	}
 	Public function dragUpdateEvent()
 	{	
-		$result=$this->Calendar_model->dragUpdateLunchEvent();
+		$result=$this->CalendarModel->dragUpdateLunchEvent();
 		echo $result;
 	}
 
@@ -111,37 +111,37 @@ Class calendar extends CI_Controller{
 
 	Public function getDinnerEvents()
 	{
-		$result=$this->Calendar_model->getDinnerEvents();
+		$result=$this->CalendarModel->getDinnerEvents();
 		echo json_encode($result);
 	}
 	/*Add new event */
 	Public function addDinnerEvent()
 	{
-		$result=$this->Calendar_model->addDinnerEvent();
+		$result=$this->CalendarModel->addDinnerEvent();
 		echo $result;
 	}
 	/*Update Event */
 	Public function updateDinnerEvent()
 	{
-		$result=$this->Calendar_model->updateDinnerEvent();
+		$result=$this->CalendarModel->updateDinnerEvent();
 		echo $result;
 	}
 	/*Delete Event*/
 	Public function deleteDinnerEvent()
 	{
-		$result=$this->Calendar_model->deleteDinnerEvent();
+		$result=$this->CalendarModel->deleteDinnerEvent();
 		echo $result;
 	}
 	Public function dragUpdateDinnerEvent()
 	{	
-		$result=$this->Calendar_model->dragUpdateLunchEvent();
+		$result=$this->CalendarModel->dragUpdateLunchEvent();
 		echo $result;
 	}
 
 	/*Add new event user for join event */
 	Public function userJoinEvent()
 	{
-		$result=$this->Calendar_model->userJoinEvent();
+		$result=$this->CalendarModel->userJoinEvent();
 		echo $result;
 	}
 }

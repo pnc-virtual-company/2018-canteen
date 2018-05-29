@@ -22,7 +22,7 @@ $sheet->setCellValue('B1', 'Description');
 $sheet->getStyle('A1:B1')->getFont()->setBold(true);
 $sheet->getStyle('A1:B1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
-$dishes = $this->Dishes_model->getDishes();
+$dishes = $this->DishesModel->getDishes();
 $line = 2;
 foreach ($dishes as $dish) {
     $sheet->setCellValue('A' . $line, $dish->dish_name);

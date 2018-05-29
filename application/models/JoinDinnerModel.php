@@ -6,7 +6,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class JoinDinner_model extends CI_Model { 
+class JoinDinnerModel extends CI_Model { 
 
 	 // Select all dinner event id to the calendar
 	 public function selectDinner($id){
