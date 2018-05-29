@@ -11,7 +11,7 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * This controller serves the create menu pages.
  * 
  */
-class create_menu extends CI_Controller {
+class CreateMenu extends CI_Controller {
      /**
      * Allow only admin and super admin to use this function
      * @author khai hok <khai.hok.passerellesnumeriques.org>
@@ -30,7 +30,7 @@ class create_menu extends CI_Controller {
 } else {
  redirect('connection/login');
 }
-$this->load->model('users_model');
+$this->load->model('UsersModel');
 }
     /**
      * Display the list of all list of food to create menu.
@@ -38,16 +38,16 @@ $this->load->model('users_model');
      */
     public function index() {
         $this->load->helper('form');
-        $this->load->model('Dishes_model');
-        $data['data_image']= $this->Dishes_model->getDishes();
-        $data['meal_time']= $this->Dishes_model->getMealTime();
+        $this->load->model('DishesModel');
+        $data['data_image']= $this->DishesModel->getDishes();
+        $data['meal_time']= $this->DishesModel->getMealTime();
         $data['title'] = 'List of users';
         $data['activeLink'] = 'users';
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
-        $this->load->view('admin/create_menu', $data);
+        $this->load->view('menu/adminDasboard', $data);
+        $this->load->view('admin/createMenu', $data);
         $this->load->view('templates/footer', $data);
     }
     /**
@@ -59,7 +59,7 @@ $this->load->model('users_model');
             $id = $_POST['dish_id'];
             if (empty($id) || $id==0) {
              $this->session->set_flashdata('msg', 'Please select at least one dish.');
-             redirect('admin/create_menu/index'); 
+             redirect('admin/CreateMenu'); 
          } else {
             $this->load->model('createDish');
             date_default_timezone_set("Asia/Phnom_Penh");
@@ -73,12 +73,12 @@ $this->load->model('users_model');
                $this->createDish->getPostMenu($dishId, $meal_time, $mealDate, $menuDescription);
            }elseif ($mealDate < $creating_date) {
             $this->session->set_flashdata('msg', 'You cannot Create food for the previous day.');
-            redirect('admin/create_menu/index'); 
+            redirect('admin/CreateMenu'); 
         } else {
            $this->createDish->getPostMenuNext($dishId, $meal_time, $mealDate, $menuDescription);
        }     
        $this->session->set_flashdata('msg', 'Menu have created successfully.');
-       redirect('admin/create_menu/index', $data);     
+       redirect('admin/CreateMenu', $data);     
    }
 }
 }

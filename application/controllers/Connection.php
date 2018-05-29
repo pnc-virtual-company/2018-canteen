@@ -29,10 +29,10 @@ class Connection extends CI_Controller {
 			$this->load->view('login/login', $data);
 			$this->load->view('templates/footer');
 		} else {
-			$this->load->model('users_model');
+			$this->load->model('UsersModel');
 			$login = $this->input->post('login');
 			$password = $this->input->post('password');
-			if ($this->users_model->checkCredentials($login, $password)) {
+			if ($this->UsersModel->checkCredentials($login, $password)) {
 				log_message('debug', 'Received good credentials for user #' . $this->session->userdata('id'));
 				if ($this->session->userdata('last_page') != '') {
 					log_message('debug', 'last_page set. Redirect to ' . $this->session->userdata('last_page'));

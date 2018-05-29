@@ -12,8 +12,8 @@
 	<h4>Confirm the invitation now?</h4>
 	<div class="col-md-2"></div>
 		<div class="col-md-10">
-                                        <a href=""><button type="submit" class="btn btn-success clickRemind" id="">Confirm Now</button></a>&nbsp;&nbsp;&nbsp;
-                                        <a href=""><button type="submit" class="btn btn-info" id="">No</button></a>
+      <a href="http://kratie/2018vc2ge/welcome/ConfirmReminded"><button type="submit" class="btn btn-success clickRemind" id="">Confirm Now</button></a>&nbsp;&nbsp;&nbsp;
+      <a href=""><button type="submit" class="btn btn-info" id="">No</button></a>
 		</div>
 	</div>
 </div>

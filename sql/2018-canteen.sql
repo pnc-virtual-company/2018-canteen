@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
-<<<<<<< HEAD
--- Generation Time: May 16, 2018 at 12:54 PM
-=======
--- Generation Time: May 16, 2018 at 01:01 PM
->>>>>>> 3f27524eb721f1077c51a1817db5b051387a0f9b
+-- Generation Time: May 28, 2018 at 01:25 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.4
 
@@ -42,6 +38,31 @@ CREATE TABLE IF NOT EXISTS `tbl_comment` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_dinner_events`
+--
+
+DROP TABLE IF EXISTS `tbl_dinner_events`;
+CREATE TABLE IF NOT EXISTS `tbl_dinner_events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `color` varchar(7) NOT NULL DEFAULT '#3a87ad',
+  `dinner_events` varchar(100) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_dinner_events`
+--
+
+INSERT INTO `tbl_dinner_events` (`id`, `title`, `description`, `color`, `dinner_events`, `start`, `end`) VALUES
+(52, 'Student Dinner', 'Join all together at PNC', '#eb49a0', '', '2018-05-02 00:00:00', '2018-05-03 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_dishes`
 --
 
@@ -59,26 +80,25 @@ CREATE TABLE IF NOT EXISTS `tbl_dishes` (
   `current_interest` int(11) DEFAULT NULL,
   PRIMARY KEY (`dish_id`),
   KEY `fk_tbl_dish_tbl_meal_time1_idx` (`meal_time_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_dishes`
 --
 
 INSERT INTO `tbl_dishes` (`dish_id`, `dish_name`, `dish_image`, `description`, `dish_active`, `meal_time_id`, `menu_created_date`, `menu_description`, `interest`, `current_interest`) VALUES
-(10, 'Borbor', 'Borbor.png', 'Borbor is popular food for PN in the evening.', 1, 1, '2018-05-15', 'This is the food for today.', NULL, NULL),
-(11, 'Amok-Carry', 'Amok-Carry.png', 'Amok-Carry is the best food for all student to get power.', 1, 2, '2018-05-24', 'fghjkl', NULL, NULL),
-(12, 'Brohok', 'Brohok.png', 'Brohok is also have a lot of student favorite it.', 1, 1, '2018-05-15', 'This is the food for today.', NULL, NULL),
-(13, 'Fried-sea-snails', 'Fried-sea-snails.png', 'Fried-sea-snails is special food for all students and staff at PNC.', 1, 1, '2018-05-15', 'Food for breakfast for student in PNC canteen.', NULL, NULL),
-(14, 'Massam-carry', 'Massam-carry.png', 'Massam-carry very good food for health in PNC.', 1, 1, '2018-05-11', 'Book now nice', NULL, NULL),
-(15, 'Mchu_trokon', 'Mchu_trokon.png', 'Mchu_trokon is kind of food have a lot of vitamin for health.', 1, 3, '2018-05-03', 'jk', NULL, NULL),
-(16, 'Mecha', 'Mecha.png', 'Mecha is a kind of food that very popular in PNC at the evening. ', 1, 1, '2018-05-12', 'menu description for today.', NULL, NULL),
-(17, 'Nom', 'Nom.png', 'Nom is also popular for the all party in PNC.', 0, 3, NULL, NULL, NULL, NULL),
-(18, 'Nom-Banh-Chok', 'Nom-Banh-Chok.png', 'Nom-Banh-Chok is good and delicious. ', 1, 1, '2018-05-15', 'Delicious food', NULL, NULL),
-(19, 'Noudle_sup', 'Noudle_sup.png', 'Noudle_sup is very good food for student in the morning. ', 1, 2, '2018-05-11', 'mlkj', NULL, NULL),
-(20, 'Phat_Thai', 'Phat_Thai.png', 'Phat_Thai is new food for PNC\'s canteen.', 1, 2, '2018-05-11', 'fgdd', NULL, NULL),
-(21, 'SourSoup', 'SourSoup.png', 'SourSoup is more good sup for students and staffs. ', 0, 1, NULL, NULL, NULL, NULL),
-(22, 'Thai-red-curry', 'Thai-red-curry.png', 'Thai-red-curry is very good sup for all students for lunch. ', 1, 1, '2018-05-12', 'menu description for today.', NULL, NULL);
+(33, 'Amok-Carry', 'Amok-Carry1.png', 'Amok-Carry is very popular for PNC student.', 1, 1, NULL, 'This is the food for Today.', 10, NULL),
+(34, 'Borbor', 'Borbor7.png', 'Borbor is the best food in the morning. ', 1, 1, '2018-06-08', 'This is the food for Today.', 10, 7),
+(35, 'Khmer Carry', 'Massam-carry2.png', 'Very Delicious for the breakfast and most of student and staff really enjoy to have this food.', 1, 1, NULL, 'This is the food for Today.', 30, NULL),
+(36, 'Brohok', 'Brohok1.png', 'Brohok is very delicious for all student and staff. ', 1, 1, NULL, 'This is the food for Today.', 20, NULL),
+(37, 'Fried-sea-snails', 'Fried-sea-snails1.png', 'This is the interesting food for the student and staff to have during lunch time meal.', 1, 1, '2018-06-08', 'This is the food for Today.', 12, NULL),
+(38, 'Mchu_trokon', 'Mchu_trokon2.png', 'Mchu-Trokun look sample, but it still get more interesting from student and it is more interesting if we add with cheery.', 1, 2, '2018-05-29', 'The food for lunch ', 20, NULL),
+(39, 'Mecha', 'Mecha2.png', 'Mecha is a very nice food for dinner.', 0, 3, NULL, NULL, 26, NULL),
+(40, 'Thai-red-curry', 'Thai-red-curry2.png', 'Thai-red-curry is very popular food for lunch.', 0, 2, NULL, NULL, 34, NULL),
+(41, 'Noudle_sup', 'Noudle_sup2.png', 'Noudle_sup is the best food for PNC lunch.', 0, 2, NULL, NULL, 18, NULL),
+(42, 'Nom', 'Nom1.png', 'Nom is second popular food in PNC canteen.', 0, 3, NULL, NULL, 28, NULL),
+(43, 'Nom-Banh-Chok', 'Nom-Banh-Chok2.png', 'Nom-Banh-Chok is nice food in canteen of PNC.', 1, 1, '2018-05-28', 'This is the food for Today.', 41, 2),
+(44, 'Massam-carry', 'Massam-carry3.png', 'Massam-carry is the best food in canteen manager also create in PNC.', 1, 1, '2018-05-28', 'This is the food for Today.', 8, 2);
 
 -- --------------------------------------------------------
 
@@ -96,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `tbl_dish_user` (
   KEY `fk_tbl_dish_has_tbl_users_tbl_users1_idx` (`user_id`),
   KEY `fk_tbl_dish_has_tbl_users_tbl_dish1_idx` (`dish_id`),
   KEY `fk_dish_user_tbl_order1_idx` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_dish_user`
@@ -108,43 +128,109 @@ INSERT INTO `tbl_dish_user` (`dish_user_id`, `dish_id`, `user_id`, `order_id`) V
 (3, 11, 3, 1),
 (4, 11, 5, 3),
 (5, 14, 4, 1),
-(6, 14, 4, 5);
+(6, 14, 4, 5),
+(7, 10, 1, 7),
+(8, 13, 1, 8),
+(9, 19, 1, 9),
+(10, 10, 1, 10),
+(11, 13, 7, 11),
+(12, 11, 1, 12),
+(13, 11, 7, 13),
+(14, 11, 7, 14),
+(15, 13, 1, 15),
+(19, 10, 1, 19),
+(20, 16, 1, 20),
+(21, 16, 1, 21),
+(22, 28, 1, 21),
+(23, 28, 1, 22),
+(24, 28, 11, 23),
+(25, 28, 11, 24),
+(26, 28, 1, 25),
+(27, 31, 11, 26),
+(28, 29, 11, 27),
+(29, 30, 11, 28),
+(30, 28, 3, 29),
+(31, 32, 1, 30),
+(32, 33, 1, 31),
+(33, 33, 1, 32),
+(34, 33, 1, 33),
+(35, 28, 1, 34),
+(36, 29, 11, 35),
+(37, 28, 11, 36),
+(38, 33, 11, 37),
+(39, 30, 11, 38),
+(40, 32, 11, 39),
+(41, 31, 1, 40),
+(42, 28, 1, 41),
+(43, 28, 1, 42),
+(44, 29, 1, 43),
+(45, 32, 1, 44),
+(46, 33, 1, 45),
+(47, 30, 1, 46),
+(48, 31, 11, 47),
+(49, 29, 11, 48),
+(50, 30, 11, 49),
+(51, 30, 7, 50),
+(52, 31, 7, 51),
+(53, 31, 11, 52),
+(54, 31, 13, 53),
+(55, 30, 1, 54),
+(56, 32, 1, 55),
+(57, 32, 11, 56),
+(58, 34, 11, 57),
+(59, 43, 1, 58),
+(60, 43, 11, 59);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_events`
+-- Table structure for table `tbl_join_events`
 --
 
-DROP TABLE IF EXISTS `tbl_events`;
-CREATE TABLE IF NOT EXISTS `tbl_events` (
+DROP TABLE IF EXISTS `tbl_join_events`;
+CREATE TABLE IF NOT EXISTS `tbl_join_events` (
+  `join_event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `dinner_event_id` int(11) NOT NULL,
+  PRIMARY KEY (`join_event_id`),
+  KEY `user_id` (`user_id`),
+  KEY `dinner_event_id` (`dinner_event_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_join_events`
+--
+
+INSERT INTO `tbl_join_events` (`join_event_id`, `user_id`, `dinner_event_id`) VALUES
+(24, 11, 52),
+(31, 11, 52);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_lunch_events`
+--
+
+DROP TABLE IF EXISTS `tbl_lunch_events`;
+CREATE TABLE IF NOT EXISTS `tbl_lunch_events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `color` varchar(7) NOT NULL DEFAULT '#3a87ad',
-  `dinner_events` varchar(100) NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_events`
+-- Dumping data for table `tbl_lunch_events`
 --
 
-INSERT INTO `tbl_events` (`id`, `title`, `description`, `color`, `dinner_events`, `start`, `end`) VALUES
-(3, 'Holiday Celemoneysdsd', 'sdsdsd', '#a31cc4', 'Weekly Dinner', '2018-04-25 00:00:00', '2018-04-25 09:00:00'),
-(18, 'Holiday Celemoney', 'Create a database named (for example) skeleton with the collatin', '#917a4c', 'Monthly Dinner', '2018-05-17 00:00:00', '2018-05-18 00:00:00'),
-(19, 'Holiday Celemoney', 'xoption utf8_general_ci Create a database named (for example) skeleton with the collating Import the schema by using the SQL script provided into the SQL folder.', '#bfaa5e', '', '2018-05-01 00:00:00', '2018-05-02 00:00:00'),
-(20, 'SA Meeting', 'I would like to inform you to join Homey Meeting for tomorrow.', '#28782b', '', '2018-05-07 01:00:00', '2018-05-07 03:30:00'),
-(24, 'Client Demonstrative Project', 'Demo to client about project.', '#3fe8bf', '', '2018-05-04 00:00:00', '2018-05-05 00:00:00'),
-(25, 'Team Meeting', 'Divide the tasks.', '#9590d1', 'Monthly Dinner', '2018-04-29 00:00:00', '2018-04-30 00:00:00'),
-(26, 'Khai Birthday', 'Pay for eating soup at the pagoda.', '#8f7109', 'Monthly Dinner', '2018-05-06 00:00:00', '2018-05-06 05:30:00'),
-(27, 'Chantha Birthday', 'Chantha will pay team for eating ice-cream at Royal Palace.', '#3a87ad', 'Weekly Dinner', '2018-04-29 00:00:00', '2018-04-30 00:00:00'),
-(29, 'Demo to client about project.', 'Demo to client about project.', '#ba2929', 'Monthly Dinner', '2018-05-02 00:00:00', '2018-05-03 00:00:00'),
-(30, 'Team Discussion', 'I would like to inform you to join Homey Meeting for tomorrow.', '#ba2929', 'Monthly Dinner', '2018-05-02 00:00:00', '2018-05-03 00:00:00'),
-(31, 'Sun Birthday', 'I would like to inform you to join Homey Meeting for tomorrow.', '#6d93bf', 'Monthly Dinner', '2018-05-16 00:00:00', '2018-05-17 00:00:00'),
-(34, 'Demo Client', 'Demo to client about project.', '#b82bc4', 'Weekly Dinner', '2018-05-14 00:00:00', '2018-05-15 00:00:00');
+INSERT INTO `tbl_lunch_events` (`id`, `title`, `description`, `color`, `start`, `end`) VALUES
+(3, 'Holiday Celemoneysdsd', 'sdsdsd', '#a31cc4', '2018-04-25 00:00:00', '2018-04-25 09:00:00'),
+(19, 'Holiday Celemony party', 'at school party around 6:00pm', '#bfaa5e', '2018-05-21 00:00:00', '2018-05-22 00:00:00'),
+(46, 'Solidarity Staff Lunch', 'I would like to invite all of you to participate the staff lunch at 11:30 AM on Wednesday. I hope all of you will satify and enjoy the lunch. The event will be happy if have a nice participation. Thank you in advance.', '#de1414', '2018-05-25 00:00:00', '2018-05-26 00:00:00'),
+(72, 'Staff solidarity lunch', 'I would like to invite all of you to participate the staff lunch at 11:30 AM on Wednesday. I hope all of you will satify and enjoy the lunch. The event will be happy if have a nice participation. Thank you in advance.', '#8a0dd6', '2018-05-02 00:00:00', '2018-05-03 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -181,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `tbl_order` (
   `meal_time` varchar(45) DEFAULT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_order`
@@ -193,7 +279,91 @@ INSERT INTO `tbl_order` (`order_id`, `quantity`, `meal_time`, `date`) VALUES
 (3, 3, 'Breakfast', '2018-05-16'),
 (4, 2, 'Dinner', '2018-05-16'),
 (5, 1, 'Lunch', '2018-05-17'),
-(6, 4, 'Breakfast', '2018-05-17');
+(6, 4, 'Breakfast', '2018-05-17'),
+(7, 1, '1', '2018-05-17'),
+(8, 3, '1', '2018-05-17'),
+(9, 8, '1', '2018-05-17'),
+(10, 10, '1', '2018-05-17'),
+(11, 9, '1', '2018-05-17'),
+(12, 10, '2', '2018-05-19'),
+(13, 10, '2', '2018-05-19'),
+(14, 6, '2', '2018-05-19'),
+(15, 1, '2', '2018-05-20'),
+(19, 1, '1', '2018-05-23'),
+(20, 9, '1', '2018-05-23'),
+(21, 10, '1', '2018-05-24'),
+(22, 8, '1', '2018-05-24'),
+(23, 1, '1', '2018-05-24'),
+(24, 1, '1', '2018-05-24'),
+(25, 10, '1', '2018-05-25'),
+(26, 10, '1', '2018-05-25'),
+(27, 2, '3', '2018-05-25'),
+(28, 3, '3', '2018-05-25'),
+(29, 1, '1', '2018-05-25'),
+(30, 4, '2', '2018-05-25'),
+(31, 10, '1', '2018-05-25'),
+(32, 10, '1', '2018-05-25'),
+(33, 10, '1', '2018-05-25'),
+(34, 10, '2', '2018-05-25'),
+(35, 5, '1', '2018-05-25'),
+(36, 10, '2', '2018-05-25'),
+(37, 3, '1', '2018-05-25'),
+(38, 8, '1', '2018-05-25'),
+(39, 10, '2', '2018-05-25'),
+(40, 5, '1', '2018-05-26'),
+(41, 10, '2', '2018-05-26'),
+(42, 10, '3', '2018-05-26'),
+(43, 1, '3', '2018-05-26'),
+(44, 6, '1', '2018-05-26'),
+(45, 1, '1', '2018-05-26'),
+(46, 1, '3', '2018-05-26'),
+(47, 3, '2', '2018-05-26'),
+(48, 4, '3', '2018-05-26'),
+(49, 1, '1', '2018-05-27'),
+(50, 2, '1', '2018-05-27'),
+(51, 2, '1', '2018-05-27'),
+(52, 1, '1', '2018-05-27'),
+(53, 1, '1', '2018-05-27'),
+(54, 9, '1', '2018-05-27'),
+(55, 5, '1', '2018-05-27'),
+(56, 1, '1', '2018-05-27'),
+(57, 1, '1', '2018-05-28'),
+(58, 10, '1', '2018-05-28'),
+(59, 9, '1', '2018-05-28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_rates`
+--
+
+DROP TABLE IF EXISTS `tbl_rates`;
+CREATE TABLE IF NOT EXISTS `tbl_rates` (
+  `rate_id` int(11) NOT NULL AUTO_INCREMENT,
+  `store_rate` int(11) NOT NULL,
+  `dish_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`rate_id`),
+  KEY `dish_id` (`dish_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_rates`
+--
+
+INSERT INTO `tbl_rates` (`rate_id`, `store_rate`, `dish_id`, `user_id`) VALUES
+(1, 1, 34, 11),
+(2, 1, 34, 11),
+(3, 1, 34, 11),
+(4, 1, 34, 11),
+(5, 1, 34, 11),
+(6, 1, 34, 11),
+(7, 1, 34, 11),
+(11, 1, 44, 1),
+(15, 1, 43, 1),
+(16, 1, 44, 11),
+(18, 1, 43, 11);
 
 -- --------------------------------------------------------
 
@@ -215,8 +385,35 @@ CREATE TABLE IF NOT EXISTS `tbl_roles` (
 INSERT INTO `tbl_roles` (`id`, `name`) VALUES
 (1, 'Admin'),
 (2, 'User'),
-(3, 'Staff'),
+(4, 'Staff'),
 (8, 'Super Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_staff_participation`
+--
+
+DROP TABLE IF EXISTS `tbl_staff_participation`;
+CREATE TABLE IF NOT EXISTS `tbl_staff_participation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `lunch_event_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `reminded` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `lunch_event_id` (`lunch_event_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_staff_participation`
+--
+
+INSERT INTO `tbl_staff_participation` (`id`, `user_id`, `lunch_event_id`, `status`, `reminded`) VALUES
+(22, 11, 46, 0, 1),
+(23, 14, 72, 0, 0),
+(24, 16, 72, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -239,19 +436,20 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `class_name` varchar(20) DEFAULT NULL,
   `role` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
 INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `login`, `email`, `image`, `password`, `active`, `card_id`, `gender`, `class_name`, `role`) VALUES
-(1, 'kimsoeng', 'kao', 'admin', 'kimseong.kao@gmail.com', 'admin.png', '$2a$08$cnX6al6aTkoyh/N/tKZ11e8ec9J/sldA6R4NdP.2qhhDi0OD3ek1G', 1, 'PNC2018-029', 'Female', 'WEP-2018', 1),
-(2, 'rady', 'y', 'rady.y', 'rady@gmail.com', 'rady.png', '$2a$08$cnX6al6aTkoyh/N/tKZ11e8ec9J/sldA6R4NdP.2qhhDi0OD3ek1G', 1, 'staff_251', 'Male', 'Training', 2),
-(3, 'chandaravotey', 'soriya', 'daravotey', 'daravotey@gmail.com', 'image.png', '$2a$08$cnX6al6aTkoyh/N/tKZ11e8ec9J/sldA6R4NdP.2qhhDi0OD3ek1G', 1, 'PNC2020-012', 'Female', '2020-A', 2),
-(4, 'sovankesey', 'mohareach', 'sovankesey', 'sovankesey@gmail.com', 'image.png', '$2a$08$cnX6al6aTkoyh/N/tKZ11e8ec9J/sldA6R4NdP.2qhhDi0OD3ek1G', 1, 'PNC2020 - 039', 'Female', '2020 - B', 2),
-(5, 'Sim', 'Hul', 'sim.hul', 'sim.hul@gmail.com', 'image.jpg', '$2a$08$cnX6al6aTkoyh/N/tKZ11e8ec9J/sldA6R4NdP.2qhhDi0OD3ek1G', 1, 'Staff_200', 'Male', 'Education Team', 2),
-(6, 'chantha', 'roeurn', 'khai', 'sun.meas@gmail.com', 'profile3.png', '$2a$08$fjV9P5/4WMXT64iMHgWj9uWePWyjjmo36fm8wcC3JFZV3i2ckNo7e', 1, 'PNC2018-028', 'Female', 'WEP-2018', 3);
+(1, 'Canteen', 'Manager', 'admin', 'kimseong.kao@gmail.com', 'admin.png', '$2a$08$cnX6al6aTkoyh/N/tKZ11e8ec9J/sldA6R4NdP.2qhhDi0OD3ek1G', 1, 'PNC2018-029', 'Female', 'WEP-2018', 1),
+(7, 'sun', 'meas', 'sun.meas', 'sun.meas@student.passerellesnuemriques.org', 'profile32.png', '$2a$08$psRAWInAIwJRT1v8fDBAbu3ELtdMg41Oz0BnYds7owL0qVO.46aUu', 1, 'PNC-2018-0014', 'Male', 'WEP-2018', 2),
+(11, 'Admin', 'Finance', 'super', 'kimsoeng.kao@gmial.com', 'super.png', '$2a$08$cnX6al6aTkoyh/N/tKZ11e8ec9J/sldA6R4NdP.2qhhDi0OD3ek1G', 1, 'PNC2018-029', 'Female', 'Training Department', 8),
+(13, 'khai', 'hok', 'khai.hok', 'khai.hok.cambodia@gmail.com', 'profile41.png', '$2a$08$hQSLwJxEmMQoBHIhd2.Ffe3lp5HYOp0qpb/DzhJMdWNLyqLNu/iR6', 1, 'PNC2018_029', 'Male', 'WEP-2018', 2),
+(14, 'Sokhom', 'Hean', 'sokhom.hean', 'sokhom.hean@passerellesnumeriques.org', 'profile81.png', '$2a$08$c924gwfDxaoiRJxaoQ05T.RVk55KabIW7rdBGfqSjwRyxzoAvy1qm', 1, 'ST0012', 'Male', 'English Trainer', 4),
+(15, 'Benjamin', 'Balet', 'benjamin.balet', 'benjamin.balet@passerellesnumeriques.org', 'profile31.png', '$2a$08$fMSTCIvBNDannL7wHfZa6.SXPDkuP8nAOl/4i6paFjgFIJ//sGPs.', 1, 'ST0012', 'Male', 'WEP-Trainer', 4),
+(16, 'Rady', 'Y', 'rady.y', 'rady.y@passerellesnumeriques.org', 'profile61.png', '$2a$08$PLP7DW5SjOqgtNgQG0VvpuFIcDJCyFqIuRahthCqYMEfb51DBJU6y', 1, 'PNC033-WEB', 'Male', 'WEP-Trainer', 4);
 
 --
 -- Constraints for dumped tables
@@ -264,12 +462,18 @@ ALTER TABLE `tbl_dishes`
   ADD CONSTRAINT `fk_tbl_dish_tbl_meal_time1` FOREIGN KEY (`meal_time_id`) REFERENCES `tbl_meal_time` (`time_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `tbl_dish_user`
+-- Constraints for table `tbl_join_events`
 --
-ALTER TABLE `tbl_dish_user`
-  ADD CONSTRAINT `fk_dish_user_tbl_order1` FOREIGN KEY (`order_id`) REFERENCES `tbl_order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tbl_dish_has_tbl_users_tbl_dish1` FOREIGN KEY (`dish_id`) REFERENCES `tbl_dishes` (`dish_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tbl_dish_has_tbl_users_tbl_users1` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `tbl_join_events`
+  ADD CONSTRAINT `tbl_join_events_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`),
+  ADD CONSTRAINT `tbl_join_events_ibfk_2` FOREIGN KEY (`dinner_event_id`) REFERENCES `tbl_dinner_events` (`id`);
+
+--
+-- Constraints for table `tbl_staff_participation`
+--
+ALTER TABLE `tbl_staff_participation`
+  ADD CONSTRAINT `lunch_event_id` FOREIGN KEY (`lunch_event_id`) REFERENCES `tbl_lunch_events` (`id`),
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

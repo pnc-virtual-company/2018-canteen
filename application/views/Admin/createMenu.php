@@ -29,7 +29,7 @@
     </ul>
   </div>
   <?php echo $flashPartialView;?>
-  <form action="<?php echo base_url() ?>admin/create_menu/postMenu" method="POST" >
+  <form action="<?php echo base_url() ?>admin/CreateMenu/postMenu" method="POST" >
     <div class="row">
       <div class="col-md-1">
        <label ><strong>Date:</strong></label>

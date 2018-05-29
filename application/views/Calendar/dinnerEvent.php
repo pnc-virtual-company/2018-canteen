@@ -16,12 +16,9 @@
         <main class="app-content"  style="background:white;"> 
              <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i>Dinner report </h1>
+            <h1><i class="fa fa-dashboard"></i>Student Events Creation</h1>
             <p>This application is very useful for admin and finance to manage their needs.</p>
         </div>
-        <ul class="app-breadcrumb breadcrumb bg-white">
-          <li class="breadcrumb-item "><a href="<?php echo base_url() ?>admin/UserjoinEvent/getListJoinDinner" class="text-primary"><span class="mdi mdi-note" style="font-size: 20px;"></span>&nbsp;&nbsp;Dinner report</a></li>
-       </ul>
   </div >
  
         <!-- alert message -->

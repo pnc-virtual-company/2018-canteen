@@ -32,7 +32,7 @@ class Dishes extends CI_Controller {
          } else {
            redirect('connection/login');
          }
-        $this->load->model('users_model');
+        $this->load->model('UsersModel');
     }
 
     /**
@@ -41,11 +41,11 @@ class Dishes extends CI_Controller {
      */
     public function index() {
         $this->load->helper('form');
-        $data['users'] = $this->users_model->getUsersAndRoles();
+        $data['users'] = $this->UsersModel->getUsersAndRoles();
         $data['title'] = 'List of users';
         $data['activeLink'] = 'users';
         $this->load->view('templates/header', $data);
-        $this->load->view('menu/admin_dasboard', $data);
+        $this->load->view('menu/adminDasboard', $data);
         $this->load->view('dishes/index', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -70,7 +70,7 @@ class Dishes extends CI_Controller {
      * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function checkLogin($login) {
-        if (!$this->users_model->isLoginAvailable($login)) {
+        if (!$this->UsersModel->isLoginAvailable($login)) {
             $this->form_validation->set_message('checkLogin', lang('users_create_checkLogin'));
             return FALSE;
         } else {
@@ -84,7 +84,7 @@ class Dishes extends CI_Controller {
      */
     public function checkLoginByAjax() {
         $this->output->set_content_type('text/plain');
-        if ($this->users_model->isLoginAvailable($this->input->post('login'))) {
+        if ($this->UsersModel->isLoginAvailable($this->input->post('login'))) {
             $this->output->set_output('true');
         } else {
             $this->output->set_output('false');

@@ -12,7 +12,7 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * This model contains the business logic and manages the persistence of tbl_dishes and tbl_roles
  * It is also used by the session controller for the authentication.
  */
-class Dishes_model extends CI_Model {
+class DishesModel extends CI_Model {
 
     /**
      * Default constructor
@@ -20,7 +20,45 @@ class Dishes_model extends CI_Model {
     public function __construct() {
 
     }
+    /**
+     * This function is use to inseret interes data into tbl_rates..
+     * @return array record of tbl_rates
+     * @author Davy PEONG <davy.peong@student.passerellesnumerique.org>
+     */
+    public function getStoreInterest($user_id, $dish_id){
+        
+        $interesData = array( 
+          'store_rate' => "1",
+          'dish_id' => $dish_id,
+          'user_id' => $user_id
+        );
+        $this->db->insert('tbl_rates', $interesData);
+    }
+    /**
+     * This function is use to select and update table
+     * @return array record of tbl_rates
+     * @author Davy PEONG <davy.peong@student.passerellesnumerique.org>
+     */
+        public function selectAndStoreInterest($dish_id){
 
+        $query = $this->db->query("SELECT COUNT(user_id) AS countUser FROM tbl_rates WHERE dish_id = '".$dish_id."'");  
+        $interestData =  $query->result();
+
+        /* Update Interest */
+        foreach ($interestData as $valueInterests) {
+           $valueInterest= $valueInterests ->countUser;
+        }
+
+        $updateData = array(
+            'current_interest' => $valueInterest
+        );
+        $this->db->where('dish_id', $dish_id);
+        $this->db->update('tbl_dishes ', $updateData); 
+        // 
+        return $valueInterest;
+    }
+
+   
     /**
      * Get the list of dishes base on type
      * @param int $mealType for catch the type of the dish
@@ -37,13 +75,12 @@ class Dishes_model extends CI_Model {
      * Get the list of tbl_dishes or one user
      * @param int $id optional id of one user
      * @return array record of tbl_dishes
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author chantha roeurn <chantha.roeurn@gmail.com>
      */
     public function getDishes() {
         $this->db->order_by('dish_id', 'DESC');
         $query = $this->db->get('tbl_dishes'); 
         return $query->result();
-        // return $order->result();
     }
 
 
@@ -59,53 +96,30 @@ class Dishes_model extends CI_Model {
     }
 
     /**
-     * Delete a user from the database
-     * @param int $id identifier of the user
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * Delete a dish from the database
+     * @param int $id indified the dish
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function deleteDishes($id) {
         $this->db->delete('tbl_dishes', array('dish_id' => $id));
     }
 
     /**
-     * Insert a new user into the database. Inserted data are coming from an HTML form
-     * @return string deciphered password (so as to send it by e-mail in clear)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
-     */
-    public function setDishes() {
-        //Hash the clear password using bcrypt (8 iterations)
-        $password = $this->input->post('password');
-        $salt = '$2a$08$' . substr(strtr(base64_encode($this->getRandomBytes(16)), '+', '.'), 0, 22) . '$';
-        $hash = crypt($password, $salt);
-
-        //Role field is a binary mask
-        $role = 0;
-        foreach($this->input->post("role") as $role_bit){
-            $role = $role | $role_bit;
-        }
-
-        $data = array(
-            'firstname' => $this->input->post('firstname'),
-            'lastname' => $this->input->post('lastname'),
-            'login' => $this->input->post('login'),
-            'email' => $this->input->post('email'),
-            'password' => $hash,
-            'role' => $role
-        );
-        $this->db->insert('tbl_dishes', $data);
-        return $password;
-    }
-
-    /**
-     * Update a given user in the database. Update data are coming from an HTML form
-     * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     *select all the dishe data to update in html form
+     * @return row of the dishes
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
 
-public function selectDish($id){
+  public function selectDish($id){
      $query = $this->db->get_where('tbl_dishes', array('dish_id' => $id));
      return $query->result();
-}
+  }
+
+    /**
+     *update all the dish
+     * @return true
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+    */
     public function updateDishes($id) 
     {         
         $this->upload->data()['file_name'];        
@@ -156,29 +170,6 @@ public function selectDish($id){
         return $query;
     }
     
-    /*public function getMenu1(){
-        date_default_timezone_set("Asia/Phnom_Penh");
-        $creating_date = date('Y-m-d');
-       $this->db->select('*');
-       $this->db->from('tbl_dishes');
-        $this->db->where (array('dish_active' =>1));
-        $this->db->where('menu_created_date=',$creating_date);
-        $this->db->where('meal_time_id=',2);
-        $query = $this->db->get();
-        return $query->result();
-    }
-    public function getMenu2(){
-        date_default_timezone_set("Asia/Phnom_Penh");
-        $creating_date = date('Y-m-d');
-       $this->db->select('*');
-       $this->db->from('tbl_dishes');
-        $this->db->where (array('dish_active' =>1));
-        $this->db->where('menu_created_date=',$creating_date);
-        $this->db->where('meal_time_id=',3);
-        $query = $this->db->get();
-        return $query->result();
-    }
-    */
 public  function  selectOrder($food_id){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -202,10 +193,8 @@ public  function  selectOrder($food_id){
             'date' => $created_date
         );
         $this->db->insert('tbl_order', $data_order);
-
         // Get the last id after inserted into tbl_order as above query
         $order_id = $this->db->insert_id(); // This is primary key from tbl_order but it will be foreign key for tbl_dish_user of column "order_id"
-
         // Insert dish user
         $data_dish = array(
           'user_id' => $current_logged_in,
@@ -214,7 +203,6 @@ public  function  selectOrder($food_id){
         );
         $result = $this->db->insert('tbl_dish_user', $data_dish);
     }
-
       /**
     * Get all the food which are already preordered
     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
@@ -269,9 +257,7 @@ public  function  selectOrder($food_id){
      // Check if user already order dish
   // Check if user already order dish   
     function checkIfUserOrderDish($dish_id, $user_id,$current_date, $meal_time)
-    {      
-      // date_default_timezone_set("Asia/Phnom_Penh");      
-      // $created_date = date('Y-m-d');       
+    {           
       $this->db->select('*');        
       $this->db->from(' tbl_order');        
       $this->db->join('tbl_dish_user' , ' tbl_order.order_id = tbl_dish_user.order_id');
@@ -310,7 +296,26 @@ public  function  selectOrder($food_id){
       ->update('tbl_order', array('quantity'=> $qty));
     }
 
-
-
-
+        /**
+     * selectIsUserInterest is use to valedate if user had interest with food or not.
+     * @return array record of tbl_rates
+     * @author Davy PEONG <davy.peong@student.passerellesnumerique.org>
+     */
+    public function selectIsUserInterest($dish_id, $user_id){
+        $this->db->select('*');
+        $this->db->from('tbl_rates');
+        $this->db->where('user_id', $user_id);
+        $this->db->where('dish_id', $dish_id);
+        $query = $this->db->get(); 
+        if($query->num_rows() > 0){
+        return true;
+        }else{
+        return false;
+        }
+    }
+    public function getStoreUninterest($user_id , $dish_id){
+        $this->db->where('user_id', $user_id);
+        $this->db->where('dish_id', $dish_id);
+        $this->db->delete('tbl_rates');
+    }
 }
