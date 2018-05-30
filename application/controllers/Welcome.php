@@ -10,6 +10,11 @@ class Welcome extends CI_Controller {
 			log_message('debug', 'URI=' . $this->uri->uri_string());
 	}
 
+    /**
+  * display and increase the interest featuress
+  * @author davy poeng <davy.poeng@student.passerellesnumeriques.org>
+  */
+
 	public function index() 
 	{
 
@@ -89,10 +94,10 @@ class Welcome extends CI_Controller {
 		$this->load->view('layout', $data);
 	}
 
-		/**
-     * Dishplay  favorite food in public user interface
-     * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-     */
+	/**
+  * Dishplay  favorite food in public user interface
+  * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+  */
 	public function favoriteFood(){
 		$this->load->model('foodFavorite');
 		$data['dishes'] = $this->foodFavorite->dishesFavorite();
@@ -100,24 +105,25 @@ class Welcome extends CI_Controller {
 		$data['page'] = 'dishes/favouriteFoods';
 		$this->load->view('layout', $data);
 	}
+
 	/**
-	     * Dishplay  staff calendar in public user interface
-	     * @author sun meas <sun.meas@student.passerellesnumeriques.org>
-	     */
-	// stuff calendar
+	* Dishplay  staff calendar in public user interface
+	* @author sun meas <sun.meas@student.passerellesnumeriques.org>
+	*/
 	function getJoinDinnerEvent(){
 		$data['title'] = 'Calendar';
 		$data['page'] = 'Calendar/userJoinCalendar';
 		$this->load->view('layout', $data);
 	}
 
+  /**
+  * display order pop up and insert order quantity
+  * @author chantha roeurn <chantha.roeurn@student.passerellesnumeriques.org>
+  */
 	public function getDish(){
-	
 	$id = $this->input->post('dish_id');
 	$status_form = $this->input->post('status_form');
-
 	$output = "";
-
 	/// if check statu form for order or edit
 	if($status_form == "btn_order"){
     	$data['dishesOrder'] = $this->DishesModel->selectDish($id,$this->session->userdata('id'));
@@ -204,7 +210,7 @@ class Welcome extends CI_Controller {
 }
   
  /**
-     * insert quantity data of the dishes
+     * insert quantity order data of the dishes
      * @author kimsoeng kao <kimsoeng.kao.passerellesnumeriques.org>
      */ 
 public function insertOrderInfo(){
@@ -217,10 +223,10 @@ public function insertOrderInfo(){
       $data == true;
     }
   }
-    /**
-     * Edit order information.
-     * @author chantha roeurn <chantha.roeurn.passerellesnumeriques.org>
-     */ 
+  /**
+    * Edit order information.
+    * @author chantha roeurn <chantha.roeurn.passerellesnumeriques.org>
+    */ 
   public function EditOrderInfo()
   {
     $order_id = $this->uri->segment(3);
@@ -228,11 +234,11 @@ public function insertOrderInfo(){
     redirect(base_url());
   }
 
-     /**
-     * Use to inseret into tbl_rate and update to tbl_dishes.
-     * @return the record of the staffs & Confirmation the email reminding
-     * @author sun meas <sun.meas.passerellesnumeriques.org>
-     */ 
+  /**
+  * Use to inseret into tbl_rate and update to tbl_dishes.
+  * @return the record of the staffs & Confirmation the email reminding
+  * @author sun meas <sun.meas.passerellesnumeriques.org>
+  */ 
   function ConfirmReminded()
   {
    $this->load->view('templates/header');
@@ -240,33 +246,34 @@ public function insertOrderInfo(){
    $this->load->view('templates/footer');
   }
 
-     /**
-     * Use to inseret into tbl_rate and update to tbl_dishes.
-     * @param int $id can lesect one or multiple dishes to update.
-     * @return array record of tbl_rate.
-     * @author davy peong <davy.peong.passerellesnumeriques.org>
-     */ 
-     public function storeInterest(){
-        $this->load->model('DishesModel');
-        $user_id = $this->session->userdata('id');
-        $dish_id = $this->input->post('dish_id');
-        $this->DishesModel->getStoreInterest($user_id, $dish_id);
-        $count_interest = $this->DishesModel->selectAndStoreInterest($dish_id);
-        echo '<a class="uninterest" href="javascript:void()" name="view" style="color:orange;" value="view" id="'.$dish_id.'">'.$count_interest.'&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Uninterest</a>';
+  /**
+  * Use to inseret into tbl_rate and update to tbl_dishes.
+  * @param int $id can lesect one or multiple dishes to update.
+  * @return array record of tbl_rate.
+  * @author davy peong <davy.peong.passerellesnumeriques.org>
+  */ 
+  public function storeInterest(){
+    $this->load->model('DishesModel');
+    $user_id = $this->session->userdata('id');
+    $dish_id = $this->input->post('dish_id');
+    $this->DishesModel->getStoreInterest($user_id, $dish_id);
+    $count_interest = $this->DishesModel->selectAndStoreInterest($dish_id);
+    echo '<a class="uninterest" href="javascript:void()" name="view" style="color:orange;" value="view" id="'.$dish_id.'">'.$count_interest.'&nbsp; <i class="mdi mdi-thumb-down "></i>&nbsp; Uninterest</a>';
     }
-    /**
-     * Get the delte number of rate from tbl_rate 
-     * @param delete with condition dish_id with dish_id
-     * @return array record of tbl_rate.
-     * @author davy peong <davy.peong.passerellesnumeriques.org>
-     */
+
+  /**
+   * Get the delte number of rate from tbl_rate 
+   * @param delete with condition dish_id with dish_id
+   * @return array record of tbl_rate.
+   * @author davy peong <davy.peong.passerellesnumeriques.org>
+   */
    public function storeUninterest(){
-        $this->load->model('DishesModel');
-        $user_id = $this->session->userdata('id');
-        $dish_id = $this->input->post('dish_id');
-        $this->DishesModel->getStoreUninterest($user_id, $dish_id);
-        $count_interest = $this->DishesModel->selectAndStoreInterest($dish_id);
-        echo '<a class="interest" href="javascript:void()" name="view" value="view" id="'.$dish_id.'">'.$count_interest.'&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>';
+    $this->load->model('DishesModel');
+    $user_id = $this->session->userdata('id');
+    $dish_id = $this->input->post('dish_id');
+    $this->DishesModel->getStoreUninterest($user_id, $dish_id);
+    $count_interest = $this->DishesModel->selectAndStoreInterest($dish_id);
+    echo '<a class="interest" href="javascript:void()" name="view" value="view" id="'.$dish_id.'">'.$count_interest.'&nbsp; <i class="mdi mdi-thumb-up "></i>&nbsp; Interest</a>';
 
     }
 

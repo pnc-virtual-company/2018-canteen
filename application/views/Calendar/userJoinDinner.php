@@ -1,12 +1,5 @@
 <?php
 /**
- * This view displays the list of users.
- * @copyright  Copyright (c) 2014-2018 Benjamin BALET
- * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/skeleton
- * @since      1.0.0
- */
-/**
  * List all users that participated to the event & doing remind sending email to  unconfirmed user to participate
  * @return int number of affected rows
  * @author sun MEAS <sun.meas@gmail.com>

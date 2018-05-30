@@ -36,23 +36,27 @@ class food extends CI_Controller {
  $this->load->model('UsersModel');
 }
 
-    public function index() {
-        $this->load->helper('form');
-        $this->load->model('DishesModel');
-        // $data['dishes'] = $this->DishesModel->getDishes();
-        $data['title'] = 'List of Dishes';
-        $data['activeLink'] = 'users';
-        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/adminDasboard', $data);
-        $this->load->view('Admin/food/listDish', $data);
-        $this->load->view('templates/footer', $data);
-    }
+/**
+  * @return the list of dishes
+  * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+*/
+public function index() {
+  $this->load->helper('form');
+  $this->load->model('DishesModel');
+  $data['dishes'] = $this->DishesModel->getDishes();
+  $data['title'] = 'List of Dishes';
+  $data['activeLink'] = 'users';
+  $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+  $this->load->view('templates/header', $data);
+  $this->load->view('menu/adminDasboard', $data);
+  $this->load->view('Admin/food/listDish', $data);
+  $this->load->view('templates/footer', $data);
+}
 
-    /**
-     * Display the list of all dry food
-     * @author khai hok <khai.hok.passerellesnumeriques.org>
- */
+/**
+  * Short Meal type breakfast , dinner or lunch
+  * @author kimsoeng kao <kimsoeng.kao.passerellesnumeriques.org>
+*/
     public function shortMealType(){
       $this->load->helper('form');
       $mealType = $this->uri->segment(4);
@@ -73,163 +77,171 @@ class food extends CI_Controller {
       $this->load->view('templates/footer', $data); 
     }
   
-    
+/**
+  * Display the list of all food
+  * @author kimsoeng kao <kimsoeng.kao.passerellesnumeriques.org>
+*/
+public function listDish() {
+  $this->load->helper('form');
+  $this->load->model('DishesModel');
+  $data['dishes'] = $this->DishesModel->getDishes();
+  $data['title'] = 'List of Dishes';
+  $data['activeLink'] = 'users';
+  $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+  $this->load->view('templates/header', $data);
+  $this->load->view('menu/adminDasboard', $data);
+  $this->load->view('Admin/food/listDish', $data);
+  $this->load->view('templates/footer', $data);
+}
 
-    /**
-     * Display the list of all food
-     * @author kimsoeng kao <kimsoeng.kao.passerellesnumeriques.org>
-     */
-    public function listDish() {
-        $this->load->helper('form');
-        $this->load->model('DishesModel');
-        $data['dishes'] = $this->DishesModel->getDishes();
-        $data['title'] = 'List of Dishes';
-        $data['activeLink'] = 'users';
-        $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/adminDasboard', $data);
-        $this->load->view('Admin/food/listDish', $data);
-        $this->load->view('templates/footer', $data);
-    }
+/**
+  * display pie chat of the favorite dishes
+  * @author khai hok <khai.hok.passerellesnumeriques.org>
+*/
+public function favouriteFood(){
+  $data['title'] = 'List Favorite Food';
+  $data['activeLink'] = 'users';
+  $this->load->model('foodFavorite');
+  $data['dishes'] = $this->foodFavorite->dishesFavorite();
+  $this->load->view('templates/header', $data);
+  $this->load->view('menu/adminDasboard', $data);
+  $this->load->view('admin/food/favouriteFoods', $data);
+  $this->load->view('templates/footer', $data);
+}
 
-    public function favouriteFood(){
-        $data['title'] = 'List Favorite Food';
-        $data['activeLink'] = 'users';
-        $this->load->model('foodFavorite');
-        $data['dishes'] = $this->foodFavorite->dishesFavorite();
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/adminDasboard', $data);
-        $this->load->view('admin/food/favouriteFoods', $data);
-        $this->load->view('templates/footer', $data);
-    }
-
-    // Start update dishes
-   public function updateDishes(){        
-    $id = $this->uri->segment(4);
-    $data['mealTime'] = $this->DishesModel->getMealTime();
-    $data['select_dishes'] = $this->DishesModel->selectDish($id);       
-    $data['title'] = 'Update Dishes'; 
-    $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
-    $this->load->view('templates/header');            
-    $this->load->view('menu/adminDasboard');                    
-     // upload User image configuaration                
-    $config['upload_path'] = './assets/images/dish_uploads/';
-    $config['allowed_types']= 'gif|jpg|png';
-    $config['max_size'] = 10000;
-    $config['max_width']  = 1024;
-    $config['max_height']= 768;               
-    $this->load->library('upload', $config);                
+/**
+  * Update dish
+  * @author kimsoeng kao <kimsoeng.kao.passerellesnumeriques.org>
+*/
+public function updateDishes(){        
+  $id = $this->uri->segment(4);
+  $data['mealTime'] = $this->DishesModel->getMealTime();
+  $data['select_dishes'] = $this->DishesModel->selectDish($id);       
+  $data['title'] = 'Update Dishes'; 
+  $data['flashPartialView'] = $this->load->view('templates/flash', $data, TRUE);
+  $this->load->view('templates/header');            
+  $this->load->view('menu/adminDasboard');                    
+   // upload User image configuaration                
+  $config['upload_path'] = './assets/images/dish_uploads/';
+  $config['allowed_types']= 'gif|jpg|png';
+  $config['max_size'] = 10000;
+  $config['max_width']  = 1024;
+  $config['max_height']= 768;               
+  $this->load->library('upload', $config);                
     //Condition to know the if image insert or not                
     if ( ! $this->upload->do_upload('dishImage')) 
     {
-          $data['error_message'] = $this->upload->display_errors();  // show error message     
-                
+      $data['error_message'] = $this->upload->display_errors();  // show error message     
     }
     else                
     {                  
-        $data['dishes'] = $this->DishesModel->updateDishes($id); //load model                  
-        if($data){ 
-            $this->session->set_flashdata('msg', 'Dish has been updated.');
-            redirect('admin/food/listDish');                  
-        }                
+      $data['dishes'] = $this->DishesModel->updateDishes($id); //load model                  
+      if($data){ 
+        $this->session->set_flashdata('msg', 'Dish has been updated.');
+        redirect('admin/food/listDish');                  
+      }                
     }
     $this->load->view('dishes/updateDish', $data);            
     $this->load->view('templates/footer');  
 }
-    /**
-    * delete dish from database
-    * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
-    */
-    public function deleteDish(){
-       $id = $this->uri->segment(4);
-        $this->DishesModel->deleteDishes($id);
-        $this->session->set_flashdata('msg', 'Dish has been Deleted.');
-        $this->listDish();
-    }
 
 /**
-     * addDish with image
-     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
-     */
-    public function addDish()
-    {
-            $this->load->helper('form');
-            $data['mealTime'] = $this->DishesModel->getMealTime();
-            $data['dishes'] = $this->DishesModel->getDishes();
-            $data['title'] = 'List of Dishes';
-            $data['activeLink'] = 'users';
-            $this->load->view('templates/header', $data);
-            $this->load->view('menu/adminDasboard', $data);
-            
-            $this->load->view('templates/footer', $data);
+* delete dish from database
+* @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+*/
+public function deleteDish(){
+  $id = $this->uri->segment(4);
+  $this->DishesModel->deleteDishes($id);
+  $this->session->set_flashdata('msg', 'Dish has been Deleted.');
+  $this->listDish();
+}
 
-        // upload image config
-                $config['upload_path']          = './assets/images/dish_uploads/';
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 10000;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
-
-                $this->load->library('upload', $config);
-
-                //Condition to know the if image insert or not
-                if ( ! $this->upload->do_upload('dishImage'))
-                {
-                     $data['error_msg'] = $this->upload->display_errors();  // show error message
-                }
-                else
-                {
-                    $data['dishes'] = $this->DishesModel->insert_dish(); //load model
-                    if($data){
-                        $this->session->set_flashdata('msg', 'Dish has been created.');
-                            redirect('admin/food/listDish');
-                        }
-                
-                }
-                $this->load->view('admin/food/addDish', $data);
-    }
-    
-   function addOrder(){
-       // okay now let get value from form
-        $food_ids = $this->input->post('fo_id');
-        $quantities = $this->input->post('plate');
-        // let loop the quantiy for each food to get only quantiy != 0
-        for($i = 0; $i<count($quantities); $i++)
-        {
-            // check if qty != 0, let insert it into db
-            if($quantities[$i] != 0)
-            {
-                // call model to insert to db
-                $ordered = $this->DishesModel->createOrder($sfood_ids[$i], $quantities[$i]);
-                    if($ordered ){
-                        redirect('Welcome ');
-                    }
-            }
-        }
-        // do something after insert to DB
-  
-  }
-
-    function createMenu(){
-        $this->load->helper('form');
-        $data['dishes'] = $this->dishTypeModel->getDinner();
-        $data['title'] = 'create menu for today';
-        $data['activeLink'] = 'Create Menu';
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/adminDasboard', $data);
-        $this->load->view('dishes/createMenu', $data);
-        $this->load->view('templates/footer', $data);
-    }
-    
- public function selectDish() {
-    $id = $this->uri->segment(4);
-    $data['select_dishes'] = $this->DishesModel->selectDish($id);
+/**
+* create new dihs
+* @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
+*/
+  public function addDish(){
+    $this->load->helper('form');
+    $data['mealTime'] = $this->DishesModel->getMealTime();
+    $data['dishes'] = $this->DishesModel->getDishes();
     $data['title'] = 'List of Dishes';
     $data['activeLink'] = 'users';
-    $this->load->view('templates/header');
-    $this->load->view('menu/adminDasboard');
-    $this->load->view('dishes/updateDish', $data);
-    $this->load->view('templates/footer');
+    $this->load->view('templates/header', $data);
+    $this->load->view('menu/adminDasboard', $data);
+    $this->load->view('templates/footer', $data);
+    // upload image config
+    $config['upload_path']          = './assets/images/dish_uploads/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    $config['max_size']             = 10000;
+    $config['max_width']            = 1024;
+    $config['max_height']           = 768;
+    $this->load->library('upload', $config);
+    //Condition to know the if image insert or not
+    if ( ! $this->upload->do_upload('dishImage'))
+    {
+      $data['error_msg'] = $this->upload->display_errors();  // show error message
+    }
+      else
+        {
+          $data['dishes'] = $this->DishesModel->addDish(); //load model
+          if($data){
+            $this->session->set_flashdata('msg', 'Dish has been created.');
+            redirect('admin/food/listDish');
+          }
+        }
+        $this->load->view('admin/food/addDish', $data);
+  }
+
+/**
+* let loop the quantiy for each food to get only quantiy != 0
+* @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
+*/
+  function addOrder(){
+    // okay now let get value from form
+    $food_ids = $this->input->post('fo_id');
+    $quantities = $this->input->post('plate');
+    // let loop the quantiy for each food to get only quantiy != 0
+    for($i = 0; $i<count($quantities); $i++)
+    {
+      // check if qty != 0, let insert it into db
+      if($quantities[$i] != 0)
+      {
+        // call model to insert to db
+        $ordered = $this->DishesModel->createOrder($sfood_ids[$i], $quantities[$i]);
+        if($ordered ){
+          redirect('Welcome ');
+        }
+      }
+    }
+  }
+/**
+* Display the list of dish for creating meanu
+* @author khai hok <khai.hok@student.passerellesnumeriques.org>
+*/
+  function createMenu(){
+    $this->load->helper('form');
+    $data['dishes'] = $this->dishTypeModel->getDinner();
+    $data['title'] = 'create menu for today';
+    $data['activeLink'] = 'Create Menu';
+    $this->load->view('templates/header', $data);
+    $this->load->view('menu/adminDasboard', $data);
+    $this->load->view('dishes/createMenu', $data);
+    $this->load->view('templates/footer', $data);
+  }
+
+ /**
+* get dish to update
+* @author davy poeng <davy.poeng@student.passerellesnumeriques.org>
+*/   
+ public function selectDish() {
+  $id = $this->uri->segment(4);
+  $data['select_dishes'] = $this->DishesModel->selectDish($id);
+  $data['title'] = 'List of Dishes';
+  $data['activeLink'] = 'users';
+  $this->load->view('templates/header');
+  $this->load->view('menu/adminDasboard');
+  $this->load->view('dishes/updateDish', $data);
+  $this->load->view('templates/footer');
 }
 
 }

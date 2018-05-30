@@ -1,3 +1,9 @@
+<?php
+/**
+ * This view display the panel to confirm the staff who want to join the staff lunch event
+ * @author  Copyright (c) 2017-2018 sun meas
+*/
+?>
 <div class="container">
   <div class="row">
     <div class="col-md-2"></div>
@@ -35,7 +41,7 @@
     $.ajax({    
       url:"<?php echo base_url() ?>Welcome/ConfirmReminded",  
       success: function() {
-        // $('.container').hide();
+
       }
     });
   });

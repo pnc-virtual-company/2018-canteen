@@ -9,7 +9,7 @@
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
 /**
- * This model contains the business logic and manages the persistence of tbl_dishes and tbl_roles
+ * This model contains the business logic and manages the persistence of tbl_dishes
  * It is also used by the session controller for the authentication.
  */
 class DishesModel extends CI_Model {
@@ -136,15 +136,11 @@ class DishesModel extends CI_Model {
         return true;    
     }
     
-    public function viewDetail($dishId){
-        $result = $this->db->get_where('tbl_dishes', array('dish_id'=>$dishId));
-        return  $result->result();
-    }
 /**
-     * insert_dish in to database with image
-     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
-     */
-    public function insert_dish(){
+* create new dish
+* @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+*/
+    public function addDish(){
         $data = array('upload_data' => $this->upload->data());
         // matching insert value from input and database fields
         $data =  array(
@@ -158,6 +154,10 @@ class DishesModel extends CI_Model {
         $this->db->insert("tbl_dishes", $data);
     }
 
+/**
+* display the dish which have created only the current date with different meal time
+* @author chantha roeurn <chantha.roeurn@student.passerellesnumeriques.org>
+*/
     public function getMenu($number){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -169,7 +169,11 @@ class DishesModel extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
-    
+
+/**
+* @return the dishes which create for only today.
+* @author chantha roeurn <chantha.roeurn@student.passerellesnumeriques.org>
+*/  
 public  function  selectOrder($food_id){
         date_default_timezone_set("Asia/Phnom_Penh");
         $creating_date = date('Y-m-d');
@@ -181,6 +185,11 @@ public  function  selectOrder($food_id){
         $query = $this->db->get();
         return $query->result();
 }
+
+/**
+* @return insert order information
+* @author chantha roeurn <chantha.roeurn@student.passerellesnumeriques.org>
+*/
    public function createOrder($dish_id,$meal_time_id){
         // set currrent time zone in php to cambodia time +7
         date_default_timezone_set("Asia/Phnom_Penh");
@@ -242,20 +251,23 @@ public  function  selectOrder($food_id){
       return $query->result();
     }
 
+  /**
+    * insert user interest
+    * @author davy kao <davy.kao@student.passerellesnumeriques.org>
+    */
     public function storeInterest($userId){
         $query = $this->db->get_where('tbl_users',array('id' => $userId));
         if($query){
-
-            $getData = array(
-                'id' => $value['$userId'],
-                 
-            );
-            $this->db->insert_batch('tbl_dish_user', $getData);
+          $getData = array(
+          'id' => $value['$userId'],
+        );
+        $this->db->insert_batch('tbl_dish_user', $getData);
         }
-        
     }
-     // Check if user already order dish
-  // Check if user already order dish   
+
+     /**Check if user already order dish and Check if user already order dish
+    * @author chantha roeurn <chantha.roeurn@student.passerellesnumeriques.org>
+    */ 
     function checkIfUserOrderDish($dish_id, $user_id,$current_date, $meal_time)
     {           
       $this->db->select('*');        
@@ -276,7 +288,10 @@ public  function  selectOrder($food_id){
         return false; // return false if user not yet order        
       }    
     }
-    // Get user dish order to edit
+   
+     /** get user dish to edit
+    * @author chantha roeurn <chantha.roeurn@student.passerellesnumeriques.org>
+    */ 
     function selectDishEdit($dish_id, $user_id)
     {
        $this->db->where('tbl_dish_user.dish_id', $dish_id);
@@ -287,7 +302,9 @@ public  function  selectOrder($food_id){
         return $result->result();
     }
     
-    // Update order info
+     /** update order information
+    * @author chantha roeurn <chantha.roeurn@student.passerellesnumeriques.org>
+    */ 
     function updateOrderInfo($order_id)
     {
       $qty = $this->input->post('quantity'); // get qty from edit form popup
@@ -313,6 +330,10 @@ public  function  selectOrder($food_id){
         return false;
         }
     }
+       /*
+     * @return delete the user rate
+     * @author Davy PEONG <davy.peong@student.passerellesnumerique.org>
+     */
     public function getStoreUninterest($user_id , $dish_id){
         $this->db->where('user_id', $user_id);
         $this->db->where('dish_id', $dish_id);

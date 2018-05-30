@@ -1,3 +1,9 @@
+<?php
+/**
+ * display a form to create new dishes
+ * @copyright  Copyright (c) 2014-2018 kimsoeng kao
+ */
+?>
 <style>
   .jumbotron{
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -20,7 +26,7 @@
       <div class="jumbotron  text-white">
       <h2 class="text-center text-white">Add New Dish</h2>
   
-      <form action="<?php echo base_url(); ?>admin/food/add_dish" enctype="multipart/form-data" method="POST">
+      <form action="<?php echo base_url(); ?>admin/food/addDish" enctype="multipart/form-data" method="POST">
         
           <div class="form-group">
             <label for="email">Dish Name:</label>
@@ -54,4 +60,3 @@
     </div>
     </div>
     <div class="col-md-2"></div>
-

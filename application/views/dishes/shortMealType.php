@@ -1,8 +1,8 @@
 <?php 
 /**
-     * display breakfast in the admin dashbaord
-     * @author Chantha ROEURN <chantha.roeurn@student.passerellesnumeriques.org>
-     */
+  * display different kind of dishes in the admin dashbaord
+  * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+ */
  ?>
 <style>
 	.card{

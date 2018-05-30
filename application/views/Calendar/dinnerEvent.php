@@ -1,3 +1,9 @@
+<?php
+/**
+ * This view display the calendar to create student events
+ * @author  Copyright (c) 2017-2018 sun meas
+*/
+?>
 <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
 <link href='<?php echo base_url();?>assets/css/fullcalendar.css' rel='stylesheet' />
 <link href="<?php echo base_url();?>assets/css/bootstrapValidator.min.css" rel="stylesheet" />        

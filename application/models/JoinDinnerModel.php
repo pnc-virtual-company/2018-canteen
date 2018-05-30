@@ -29,16 +29,16 @@ class JoinDinnerModel extends CI_Model {
 	 /*Function get all user join dinner*/
 	 public function getListJoinDinner(){
 	      $query = $this->db->query('SELECT 
-	                 joinEvent.*, 
-	                 dinnerEvent.title AS "Title",
-	                 users.class_name AS "position",
-	                 users.card_id AS "card_id",
-	                 users.email AS "email",
-	                 CONCAT(users.firstname , " " , users.lastname) AS "user_name"
-	                 FROM tbl_join_events joinEvent
-	                 INNER JOIN tbl_dinner_events dinnerEvent ON dinnerEvent.id = joinEvent.dinner_event_id
-	                 INNER JOIN tbl_users users ON users.id = joinEvent.user_id');
-	             return $query->result();
+	       	joinEvent.*, 
+	       	dinnerEvent.title AS "Title",
+	       	users.class_name AS "position",
+	       	users.card_id AS "card_id",
+	       	users.email AS "email",
+	       	CONCAT(users.firstname , " " , users.lastname) AS "user_name"
+	       	FROM tbl_join_events joinEvent
+	       	INNER JOIN tbl_dinner_events dinnerEvent ON dinnerEvent.id = joinEvent.dinner_event_id
+	       	INNER JOIN tbl_users users ON users.id = joinEvent.user_id');
+	    return $query->result();
 	 }      
 
 }

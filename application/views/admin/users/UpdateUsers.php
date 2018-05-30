@@ -1,3 +1,10 @@
+
+<?php
+/**
+ * This view displays the form to update user
+ * @copyright  Copyright (c) 2014-2018 kimsoeng kao
+ */
+?>
 <style>
   .card{
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -96,8 +103,7 @@
                   ><label for="male">&nbsp;&nbsp;Male</label> 
                 </div>
               </div>
-              <?php      
-                  } ?>
+              <?php } ?>
               <a href="<?php echo base_url() ?>admin/User/listUsers" class=" btn btn-danger"><i class="mdi mdi-cancel"></i>&nbsp;Cancel</a>
               <button class=" btn btn-warning float-right" type="submit"><i class="mdi mdi-account-plus"></i>&nbsp;Update</button>
             </form>

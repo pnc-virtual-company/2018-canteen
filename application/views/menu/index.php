@@ -1,5 +1,10 @@
+<?php 
+/**
+  * This view display the menu in public user interface
+  * @author davy poeng <davy.poeng@student.passerellesnumeriques.org>
+ */
+ ?>
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 $activeLink = (isset($activeLink)) ? $activeLink :  "";?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
