@@ -1,10 +1,7 @@
 <?php
 /**
  * This partial view is included into views when we want to display a flash message.
- * @copyright  Copyright (c) 2018 Benjamin BALET
- * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/skeleton
- * @since      1.0.0
+ * @copyright  Copyright (c) 2018 kimsoeng kso
  */
 ?>
 <?php if($this->session->flashdata('msg')){ ?>

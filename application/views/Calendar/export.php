@@ -1,10 +1,7 @@
 <?php
 /**
- * This view builds a Spreadsheet file containing the list of users pre ordered.
- * @copyright  Copyright (c) 2018 Benjamin BALET
- * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/skeleton
- * @since      1.0.0
+ * This view builds a Spreadsheet file containing the list of student events
+ * @copyright  Copyright (c) 2018 kimsoeng kao
  */
 require_once FCPATH . "vendor/autoload.php";
 use PhpOffice\PhpSpreadsheet\Spreadsheet;

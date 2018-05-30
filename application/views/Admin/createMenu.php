@@ -1,11 +1,7 @@
-
 <?php
 /**
  * This view displays the list of menu food.
- * @copyright  Copyright (c) 2017-2018 khai hok
- * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/skeleton
- * @since      1.0.0
+ * @author  Copyright (c) 2017-2018 khai hok
  */
 ?>
 <style>
@@ -25,7 +21,7 @@
       <p>There are a lot of food to cook for PNC students and staffs.</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/add_dish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Dish</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url() ?>admin/food/addDish"><span class="mdi mdi-plus-circle" style="font-size: 20px;"></span>&nbsp;&nbsp;Add New Dish</a></li>
     </ul>
   </div>
   <?php echo $flashPartialView;?>
@@ -108,8 +104,3 @@
     e.preventDefault();
   });
 </script>
-
-
-
-
-

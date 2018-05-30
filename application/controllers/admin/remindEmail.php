@@ -6,9 +6,11 @@ class remindEmail extends CI_Controller {
   parent::__construct();
  }
 
- /*Function email to remind the participated user to join the lunch event*/
+ /**
+  * Function email to remind the participated user to join the lunch event
+  * @author sun meas <sun.meas@student.passerellesnumeriques.org>
+  */
  public function index() {
-
 /*Sending email to invite the staff the join the lunch in PNC*/
   $mesg = $this->load->view('Calendar/sendMailResult','',true);
   $email_to = ('sun.meas@student.passerellesnumeriques.org');
@@ -21,19 +23,18 @@ class remindEmail extends CI_Controller {
   'mailtype' => 'html',
   'wordwrap' => TRUE
   );
-      $this->load->library('email', $config);
-      $this->email->set_newline("\r\n");
-     $this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org', 'Admin & Finance');
-    $this->email->to($email_to);
-      $this->email->subject('Lunch Invitation Reminding');
-      $this->email->message('Dear staff, '.'<br><br>'.'You are reminded to join the lunch event at PNC.'.$mesg);
+  $this->load->library('email', $config);
+  $this->email->set_newline("\r\n");
+  $this->email->from('pnc.temporary.vc2018@passerellesnumeriques.org', 'Admin & Finance');
+  $this->email->to($email_to);
+  $this->email->subject('Lunch Invitation Reminding');
+  $this->email->message('Dear staff, '.'<br><br>'.'You are reminded to join the lunch event at PNC.'.$mesg);
    if($this->email->send())
-      {
-       $this->sendReminded();
-      } else {
-       show_error($this->email->print_debugger());
-     }
+    {
+      $this->sendReminded();
+    } else {
+      show_error($this->email->print_debugger());
+    }
  }
-
 
 }

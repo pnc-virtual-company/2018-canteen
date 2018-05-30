@@ -1,4 +1,9 @@
-
+<?php 
+/**
+  * this view display a form to update the dishes
+  * @author kimsoeng kao <kimsoeng.kao@student.passerellesnumeriques.org>
+ */
+ ?>
 <style>
 label{
 	font-weight: bold;

@@ -1,10 +1,7 @@
 <?php
 /**
- * This view displays the list of users.
- * @copyright  Copyright (c) 2017-2018 Khai hok
- * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/skeleton
- * @since      1.0.0
+ * This view displays welcome admin dashboard.
+ * @author  Copyright (c) 2017-2018 Khai hok
  */
 ?>
 <style>

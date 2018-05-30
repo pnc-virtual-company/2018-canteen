@@ -23,7 +23,7 @@ class CreateMenu extends CI_Controller {
     if($this->session->loggedIn === TRUE) {
            // Allowed methods
        if ($this->session->isAdmin || $this->session->isSuperAdmin) {
-             //User management is reserved to admins and super admins
+        //User management is reserved to admins and super admins
      } else {
        redirect(base_url());
    }

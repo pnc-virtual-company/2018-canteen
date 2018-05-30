@@ -1,10 +1,7 @@
 <?php
 /**
- * This view displays the list of users.
- * @copyright  Copyright (c) 2014-2018 Benjamin BALET
- * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/skeleton
- * @since      1.0.0
+ * This view displays the list of dishes.
+ * @copyright  Copyright (c) 2014-2018 kimsoeng kao
  */
 ?>
 <style>

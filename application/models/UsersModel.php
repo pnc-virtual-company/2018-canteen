@@ -32,16 +32,16 @@ class UsersModel extends CI_Model {
         date_default_timezone_set("Asia/Phnom_Penh");
         $current_date = date('Y-m-d');
       $this->db->select('users.card_id as userId,
-                    CONCAT(users.firstname," ",users.lastname) AS userName,
-                    users.class_name,
-                    dishes.dish_name as dishName,
-                    sum(orders.quantity) as totalQuanttiy,
-                    sum(orders.quantity)*1000 as TotalPayment');
+        CONCAT(users.firstname," ",users.lastname) AS userName,
+        users.class_name,
+        dishes.dish_name as dishName,
+        sum(orders.quantity) as totalQuanttiy,
+        sum(orders.quantity)*1000 as TotalPayment');
       $this->db->from('tbl_order as orders');
       $this->db->join('tbl_dish_user as dishUsers', 'orders.order_id = dishUsers.order_id') ;
       $this->db->join('tbl_dishes dishes', 'dishes.dish_id = dishUsers.dish_id');
       $this->db->join('tbl_users users', 'users.id = dishUsers.user_id');
-    $this->db->where('orders.date', $current_date);
+      $this->db->where('orders.date', $current_date);
       $this->db->group_by('userName'); 
       $query = $this->db->get();
       return $query->result();
@@ -76,24 +76,26 @@ class UsersModel extends CI_Model {
         return true;
     }
 
+  /**
+  * @return all roles
+  * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+  */
+  public function selectRole(){
+    $query = $this->db->get('tbl_roles');
+    return $query->result();
+  }
 
-    /// get roles from tbl_role
-     public function selectRole(){
-        $query = $this->db->get('tbl_roles');
-        return $query->result();
-    }
-
-    /**
-     * Get the list of tbl_users or one user
-     * @param int $id optional id of one user
-     * @return array record of tbl_users
-     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
-     */
+  /**
+    * Get the list of tbl_users or one user
+    * @param int $id optional id of one user
+    * @return array record of tbl_users
+    * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+    */
     public function getUsers($id = 0) {
         $this->db->select('tbl_users.*');
         if ($id === 0) {
-            $query = $this->db->get('tbl_users');
-            return $query->result_array();
+          $query = $this->db->get('tbl_users');
+          return $query->result_array();
         }
         $query = $this->db->get_where('tbl_users', array('tbl_users.id' => $id));
         return $query->row_array();
@@ -289,23 +291,10 @@ class UsersModel extends CI_Model {
     }
 
     /**
-     * Set a user as active (TRUE) or inactive (FALSE)
-     * @param int $id User identifier
-     * @param bool $active active (TRUE) or inactive (FALSE)
-     * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
-     */
-    public function setActive($id, $active) {
-        $this->db->set('active', $active);
-        $this->db->where('id', $id);
-        return $this->db->update('tbl_users');
-    }
-
-    /**
      * Check if a user is active (TRUE) or inactive (FALSE)
      * @param string $login login of a user
      * @return bool active (TRUE) or inactive (FALSE)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function isActive($login) {
         $this->db->from('tbl_users');
@@ -323,7 +312,7 @@ class UsersModel extends CI_Model {
      * Try to return the user information from the login field
      * @param string $login Login
      * @return User data row or null if no user was found
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     public function getUserByLogin($login) {
         $this->db->from('tbl_users');
@@ -341,7 +330,7 @@ class UsersModel extends CI_Model {
      * Generate some random bytes by using openssl, dev/urandom or random
      * @param int $count length of the random string
      * @return string a string of pseudo-random bytes (must be encoded)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
     protected function getRandomBytes($length) {
         if(function_exists('openssl_random_pseudo_bytes')) {
@@ -368,14 +357,27 @@ class UsersModel extends CI_Model {
         return $rnd;
     }
 
+    /**
+     * @return list of users
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+     */
     public function getListUsers(){
         $query = $this->db->query("select  user.*, role.id as role, role.name as rolename from tbl_users as user inner join tbl_roles as role where user.role = role.id order by id DESC");
         return $query->result();
     }  
 
+     /**
+     * @return delete user from database
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+     */
     public function deleteUsers($id) {
         $this->db->delete('tbl_users', array('id' => $id));
     }
+
+     /**
+     * @return insert new user into database
+     * @author kimsoeng kao <kimsoeng.kao@gmail.com>
+     */
     public function insertUser(){
         // get value from input name
         $password = $this->input->post('password');
@@ -422,11 +424,11 @@ class UsersModel extends CI_Model {
     }
 
     /**
+    *Function get all particapate of event lunch
      * short the staff confirm and not yet confirm
      * @return int $status is for short of confirm or not yet confirm
      * @author kimsoeng kao <kimsoeng.kao@gmail.com>
      */
-    /*Function get all particapate of event lunch*/
     public function shortListParticipate($status){
         // echo $status;die();
          $query = $this->db->query('SELECT 
@@ -445,7 +447,7 @@ class UsersModel extends CI_Model {
     /*Function get status of event lunch*/
     public function getStaffStatus(){
          $query = $this->db->query('SELECT * FROM tbl_staff_participation');
-                return $query->result();
+        return $query->result();
     }   
 
 }

@@ -1,3 +1,9 @@
+<?php
+/**
+ * this view display the popup to confirm the staff join the student events
+ * @author  Copyright (c) 2014-2018 sun meas
+ */
+?> 
  <link href='<?php echo base_url();?>assets/css/fullcalendar.css' rel='stylesheet' />
  <!-- Custom css  -->
  <link href="<?php echo base_url();?>assets/css/custom.css" rel="stylesheet" />
